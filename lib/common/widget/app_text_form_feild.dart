@@ -19,6 +19,7 @@ class AppTextField extends StatelessWidget {
     this.textCapitalization = TextCapitalization.none,
     this.showMandatoryIcon = false,
     this.readOnly = false,
+    this.onSuffixTap,
     this.header,
   });
 
@@ -33,6 +34,7 @@ class AppTextField extends StatelessWidget {
   final void Function()? onTap;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final VoidCallback? onSuffixTap;
   final bool obscureText;
   final TextCapitalization textCapitalization;
   final bool showMandatoryIcon;
@@ -100,7 +102,16 @@ class AppTextField extends StatelessWidget {
             enabledBorder: inputBorder(),
             prefixIcon: prefixIcon,
             suffixIconConstraints: BoxConstraints(maxWidth: 44, maxHeight: 40),
-            suffixIcon: suffixIcon,
+            suffixIcon: InkWell(
+              onTap: onSuffixTap,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 4.pw),
+                  child: suffixIcon,
+                ),
+              ),
+            ),
           ),
         ),
         ErrorText(error: error, topPadding: 4.ph),

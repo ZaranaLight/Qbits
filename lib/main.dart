@@ -2,6 +2,7 @@ import 'package:qbits/qbits.dart';
 
 Future<void> main() async {
   try {
+    WidgetsFlutterBinding.ensureInitialized();
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),
@@ -10,5 +11,5 @@ Future<void> main() async {
   } catch (e) {
     debugPrint(e.toString());
   }
-  runApp( AppView());
+  runApp(AppView());
 }

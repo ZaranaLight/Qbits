@@ -19,6 +19,13 @@ class RouteManager {
           settings: settings,
         );
 
+      /// Select Region Screen
+      case SelectRegionScreen.routeName:
+        return MaterialPageRoute(
+          builder: SelectRegionScreen.builder,
+          settings: settings,
+        );
+
       default:
         return MaterialPageRoute(
           builder: (context) => const UnKnownScreen(),

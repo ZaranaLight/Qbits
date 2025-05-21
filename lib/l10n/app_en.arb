@@ -61,5 +61,7 @@
   "enterMailBox": "Enter Mail Box",
   "code": "Code",
   "enterVerificationCode": "Enter Verification Code",
+  "accountIsRequired": "Account Is Required",
+  "passwordIsRequired": "Password Is Required",
   "pleaseUseYourPhoneNumberOrEmailToObtain": "Please use your phone number or email  to obtain \nthe verification code"
 }

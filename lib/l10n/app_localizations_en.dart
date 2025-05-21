@@ -195,5 +195,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enterVerificationCode => 'Enter Verification Code';
 
   @override
+  String get accountIsRequired => 'Account Is Required';
+
+  @override
+  String get passwordIsRequired => 'Password Is Required';
+
+  @override
   String get pleaseUseYourPhoneNumberOrEmailToObtain => 'Please use your phone number or email  to obtain \nthe verification code';
 }

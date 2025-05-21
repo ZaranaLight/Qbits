@@ -465,6 +465,18 @@ abstract class AppLocalizations {
   /// **'Enter Verification Code'**
   String get enterVerificationCode;
 
+  /// No description provided for @accountIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Is Required'**
+  String get accountIsRequired;
+
+  /// No description provided for @passwordIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Password Is Required'**
+  String get passwordIsRequired;
+
   /// No description provided for @pleaseUseYourPhoneNumberOrEmailToObtain.
   ///
   /// In en, this message translates to:
