@@ -17,3 +17,13 @@ dynamic normalizeFalseToNull(dynamic input) {
 void recordError(dynamic exception, StackTrace? stack) {
   debugPrint(exception.toString());
 }
+
+void hideKeyboard({BuildContext? context}) {
+  context ??= navigatorKey.currentContext;
+  if (context == null) {
+    return;
+  }
+  if (FocusScope.of(context).hasFocus) {
+    FocusScope.of(context).requestFocus(FocusNode());
+  }
+}

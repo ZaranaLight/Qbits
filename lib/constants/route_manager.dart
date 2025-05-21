@@ -5,10 +5,17 @@ class RouteManager {
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-    /// splash
+      /// splash
       case SplashScreen.routeName:
         return MaterialPageRoute(
           builder: SplashScreen.builder,
+          settings: settings,
+        );
+
+      /// sign in
+      case SignInScreen.routeName:
+        return MaterialPageRoute(
+          builder: SignInScreen.builder,
           settings: settings,
         );
 
