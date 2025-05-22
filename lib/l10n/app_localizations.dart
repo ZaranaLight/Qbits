@@ -482,6 +482,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please use your phone number or email  to obtain \nthe verification code'**
   String get pleaseUseYourPhoneNumberOrEmailToObtain;
+
+  /// No description provided for @dashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard'**
+  String get dashboard;
+
+  /// No description provided for @plant.
+  ///
+  /// In en, this message translates to:
+  /// **'Plant'**
+  String get plant;
+
+  /// No description provided for @alarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Alarm'**
+  String get alarm;
+
+  /// No description provided for @userCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'User Center'**
+  String get userCenter;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

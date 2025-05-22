@@ -34,6 +34,11 @@ export 'package:qbits/common/extensions.dart';
 export 'package:qbits/common/widget/loaders.dart';
 export 'package:qbits/screens/auth/sign_in/sign_in_screen.dart';
 export 'package:qbits/screens/auth/sign_in/sign_in_provider.dart';
+export 'package:qbits/screens/home/home_screen.dart';
+export 'package:qbits/screens/dashboard/dashboard_provider.dart';
+export 'package:qbits/screens/home/home_provider.dart';
+export 'package:qbits/screens/dashboard/dashboard_screen.dart';
+export 'package:qbits/common/widget/custom_scroll.dart';
 export 'package:qbits/screens/auth/select_region/select_region_provider.dart';
 export 'package:qbits/screens/auth/select_region/select_region_screen.dart';
 

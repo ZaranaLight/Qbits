@@ -64,4 +64,9 @@
   "accountIsRequired": "Account Is Required",
   "passwordIsRequired": "Password Is Required",
   "pleaseUseYourPhoneNumberOrEmailToObtain": "Please use your phone number or email  to obtain \nthe verification code"
+  "pleaseUseYourPhoneNumberOrEmailToObtain": "Please use your phone number or email  to obtain \nthe verification code",
+  "dashboard": "Dashboard",
+  "plant": "Plant",
+  "alarm": "Alarm",
+  "userCenter": "User Center"
 }
