@@ -1,16 +1,16 @@
 import 'package:qbits/qbits.dart';
 
-class SelectRegionProvider extends ChangeNotifier {
+class SelectLanguageProvider extends ChangeNotifier {
   bool loader = false;
   final Map<String, bool> _checkboxes = {
-    "China": false,
-    "Europe": false,
-    "International": false,
-    "Africa": false,
-    "Oceania": false,
-    "North America": false,
-    "South America": false,
-    "Antarctica": false,
+    "Arabic": false,
+    "English": false,
+    "Chinese": false,
+    "French": false,
+    "Russian": false,
+    "Spanish": false,
+    "Japanese": false,
+    "Turkish": false,
   };
 
   Map<String, bool> get checkboxes => _checkboxes;
@@ -31,5 +31,5 @@ class SelectRegionProvider extends ChangeNotifier {
 
   bool isChecked(String name) => _checkboxes[name] ?? false;
 
-  List<String> get regionCheckBoxNameList => _checkboxes.keys.toList();
+  List<String> get languageCheckBoxNameList => _checkboxes.keys.toList();
 }

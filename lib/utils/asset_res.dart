@@ -4,6 +4,7 @@ class AssetRes {
   ///__________________________________ icons __________________________________///
   static const errorIcon = "${_icons}error_icon.svg";
   static const eyeIcon = "${_icons}eye_icon.svg";
+  static const bulbIcon = "${_icons}bulb_icon.svg";
   static const closeIcon = "${_icons}close_icon.svg";
   static const rightTickIcon = "${_icons}right_tick.svg";
   static const splashLogo = "${_icons}splash_logo_icon.svg";
@@ -14,6 +15,7 @@ class AssetRes {
   static const backIcon = "${_icons}back_icon.svg";
   static const authBackgroundIcon = "${_icons}auth_bg_icon.svg";
   static const invisibleIcon = "${_icons}invisible.svg";
+  static const checkIcon = "${_icons}check_icon.svg";
 
 
 

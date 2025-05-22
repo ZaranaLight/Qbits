@@ -52,7 +52,9 @@ class AppTextField extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 10.ph),
             child: Text(
               header ?? "",
-              style: styleW400S14.copyWith(color: ColorRes.black2),
+              style: styleW400S14.copyWith(
+                color: ColorRes.black2.withValues(alpha: 0.6),
+              ),
             ),
           ),
 
@@ -84,7 +86,10 @@ class AppTextField extends StatelessWidget {
 
             filled: true,
             hintStyle: styleW400S14.copyWith(
-              color: (error ?? '').isNotEmpty ? ColorRes.red : ColorRes.grey,
+              color:
+                  (error ?? '').isNotEmpty
+                      ? ColorRes.red
+                      : ColorRes.black.withValues(alpha: 0.3),
             ),
             contentPadding: EdgeInsets.only(
               left: 12.pw,

@@ -459,6 +459,12 @@ abstract class AppLocalizations {
   /// **'Code'**
   String get code;
 
+  /// No description provided for @otp.
+  ///
+  /// In en, this message translates to:
+  /// **'Otp'**
+  String get otp;
+
   /// No description provided for @enterVerificationCode.
   ///
   /// In en, this message translates to:
@@ -471,11 +477,29 @@ abstract class AppLocalizations {
   /// **'Account Is Required'**
   String get accountIsRequired;
 
+  /// No description provided for @emailIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Is Required'**
+  String get emailIsRequired;
+
+  /// No description provided for @emailIdIsInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Id Is Invalid'**
+  String get emailIdIsInvalid;
+
   /// No description provided for @passwordIsRequired.
   ///
   /// In en, this message translates to:
   /// **'Password Is Required'**
   String get passwordIsRequired;
+
+  /// No description provided for @continueCap.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueCap;
 
   /// No description provided for @pleaseUseYourPhoneNumberOrEmailToObtain.
   ///

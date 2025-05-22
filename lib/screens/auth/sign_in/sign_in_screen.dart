@@ -1,6 +1,3 @@
-import 'package:qbits/common/widget/app_text_form_feild.dart';
-import 'package:qbits/common/widget/buttons.dart';
-import 'package:qbits/common/widget/custom_scroll.dart';
 import 'package:qbits/qbits.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -17,10 +14,9 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<SignInProvider>(context, listen: false);
     return Scaffold(
       body: Consumer<SignInProvider>(
-        builder: (context, state, child) {
+        builder: (context, provider, child) {
           return Stack(
             children: [
               // Background image
@@ -29,8 +25,10 @@ class SignInScreen extends StatelessWidget {
               ),
               SafeArea(
                 child: CustomSingleChildScroll(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: Constants.horizontalPadding,
+                  padding: EdgeInsets.only(
+                    left: Constants.horizontalPadding,
+                    right: Constants.horizontalPadding,
+                    bottom: Constants.safeAreaPadding.bottom + 16.pw,
                   ),
                   child: Column(
                     children: [
@@ -38,17 +36,53 @@ class SignInScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           ///Region
-                          _TopRowWidget(
+                          InkWell(
                             onTap: () => provider.onSelectRegionTap(context),
-                            title: context.l10n?.international ?? "",
-                            imgPath: AssetRes.downArrowIcon,
-                          ),
+                            borderRadius: BorderRadius.circular(5.pw),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  ///icon
+                                  Text(
+                                    context.l10n?.international ?? "",
+                                    style: styleW500S14.copyWith(
+                                      color: ColorRes.grey2,
+                                    ),
+                                  ),
 
-                          ///Language
-                          _TopRowWidget(
+                                  ///Space between the icon and text
+                                  4.pw.spaceHorizontal,
+
+                                  ///Down arrow icon
+                                  SvgAsset(imagePath: AssetRes.downArrowIcon),
+                                ],
+                              ),
+                            ),
+                          ),
+                          InkWell(
                             onTap: () => provider.onSelectLanguageTap(context),
-                            title: context.l10n?.languageSelection ?? "",
-                            imgPath: AssetRes.worldIcon,
+                            borderRadius: BorderRadius.circular(5.pw),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  ///Down arrow icon
+                                  SvgAsset(imagePath: AssetRes.worldIcon),
+
+                                  ///Space between the icon and text
+                                  4.pw.spaceHorizontal,
+
+                                  ///icon
+                                  Text(
+                                    context.l10n?.languageSelection ?? "",
+                                    style: styleW500S14.copyWith(
+                                      color: ColorRes.grey2,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -82,10 +116,10 @@ class SignInScreen extends StatelessWidget {
                           children: [
                             ///Account
                             AppTextField(
-                              controller: state.accountController,
+                              controller: provider.accountController,
                               header: context.l10n?.account ?? "",
                               hintText: context.l10n?.account ?? "",
-                              error: state.accountError,
+                              error: provider.accountError,
                             ),
 
                             ///Space
@@ -93,12 +127,12 @@ class SignInScreen extends StatelessWidget {
 
                             ///Password
                             AppTextField(
-                              controller: state.passwordController,
-                              error: state.pwdError,
+                              controller: provider.passwordController,
+                              error: provider.pwdError,
                               hintText: context.l10n?.password,
                               header: context.l10n?.password,
                               textInputType: TextInputType.visiblePassword,
-                              obscureText: !state.isPwdVisible,
+                              obscureText: !provider.isPwdVisible,
                               suffixIcon: AnimatedSwitcher(
                                 duration: 300.milliseconds,
                                 transitionBuilder: (
@@ -111,33 +145,64 @@ class SignInScreen extends StatelessWidget {
                                   );
                                 },
                                 child: SvgAsset(
-                                  key: ValueKey<bool>(state.isPwdVisible),
+                                  key: ValueKey<bool>(provider.isPwdVisible),
                                   imagePath:
-                                      state.isPwdVisible
-                                          ? AssetRes.invisibleIcon
-                                          : AssetRes.eyeIcon,
+                                      provider.isPwdVisible
+                                          ? AssetRes.eyeIcon
+                                          : AssetRes.invisibleIcon,
                                 ),
                               ),
-                              onSuffixTap: state.onPwdVisibilityChanged,
+                              onSuffixTap: provider.onPwdVisibilityChanged,
                             ),
 
                             ///Space
-                            24.pw.spaceVertical,
+                            20.pw.spaceVertical,
 
                             ///Forgot password and Bluetooth
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ///Forgot password
-                                Text(
-                                  context.l10n?.forgotPassword ?? "",
-                                  style: styleW500S16,
+                                Material(
+                                  color: Colors.transparent,
+                                  child: InkWell(
+                                    onTap:
+                                        () => provider.onForgotPwdTap(context),
+                                    borderRadius: BorderRadius.circular(5.pw),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Text(
+                                        context.l10n?.forgotPassword ?? "",
+                                        style: styleW500S16.copyWith(
+                                          color: ColorRes.black.withValues(
+                                            alpha: 0.5,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ),
 
                                 ///Bluetooth
-                                Text(
-                                  context.l10n?.bluetooth ?? "",
-                                  style: styleW500S16,
+                                Material(
+                                  color: Colors.transparent,
+                                  child: InkWell(
+                                    onTap:
+                                        () =>
+                                            provider.onBluetoothPwdTap(context),
+                                    borderRadius: BorderRadius.circular(5.pw),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Text(
+                                        context.l10n?.bluetooth ?? "",
+                                        style: styleW500S16.copyWith(
+                                          color: ColorRes.black.withValues(
+                                            alpha: 0.5,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -167,37 +232,6 @@ class SignInScreen extends StatelessWidget {
             ],
           );
         },
-      ),
-    );
-  }
-}
-
-class _TopRowWidget extends StatelessWidget {
-  final String? title;
-  final String? imgPath;
-  final VoidCallback onTap;
-
-  const _TopRowWidget({this.title, this.imgPath, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(5.pw),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            ///icon
-            Text(title ?? "", style: styleW500S14),
-
-            ///Space between the icon and text
-            4.pw.spaceHorizontal,
-
-            ///Down arrow icon
-            SvgAsset(imagePath: imgPath ?? ""),
-          ],
-        ),
       ),
     );
   }

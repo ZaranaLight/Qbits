@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/auth/select_region/select_region_screen.dart';
 
 class SignInProvider extends ChangeNotifier {
   bool loader = false;
@@ -16,7 +15,11 @@ class SignInProvider extends ChangeNotifier {
   }
 
   void onForgotPwdTap(BuildContext context) {
-    // context.navigator.pushNamed(ForgotPasswordScreen.routeName);
+    context.navigator.pushNamed(ForgotPasswordScreen.routeName);
+  }
+
+  void onBluetoothPwdTap(BuildContext context) {
+    context.navigator.pushNamed(BluetoothScreen.routeName);
   }
 
   void onSelectRegionTap(BuildContext context) {
@@ -24,7 +27,7 @@ class SignInProvider extends ChangeNotifier {
   }
 
   void onSelectLanguageTap(BuildContext context) {
-    context.navigator.pushNamed(SelectRegionScreen.routeName);
+    context.navigator.pushNamed(SelectLanguageScreen.routeName);
   }
 
   Future<void> onSignInTap(BuildContext context) async {

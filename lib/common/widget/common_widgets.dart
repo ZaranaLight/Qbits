@@ -111,6 +111,93 @@ class EmptyDataBox extends StatelessWidget {
   }
 }
 
+// CheckBoxBtn Widget
+class CheckBoxBtn extends StatelessWidget {
+  final bool value;
+  final ValueChanged<bool>? onChange;
+  final String? text;
+
+  const CheckBoxBtn({super.key, required this.value, this.onChange, this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    final checkbox = AnimatedSwitcher(
+      duration: 300.milliseconds,
+      transitionBuilder: (Widget child, Animation<double> animation) {
+        return ScaleTransition(
+          scale: Tween<double>(begin: 0.8, end: 1).animate(animation),
+          child: child,
+        );
+      },
+      child: Builder(
+        key: ValueKey<bool>(value),
+        builder: (con) {
+          if (value) {
+            return Container(
+              height: 16.pw,
+              width: 16.pw,
+              decoration: BoxDecoration(
+                color: ColorRes.primaryColor,
+                borderRadius: BorderRadius.circular(4.pw),
+              ),
+              alignment: Alignment.center,
+              child: SvgAsset(
+                imagePath: AssetRes.checkIcon,
+                color: ColorRes.white,
+                height: 5.pw,
+              ),
+            );
+          }
+          return Container(
+            height: 16.pw,
+            width: 16.pw,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4.pw),
+              border: Border.all(color: ColorRes.grey.withValues(alpha: 0.1)),
+            ),
+          );
+        },
+      ),
+    );
+
+    /// If no text provided, return just the checkbox
+    if (text == null) return checkbox;
+
+    /// Return checkbox and text in a row
+    return InkWell(
+      onTap: () {
+        /// Toggle the value and pass it back
+        if (onChange != null) {
+          onChange!(!value);
+        }
+      },
+      borderRadius: BorderRadius.circular(4.pw),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ///CheckBOx Ion
+          checkbox,
+
+          ///Space
+          10.ph.spaceHorizontal,
+
+          ///Text
+          Padding(
+            padding: EdgeInsets.only(right: 15.pw),
+            child: Text(
+              text!,
+              style:
+                  value
+                      ? styleW600S16.copyWith(color: ColorRes.primaryColor)
+                      : styleW500S16.copyWith(color: ColorRes.black),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class RadioButtonCell extends StatelessWidget {
   const RadioButtonCell({
     super.key,

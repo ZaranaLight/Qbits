@@ -60,8 +60,12 @@
   "mail": "Mail",
   "enterMailBox": "Enter Mail Box",
   "code": "Code",
+  "otp": "Otp",
   "enterVerificationCode": "Enter Verification Code",
   "accountIsRequired": "Account Is Required",
+  "emailIsRequired": "Email Is Required",
+  "emailIdIsInvalid": "Email Id Is Invalid",
   "passwordIsRequired": "Password Is Required",
+  "continueCap": "Continue",
   "pleaseUseYourPhoneNumberOrEmailToObtain": "Please use your phone number or email  to obtain \nthe verification code"
 }
