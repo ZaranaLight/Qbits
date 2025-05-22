@@ -22,6 +22,20 @@ class RouteManager {
           settings: settings,
         );
 
+      /// Dashboard Screen
+      case DashboardScreen.routeName:
+        return MaterialPageRoute(
+          builder: DashboardScreen.builder,
+          settings: settings,
+        );
+
+      /// Home Screen
+      case HomeScreen.routeName:
+        return MaterialPageRoute(
+          builder: HomeScreen.builder,
+          settings: settings,
+        );
+
       /// Select Region Screen
       case SelectRegionScreen.routeName:
         return MaterialPageRoute(

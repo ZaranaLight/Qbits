@@ -214,4 +214,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pleaseUseYourPhoneNumberOrEmailToObtain => 'Please use your phone number or email  to obtain \nthe verification code';
+
+  @override
+  String get dashboard => 'Dashboard';
+
+  @override
+  String get plant => 'Plant';
+
+  @override
+  String get alarm => 'Alarm';
+
+  @override
+  String get userCenter => 'User Center';
 }
