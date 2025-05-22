@@ -43,7 +43,6 @@ export 'package:qbits/screens/auth/select_region/select_region_provider.dart';
 export 'package:qbits/screens/auth/select_region/select_region_screen.dart';
 export 'package:qbits/common/widget/app_text_form_feild.dart';
 export 'package:qbits/common/widget/buttons.dart';
-export 'package:qbits/common/widget/custom_scroll.dart';
 export 'package:qbits/common/widget/appbars.dart';
 export 'package:qbits/screens/auth/select_language/select_language_provider.dart';
 export 'package:qbits/screens/auth/select_language/select_language_screen.dart';

@@ -1,7 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/auth/bluetooth/bluetooth_screen.dart';
-import 'package:qbits/screens/auth/forgot_password/forgot_password_screen.dart';
-import 'package:qbits/screens/auth/otp_code_verification/otp_code_verification_screen.dart';
 
 class RouteManager {
   static String get initialRoute => SplashScreen.routeName;
