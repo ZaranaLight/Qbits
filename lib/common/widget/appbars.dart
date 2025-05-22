@@ -16,12 +16,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showBackBtn = true,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title, style:styleW600S20.copyWith(color: ColorRes.white)),
-
+      title: Text(title, style: styleW600S20.copyWith(color: ColorRes.white)),
       centerTitle: centerTitle,
       backgroundColor: backgroundColor,
       leading:
@@ -46,7 +44,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               )
               : SizedBox(),
       actions: actions,
-      elevation: 4,
+      elevation: 0,
     );
   }
 

@@ -9,6 +9,7 @@ class AssetRes {
   static const splashLogo = "${_icons}splash_logo_icon.svg";
   static const worldIcon = "${_icons}world_icon.svg";
   static const downArrowIcon = "${_icons}down_arrow_icon.svg";
+  static const bulbIcon = "${_icons}bulb_icon.svg";
   static const appLogo = "${_icons}app_logo.svg";
   static const infoIcon = "${_icons}info_icon.svg";
   static const backIcon = "${_icons}back_icon.svg";

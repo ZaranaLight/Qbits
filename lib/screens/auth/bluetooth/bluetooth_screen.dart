@@ -1,3 +1,4 @@
+import 'package:qbits/common/widget/common_scanner_screen.dart';
 import 'package:qbits/qbits.dart';
 
 class BluetoothScreen extends StatelessWidget {
@@ -15,7 +16,43 @@ class BluetoothScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(),
+      backgroundColor: ColorRes.white,
+      bottomNavigationBar: SafeArea(
+        top: false,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: Constants.horizontalPadding + 10.pw,
+            vertical: 12.ph,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Gallery',
+                style: styleW500S16.copyWith(color: ColorRes.primaryColor),
+              ),
+              Text(
+                'Manually',
+                style: styleW500S16.copyWith(color: ColorRes.primaryColor),
+              ),
+              Text(
+                'Cancel',
+                style: styleW500S16.copyWith(color: ColorRes.primaryColor),
+              ),
+            ],
+          ),
+        ),
+      ),
+      appBar: CustomAppBar(
+        title: context.l10n?.bluetooth ?? "",
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: SvgAsset(imagePath: AssetRes.bulbIcon),
+          ),
+        ],
+      ),
+      body: QRScannerScreen(),
     );
   }
 }
