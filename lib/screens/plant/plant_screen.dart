@@ -143,7 +143,6 @@ class _AppBar extends StatelessWidget {
 class _TabContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<PlantProvider>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
 

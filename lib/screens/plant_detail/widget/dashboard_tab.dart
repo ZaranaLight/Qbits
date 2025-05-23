@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:qbits/common/widget/column_with-richtext.dart';
+import 'package:qbits/common/widget/column_with_rich_text.dart';
 import 'package:qbits/qbits.dart';
 
 class DashBoardTab extends StatelessWidget {
@@ -542,7 +542,7 @@ class _DashboardBarChartTabsState extends State<DashboardBarChartTabs>
           16.ph.spaceVertical,
 
           /// Tab Views
-          Container(
+          SizedBox(
             height: 190.ph,
             child: TabBarView(
               controller: _tabController,
@@ -569,7 +569,7 @@ class _DashboardBarChartTabsState extends State<DashboardBarChartTabs>
             horizontalInterval: 2000,
             getDrawingHorizontalLine:
                 (value) =>
-                    FlLine(color: Colors.grey.withOpacity(0.3), strokeWidth: 1),
+                    FlLine(color: Colors.grey.withValues(alpha: 0.3), strokeWidth: 1),
           ),
           titlesData: FlTitlesData(
             bottomTitles: AxisTitles(

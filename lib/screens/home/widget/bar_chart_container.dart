@@ -47,7 +47,7 @@ class BarChartContainer extends StatelessWidget {
                   horizontalInterval: 2000,
                   getDrawingHorizontalLine:
                       (value) => FlLine(
-                        color: Colors.grey.withOpacity(0.3),
+                        color: Colors.grey.withValues(alpha: 0.3),
                         strokeWidth: 1,
                       ),
                 ),
