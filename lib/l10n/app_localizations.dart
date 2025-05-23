@@ -465,6 +465,18 @@ abstract class AppLocalizations {
   /// **'Otp'**
   String get otp;
 
+  /// No description provided for @cameraPermissionContent.
+  ///
+  /// In en, this message translates to:
+  /// **'This app needs access to your camera to take photos and scan images. Please grant camera permission to continue.'**
+  String get cameraPermissionContent;
+
+  /// No description provided for @cameraPermission.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera Permission'**
+  String get cameraPermission;
+
   /// No description provided for @enterVerificationCode.
   ///
   /// In en, this message translates to:
@@ -512,6 +524,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Dashboard'**
   String get dashboard;
+
+  /// No description provided for @openSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Settings'**
+  String get openSettings;
 
   /// No description provided for @plant.
   ///

@@ -86,4 +86,6 @@ export 'package:qbits/screens/plant_detail/widget/alarm_tab.dart';
 
 
 
+export 'package:image_picker/image_picker.dart';
+
 

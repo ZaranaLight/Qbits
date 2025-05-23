@@ -25,7 +25,6 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: QRView(
         key: qrKey,
         onQRViewCreated: _onQRViewCreated,

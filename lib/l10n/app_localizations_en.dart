@@ -195,6 +195,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get otp => 'Otp';
 
   @override
+  String get cameraPermissionContent => 'This app needs access to your camera to take photos and scan images. Please grant camera permission to continue.';
+
+  @override
+  String get cameraPermission => 'Camera Permission';
+
+  @override
   String get enterVerificationCode => 'Enter Verification Code';
 
   @override
@@ -217,6 +223,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dashboard => 'Dashboard';
+
+  @override
+  String get openSettings => 'Open Settings';
 
   @override
   String get plant => 'Plant';

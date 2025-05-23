@@ -27,17 +27,47 @@ class BluetoothScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Gallery',
-                style: styleW500S16.copyWith(color: ColorRes.primaryColor),
+              InkWell(
+                onTap: () {},
+                borderRadius: BorderRadius.circular(5.pw),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 15.pw,
+                    vertical: 10.pw,
+                  ),
+                  child: Text(
+                    'Gallery',
+                    style: styleW500S16.copyWith(color: ColorRes.primaryColor),
+                  ),
+                ),
               ),
-              Text(
-                'Manually',
-                style: styleW500S16.copyWith(color: ColorRes.primaryColor),
+              InkWell(
+                onTap: () {},
+                borderRadius: BorderRadius.circular(5.pw),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 15.pw,
+                    vertical: 10.pw,
+                  ),
+                  child: Text(
+                    'Manually',
+                    style: styleW500S16.copyWith(color: ColorRes.primaryColor),
+                  ),
+                ),
               ),
-              Text(
-                'Cancel',
-                style: styleW500S16.copyWith(color: ColorRes.primaryColor),
+              InkWell(
+                onTap: () {},
+                borderRadius: BorderRadius.circular(5.pw),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 15.pw,
+                    vertical: 10.pw,
+                  ),
+                  child: Text(
+                    'Cancel',
+                    style: styleW500S16.copyWith(color: ColorRes.primaryColor),
+                  ),
+                ),
               ),
             ],
           ),

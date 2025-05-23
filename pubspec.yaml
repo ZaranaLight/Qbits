@@ -45,6 +45,12 @@ dependencies:
   percent_indicator: ^4.2.5
   fl_chart: ^1.0.0
   carousel_slider: ^5.0.0
+  flutter_image_compress: ^2.4.0
+  
+
+
+  # -------------------------- Media Specific -------------------------- #
+  image_picker: ^1.1.2
 
   # -------------------------- Dart Methods -------------------------- #
   intl: ^0.20.2
@@ -83,6 +89,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
