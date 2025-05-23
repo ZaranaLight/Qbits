@@ -530,6 +530,402 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'User Center'**
   String get userCenter;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @myWatchlist.
+  ///
+  /// In en, this message translates to:
+  /// **'My Watchlist'**
+  String get myWatchlist;
+
+  /// No description provided for @totalProductionPower.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Production Power'**
+  String get totalProductionPower;
+
+  /// No description provided for @installCapacity.
+  ///
+  /// In en, this message translates to:
+  /// **'Install Capacity'**
+  String get installCapacity;
+
+  /// No description provided for @monthlyProduction.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Production'**
+  String get monthlyProduction;
+
+  /// No description provided for @totalProduction.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Production'**
+  String get totalProduction;
+
+  /// No description provided for @dailyProduction.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Production'**
+  String get dailyProduction;
+
+  /// No description provided for @yearlyProduction.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly Production'**
+  String get yearlyProduction;
+
+  /// No description provided for @totalPlants.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Plants'**
+  String get totalPlants;
+
+  /// No description provided for @normal.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal'**
+  String get normal;
+
+  /// No description provided for @offline.
+  ///
+  /// In en, this message translates to:
+  /// **'Offline'**
+  String get offline;
+
+  /// No description provided for @online.
+  ///
+  /// In en, this message translates to:
+  /// **'Online'**
+  String get online;
+
+  /// No description provided for @deviceLibery.
+  ///
+  /// In en, this message translates to:
+  /// **'Device Libery'**
+  String get deviceLibery;
+
+  /// No description provided for @allQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'All Quantity'**
+  String get allQuantity;
+
+  /// No description provided for @correlate.
+  ///
+  /// In en, this message translates to:
+  /// **'Correlate'**
+  String get correlate;
+
+  /// No description provided for @uncorrelate.
+  ///
+  /// In en, this message translates to:
+  /// **'Uncorrelate'**
+  String get uncorrelate;
+
+  /// No description provided for @dailyActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Activity'**
+  String get dailyActivity;
+
+  /// No description provided for @monthlyActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Activity'**
+  String get monthlyActivity;
+
+  /// No description provided for @yearlyActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly Activity'**
+  String get yearlyActivity;
+
+  /// No description provided for @noMoreData.
+  ///
+  /// In en, this message translates to:
+  /// **'No More Data'**
+  String get noMoreData;
+
+  /// No description provided for @day.
+  ///
+  /// In en, this message translates to:
+  /// **'Day'**
+  String get day;
+
+  /// No description provided for @power.
+  ///
+  /// In en, this message translates to:
+  /// **'Power'**
+  String get power;
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
+
+  /// No description provided for @searchHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Search History'**
+  String get searchHistory;
+
+  /// No description provided for @all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get all;
+
+  /// No description provided for @rank.
+  ///
+  /// In en, this message translates to:
+  /// **'Rank'**
+  String get rank;
+
+  /// No description provided for @preference.
+  ///
+  /// In en, this message translates to:
+  /// **'Preference'**
+  String get preference;
+
+  /// No description provided for @filter.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get filter;
+
+  /// No description provided for @equative.
+  ///
+  /// In en, this message translates to:
+  /// **'Equative'**
+  String get equative;
+
+  /// No description provided for @capacity.
+  ///
+  /// In en, this message translates to:
+  /// **'Capacity'**
+  String get capacity;
+
+  /// No description provided for @powerKW.
+  ///
+  /// In en, this message translates to:
+  /// **'Power(kW):'**
+  String get powerKW;
+
+  /// No description provided for @inTotalKWh.
+  ///
+  /// In en, this message translates to:
+  /// **'In Total(kWh)'**
+  String get inTotalKWh;
+
+  /// No description provided for @follow.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow'**
+  String get follow;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @month.
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get month;
+
+  /// No description provided for @dayPowerTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Day - Power - Total'**
+  String get dayPowerTotal;
+
+  /// No description provided for @capacityPowerEquative.
+  ///
+  /// In en, this message translates to:
+  /// **'Capacity - Power - Equative'**
+  String get capacityPowerEquative;
+
+  /// No description provided for @dayMonthYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Day - Month - Year'**
+  String get dayMonthYear;
+
+  /// No description provided for @device.
+  ///
+  /// In en, this message translates to:
+  /// **'Device'**
+  String get device;
+
+  /// No description provided for @about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get about;
+
+  /// No description provided for @dailyGeneration.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Generation'**
+  String get dailyGeneration;
+
+  /// No description provided for @monthlyGeneration.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Generation'**
+  String get monthlyGeneration;
+
+  /// No description provided for @totalGeneration.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Generation'**
+  String get totalGeneration;
+
+  /// No description provided for @yearlyGeneration.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly Generation'**
+  String get yearlyGeneration;
+
+  /// No description provided for @dailyConsumption.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Consumption'**
+  String get dailyConsumption;
+
+  /// No description provided for @monthlyConsumption.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Consumption'**
+  String get monthlyConsumption;
+
+  /// No description provided for @totalConsumption.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Consumption'**
+  String get totalConsumption;
+
+  /// No description provided for @yearlyConsumption.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly Consumption'**
+  String get yearlyConsumption;
+
+  /// No description provided for @dailyGridFeedIN.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Grid Feed-in'**
+  String get dailyGridFeedIN;
+
+  /// No description provided for @yearlyGridFeedIN.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly Grid Feed-in'**
+  String get yearlyGridFeedIN;
+
+  /// No description provided for @monthlyGridFeedIN.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Grid Feed-in'**
+  String get monthlyGridFeedIN;
+
+  /// No description provided for @totalGridFeedIN.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Grid Feed-in'**
+  String get totalGridFeedIN;
+
+  /// No description provided for @monthlyEnergyPurchased.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Energy Purchased'**
+  String get monthlyEnergyPurchased;
+
+  /// No description provided for @dailyEnergyPurchased.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Energy Purchased'**
+  String get dailyEnergyPurchased;
+
+  /// No description provided for @totalEnergyPurchased.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Energy Purchased'**
+  String get totalEnergyPurchased;
+
+  /// No description provided for @yearlyEnergyPurchased.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly Energy Purchased'**
+  String get yearlyEnergyPurchased;
+
+  /// No description provided for @dailyEnergyCharged.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Energy Charged'**
+  String get dailyEnergyCharged;
+
+  /// No description provided for @monthlyEnergyCharged.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Energy Charged'**
+  String get monthlyEnergyCharged;
+
+  /// No description provided for @yearlyEnergyCharged.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly Energy Charged'**
+  String get yearlyEnergyCharged;
+
+  /// No description provided for @totalEnergyCharged.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Energy Charged'**
+  String get totalEnergyCharged;
+
+  /// No description provided for @dailyEnergyDischarged.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Energy Discharged'**
+  String get dailyEnergyDischarged;
+
+  /// No description provided for @monthEnergyDischarged.
+  ///
+  /// In en, this message translates to:
+  /// **'Month Energy Discharged'**
+  String get monthEnergyDischarged;
+
+  /// No description provided for @yearlyEnergyDischarged.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly Energy Discharged'**
+  String get yearlyEnergyDischarged;
+
+  /// No description provided for @totalEnergyDischarged.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Energy Discharged'**
+  String get totalEnergyDischarged;
+
+  /// No description provided for @inverter.
+  ///
+  /// In en, this message translates to:
+  /// **'Inverter'**
+  String get inverter;
+
+  /// No description provided for @collector.
+  ///
+  /// In en, this message translates to:
+  /// **'Collector'**
+  String get collector;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

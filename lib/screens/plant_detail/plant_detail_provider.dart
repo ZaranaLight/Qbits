@@ -1,9 +1,9 @@
 import 'package:qbits/qbits.dart';
 
-class HomeProvider extends ChangeNotifier {
+class PlantDetailProvider extends ChangeNotifier {
   bool loader = false;
 
-  HomeProvider() {
+  PlantDetailProvider() {
     init();
   }
 

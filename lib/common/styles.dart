@@ -56,6 +56,13 @@ TextStyle styleW500S16 = TextStyle(
   fontWeight: FontWeight.w500,
 );
 
+TextStyle styleW500S18 = TextStyle(
+  color: ColorRes.black2,
+  fontSize: 18,
+  fontFamily: AssetRes.instrumentSans,
+  fontWeight: FontWeight.w500,
+);
+
 TextStyle styleW600S12 = TextStyle(
   color: ColorRes.black2,
   fontSize: 12,

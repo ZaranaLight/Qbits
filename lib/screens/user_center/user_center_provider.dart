@@ -1,9 +1,10 @@
 import 'package:qbits/qbits.dart';
 
-class HomeProvider extends ChangeNotifier {
+
+class UserCenterProvider extends ChangeNotifier {
   bool loader = false;
 
-  HomeProvider() {
+  UserCenterProvider() {
     init();
   }
 

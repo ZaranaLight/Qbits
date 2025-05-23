@@ -1,9 +1,10 @@
 import 'package:qbits/qbits.dart';
 
-class HomeProvider extends ChangeNotifier {
+
+class AlarmProvider extends ChangeNotifier {
   bool loader = false;
 
-  HomeProvider() {
+  AlarmProvider() {
     init();
   }
 

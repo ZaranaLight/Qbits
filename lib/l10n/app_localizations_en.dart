@@ -226,4 +226,202 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get userCenter => 'User Center';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get myWatchlist => 'My Watchlist';
+
+  @override
+  String get totalProductionPower => 'Total Production Power';
+
+  @override
+  String get installCapacity => 'Install Capacity';
+
+  @override
+  String get monthlyProduction => 'Monthly Production';
+
+  @override
+  String get totalProduction => 'Total Production';
+
+  @override
+  String get dailyProduction => 'Daily Production';
+
+  @override
+  String get yearlyProduction => 'Yearly Production';
+
+  @override
+  String get totalPlants => 'Total Plants';
+
+  @override
+  String get normal => 'Normal';
+
+  @override
+  String get offline => 'Offline';
+
+  @override
+  String get online => 'Online';
+
+  @override
+  String get deviceLibery => 'Device Libery';
+
+  @override
+  String get allQuantity => 'All Quantity';
+
+  @override
+  String get correlate => 'Correlate';
+
+  @override
+  String get uncorrelate => 'Uncorrelate';
+
+  @override
+  String get dailyActivity => 'Daily Activity';
+
+  @override
+  String get monthlyActivity => 'Monthly Activity';
+
+  @override
+  String get yearlyActivity => 'Yearly Activity';
+
+  @override
+  String get noMoreData => 'No More Data';
+
+  @override
+  String get day => 'Day';
+
+  @override
+  String get power => 'Power';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get searchHistory => 'Search History';
+
+  @override
+  String get all => 'All';
+
+  @override
+  String get rank => 'Rank';
+
+  @override
+  String get preference => 'Preference';
+
+  @override
+  String get filter => 'Filter';
+
+  @override
+  String get equative => 'Equative';
+
+  @override
+  String get capacity => 'Capacity';
+
+  @override
+  String get powerKW => 'Power(kW):';
+
+  @override
+  String get inTotalKWh => 'In Total(kWh)';
+
+  @override
+  String get follow => 'Follow';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get month => 'Month';
+
+  @override
+  String get dayPowerTotal => 'Day - Power - Total';
+
+  @override
+  String get capacityPowerEquative => 'Capacity - Power - Equative';
+
+  @override
+  String get dayMonthYear => 'Day - Month - Year';
+
+  @override
+  String get device => 'Device';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get dailyGeneration => 'Daily Generation';
+
+  @override
+  String get monthlyGeneration => 'Monthly Generation';
+
+  @override
+  String get totalGeneration => 'Total Generation';
+
+  @override
+  String get yearlyGeneration => 'Yearly Generation';
+
+  @override
+  String get dailyConsumption => 'Daily Consumption';
+
+  @override
+  String get monthlyConsumption => 'Monthly Consumption';
+
+  @override
+  String get totalConsumption => 'Total Consumption';
+
+  @override
+  String get yearlyConsumption => 'Yearly Consumption';
+
+  @override
+  String get dailyGridFeedIN => 'Daily Grid Feed-in';
+
+  @override
+  String get yearlyGridFeedIN => 'Yearly Grid Feed-in';
+
+  @override
+  String get monthlyGridFeedIN => 'Monthly Grid Feed-in';
+
+  @override
+  String get totalGridFeedIN => 'Total Grid Feed-in';
+
+  @override
+  String get monthlyEnergyPurchased => 'Monthly Energy Purchased';
+
+  @override
+  String get dailyEnergyPurchased => 'Daily Energy Purchased';
+
+  @override
+  String get totalEnergyPurchased => 'Total Energy Purchased';
+
+  @override
+  String get yearlyEnergyPurchased => 'Yearly Energy Purchased';
+
+  @override
+  String get dailyEnergyCharged => 'Daily Energy Charged';
+
+  @override
+  String get monthlyEnergyCharged => 'Monthly Energy Charged';
+
+  @override
+  String get yearlyEnergyCharged => 'Yearly Energy Charged';
+
+  @override
+  String get totalEnergyCharged => 'Total Energy Charged';
+
+  @override
+  String get dailyEnergyDischarged => 'Daily Energy Discharged';
+
+  @override
+  String get monthEnergyDischarged => 'Month Energy Discharged';
+
+  @override
+  String get yearlyEnergyDischarged => 'Yearly Energy Discharged';
+
+  @override
+  String get totalEnergyDischarged => 'Total Energy Discharged';
+
+  @override
+  String get inverter => 'Inverter';
+
+  @override
+  String get collector => 'Collector';
 }

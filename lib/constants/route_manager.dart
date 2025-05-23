@@ -68,6 +68,48 @@ class RouteManager {
           settings: settings,
         );
 
+      /// Search Screen
+      case SearchScreen.routeName:
+        return MaterialPageRoute(
+          builder: SearchScreen.builder,
+          settings: settings,
+        );
+
+      /// My Watchlist Screen
+      case MyWatchlistScreen.routeName:
+        return MaterialPageRoute(
+          builder: MyWatchlistScreen.builder,
+          settings: settings,
+        );
+
+      /// Plant Screen
+      case PlantScreen.routeName:
+        return MaterialPageRoute(
+          builder: PlantScreen.builder,
+          settings: settings,
+        );
+
+      /// Alarm Screen
+      case AlarmScreen.routeName:
+        return MaterialPageRoute(
+          builder: AlarmScreen.builder,
+          settings: settings,
+        );
+
+      /// User Center Screen
+      case UserCenterScreen.routeName:
+        return MaterialPageRoute(
+          builder: UserCenterScreen.builder,
+          settings: settings,
+        );
+
+      /// Plant Detail Screen
+      case PlantDetailScreen.routeName:
+        return MaterialPageRoute(
+          builder: PlantDetailScreen.builder,
+          settings: settings,
+        );
+
       default:
         return MaterialPageRoute(
           builder: (context) => const UnKnownScreen(),

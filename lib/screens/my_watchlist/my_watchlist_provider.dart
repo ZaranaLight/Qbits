@@ -1,9 +1,9 @@
 import 'package:qbits/qbits.dart';
 
-class HomeProvider extends ChangeNotifier {
+class MyWatchlistProvider extends ChangeNotifier {
   bool loader = false;
 
-  HomeProvider() {
+  MyWatchlistProvider() {
     init();
   }
 

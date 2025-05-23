@@ -23,11 +23,11 @@ class DashboardScreen extends StatelessWidget {
                 case 0:
                   return HomeScreen.builder(context);
                 case 1:
-                  return HomeScreen.builder(context);
+                  return PlantScreen.builder(context);
                 case 2:
-                  return HomeScreen.builder(context);
+                  return AlarmScreen.builder(context);
                 case 3:
-                  return HomeScreen.builder(context);
+                  return UserCenterScreen.builder(context);
                 default:
                   return HomeScreen.builder(context);
               }
