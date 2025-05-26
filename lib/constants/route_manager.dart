@@ -1,4 +1,5 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/auth/bluetooth_manually/bluetooth_manually_screen.dart';
 
 class RouteManager {
   static String get initialRoute => SplashScreen.routeName;
@@ -107,6 +108,13 @@ class RouteManager {
       case PlantDetailScreen.routeName:
         return MaterialPageRoute(
           builder: PlantDetailScreen.builder,
+          settings: settings,
+        );
+
+      /// Bluetooth Manually Screen
+      case BluetoothManuallyScreen.routeName:
+        return MaterialPageRoute(
+          builder: BluetoothManuallyScreen.builder,
           settings: settings,
         );
 
