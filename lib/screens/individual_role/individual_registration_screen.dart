@@ -1,3 +1,4 @@
+import 'package:qbits/common/widget/app_drop_down.dart';
 import 'package:qbits/qbits.dart';
 
 class IndividualRegistrationScreen extends StatelessWidget {
@@ -59,6 +60,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
                   header: context.l10n?.model ?? "",
                   hintText: context.l10n?.model ?? "",
                   error: provider.modelError,
+                  suffixIcon: SvgAsset(imagePath: AssetRes.scannerIcon),
                 ),
 
                 ///Space
@@ -144,29 +146,36 @@ class IndividualRegistrationScreen extends StatelessWidget {
                   header: context.l10n?.collectorAddress ?? "",
                   hintText: context.l10n?.collectorAddress ?? "",
                   error: provider.collectorAddressError,
+                  suffixIcon: SvgAsset(imagePath: AssetRes.scannerIcon),
                 ),
 
                 ///Space
                 20.pw.spaceVertical,
 
                 /// Timezone
-                AppTextField(
-                  textInputType: TextInputType.datetime,
-                  controller: provider.timezoneController,
-                  header: context.l10n?.timezone ?? "",
+                AppDropDown<String>(
+                  itemAsString: (e) => e,
                   hintText: context.l10n?.timezone ?? "",
+                  onChanged: (val) => provider.onChangeTimezone(val),
+                  selectedValue: provider.selectedTimezone,
+                  header: context.l10n?.timezone ?? "",
                   error: provider.timezoneError,
+                  suffixIcon: SvgAsset(imagePath: AssetRes.worldIcon),
+                  optionsList: ["GMT 0", "GMT 1", "GMT 2", "GMT 3", "GMT 4", "GMT 5"],
                 ),
 
                 ///Space
                 20.pw.spaceVertical,
 
                 /// Station Type
-                AppTextField(
-                  controller: provider.stationTypeController,
-                  header: context.l10n?.stationType ?? "",
+                AppDropDown<String>(
+                  itemAsString: (e) => e,
                   hintText: context.l10n?.stationType ?? "",
+                  onChanged: (val) => provider.onChangeStationType(val),
+                  selectedValue: provider.selectedStationType,
+                  header: context.l10n?.stationType ?? "",
                   error: provider.stationTypeError,
+                  optionsList: ["Station 1", "Station 2", "Station 3"],
                 ),
 
                 ///Space

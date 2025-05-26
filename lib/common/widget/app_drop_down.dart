@@ -11,6 +11,7 @@ class AppDropDown<T> extends StatelessWidget {
     this.optionsList = const [],
     required this.itemAsString,
     this.hintText,
+    this.suffixIcon,
   });
 
   final String? header;
@@ -20,6 +21,7 @@ class AppDropDown<T> extends StatelessWidget {
   final void Function(T?)? onChanged;
   final String? error;
   final String? hintText;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +32,13 @@ class AppDropDown<T> extends StatelessWidget {
           children: [
             if (header?.isNotEmpty ?? false)
               Padding(
-                padding: EdgeInsets.only(bottom: 4.1.ph),
-                child: Text(header ?? "", style: styleW500S14),
+                padding: EdgeInsets.only(bottom: 10.ph),
+                child: Text(
+                  header ?? "",
+                  style: styleW400S14.copyWith(
+                    color: ColorRes.black2.withValues(alpha: 0.6),
+                  ),
+                ),
               ),
 
             /// Dropdown
@@ -40,27 +47,25 @@ class AppDropDown<T> extends StatelessWidget {
               width: constrains.maxWidth,
               menuHeight: 200,
               onSelected: onChanged,
-              dropdownMenuEntries:
-                  optionsList.map((e) {
-                    return DropdownMenuEntry<T>(
-                      value: e,
-                      label: itemAsString(e),
-                    );
-                  }).toList(),
+              dropdownMenuEntries: optionsList.map((e) {
+                return DropdownMenuEntry<T>(
+                  value: e,
+                  label: itemAsString(e),
+                );
+              }).toList(),
               hintText: hintText ?? "Select",
               inputDecorationTheme: InputDecorationTheme(
                 filled: true,
-                fillColor: ColorRes.white,
+                fillColor: ColorRes.lightGrey2,
                 hintStyle: styleW400S14.copyWith(
-                  color:
-                      (error ?? '').isNotEmpty ? ColorRes.red : ColorRes.grey,
+                  color: (error ?? '').isNotEmpty ? ColorRes.red : ColorRes.black.withValues(alpha: 0.3),
                 ),
                 isCollapsed: true,
                 contentPadding: EdgeInsets.only(
-                  left: 14.pw,
-                  right: 25.pw,
-                  top: 15,
-                  bottom: 16,
+                  left: 12.pw,
+                  right: 12.pw,
+                  top: 10,
+                  bottom: 8,
                 ),
                 border: border(),
                 focusedBorder: border().copyWith(
@@ -72,15 +77,15 @@ class AppDropDown<T> extends StatelessWidget {
                 disabledBorder: border(),
                 isDense: true,
               ),
-              textStyle: styleW400S14.copyWith(color: ColorRes.black2),
+              textStyle: styleW400S14,
               selectedTrailingIcon: Transform.rotate(
                 angle: 3.1,
-                child: SvgAsset(
+                child: suffixIcon ?? SvgAsset(
                   imagePath: AssetRes.downArrowIcon,
                   height: 20.pw,
                 ),
               ),
-              trailingIcon: SvgAsset(
+              trailingIcon: suffixIcon ?? SvgAsset(
                 imagePath: AssetRes.downArrowIcon,
                 height: 6.98.pw,
               ),
@@ -95,10 +100,9 @@ class AppDropDown<T> extends StatelessWidget {
 
   InputBorder border() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(40.pw),
       borderSide: BorderSide(
-        color: (error ?? "").isNotEmpty ? ColorRes.red : ColorRes.lightGrey,
-        width: 1,
+        color: (error ?? '').isNotEmpty ? ColorRes.red : ColorRes.lightGrey2.withValues(alpha: 0.2),
       ),
     );
   }

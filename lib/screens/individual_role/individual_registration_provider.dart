@@ -5,6 +5,8 @@ class IndividualRegistrationProvider extends ChangeNotifier {
   bool loader = false;
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
+  String selectedTimezone = '';
+  String selectedStationType = '';
 
   final TextEditingController stationNameController = TextEditingController();
   final TextEditingController modelController = TextEditingController();
@@ -14,7 +16,6 @@ class IndividualRegistrationProvider extends ChangeNotifier {
   final TextEditingController cityController = TextEditingController();
   final TextEditingController collectorAddressController = TextEditingController();
   final TextEditingController timezoneController = TextEditingController();
-  final TextEditingController stationTypeController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
 
   String stationNameError = "";
@@ -27,6 +28,16 @@ class IndividualRegistrationProvider extends ChangeNotifier {
   String timezoneError = "";
   String stationTypeError = "";
   String phoneNumberError = "";
+
+  void onChangeTimezone(timezone) {
+    selectedTimezone = timezone;
+    notifyListeners();
+  }
+
+  void onChangeStationType(stationType) {
+    selectedStationType = stationType;
+    notifyListeners();
+  }
 
   void onPwdVisibilityChanged() {
     isPasswordVisible = !isPasswordVisible;
@@ -46,19 +57,19 @@ class IndividualRegistrationProvider extends ChangeNotifier {
 
   bool validation(BuildContext context) {
     if (stationNameController.text.trim().isEmpty) {
-      stationNameError = context.l10n?.accountIsRequired ?? "";
+      stationNameError = context.l10n?.stationNameIsRequired ?? "";
     } else {
       stationNameError = "";
     }
 
     if (modelController.text.trim().isEmpty) {
-      modelError = context.l10n?.passwordIsRequired ?? "";
+      modelError = context.l10n?.modelIsRequired ?? "";
     } else {
       modelError = "";
     }
 
     if (accountController.text.trim().isEmpty) {
-      accountError = context.l10n?.passwordIsRequired ?? "";
+      accountError = context.l10n?.accountIsRequired ?? "";
     } else {
       accountError = "";
     }
@@ -70,7 +81,7 @@ class IndividualRegistrationProvider extends ChangeNotifier {
     }
 
     if (confirmPasswordController.text.trim().isEmpty) {
-      confirmPasswordError = context.l10n?.passwordIsRequired ?? "";
+      confirmPasswordError = context.l10n?.confirmPasswordIsRequired ?? "";
     } else if (passwordController.text.trim().isEmpty) {
       confirmPasswordError = context.l10n?.passwordIsRequired ?? "";
     } else if (passwordController.text.trim() != confirmPasswordController.text.trim()) {
@@ -86,25 +97,25 @@ class IndividualRegistrationProvider extends ChangeNotifier {
     }
 
     if (collectorAddressController.text.trim().isEmpty) {
-      collectorAddressError = context.l10n?.passwordIsRequired ?? "";
+      collectorAddressError = context.l10n?.collectorAddressIsRequired ?? "";
     } else {
       collectorAddressError = "";
     }
 
-    if (timezoneController.text.trim().isEmpty) {
-      timezoneError = context.l10n?.passwordIsRequired ?? "";
+    if (selectedTimezone == '' || selectedTimezone.isEmpty) {
+      timezoneError = context.l10n?.timezoneIsRequired ?? "";
     } else {
       timezoneError = "";
     }
 
-    if (stationTypeController.text.trim().isEmpty) {
-      stationTypeError = context.l10n?.passwordIsRequired ?? "";
+    if (selectedStationType == '' || selectedStationType.isEmpty) {
+      stationTypeError = context.l10n?.stationTypeIsRequired ?? "";
     } else {
       stationTypeError = "";
     }
 
     if (phoneNumberController.text.trim().isEmpty) {
-      phoneNumberError = context.l10n?.passwordIsRequired ?? "";
+      phoneNumberError = context.l10n?.phoneNumberIsRequired ?? "";
     } else {
       phoneNumberError = "";
     }

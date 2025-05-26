@@ -37,6 +37,7 @@ class AssetRes {
   static const longUpArrowIcon = "${_icons}long_up_arrow.svg";
   static const coinIcon = "${_icons}coin.svg";
   static const cameraIcon = "${_icons}camera_icon.svg";
+  static const scannerIcon = "${_icons}scanner_icon.svg";
 
   static const greenBatteryIcon = "${_icons}green_battery.svg";
   static const redBatteryIcon = "${_icons}red_battery.svg";
