@@ -3,9 +3,13 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:qbits/qbits.dart';
 import 'package:qbits/screens/auth/id_authentication/id_authentication_screen.dart';
 import 'package:qr_code_tools/qr_code_tools.dart';
-import 'package:torch_light/torch_light.dart';
 
 class BluetoothProvider extends ChangeNotifier {
+  initializer() {
+    // Initialize any necessary resources or state here
+    controller.start();
+  }
+
   bool loader = false;
 
   BluetoothDevice? connectedDevice;
@@ -31,24 +35,44 @@ class BluetoothProvider extends ChangeNotifier {
 
   MobileScannerController get mobileScannerController => controller;
 
-  ///BluetoothProvider constructor
-  Future<void> toggleFlash() async {
+  Future<void> toggleTorch() async {
     try {
-      final isAvailable = await TorchLight.isTorchAvailable();
-      if (!isAvailable) {
-        return;
-      }
-      if (_isFlashOn) {
-        await TorchLight.disableTorch();
-      } else {
-        await TorchLight.enableTorch();
-      }
+      await controller.toggleTorch();
       _isFlashOn = !_isFlashOn;
       notifyListeners();
     } catch (e) {
-      print("Torch error: $e");
+      debugPrint('Error toggling torch: $e');
     }
   }
+
+  // ///BluetoothProvider constructor
+  // Future<void> toggleFlash() async {
+  //   print('flash----------------1');
+  //   try {
+  //     final isAvailable = await TorchLight.isTorchAvailable();
+  //     print('flash----------------2');
+  //     print(isAvailable);
+  //     // if (!isAvailable) {
+  //     //   print('flash----------------3');
+  //     //
+  //     //   return;
+  //     // }
+  //     if (_isFlashOn) {
+  //       print('flash----------------4');
+  //
+  //       await TorchLight.disableTorch();
+  //     } else {
+  //       await TorchLight.enableTorch();
+  //     }
+  //     _isFlashOn = !_isFlashOn;
+  //     print('flash----------------5');
+  //
+  //     print('_isFlashOn-- ${_isFlashOn}');
+  //     notifyListeners();
+  //   } catch (e) {
+  //     print("Torch error: $e");
+  //   }
+  // }
 
   /// Request camera permission
   Future<void> connectToDevice(String deviceId) async {
@@ -89,11 +113,13 @@ class BluetoothProvider extends ChangeNotifier {
       try {
         final qrText = await QrCodeToolsPlugin.decodeFrom(picked.path);
         _qrCodeText = qrText;
-        if (context.mounted) {
+        if (context.mounted && _qrCodeText != null) {
           context.navigator.pushNamed(IdAuthenticationScreen.routeName);
         }
       } catch (e) {
-        _qrCodeText = "Failed to decode QR";
+        showErrorMsg(
+          navigatorKey.currentState?.context.l10n?.failedToDecodeQR ?? "",
+        );
       }
       notifyListeners();
     }

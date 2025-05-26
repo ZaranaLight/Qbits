@@ -1,28 +1,47 @@
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/auth/role_choice/role_choice_screen.dart';
 
 class IdAuthenticationProvider extends ChangeNotifier {
-  bool loader = false;
-  final TextEditingController idNumberController = TextEditingController();
-  String idNumberError = "";
+  final ScanResult? scanResult;
 
-  void onIdNumberChanged(String value) {
-    if (value.isEmpty) {
-      idNumberError = "ID number cannot be empty";
-    } else if (value.length < 6) {
-      idNumberError = "ID number must be at least 6 characters";
-    } else {
-      idNumberError = "";
-    }
+  IdAuthenticationProvider({required this.scanResult});
+
+  bool loader = false;
+  final TextEditingController accountNumberController = TextEditingController();
+  String accountNumberError = "";
+
+  final TextEditingController passwordController = TextEditingController();
+  String pwdError = "";
+  bool isPwdVisible = false;
+
+  void onPwdVisibilityChanged() {
+    isPwdVisible = !isPwdVisible;
     notifyListeners();
   }
 
-  Future<void> onSubmit(BuildContext context) async {
-    if (idNumberError.isEmpty) {
-      // Handle successful submission
-      context.navigator.pop();
-    } else {
-      // Show error message
-      notifyListeners();
+  Future<void> onContinueTap(BuildContext context) async {
+    if (validation(context)) {
+      if (context.mounted) {
+        showCustomToast('Authentication Successfully done');
+        context.navigator.pushNamed(RoleChoiceScreen.routeName);
+      }
     }
+  }
+
+  bool validation(BuildContext context) {
+    if (accountNumberController.text.trim().isEmpty) {
+      accountNumberError = context.l10n?.accountIsRequired ?? "";
+    } else {
+      accountNumberError = "";
+    }
+
+    if (passwordController.text.trim().isEmpty) {
+      pwdError = context.l10n?.passwordIsRequired ?? "";
+    } else {
+      pwdError = "";
+    }
+    notifyListeners();
+    return accountNumberError.isEmpty && pwdError.isEmpty;
   }
 }

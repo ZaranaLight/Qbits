@@ -351,6 +351,12 @@ abstract class AppLocalizations {
   /// **'Individual'**
   String get individual;
 
+  /// No description provided for @guidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Guidance'**
+  String get guidance;
+
   /// No description provided for @stationOwner.
   ///
   /// In en, this message translates to:
@@ -530,6 +536,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Open Settings'**
   String get openSettings;
+
+  /// No description provided for @failedToDecodeQR.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to decode QR'**
+  String get failedToDecodeQR;
 
   /// No description provided for @plant.
   ///

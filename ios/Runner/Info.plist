@@ -4,6 +4,12 @@
 <dict>
     <key>NSCameraUsageDescription</key>
     <string>We need camera access to scan QR codes</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>your usage description here</string>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>bluetooth-central</string>
+    </array>
     <key>NSBluetoothAlwaysUsageDescription</key>
     <string>This app uses Bluetooth to connect to external devices.</string>
     <key>NSPhotoLibraryUsageDescription</key>

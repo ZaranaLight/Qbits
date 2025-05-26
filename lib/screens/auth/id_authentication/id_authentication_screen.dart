@@ -1,3 +1,4 @@
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:qbits/qbits.dart';
 import 'package:qbits/screens/auth/id_authentication/id_authentication_provider.dart';
 
@@ -7,8 +8,13 @@ class IdAuthenticationScreen extends StatelessWidget {
   static const routeName = "id_authentication_screen";
 
   static Widget builder(BuildContext context) {
+    ScanResult? scanResult;
+    // LeaveTypeModel? leaveTypeModel;
+    if (context.args is ScanResult) {
+      scanResult = context.args as ScanResult;
+    }
     return ChangeNotifierProvider<IdAuthenticationProvider>(
-      create: (c) => IdAuthenticationProvider(),
+      create: (c) => IdAuthenticationProvider(scanResult: scanResult),
       child: IdAuthenticationScreen(),
     );
   }
@@ -16,10 +22,27 @@ class IdAuthenticationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<IdAuthenticationProvider>(
-      builder: (context,state, child) {
+      builder: (context, state, child) {
         return Scaffold(
+          backgroundColor: ColorRes.white,
+          bottomNavigationBar: SafeArea(
+            top: false,
+            child: Padding(
+              padding: EdgeInsets.only(
+                bottom: 30.ph,
+                left: 16.pw,
+                right: 16.pw,
+              ),
+              child: SubmitButton(
+                title: context.l10n?.continueCap ?? "",
+                onTap: () {
+                  state.onContinueTap(context);
+                },
+              ),
+            ),
+          ),
           appBar: CustomAppBar(title: context.l10n?.idAuthentication ?? ""),
-          body: Padding(
+          body: CustomSingleChildScroll(
             padding: EdgeInsets.symmetric(
               horizontal: 16.pw,
               vertical: Constants.safeAreaPadding.bottom + 20.pw,
@@ -29,7 +52,10 @@ class IdAuthenticationScreen extends StatelessWidget {
                 Row(
                   children: [
                     ///Title
-                    Text(context.l10n?.fireBolt146 ?? "", style: styleW600S16),
+                    Text(
+                      state.scanResult?.device.platformName ?? "Unknown Device",
+                      style: styleW600S16,
+                    ),
 
                     ///Space
                     8.pw.spaceHorizontal,
@@ -52,22 +78,52 @@ class IdAuthenticationScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+
                 ///Space
                 20.pw.spaceVertical,
 
-                // AppTextField(
-                //   controller: state.accountController,
-                //   header: context.l10n?.account ?? "",
-                //   hintText: context.l10n?.account ?? "",
-                //   error: state.accountError,
-                // ),
+                ///Account Number
+                AppTextField(
+                  controller: state.accountNumberController,
+                  header: context.l10n?.account ?? "",
+                  hintText: context.l10n?.account ?? "",
+                  error: state.accountNumberError,
+                ),
 
+                ///Space
+                20.pw.spaceVertical,
 
+                ///Password
+                AppTextField(
+                  controller: state.passwordController,
+                  error: state.pwdError,
+                  hintText: context.l10n?.password,
+                  header: context.l10n?.password,
+                  textInputType: TextInputType.visiblePassword,
+                  obscureText: !state.isPwdVisible,
+                  suffixIcon: AnimatedSwitcher(
+                    duration: 300.milliseconds,
+                    transitionBuilder: (
+                      Widget child,
+                      Animation<double> animation,
+                    ) {
+                      return ScaleTransition(scale: animation, child: child);
+                    },
+                    child: SvgAsset(
+                      key: ValueKey<bool>(state.isPwdVisible),
+                      imagePath:
+                          state.isPwdVisible
+                              ? AssetRes.eyeIcon
+                              : AssetRes.invisibleIcon,
+                    ),
+                  ),
+                  onSuffixTap: state.onPwdVisibilityChanged,
+                ),
               ],
             ),
           ),
         );
-      }
+      },
     );
   }
 }
