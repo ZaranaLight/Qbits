@@ -1,25 +1,56 @@
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:qbits/common/widget/media_picker.dart';
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/auth/id_authentication/id_authentication_screen.dart';
+import 'package:qr_code_tools/qr_code_tools.dart';
+import 'package:torch_light/torch_light.dart';
 
 class BluetoothProvider extends ChangeNotifier {
-  ///dropdown varibale and function
-
-    String? selectedCompanySize;
-    String? companySizeError;
-
-
-
-    ///
   bool loader = false;
-  File? bluetoothImage;
-
-
 
   BluetoothDevice? connectedDevice;
+
   bool isConnecting = false;
 
+  bool _isFlashOn = false;
+
+  bool get isFlashOn => _isFlashOn;
+
+  String? _qrCodeText;
+
+  String? get qrCodeText => _qrCodeText;
+
+  File? _selectedImage;
+
+  File? get selectedImage => _selectedImage;
+
+  final MobileScannerController controller = MobileScannerController(
+    detectionSpeed: DetectionSpeed.normal,
+    facing: CameraFacing.back,
+  );
+
+  MobileScannerController get mobileScannerController => controller;
+
+  ///BluetoothProvider constructor
+  Future<void> toggleFlash() async {
+    try {
+      final isAvailable = await TorchLight.isTorchAvailable();
+      if (!isAvailable) {
+        return;
+      }
+      if (_isFlashOn) {
+        await TorchLight.disableTorch();
+      } else {
+        await TorchLight.enableTorch();
+      }
+      _isFlashOn = !_isFlashOn;
+      notifyListeners();
+    } catch (e) {
+      print("Torch error: $e");
+    }
+  }
+
+  /// Request camera permission
   Future<void> connectToDevice(String deviceId) async {
     try {
       isConnecting = true;
@@ -31,7 +62,7 @@ class BluetoothProvider extends ChangeNotifier {
       // Listen for devices
       FlutterBluePlus.scanResults.listen((results) async {
         for (ScanResult r in results) {
-          if (r.device.id.id == deviceId) {
+          if (r.device.remoteId.str == deviceId) {
             await FlutterBluePlus.stopScan();
             await r.device.connect();
             connectedDevice = r.device;
@@ -48,99 +79,41 @@ class BluetoothProvider extends ChangeNotifier {
     }
   }
 
-  void disconnect() {
-    connectedDevice?.disconnect();
-    connectedDevice = null;
-    notifyListeners();
-  }
-
-
-
-  MobileScannerController? mobileScannerController;
-
-  final MobileScannerController cameraController = MobileScannerController();
-  String? _scannedText;
-
-  String? get scannedText => _scannedText;
-
-  Future<void> scanFromImage(File imageFile) async {
-    try {
-      final result = await mobileScannerController?.analyzeImage(
-        imageFile.path,
-      );
-      if (result != null && result.barcodes.isNotEmpty) {
-        _scannedText = result.barcodes.first.rawValue ?? 'No data found';
-      } else {
-        _scannedText = 'No QR code detected';
+  /// Scanning QR Code from Gallery Image
+  Future<void> pickImageAndScan(BuildContext context) async {
+    final picker = ImagePicker();
+    final picked = await picker.pickImage(source: ImageSource.gallery);
+    if (picked != null) {
+      _selectedImage = File(picked.path);
+      notifyListeners();
+      try {
+        final qrText = await QrCodeToolsPlugin.decodeFrom(picked.path);
+        _qrCodeText = qrText;
+        if (context.mounted) {
+          context.navigator.pushNamed(IdAuthenticationScreen.routeName);
+        }
+      } catch (e) {
+        _qrCodeText = "Failed to decode QR";
       }
-    } catch (e) {
-      _scannedText = 'Error scanning image: $e';
+      notifyListeners();
     }
-    notifyListeners();
   }
 
   void clear() {
-    _scannedText = null;
+    _selectedImage = null;
+    _qrCodeText = null;
     notifyListeners();
   }
 
-  Future<void> scanImageFromFile(File file) async {
-    try {
-      final result = await mobileScannerController?.analyzeImage(file.path);
-      if (result != null && result.barcodes.isNotEmpty) {
-        _scannedData = result.barcodes.first.rawValue;
-      } else {
-        _scannedData = "No QR code found.";
-      }
-    } catch (e) {
-      _scannedData = "Error: $e";
-    }
-    notifyListeners();
+  @override
+  void dispose() {
+    controller.dispose(); // Dispose camera controller here
+    super.dispose();
   }
 
-
-
-
-  String? connectionStatus;
-
-
-
-  Future<void> onGalleryTap(BuildContext context) async {
-    try {
-      loader = true;
-      notifyListeners();
-      final result = await openMediaPicker(context);
-
-      if (result != null) {
-        bluetoothImage = result;
-        print("Bluetooth Image: ${bluetoothImage?.path}");
-
-        // mobileScannerController = MobileScannerController(
-        //   torchEnabled: false,
-        //   facing: CameraFacing.back,
-        //   detectionSpeed: DetectionSpeed.noDuplicates,
-        // );
-        // print('MobileScannerController initialized');
-        // print(mobileScannerController?.analyzeImage(bluetoothImage!.path));
-        context.navigator.pop();
-        showCustomToast(
-          'Successfully Connected ${mobileScannerController?.analyzeImage(bluetoothImage!.path.toString())}',
-        );
-      }
-    } catch (exception, stack) {
-      showCatchToast(exception, stack);
-    }
-
-    loader = false;
-    notifyListeners();
-  }
-
-  String? _scannedData;
-
-  String? get scannedData => _scannedData;
-
-  void clearData() {
-    _scannedData = null;
+  void disconnect() {
+    connectedDevice?.disconnect();
+    connectedDevice = null;
     notifyListeners();
   }
 }

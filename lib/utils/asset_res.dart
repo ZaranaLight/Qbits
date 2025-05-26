@@ -1,6 +1,7 @@
 class AssetRes {
   static const _icons = "assets/icons/";
   static const _temp = "assets/temp/";
+  static const _images = "assets/images/";
 
   ///__________________________________ icons __________________________________///
   static const errorIcon = "${_icons}error_icon.svg";
@@ -51,6 +52,8 @@ class AssetRes {
   static const tempSolarDiagramImg = "${_temp}solar_diagram.png";
 
   ///__________________________________ images __________________________________///
+  static const blueToothMobileImg = "${_images}bluetooth_mobile_img.png";
+
   ///__________________________________ fonts __________________________________///
   static const instrumentSans = "Instrument Sans";
 }

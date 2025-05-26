@@ -1,5 +1,7 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/auth/bluetooth/widget/preview_screen.dart';
 import 'package:qbits/screens/auth/bluetooth_manually/bluetooth_manually_screen.dart';
+import 'package:qbits/screens/auth/id_authentication/id_authentication_screen.dart';
 
 class RouteManager {
   static String get initialRoute => SplashScreen.routeName;
@@ -17,6 +19,20 @@ class RouteManager {
       case SignInScreen.routeName:
         return MaterialPageRoute(
           builder: SignInScreen.builder,
+          settings: settings,
+        );
+
+      /// preview screen
+      case PreviewScreen.routeName:
+        return MaterialPageRoute(
+          builder: PreviewScreen.builder,
+          settings: settings,
+        );
+
+      /// Id Authentication Screen
+      case IdAuthenticationScreen.routeName:
+        return MaterialPageRoute(
+          builder: IdAuthenticationScreen.builder,
           settings: settings,
         );
 
