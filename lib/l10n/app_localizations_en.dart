@@ -216,6 +216,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordIsRequired => 'Password Is Required';
 
   @override
+  String get stationNameIsRequired => 'Station Name Is Required';
+
+  @override
+  String get modelIsRequired => 'Model Is Required';
+
+  @override
+  String get confirmPasswordIsRequired => 'Confirm Password Is Required';
+
+  @override
+  String get passwordAndConfirmPasswordIsNotMatching => 'Password and Confirm Password Isn\'t Matching';
+
+  @override
+  String get yourCityIsRequired => 'Your City Is Required';
+
+  @override
+  String get collectorAddressIsRequired => 'Collector Address Is Required';
+
+  @override
+  String get timezoneIsRequired => 'Timezone Is Required';
+
+  @override
+  String get stationTypeIsRequired => 'Station Type Is Required';
+
+  @override
+  String get phoneNumberIsRequired => 'Phone Number Is Required';
+
+  @override
   String get continueCap => 'Continue';
 
   @override

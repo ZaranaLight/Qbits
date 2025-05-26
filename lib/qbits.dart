@@ -80,12 +80,6 @@ export 'package:qbits/screens/plant_detail/widget/dashboard_tab.dart';
 export 'package:qbits/screens/plant_detail/widget/device_tab.dart';
 export 'package:qbits/screens/plant_detail/widget/about_tab.dart';
 export 'package:qbits/screens/plant_detail/widget/alarm_tab.dart';
-
-
-
-
-
-
+export 'package:qbits/screens/individual_role/individual_registration_provider.dart';
+export 'package:qbits/screens/individual_role/individual_registration_screen.dart';
 export 'package:image_picker/image_picker.dart';
-
-

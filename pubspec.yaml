@@ -54,7 +54,7 @@ dependencies:
   image_picker: ^1.1.2
 
   # -------------------------- Dart Methods -------------------------- #
-  intl: ^0.20.2
+  intl: 0.19.0
 
   # -------------------------- Internationalization -------------------------- #
   flutter_localizations:

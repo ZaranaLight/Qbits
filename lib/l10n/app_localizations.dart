@@ -507,6 +507,60 @@ abstract class AppLocalizations {
   /// **'Password Is Required'**
   String get passwordIsRequired;
 
+  /// No description provided for @stationNameIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Station Name Is Required'**
+  String get stationNameIsRequired;
+
+  /// No description provided for @modelIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Model Is Required'**
+  String get modelIsRequired;
+
+  /// No description provided for @confirmPasswordIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password Is Required'**
+  String get confirmPasswordIsRequired;
+
+  /// No description provided for @passwordAndConfirmPasswordIsNotMatching.
+  ///
+  /// In en, this message translates to:
+  /// **'Password and Confirm Password Isn't Matching'**
+  String get passwordAndConfirmPasswordIsNotMatching;
+
+  /// No description provided for @yourCityIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Your City Is Required'**
+  String get yourCityIsRequired;
+
+  /// No description provided for @collectorAddressIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Collector Address Is Required'**
+  String get collectorAddressIsRequired;
+
+  /// No description provided for @timezoneIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Timezone Is Required'**
+  String get timezoneIsRequired;
+
+  /// No description provided for @stationTypeIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Station Type Is Required'**
+  String get stationTypeIsRequired;
+
+  /// No description provided for @phoneNumberIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number Is Required'**
+  String get phoneNumberIsRequired;
+
   /// No description provided for @continueCap.
   ///
   /// In en, this message translates to:

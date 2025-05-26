@@ -118,6 +118,13 @@ class RouteManager {
           settings: settings,
         );
 
+      /// Individual Registration Screen
+      case IndividualRegistrationScreen.routeName:
+        return MaterialPageRoute(
+          builder: IndividualRegistrationScreen.builder,
+          settings: settings,
+        );
+
       default:
         return MaterialPageRoute(
           builder: (context) => const UnKnownScreen(),
