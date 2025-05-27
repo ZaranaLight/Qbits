@@ -1,4 +1,3 @@
-import 'package:qbits/common/widget/app_drop_down.dart';
 import 'package:qbits/qbits.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -159,8 +158,6 @@ class SignInScreen extends StatelessWidget {
                             ///Space
                             20.pw.spaceVertical,
 
-
-
                             ///Forgot password and Bluetooth
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -225,7 +222,7 @@ class SignInScreen extends StatelessWidget {
                       10.pw.spaceVertical,
 
                       EmptyButton(
-                        onTap: () {},
+                        onTap: () => provider.onSignUpTap(context),
                         title: context.l10n?.register ?? "",
                       ),
                     ],

@@ -351,6 +351,30 @@ abstract class AppLocalizations {
   /// **'Individual'**
   String get individual;
 
+  /// No description provided for @guidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Guidance'**
+  String get guidance;
+
+  /// No description provided for @required.
+  ///
+  /// In en, this message translates to:
+  /// **'Station Owner Is Required'**
+  String get required;
+
+  /// No description provided for @qrCodeScanning.
+  ///
+  /// In en, this message translates to:
+  /// **'QR Code Scanning'**
+  String get qrCodeScanning;
+
+  /// No description provided for @enterValid10DigitPhoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid 10-digit phone number'**
+  String get enterValid10DigitPhoneNumber;
+
   /// No description provided for @stationOwner.
   ///
   /// In en, this message translates to:
@@ -614,6 +638,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Open Settings'**
   String get openSettings;
+
+  /// No description provided for @failedToDecodeQR.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to decode QR'**
+  String get failedToDecodeQR;
 
   /// No description provided for @plant.
   ///

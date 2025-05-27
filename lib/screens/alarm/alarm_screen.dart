@@ -15,6 +15,13 @@ class AlarmScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Alarm", style: styleW600S20));
+    return Scaffold(
+      appBar: CustomAppBar(title: context.l10n?.alarm??""),
+      body: Column(
+        children: [
+
+        ],
+      ),
+    );
   }
 }

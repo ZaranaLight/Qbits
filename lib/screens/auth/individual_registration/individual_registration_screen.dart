@@ -1,4 +1,3 @@
-import 'package:qbits/common/widget/app_drop_down.dart';
 import 'package:qbits/qbits.dart';
 
 class IndividualRegistrationScreen extends StatelessWidget {
@@ -38,7 +37,9 @@ class IndividualRegistrationScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              bottom: Constants.safeAreaPadding.bottom + Constants.horizontalPadding,
+              bottom:
+                  Constants.safeAreaPadding.bottom +
+                  Constants.horizontalPadding,
               top: 20.pw,
             ),
             child: Container(
@@ -51,11 +52,12 @@ class IndividualRegistrationScreen extends StatelessWidget {
                 children: [
                   /// Station Name
                   AppTextField(
-                    isRequired: true,
                     controller: provider.stationNameController,
                     header: context.l10n?.stationName ?? "",
                     hintText: context.l10n?.stationName ?? "",
                     error: provider.stationNameError,
+                    headerColor: ColorRes.black,
+                    isMandatory: true,
                   ),
 
                   ///Space
@@ -63,12 +65,30 @@ class IndividualRegistrationScreen extends StatelessWidget {
 
                   /// Model
                   AppTextField(
-                    isRequired: true,
                     controller: provider.modelController,
                     header: context.l10n?.model ?? "",
                     hintText: context.l10n?.model ?? "",
                     error: provider.modelError,
-                    suffixIcon: SvgAsset(imagePath: AssetRes.scannerIcon),
+                    headerColor: ColorRes.black,
+                    isMandatory: true,
+
+                    suffixIcon: InkWell(
+                      onTap: () async {
+                        provider.scanQRCode(context);
+                        // final scannedResult = await context.navigator.push(
+                        //   MaterialPageRoute(builder: (_) => const QRScannerScreen()),
+                        // );
+                        //
+                        // if (scannedResult != null && scannedResult is String) {
+                        //   // Use scannedResult
+                        //   print('Scanned code: $scannedResult');
+                        // }
+                      },
+                      child: SvgAsset(
+                        imagePath: AssetRes.scannerIcon2,
+                        color: ColorRes.black.withValues(alpha: 0.5),
+                      ),
+                    ),
                   ),
 
                   ///Space
@@ -76,11 +96,12 @@ class IndividualRegistrationScreen extends StatelessWidget {
 
                   /// Account
                   AppTextField(
-                    isRequired: true,
                     controller: provider.accountController,
                     header: context.l10n?.account ?? "",
                     hintText: context.l10n?.account ?? "",
                     error: provider.accountError,
+                    headerColor: ColorRes.black,
+                    isMandatory: true,
                   ),
 
                   ///Space
@@ -88,24 +109,29 @@ class IndividualRegistrationScreen extends StatelessWidget {
 
                   /// Password
                   AppTextField(
-                    isRequired: true,
                     obscureText: !provider.isPasswordVisible,
                     controller: provider.passwordController,
                     header: context.l10n?.password ?? "",
                     hintText: context.l10n?.password ?? "",
+                    headerColor: ColorRes.black,
+                    isMandatory: true,
                     error: provider.passwordError,
                     onSuffixTap: provider.onPwdVisibilityChanged,
                     suffixIcon: AnimatedSwitcher(
                       duration: 300.milliseconds,
-                      transitionBuilder: (Widget child, Animation<double> animation) {
-                        return ScaleTransition(
-                          scale: animation,
-                          child: child,
-                        );
+                      transitionBuilder: (
+                        Widget child,
+                        Animation<double> animation,
+                      ) {
+                        return ScaleTransition(scale: animation, child: child);
                       },
                       child: SvgAsset(
                         key: ValueKey<bool>(provider.isPasswordVisible),
-                        imagePath: !provider.isPasswordVisible ? AssetRes.eyeIcon : AssetRes.invisibleIcon,
+                        imagePath:
+                            !provider.isPasswordVisible
+                                ? AssetRes.eyeIcon
+                                : AssetRes.invisibleIcon,
+                        color: ColorRes.black.withValues(alpha: 0.3),
                       ),
                     ),
                   ),
@@ -119,18 +145,25 @@ class IndividualRegistrationScreen extends StatelessWidget {
                     controller: provider.confirmPasswordController,
                     hintText: context.l10n?.confirmPassword ?? "",
                     error: provider.confirmPasswordError,
+                    headerColor: ColorRes.black,
+                    isMandatory: true,
                     onSuffixTap: provider.onCnfPwdVisibilityChanged,
                     suffixIcon: AnimatedSwitcher(
                       duration: 300.milliseconds,
-                      transitionBuilder: (Widget child, Animation<double> animation) {
-                        return ScaleTransition(
-                          scale: animation,
-                          child: child,
-                        );
+                      transitionBuilder: (
+                        Widget child,
+                        Animation<double> animation,
+                      ) {
+                        return ScaleTransition(scale: animation, child: child);
                       },
                       child: SvgAsset(
                         key: ValueKey<bool>(provider.isConfirmPasswordVisible),
-                        imagePath: !provider.isConfirmPasswordVisible ? AssetRes.eyeIcon : AssetRes.invisibleIcon,
+                        imagePath:
+                            !provider.isConfirmPasswordVisible
+                                ? AssetRes.eyeIcon
+                                : AssetRes.invisibleIcon,
+
+                        color: ColorRes.black.withValues(alpha: 0.3),
                       ),
                     ),
                   ),
@@ -140,11 +173,12 @@ class IndividualRegistrationScreen extends StatelessWidget {
 
                   /// Your City
                   AppTextField(
-                    isRequired: true,
                     controller: provider.cityController,
                     header: context.l10n?.yourCity ?? "",
                     hintText: context.l10n?.yourCity ?? "",
                     error: provider.cityError,
+                    headerColor: ColorRes.black,
+                    isMandatory: true,
                   ),
 
                   ///Space
@@ -152,12 +186,15 @@ class IndividualRegistrationScreen extends StatelessWidget {
 
                   /// Collector Address
                   AppTextField(
-                    isRequired: true,
                     controller: provider.collectorAddressController,
                     header: context.l10n?.collectorAddress ?? "",
                     hintText: context.l10n?.collectorAddress ?? "",
                     error: provider.collectorAddressError,
-                    suffixIcon: SvgAsset(imagePath: AssetRes.scannerIcon),
+                    headerColor: ColorRes.black,
+                    isMandatory: true,
+                    maxLine: 3,
+                    minLine: 1,
+                    textInputType: TextInputType.streetAddress,
                   ),
 
                   ///Space
@@ -165,15 +202,26 @@ class IndividualRegistrationScreen extends StatelessWidget {
 
                   /// Timezone
                   AppDropDown<String>(
-                    isRequired: true,
                     itemAsString: (e) => e,
                     hintText: context.l10n?.timezone ?? "",
                     onChanged: (val) => provider.onChangeTimezone(val),
                     selectedValue: provider.selectedTimezone,
                     header: context.l10n?.timezone ?? "",
                     error: provider.timezoneError,
-                    suffixIcon: SvgAsset(imagePath: AssetRes.worldIcon),
-                    optionsList: ["GMT 0", "GMT 1", "GMT 2", "GMT 3", "GMT 4", "GMT 5"],
+                    isMandatory: true,
+                    headerColor: ColorRes.black,
+                    suffixIcon: SvgAsset(
+                      imagePath: AssetRes.timeZoneIcon,
+                      color: ColorRes.black.withValues(alpha: 0.5),
+                    ),
+                    optionsList: [
+                      "GMT 0",
+                      "GMT 1",
+                      "GMT 2",
+                      "GMT 3",
+                      "GMT 4",
+                      "GMT 5",
+                    ],
                   ),
 
                   ///Space
@@ -181,7 +229,6 @@ class IndividualRegistrationScreen extends StatelessWidget {
 
                   /// Station Type
                   AppDropDown<String>(
-                    isRequired: true,
                     itemAsString: (e) => e,
                     hintText: context.l10n?.stationType ?? "",
                     onChanged: (val) => provider.onChangeStationType(val),
@@ -189,6 +236,8 @@ class IndividualRegistrationScreen extends StatelessWidget {
                     header: context.l10n?.stationType ?? "",
                     error: provider.stationTypeError,
                     optionsList: ["Station 1", "Station 2", "Station 3"],
+                    headerColor: ColorRes.black,
+                    isMandatory: true,
                   ),
 
                   ///Space
@@ -196,16 +245,14 @@ class IndividualRegistrationScreen extends StatelessWidget {
 
                   /// Phone Number
                   AppTextField(
-                    isRequired: true,
-                    textInputType: TextInputType.phone,
+                    textInputType: TextInputType.numberWithOptions(decimal: true),
                     controller: provider.phoneNumberController,
                     header: context.l10n?.phoneNumber ?? "",
                     hintText: context.l10n?.phoneNumber ?? "",
                     error: provider.phoneNumberError,
+                    headerColor: ColorRes.black,
+                    isMandatory: true,
                   ),
-
-                  ///Space
-                  10.pw.spaceVertical,
                 ],
               ),
             ),

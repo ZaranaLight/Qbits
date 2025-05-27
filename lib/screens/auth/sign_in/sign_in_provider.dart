@@ -33,13 +33,17 @@ class SignInProvider extends ChangeNotifier {
   Future<void> onSignInTap(BuildContext context) async {
     if (validation(context)) {
       if (context.mounted) {
-        // context.navigator.pushNamedAndRemoveUntil(
-        //   DashboardScreen.routeName,
-        //       (route) => false,
-        // );
+        context.navigator.pushNamedAndRemoveUntil(
+          DashboardScreen.routeName,
+          (route) => false,
+        );
         showCustomToast('Sign In Success');
       }
     }
+  }
+
+  Future<void> onSignUpTap(BuildContext context) async {
+    context.navigator.pushNamed(RoleChoiceScreen.routeName);
   }
 
   bool validation(BuildContext context) {

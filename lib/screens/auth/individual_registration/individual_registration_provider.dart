@@ -1,7 +1,7 @@
+import 'package:qbits/common/widget/app_qr_scanner_screen.dart';
 import 'package:qbits/qbits.dart';
 
 class IndividualRegistrationProvider extends ChangeNotifier {
-
   bool loader = false;
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
@@ -12,10 +12,13 @@ class IndividualRegistrationProvider extends ChangeNotifier {
   final TextEditingController modelController = TextEditingController();
   final TextEditingController accountController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
   final TextEditingController cityController = TextEditingController();
-  final TextEditingController collectorAddressController = TextEditingController();
+  final TextEditingController collectorAddressController =
+      TextEditingController();
   final TextEditingController timezoneController = TextEditingController();
+  final TextEditingController stationTypeController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
 
   String stationNameError = "";
@@ -28,16 +31,6 @@ class IndividualRegistrationProvider extends ChangeNotifier {
   String timezoneError = "";
   String stationTypeError = "";
   String phoneNumberError = "";
-
-  void onChangeTimezone(timezone) {
-    selectedTimezone = timezone;
-    notifyListeners();
-  }
-
-  void onChangeStationType(stationType) {
-    selectedStationType = stationType;
-    notifyListeners();
-  }
 
   void onPwdVisibilityChanged() {
     isPasswordVisible = !isPasswordVisible;
@@ -52,6 +45,27 @@ class IndividualRegistrationProvider extends ChangeNotifier {
   Future<void> onRegisterTap(BuildContext context) async {
     if (validation(context)) {
       context.navigator.pushNamed(DashboardScreen.routeName);
+    }
+  }
+
+  void onChangeTimezone(timezone) {
+    selectedTimezone = timezone;
+    notifyListeners();
+  }
+
+  void onChangeStationType(stationType) {
+    selectedStationType = stationType;
+    notifyListeners();
+  }
+
+  Future<void> scanQRCode(BuildContext context) async {
+    final scannedResult = await context.navigator.push<String>(
+      MaterialPageRoute(builder: (_) => QRScannerScreen()),
+    );
+
+    if (scannedResult != null && scannedResult.isNotEmpty) {
+      modelController.text = scannedResult;
+      notifyListeners(); // notify UI about the change
     }
   }
 
@@ -82,10 +96,10 @@ class IndividualRegistrationProvider extends ChangeNotifier {
 
     if (confirmPasswordController.text.trim().isEmpty) {
       confirmPasswordError = context.l10n?.confirmPasswordIsRequired ?? "";
-    } else if (passwordController.text.trim().isEmpty) {
-      confirmPasswordError = context.l10n?.passwordIsRequired ?? "";
-    } else if (passwordController.text.trim() != confirmPasswordController.text.trim()) {
-      confirmPasswordError = context.l10n?.passwordAndConfirmPasswordIsNotMatching ?? "";
+    } else if (passwordController.text.trim() !=
+        confirmPasswordController.text.trim()) {
+      confirmPasswordError =
+          context.l10n?.passwordAndConfirmPasswordIsNotMatching ?? "";
     } else {
       confirmPasswordError = "";
     }
@@ -116,20 +130,22 @@ class IndividualRegistrationProvider extends ChangeNotifier {
 
     if (phoneNumberController.text.trim().isEmpty) {
       phoneNumberError = context.l10n?.phoneNumberIsRequired ?? "";
+    } else if (!phoneNumberController.text.isPhoneValid()) {
+      phoneNumberError = context.l10n?.enterValid10DigitPhoneNumber ?? "";
     } else {
       phoneNumberError = "";
     }
 
     notifyListeners();
     return stationNameError.isEmpty &&
-           modelError.isEmpty &&
-           accountError.isEmpty &&
-           passwordError.isEmpty &&
-           confirmPasswordError.isEmpty &&
-           cityError.isEmpty &&
-           collectorAddressError.isEmpty &&
-           timezoneError.isEmpty &&
-           stationTypeError.isEmpty &&
-           phoneNumberError.isEmpty;
+        modelError.isEmpty &&
+        accountError.isEmpty &&
+        passwordError.isEmpty &&
+        confirmPasswordError.isEmpty &&
+        cityError.isEmpty &&
+        collectorAddressError.isEmpty &&
+        timezoneError.isEmpty &&
+        stationTypeError.isEmpty &&
+        phoneNumberError.isEmpty;
   }
 }

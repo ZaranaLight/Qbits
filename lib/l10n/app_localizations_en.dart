@@ -138,6 +138,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get individual => 'Individual';
 
   @override
+  String get guidance => 'Guidance';
+
+  @override
+  String get required => 'Station Owner Is Required';
+
+  @override
+  String get qrCodeScanning => 'QR Code Scanning';
+
+  @override
+  String get enterValid10DigitPhoneNumber => 'Enter a valid 10-digit phone number';
+
+  @override
   String get stationOwner => 'Station Owner';
 
   @override
@@ -268,6 +280,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get openSettings => 'Open Settings';
+
+  @override
+  String get failedToDecodeQR => 'Failed to decode QR';
 
   @override
   String get plant => 'Plant';

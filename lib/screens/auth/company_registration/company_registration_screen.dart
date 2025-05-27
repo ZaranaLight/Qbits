@@ -1,4 +1,3 @@
-import 'package:qbits/common/widget/app_drop_down.dart';
 import 'package:qbits/qbits.dart';
 
 class CompanyRegistrationScreen extends StatelessWidget {
@@ -81,7 +80,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                           children: [
                             /// Account
                             AppTextField(
-                              isRequired: true,
+                              isMandatory: true,
                               controller: provider.accountController,
                               header: context.l10n?.account ?? "",
                               hintText: context.l10n?.account ?? "",
@@ -93,7 +92,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
 
                             /// Password
                             AppTextField(
-                              isRequired: true,
+                              isMandatory: true,
                               obscureText: !provider.isPasswordVisible,
                               controller: provider.passwordController,
                               header: context.l10n?.password ?? "",
@@ -145,7 +144,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
 
                             /// Company Code
                             AppTextField(
-                              isRequired: true,
+                              isMandatory: true,
                               textCapitalization: TextCapitalization.characters,
                               controller: provider.companyCodeController,
                               header: context.l10n?.companyCode ?? "",
@@ -189,7 +188,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.all(10),
                         child: AppTextField(
-                          isRequired: true,
+                          isMandatory: true,
                           textInputType: TextInputType.emailAddress,
                           controller: provider.mailController,
                           header: context.l10n?.mail ?? "",
@@ -234,7 +233,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.all(10),
                         child: AppTextField(
-                          isRequired: true,
+                          isMandatory: true,
                           textInputType: TextInputType.number,
                           controller: provider.verificationCodeController,
                           header: context.l10n?.code ?? "",

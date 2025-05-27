@@ -13,13 +13,15 @@ class AppTextField extends StatelessWidget {
     this.onTap,
     this.maxLength,
     this.maxLine = 1,
+    this.minLine = 1,
     this.prefixIcon,
     this.suffixIcon,
     this.obscureText = false,
     this.textCapitalization = TextCapitalization.none,
     this.showMandatoryIcon = false,
     this.readOnly = false,
-    this.isRequired = false,
+    this.isMandatory = false,
+    this.headerColor,
     this.onSuffixTap,
     this.header,
   });
@@ -31,6 +33,7 @@ class AppTextField extends StatelessWidget {
   final String? error;
   final int? maxLength;
   final int? maxLine;
+  final int? minLine;
   final void Function(String)? onChanged;
   final void Function()? onTap;
   final Widget? prefixIcon;
@@ -40,7 +43,8 @@ class AppTextField extends StatelessWidget {
   final TextCapitalization textCapitalization;
   final bool showMandatoryIcon;
   final bool readOnly;
-  final bool? isRequired;
+  final bool isMandatory;
+  final Color? headerColor;
   final String? header;
 
   @override
@@ -52,21 +56,28 @@ class AppTextField extends StatelessWidget {
         if (header != null)
           Padding(
             padding: EdgeInsets.only(bottom: 10.ph),
-            child: Row(
-              children: [
-                isRequired! ? Text(
-                  '*',
-                  style: styleW400S14.copyWith(
-                    color: ColorRes.red,
+            child: isMandatory
+                ? RichText(
+                  text: TextSpan(
+                    text: '* ',
+                    style: TextStyle(color: Colors.red, fontSize: 16),
+                    children: [
+                      TextSpan(
+                        text: header,
+                        style: styleW600S14.copyWith(
+                          color:
+                              headerColor ??
+                              ColorRes.black2.withValues(alpha: 0.6),
+                        ),
+                      ),
+                    ],
                   ),
-                ) : Container(),
-                Text(
-                  header ?? "",
-                  style: styleW400S14.copyWith(
-                    color: ColorRes.black2.withValues(alpha: 0.6),
-                  ),
-                ),
-              ],
+                )
+                : Text(
+              header ?? "",
+              style: styleW400S14.copyWith(
+                color: headerColor ?? ColorRes.black2.withValues(alpha: 0.6),
+              ),
             ),
           ),
 
@@ -81,6 +92,7 @@ class AppTextField extends StatelessWidget {
           maxLength: maxLength,
           textCapitalization: textCapitalization,
           maxLines: obscureText ? 1 : maxLine,
+          minLines: minLine??1,
           obscureText: obscureText,
           obscuringCharacter: "*",
           readOnly: readOnly,
@@ -121,6 +133,7 @@ class AppTextField extends StatelessWidget {
             suffixIconConstraints: BoxConstraints(maxWidth: 44, maxHeight: 40),
             suffixIcon: InkWell(
               onTap: onSuffixTap,
+              borderRadius: BorderRadius.circular(40.pw),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(

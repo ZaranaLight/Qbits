@@ -1,6 +1,8 @@
 class AssetRes {
   static const _icons = "assets/icons/";
   static const _temp = "assets/temp/";
+  static const _images = "assets/images/";
+  static const _animations = "assets/animations/";
 
   ///__________________________________ icons __________________________________///
   static const errorIcon = "${_icons}error_icon.svg";
@@ -11,6 +13,7 @@ class AssetRes {
   static const worldIcon = "${_icons}world_icon.svg";
   static const downArrowIcon = "${_icons}down_arrow_icon.svg";
   static const bulbIcon = "${_icons}bulb_icon.svg";
+  static const bulbOnIcon = "${_icons}bulb_on_icon.svg";
   static const appLogo = "${_icons}app_logo.svg";
   static const infoIcon = "${_icons}info_icon.svg";
   static const backIcon = "${_icons}back_icon.svg";
@@ -19,7 +22,9 @@ class AssetRes {
   static const plantIcon = "${_icons}plant.svg";
   static const alarmIcon = "${_icons}alarm.svg";
   static const profileIcon = "${_icons}profile.svg";
-  static const invisibleIcon = "${_icons}invisible.svg";
+  static const invisibleIcon = "${_icons}invisible_icon.svg";
+  static const scannerIcon2 = "${_icons}scanner_icon.svg";
+  static const timeZoneIcon  = "${_icons}time_zone_icon.svg";
   static const checkIcon = "${_icons}check_icon.svg";
   static const plusIcon = "${_icons}plus.svg";
   static const searchIcon = "${_icons}search.svg";
@@ -40,6 +45,8 @@ class AssetRes {
   static const scannerIcon = "${_icons}scanner_icon.svg";
   static const resetIcon = "${_icons}reset_icon.svg";
   static const sendIcon = "${_icons}send_icon.svg";
+  static const mailIcon = "${_icons}mail_icon.svg";
+  static const companyCodeIcon = "${_icons}company_code_icon.svg";
 
   static const greenBatteryIcon = "${_icons}green_battery.svg";
   static const redBatteryIcon = "${_icons}red_battery.svg";
@@ -47,6 +54,8 @@ class AssetRes {
   static const redTowerIcon = "${_icons}red_tower.svg";
   static const greenSolarPlateIcon = "${_icons}green_solar_plate.svg";
   static const homeInZigzagIcon = "${_icons}home_in_zigzag.svg";
+  static const userIcon = "${_icons}user_icon.svg";
+  static const groupUserIcon = "${_icons}group_user.svg";
 
   ///________________________________ Temp images ______________________________///
 
@@ -54,6 +63,11 @@ class AssetRes {
   static const tempSolarDiagramImg = "${_temp}solar_diagram.png";
 
   ///__________________________________ images __________________________________///
+  static const blueToothMobileImg = "${_images}bluetooth_mobile_img.png";
+
+  ///__________________________________ animations __________________________________///
+  static const qrScanAnimation = "${_animations}qr_scan_animation.gif";
+
   ///__________________________________ fonts __________________________________///
   static const instrumentSans = "Instrument Sans";
 }

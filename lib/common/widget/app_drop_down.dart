@@ -11,8 +11,9 @@ class AppDropDown<T> extends StatelessWidget {
     this.optionsList = const [],
     required this.itemAsString,
     this.hintText,
-    this.isRequired = false,
     this.suffixIcon,
+    this.headerColor,
+    this.isMandatory = false,
   });
 
   final String? header;
@@ -22,8 +23,9 @@ class AppDropDown<T> extends StatelessWidget {
   final void Function(T?)? onChanged;
   final String? error;
   final String? hintText;
-  final bool? isRequired;
+  final bool isMandatory;
   final Widget? suffixIcon;
+  final Color? headerColor;
 
   @override
   Widget build(BuildContext context) {
@@ -32,27 +34,36 @@ class AppDropDown<T> extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// Header
             if (header?.isNotEmpty ?? false)
-              Padding(
+              isMandatory
+                  ? Padding(
                 padding: EdgeInsets.only(bottom: 10.ph),
-                child: Row(
-                  children: [
-                    isRequired! ? Text(
-                      '*',
-                      style: styleW400S14.copyWith(
-                        color: ColorRes.red,
+                    child: RichText(
+                      text: TextSpan(
+                        text: '* ',
+                        style: TextStyle(color: Colors.red, fontSize: 16),
+                        children: [
+                          TextSpan(
+                            text: header,
+                            style: styleW600S14.copyWith(
+                              color:
+                                  headerColor ??
+                                  ColorRes.black2.withValues(alpha: 0.6),
+                            ),
+                          ),
+                        ],
                       ),
-                    ) : Container(),
-                    Text(
+                    ),
+                  )
+                  : Padding(
+                    padding: EdgeInsets.only(bottom: 10.ph),
+                    child: Text(
                       header ?? "",
                       style: styleW400S14.copyWith(
                         color: ColorRes.black2.withValues(alpha: 0.6),
                       ),
                     ),
-                  ],
-                ),
-              ),
+                  ),
 
             /// Dropdown
             DropdownMenu<T>(
@@ -60,18 +71,22 @@ class AppDropDown<T> extends StatelessWidget {
               width: constrains.maxWidth,
               menuHeight: 200,
               onSelected: onChanged,
-              dropdownMenuEntries: optionsList.map((e) {
-                return DropdownMenuEntry<T>(
-                  value: e,
-                  label: itemAsString(e),
-                );
-              }).toList(),
+              dropdownMenuEntries:
+                  optionsList.map((e) {
+                    return DropdownMenuEntry<T>(
+                      value: e,
+                      label: itemAsString(e),
+                    );
+                  }).toList(),
               hintText: hintText ?? "Select",
               inputDecorationTheme: InputDecorationTheme(
                 filled: true,
                 fillColor: ColorRes.lightGrey2,
                 hintStyle: styleW400S14.copyWith(
-                  color: (error ?? '').isNotEmpty ? ColorRes.red : ColorRes.black.withValues(alpha: 0.3),
+                  color:
+                      (error ?? '').isNotEmpty
+                          ? ColorRes.red
+                          : ColorRes.black.withValues(alpha: 0.3),
                 ),
                 isCollapsed: true,
                 contentPadding: EdgeInsets.only(
@@ -93,15 +108,16 @@ class AppDropDown<T> extends StatelessWidget {
               textStyle: styleW400S14,
               selectedTrailingIcon: Transform.rotate(
                 angle: 3.1,
-                child: suffixIcon ?? SvgAsset(
-                  imagePath: AssetRes.downArrowIcon,
-                  height: 20.pw,
-                ),
+                child:
+                    suffixIcon ??
+                    SvgAsset(
+                      imagePath: AssetRes.downArrowIcon,
+                      height: 6.98.pw,
+                    ),
               ),
-              trailingIcon: suffixIcon ?? SvgAsset(
-                imagePath: AssetRes.downArrowIcon,
-                height: 6.98.pw,
-              ),
+              trailingIcon:
+                  suffixIcon ??
+                  SvgAsset(imagePath: AssetRes.downArrowIcon, height: 6.98.pw),
             ),
 
             ErrorText(error: error, topPadding: 4.ph),
@@ -115,7 +131,10 @@ class AppDropDown<T> extends StatelessWidget {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(40.pw),
       borderSide: BorderSide(
-        color: (error ?? '').isNotEmpty ? ColorRes.red : ColorRes.lightGrey2.withValues(alpha: 0.2),
+        color:
+            (error ?? '').isNotEmpty
+                ? ColorRes.red
+                : ColorRes.lightGrey2.withValues(alpha: 0.2),
       ),
     );
   }

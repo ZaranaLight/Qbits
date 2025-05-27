@@ -45,8 +45,13 @@ dependencies:
   fl_chart: ^1.0.0
   carousel_slider: ^5.0.0
   flutter_image_compress: ^2.4.0
+
+  # -------------------------- Bluetooth Scan QR Code -------------------------- #
+
   mobile_scanner: ^7.0.0
   flutter_blue_plus: ^1.30.5
+  qr_code_tools: ^0.2.0
+
   
 
 
@@ -101,6 +106,8 @@ flutter:
   assets:
     - assets/icons/
     - assets/temp/
+    - assets/images/
+    - assets/animations/
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
