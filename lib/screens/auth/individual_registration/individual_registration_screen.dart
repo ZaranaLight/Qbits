@@ -71,10 +71,9 @@ class IndividualRegistrationScreen extends StatelessWidget {
                     error: provider.modelError,
                     headerColor: ColorRes.black,
                     isMandatory: true,
-
                     suffixIcon: InkWell(
                       onTap: () async {
-                        provider.scanQRCode(context);
+                        provider.scanQRCode(context, 'model');
                         // final scannedResult = await context.navigator.push(
                         //   MaterialPageRoute(builder: (_) => const QRScannerScreen()),
                         // );
@@ -195,6 +194,15 @@ class IndividualRegistrationScreen extends StatelessWidget {
                     maxLine: 3,
                     minLine: 1,
                     textInputType: TextInputType.streetAddress,
+                    suffixIcon: InkWell(
+                      onTap: () async {
+                        provider.scanQRCode(context, 'collector_address');
+                      },
+                      child: SvgAsset(
+                        imagePath: AssetRes.scannerIcon2,
+                        color: ColorRes.black.withValues(alpha: 0.5),
+                      ),
+                    ),
                   ),
 
                   ///Space

@@ -114,7 +114,7 @@ class RoleChoiceButtons extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(8.pw),
       child: Container(
-        height: 113.pw,
+        height: 118.pw,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.pw),
