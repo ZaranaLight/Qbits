@@ -243,10 +243,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get phoneNumberIsRequired => 'Phone Number Is Required';
 
   @override
+  String get companyCodeIsRequired => 'Company Code Is Required';
+
+  @override
+  String get mailIsRequired => 'Mail Is Required';
+
+  @override
+  String get mailIsNotValid => 'Mail Is Not Valid';
+
+  @override
+  String get verificationCodeIsRequired => 'Verification Code Is Required';
+
+  @override
+  String get verificationCodeIsntMatching => 'Verification Code Isn\'t Matching';
+
+  @override
   String get continueCap => 'Continue';
 
   @override
-  String get pleaseUseYourPhoneNumberOrEmailToObtain => 'Please use your phone number or email  to obtain \nthe verification code';
+  String get pleaseUseYourPhoneNumberOrEmailToObtain => 'Please use your phone number or email  to obtain the verification code';
 
   @override
   String get dashboard => 'Dashboard';

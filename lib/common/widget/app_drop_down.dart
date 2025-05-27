@@ -11,6 +11,7 @@ class AppDropDown<T> extends StatelessWidget {
     this.optionsList = const [],
     required this.itemAsString,
     this.hintText,
+    this.isRequired = false,
     this.suffixIcon,
   });
 
@@ -21,6 +22,7 @@ class AppDropDown<T> extends StatelessWidget {
   final void Function(T?)? onChanged;
   final String? error;
   final String? hintText;
+  final bool? isRequired;
   final Widget? suffixIcon;
 
   @override
@@ -30,14 +32,25 @@ class AppDropDown<T> extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            /// Header
             if (header?.isNotEmpty ?? false)
               Padding(
                 padding: EdgeInsets.only(bottom: 10.ph),
-                child: Text(
-                  header ?? "",
-                  style: styleW400S14.copyWith(
-                    color: ColorRes.black2.withValues(alpha: 0.6),
-                  ),
+                child: Row(
+                  children: [
+                    isRequired! ? Text(
+                      '*',
+                      style: styleW400S14.copyWith(
+                        color: ColorRes.red,
+                      ),
+                    ) : Container(),
+                    Text(
+                      header ?? "",
+                      style: styleW400S14.copyWith(
+                        color: ColorRes.black2.withValues(alpha: 0.6),
+                      ),
+                    ),
+                  ],
                 ),
               ),
 

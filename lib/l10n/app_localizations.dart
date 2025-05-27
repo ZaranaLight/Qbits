@@ -561,6 +561,36 @@ abstract class AppLocalizations {
   /// **'Phone Number Is Required'**
   String get phoneNumberIsRequired;
 
+  /// No description provided for @companyCodeIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Company Code Is Required'**
+  String get companyCodeIsRequired;
+
+  /// No description provided for @mailIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Mail Is Required'**
+  String get mailIsRequired;
+
+  /// No description provided for @mailIsNotValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Mail Is Not Valid'**
+  String get mailIsNotValid;
+
+  /// No description provided for @verificationCodeIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification Code Is Required'**
+  String get verificationCodeIsRequired;
+
+  /// No description provided for @verificationCodeIsntMatching.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification Code Isn't Matching'**
+  String get verificationCodeIsntMatching;
+
   /// No description provided for @continueCap.
   ///
   /// In en, this message translates to:
@@ -570,7 +600,7 @@ abstract class AppLocalizations {
   /// No description provided for @pleaseUseYourPhoneNumberOrEmailToObtain.
   ///
   /// In en, this message translates to:
-  /// **'Please use your phone number or email  to obtain \nthe verification code'**
+  /// **'Please use your phone number or email  to obtain the verification code'**
   String get pleaseUseYourPhoneNumberOrEmailToObtain;
 
   /// No description provided for @dashboard.

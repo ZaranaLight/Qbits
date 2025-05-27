@@ -19,6 +19,7 @@ class AppTextField extends StatelessWidget {
     this.textCapitalization = TextCapitalization.none,
     this.showMandatoryIcon = false,
     this.readOnly = false,
+    this.isRequired = false,
     this.onSuffixTap,
     this.header,
   });
@@ -39,6 +40,7 @@ class AppTextField extends StatelessWidget {
   final TextCapitalization textCapitalization;
   final bool showMandatoryIcon;
   final bool readOnly;
+  final bool? isRequired;
   final String? header;
 
   @override
@@ -50,11 +52,21 @@ class AppTextField extends StatelessWidget {
         if (header != null)
           Padding(
             padding: EdgeInsets.only(bottom: 10.ph),
-            child: Text(
-              header ?? "",
-              style: styleW400S14.copyWith(
-                color: ColorRes.black2.withValues(alpha: 0.6),
-              ),
+            child: Row(
+              children: [
+                isRequired! ? Text(
+                  '*',
+                  style: styleW400S14.copyWith(
+                    color: ColorRes.red,
+                  ),
+                ) : Container(),
+                Text(
+                  header ?? "",
+                  style: styleW400S14.copyWith(
+                    color: ColorRes.black2.withValues(alpha: 0.6),
+                  ),
+                ),
+              ],
             ),
           ),
 
