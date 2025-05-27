@@ -1,20 +1,26 @@
 import 'package:qbits/qbits.dart';
 
-
 class RoleChoiceProvider extends ChangeNotifier {
-  final String? role;
+  UserRole? role;
+  bool loader = false;
 
   RoleChoiceProvider({this.role});
 
-  bool loader = false;
+  void setRole(UserRole newRole) {
+    role = newRole;
+    notifyListeners();
+  }
 
-  void onRoleSelected(BuildContext context, String selectedRole) {
-    if (context.mounted) {
-      context.navigator.pushNamedAndRemoveUntil(
-        SignInScreen.routeName,
-        (route) => false,
-        arguments: selectedRole,
-      );
+  void navigateBasedOnRole(BuildContext context) {
+    switch (role) {
+      case UserRole.individual:
+        context.navigator.pushNamed(IndividualRegistrationScreen.routeName);
+        break;
+      case UserRole.company:
+        // Navigator.pushNamed(context, CompanyRegistrationScreen.routeName);
+        break;
+      default:
+        debugPrint("Role is not selected.");
     }
   }
 }

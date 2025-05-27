@@ -22,7 +22,9 @@ class AssetRes {
   static const plantIcon = "${_icons}plant.svg";
   static const alarmIcon = "${_icons}alarm.svg";
   static const profileIcon = "${_icons}profile.svg";
-  static const invisibleIcon = "${_icons}invisible.svg";
+  static const invisibleIcon = "${_icons}invisible_icon.svg";
+  static const scannerIcon2 = "${_icons}scanner_icon.svg";
+  static const timeZoneIcon  = "${_icons}time_zone_icon.svg";
   static const checkIcon = "${_icons}check_icon.svg";
   static const plusIcon = "${_icons}plus.svg";
   static const searchIcon = "${_icons}search.svg";
@@ -40,6 +42,8 @@ class AssetRes {
   static const longUpArrowIcon = "${_icons}long_up_arrow.svg";
   static const coinIcon = "${_icons}coin.svg";
   static const cameraIcon = "${_icons}camera_icon.svg";
+  static const mailIcon = "${_icons}mail_icon.svg";
+  static const companyCodeIcon = "${_icons}company_code_icon.svg";
 
   static const greenBatteryIcon = "${_icons}green_battery.svg";
   static const redBatteryIcon = "${_icons}red_battery.svg";
@@ -47,7 +51,6 @@ class AssetRes {
   static const redTowerIcon = "${_icons}red_tower.svg";
   static const greenSolarPlateIcon = "${_icons}green_solar_plate.svg";
   static const homeInZigzagIcon = "${_icons}home_in_zigzag.svg";
-  static const scannerIcon = "${_icons}scanner.svg";
   static const userIcon = "${_icons}user_icon.svg";
   static const groupUserIcon = "${_icons}group_user.svg";
 

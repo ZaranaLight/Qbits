@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/auth/role_choice/role_choice_provider.dart';
 
 class RoleChoiceScreen extends StatelessWidget {
   const RoleChoiceScreen({super.key});
@@ -13,72 +12,84 @@ class RoleChoiceScreen extends StatelessWidget {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(title: context.l10n?.roleChoice ?? ""),
-      body: CustomSingleChildScroll(
-        padding: EdgeInsets.symmetric(
-          vertical: Constants.safeAreaPadding.bottom + 20.pw,
-          horizontal: 16.pw,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            /// Title
-            Text(context.l10n?.pleaseSelectYourRole ?? "", style: styleW600S16),
-
-            /// Space
-            20.ph.spaceVertical,
-
-            /// Role Choice Buttons For Individual
-            RoleChoiceButtons(
-              imagePath: AssetRes.userIcon,
-              title: context.l10n?.individual ?? "",
-              role: context.l10n?.stationOwner ?? "",
-              onTap: () {},
+    return Consumer<RoleChoiceProvider>(
+      builder: (context, state, child) {
+        return Scaffold(
+          appBar: CustomAppBar(title: context.l10n?.roleChoice ?? ""),
+          body: CustomSingleChildScroll(
+            padding: EdgeInsets.symmetric(
+              vertical: Constants.safeAreaPadding.bottom + 20.pw,
+              horizontal: 16.pw,
             ),
-
-            /// Space
-            20.pw.spaceVertical,
-
-            /// Role Choice Buttons For Company
-            RoleChoiceButtons(
-              imagePath: AssetRes.groupUserIcon,
-              title: context.l10n?.company ?? "",
-              role: context.l10n?.installer ?? "",
-              onTap: () {},
-            ),
-
-            /// Space
-            40.pw.spaceVertical,
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ///Guidance Button
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(31.pw),
-                    color: ColorRes.primaryColor,
-                  ),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 14.pw,
-                    vertical: 6.pw,
-                  ),
-                  child: Center(
-                    child: Text(
-                      context.l10n?.guidance ?? "",
-                      style: styleW500S14.copyWith(color: ColorRes.white),
+                /// Title
+                Text(
+                  context.l10n?.pleaseSelectYourRole ?? "",
+                  style: styleW600S16,
+                ),
+
+                /// Space
+                20.ph.spaceVertical,
+
+                /// Role Choice Buttons For Individual
+                RoleChoiceButtons(
+                  imagePath: AssetRes.userIcon,
+                  title: context.l10n?.individual ?? "",
+                  role: context.l10n?.stationOwner ?? "",
+                  onTap: () {
+                    state.setRole(UserRole.individual);
+                    state.navigateBasedOnRole(context);
+                  },
+                ),
+
+                /// Space
+                20.pw.spaceVertical,
+
+                /// Role Choice Buttons For Company
+                RoleChoiceButtons(
+                  imagePath: AssetRes.groupUserIcon,
+                  title: context.l10n?.company ?? "",
+                  role: context.l10n?.installer ?? "",
+                  onTap: () {
+                    state.setRole(UserRole.company);
+                    state.navigateBasedOnRole(context);
+                  },
+                ),
+
+                /// Space
+                40.pw.spaceVertical,
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ///Guidance Button
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(31.pw),
+                        color: ColorRes.primaryColor,
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 14.pw,
+                        vertical: 6.pw,
+                      ),
+                      child: Center(
+                        child: Text(
+                          context.l10n?.guidance ?? "",
+                          style: styleW500S14.copyWith(color: ColorRes.white),
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

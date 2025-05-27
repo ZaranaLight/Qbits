@@ -1,7 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/auth/bluetooth_manually/bluetooth_manually_screen.dart';
-import 'package:qbits/screens/auth/id_authentication/id_authentication_screen.dart';
-import 'package:qbits/screens/auth/role_choice/role_choice_screen.dart';
 
 class RouteManager {
   static String get initialRoute => SplashScreen.routeName;
@@ -133,6 +130,15 @@ class RouteManager {
           builder: BluetoothManuallyScreen.builder,
           settings: settings,
         );
+
+      /// Individual Registration Screen
+      case IndividualRegistrationScreen.routeName:
+        return MaterialPageRoute(
+          builder: IndividualRegistrationScreen.builder,
+          settings: settings,
+        );
+
+
 
       default:
         return MaterialPageRoute(

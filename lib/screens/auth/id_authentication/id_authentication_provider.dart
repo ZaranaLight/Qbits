@@ -1,6 +1,4 @@
-import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/auth/role_choice/role_choice_screen.dart';
 
 class IdAuthenticationProvider extends ChangeNotifier {
   final ScanResult? scanResult;

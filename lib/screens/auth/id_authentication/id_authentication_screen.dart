@@ -1,6 +1,4 @@
-import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/auth/id_authentication/id_authentication_provider.dart';
 
 class IdAuthenticationScreen extends StatelessWidget {
   const IdAuthenticationScreen({super.key});
