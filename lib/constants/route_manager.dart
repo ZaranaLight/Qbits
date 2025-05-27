@@ -1,4 +1,6 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/auth/company_registartion/company_registartion_screen.dart';
+import 'package:qbits/screens/inverter/inverter_screen.dart';
 
 class RouteManager {
   static String get initialRoute => SplashScreen.routeName;
@@ -138,7 +140,19 @@ class RouteManager {
           settings: settings,
         );
 
+      /// Company Registration Screen
+      case CompanyRegistrationScreen.routeName:
+        return MaterialPageRoute(
+          builder: CompanyRegistrationScreen.builder,
+          settings: settings,
+        );
 
+      /// Inverter Screen
+      case InverterScreen.routeName:
+        return MaterialPageRoute(
+          builder: InverterScreen.builder,
+          settings: settings,
+        );
 
       default:
         return MaterialPageRoute(

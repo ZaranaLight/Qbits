@@ -1,4 +1,5 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/auth/company_registartion/company_registartion_screen.dart';
 
 class RoleChoiceProvider extends ChangeNotifier {
   UserRole? role;
@@ -17,7 +18,7 @@ class RoleChoiceProvider extends ChangeNotifier {
         context.navigator.pushNamed(IndividualRegistrationScreen.routeName);
         break;
       case UserRole.company:
-        // Navigator.pushNamed(context, CompanyRegistrationScreen.routeName);
+        context.navigator.pushNamed(CompanyRegistrationScreen.routeName);
         break;
       default:
         debugPrint("Role is not selected.");

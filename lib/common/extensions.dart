@@ -68,6 +68,7 @@ extension StringFormatingExt on String {
     }
   }
 
+
   String? get getLeaveTypeLabel {
     try {
       if (toLowerCase() == "confirm") {
@@ -86,6 +87,24 @@ extension StringFormatingExt on String {
       return null;
     }
   }
+}
+
+String enumToCapitalizedString(dynamic enumValue) {
+  final name = enumValue.toString().split('.').last;
+  return name[0].toUpperCase() + name.substring(1);
+}
+
+String getFormattedDateTime() {
+  final now = DateTime.now();
+  final formatted = "${now.year.toString().padLeft(4, '0')}-"
+      "${now.month.toString().padLeft(2, '0')}-"
+      "${now.day.toString().padLeft(2, '0')} "
+      "${now.hour.toString().padLeft(2, '0')}:"
+      "${now.minute.toString().padLeft(2, '0')}:"
+      "${now.second.toString().padLeft(2, '0')}:"
+      "${now.millisecond.toString().padLeft(3, '0')}";
+
+  return formatted;
 }
 
 extension NumFormatingExt on num {

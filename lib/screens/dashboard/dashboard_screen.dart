@@ -93,6 +93,7 @@ class _BottomBar extends StatelessWidget {
             child: InkWell(
               onTap:
                   () => context.read<DashboardProvider>().onPageChanged(index),
+              borderRadius: BorderRadius.circular(5.pw),
               child: SafeArea(
                 top: false,
                 child: Column(

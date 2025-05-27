@@ -183,7 +183,12 @@ class DeviceLiberyContainer extends StatelessWidget {
     return Column(
       children: [
         /// Activity Title Text
-        Text(title, style: styleW500S16),
+        Text(
+          title,
+          style: styleW500S14.copyWith(
+            color: ColorRes.black.withValues(alpha: 0.5),
+          ),
+        ),
 
         /// Space
         4.ph.spaceVertical,

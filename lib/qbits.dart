@@ -92,3 +92,7 @@ export 'package:qr_code_tools/qr_code_tools.dart';
 export 'package:qbits/screens/auth/id_authentication/id_authentication_provider.dart';
 export 'package:qbits/constants/enum.dart';
 export 'package:qbits/screens/auth/role_choice/role_choice_provider.dart';
+export 'package:qbits/common/widget/app_drop_down.dart';
+export 'package:qbits/screens/auth/company_registartion/comapny_registartion_provider.dart';
+
+

@@ -237,6 +237,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get send => 'Send';
 
   @override
+  String get going => 'Going';
+
+  @override
+  String get recovered => 'Recovered';
+
+  @override
+  String get fault => 'Fault';
+
+  @override
   String get mail => 'Mail';
 
   @override

@@ -1,4 +1,3 @@
-import 'package:qbits/common/widget/app_drop_down.dart';
 import 'package:qbits/qbits.dart';
 
 class IndividualRegistrationScreen extends StatelessWidget {
@@ -18,7 +17,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
     return Consumer<IndividualRegistrationProvider>(
       builder: (context, provider, child) {
         return Scaffold(
-          backgroundColor: ColorRes.white,
+          backgroundColor: ColorRes.lightGrey2,
           appBar: CustomAppBar(title: context.l10n?.individual ?? ""),
           bottomNavigationBar: SafeArea(
             top: false,
@@ -43,213 +42,201 @@ class IndividualRegistrationScreen extends StatelessWidget {
                   Constants.horizontalPadding,
               top: 20.pw,
             ),
-            child: Column(
-              children: [
-                /// Station Name
-                AppTextField(
-                  controller: provider.stationNameController,
-                  header: context.l10n?.stationName ?? "",
-                  hintText: context.l10n?.stationName ?? "",
-                  error: provider.stationNameError,
-                  headerColor: ColorRes.black,
-                  isMandatory: true,
-                ),
+            child: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: ColorRes.white,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                children: [
+                  /// Station Name
+                  AppTextField(
+                    isMandatory: true,
+                    controller: provider.stationNameController,
+                    header: context.l10n?.stationName ?? "",
+                    hintText: context.l10n?.stationName ?? "",
+                    error: provider.stationNameError,
+                  ),
 
-                ///Space
-                20.pw.spaceVertical,
+                  ///Space
+                  20.pw.spaceVertical,
 
-                /// Model
-                AppTextField(
-                  controller: provider.modelController,
-                  header: context.l10n?.model ?? "",
-                  hintText: context.l10n?.model ?? "",
-                  error: provider.modelError,
-                  headerColor: ColorRes.black,
-                  isMandatory: true,
+                  /// Model
+                  AppTextField(
+                    isMandatory: true,
+                    controller: provider.modelController,
+                    header: context.l10n?.model ?? "",
+                    hintText: context.l10n?.model ?? "",
+                    error: provider.modelError,
+                    suffixIcon: InkWell(
+                      onTap: () => provider.scanQRCode(context),
+                      child: SvgAsset(
+                        imagePath: AssetRes.scannerIcon,
+                        color: ColorRes.black.withValues(alpha: 0.5),
+                      ),
+                    ),
+                  ),
 
-                  suffixIcon: InkWell(
-                    onTap: () async {
-                      provider.scanQRCode(context);
-                      // final scannedResult = await context.navigator.push(
-                      //   MaterialPageRoute(builder: (_) => const QRScannerScreen()),
-                      // );
-                      //
-                      // if (scannedResult != null && scannedResult is String) {
-                      //   // Use scannedResult
-                      //   print('Scanned code: $scannedResult');
-                      // }
-                    },
-                    child: SvgAsset(
-                      imagePath: AssetRes.scannerIcon2,
+                  ///Space
+                  20.pw.spaceVertical,
+
+                  /// Account
+                  AppTextField(
+                    isMandatory: true,
+                    controller: provider.accountController,
+                    header: context.l10n?.account ?? "",
+                    hintText: context.l10n?.account ?? "",
+                    error: provider.accountError,
+                  ),
+
+                  ///Space
+                  20.pw.spaceVertical,
+
+                  /// Password
+                  AppTextField(
+                    isMandatory: true,
+                    obscureText: !provider.isPasswordVisible,
+                    controller: provider.passwordController,
+                    header: context.l10n?.password ?? "",
+                    hintText: context.l10n?.password ?? "",
+                    error: provider.passwordError,
+                    onSuffixTap: provider.onPwdVisibilityChanged,
+                    suffixIcon: AnimatedSwitcher(
+                      duration: 300.milliseconds,
+                      transitionBuilder: (
+                        Widget child,
+                        Animation<double> animation,
+                      ) {
+                        return ScaleTransition(scale: animation, child: child);
+                      },
+                      child: SvgAsset(
+                        key: ValueKey<bool>(provider.isPasswordVisible),
+                        imagePath:
+                            !provider.isPasswordVisible
+                                ? AssetRes.eyeIcon
+                                : AssetRes.invisibleIcon,
+                        color: ColorRes.black.withValues(alpha: 0.3),
+                      ),
+                    ),
+                  ),
+
+                  ///Space
+                  10.pw.spaceVertical,
+
+                  /// Confirm Password
+                  AppTextField(
+                    obscureText: !provider.isConfirmPasswordVisible,
+                    controller: provider.confirmPasswordController,
+                    hintText: context.l10n?.confirmPassword ?? "",
+                    error: provider.confirmPasswordError,
+                    onSuffixTap: provider.onCnfPwdVisibilityChanged,
+                    suffixIcon: AnimatedSwitcher(
+                      duration: 300.milliseconds,
+                      transitionBuilder: (
+                        Widget child,
+                        Animation<double> animation,
+                      ) {
+                        return ScaleTransition(scale: animation, child: child);
+                      },
+                      child: SvgAsset(
+                        key: ValueKey<bool>(provider.isConfirmPasswordVisible),
+                        imagePath:
+                            !provider.isConfirmPasswordVisible
+                                ? AssetRes.eyeIcon
+                                : AssetRes.invisibleIcon,
+                        color: ColorRes.black.withValues(alpha: 0.3),
+                      ),
+                    ),
+                  ),
+
+                  ///Space
+                  20.pw.spaceVertical,
+
+                  /// Your City
+                  AppTextField(
+                    isMandatory: true,
+                    controller: provider.cityController,
+                    header: context.l10n?.yourCity ?? "",
+                    hintText: context.l10n?.yourCity ?? "",
+                    error: provider.cityError,
+                  ),
+
+                  ///Space
+                  20.pw.spaceVertical,
+
+                  /// Collector Address
+                  AppTextField(
+                    isMandatory: true,
+                    controller: provider.collectorAddressController,
+                    header: context.l10n?.collectorAddress ?? "",
+                    hintText: context.l10n?.collectorAddress ?? "",
+                    error: provider.collectorAddressError,
+                    suffixIcon: SvgAsset(
+                      imagePath: AssetRes.scannerIcon,
                       color: ColorRes.black.withValues(alpha: 0.5),
                     ),
                   ),
-                ),
 
-                ///Space
-                20.pw.spaceVertical,
+                  ///Space
+                  20.pw.spaceVertical,
 
-                /// Account
-                AppTextField(
-                  controller: provider.accountController,
-                  header: context.l10n?.account ?? "",
-                  hintText: context.l10n?.account ?? "",
-                  error: provider.accountError,
-                  headerColor: ColorRes.black,
-                  isMandatory: true,
-                ),
-
-                ///Space
-                20.pw.spaceVertical,
-
-                /// Password
-                AppTextField(
-                  obscureText: !provider.isPasswordVisible,
-                  controller: provider.passwordController,
-                  header: context.l10n?.password ?? "",
-                  hintText: context.l10n?.password ?? "",
-                  headerColor: ColorRes.black,
-                  isMandatory: true,
-                  error: provider.passwordError,
-                  onSuffixTap: provider.onPwdVisibilityChanged,
-                  suffixIcon: AnimatedSwitcher(
-                    duration: 300.milliseconds,
-                    transitionBuilder: (
-                      Widget child,
-                      Animation<double> animation,
-                    ) {
-                      return ScaleTransition(scale: animation, child: child);
-                    },
-                    child: SvgAsset(
-                      key: ValueKey<bool>(provider.isPasswordVisible),
-                      imagePath:
-                          !provider.isPasswordVisible
-                              ? AssetRes.eyeIcon
-                              : AssetRes.invisibleIcon,
-                      color: ColorRes.black.withValues(alpha: 0.3),
+                  /// Timezone
+                  AppDropDown<String>(
+                    isMandatory: true,
+                    itemAsString: (e) => e,
+                    hintText: context.l10n?.timezone ?? "",
+                    onChanged: (val) => provider.onChangeTimezone(val),
+                    selectedValue: provider.selectedTimezone,
+                    header: context.l10n?.timezone ?? "",
+                    error: provider.timezoneError,
+                    suffixIcon: SvgAsset(
+                      imagePath: AssetRes.timeZoneIcon,
+                      color: ColorRes.black.withValues(alpha: 0.5),
                     ),
+                    optionsList: [
+                      "GMT 0",
+                      "GMT 1",
+                      "GMT 2",
+                      "GMT 3",
+                      "GMT 4",
+                      "GMT 5",
+                    ],
                   ),
-                ),
 
-                ///Space
-                10.pw.spaceVertical,
+                  ///Space
+                  20.pw.spaceVertical,
 
-                /// Confirm Password
-                AppTextField(
-                  obscureText: !provider.isConfirmPasswordVisible,
-                  controller: provider.confirmPasswordController,
-                  hintText: context.l10n?.confirmPassword ?? "",
-                  error: provider.confirmPasswordError,
-                  headerColor: ColorRes.black,
-                  isMandatory: true,
-                  onSuffixTap: provider.onCnfPwdVisibilityChanged,
-                  suffixIcon: AnimatedSwitcher(
-                    duration: 300.milliseconds,
-                    transitionBuilder: (
-                      Widget child,
-                      Animation<double> animation,
-                    ) {
-                      return ScaleTransition(scale: animation, child: child);
-                    },
-                    child: SvgAsset(
-                      key: ValueKey<bool>(provider.isConfirmPasswordVisible),
-                      imagePath:
-                          !provider.isConfirmPasswordVisible
-                              ? AssetRes.eyeIcon
-                              : AssetRes.invisibleIcon,
+                  /// Station Type
+                  AppDropDown<String>(
+                    isMandatory: true,
+                    itemAsString: (e) => e,
+                    hintText: context.l10n?.stationType ?? "",
+                    onChanged: (val) => provider.onChangeStationType(val),
+                    selectedValue: provider.selectedStationType,
+                    header: context.l10n?.stationType ?? "",
+                    error: provider.stationTypeError,
 
-                      color: ColorRes.black.withValues(alpha: 0.3),
-                    ),
+                    optionsList: ["Station 1", "Station 2", "Station 3"],
                   ),
-                ),
 
-                ///Space
-                20.pw.spaceVertical,
+                  ///Space
+                  20.pw.spaceVertical,
 
-                /// Your City
-                AppTextField(
-                  obscureText: true,
-                  controller: provider.cityController,
-                  header: context.l10n?.yourCity ?? "",
-                  hintText: context.l10n?.yourCity ?? "",
-                  error: provider.cityError,
-                  headerColor: ColorRes.black,
-                  isMandatory: true,
-                ),
-
-                ///Space
-                20.pw.spaceVertical,
-
-                /// Collector Address
-                AppTextField(
-                  controller: provider.collectorAddressController,
-                  header: context.l10n?.collectorAddress ?? "",
-                  hintText: context.l10n?.collectorAddress ?? "",
-                  error: provider.collectorAddressError,
-                  headerColor: ColorRes.black,
-                  isMandatory: true,
-                  maxLine: 3,
-                  minLine: 1,
-                  textInputType: TextInputType.streetAddress,
-                ),
-
-                ///Space
-                20.pw.spaceVertical,
-
-                /// Timezone
-                AppDropDown<String>(
-                  itemAsString: (e) => e,
-                  hintText: context.l10n?.timezone ?? "",
-                  onChanged: (val) => provider.onChangeTimezone(val),
-                  selectedValue: provider.selectedTimezone,
-                  header: context.l10n?.timezone ?? "",
-                  error: provider.timezoneError,
-                  isMandatory: true,
-                  headerColor: ColorRes.black,
-                  suffixIcon: SvgAsset(
-                    imagePath: AssetRes.timeZoneIcon,
-                    color: ColorRes.black.withValues(alpha: 0.5),
+                  /// Phone Number
+                  AppTextField(
+                    isMandatory: true,
+                    textInputType: TextInputType.phone,
+                    controller: provider.phoneNumberController,
+                    header: context.l10n?.phoneNumber ?? "",
+                    hintText: context.l10n?.phoneNumber ?? "",
+                    error: provider.phoneNumberError,
                   ),
-                  optionsList: [
-                    "GMT 0",
-                    "GMT 1",
-                    "GMT 2",
-                    "GMT 3",
-                    "GMT 4",
-                    "GMT 5",
-                  ],
-                ),
 
-                ///Space
-                20.pw.spaceVertical,
-
-                /// Station Type
-                AppDropDown<String>(
-                  itemAsString: (e) => e,
-                  hintText: context.l10n?.stationType ?? "",
-                  onChanged: (val) => provider.onChangeStationType(val),
-                  selectedValue: provider.selectedStationType,
-                  header: context.l10n?.stationType ?? "",
-                  error: provider.stationTypeError,
-                  optionsList: ["Station 1", "Station 2", "Station 3"],
-                  headerColor: ColorRes.black,
-                  isMandatory: true,
-                ),
-
-                ///Space
-                20.pw.spaceVertical,
-
-                /// Phone Number
-                AppTextField(
-                  textInputType: TextInputType.numberWithOptions(decimal: true),
-                  controller: provider.phoneNumberController,
-                  header: context.l10n?.phoneNumber ?? "",
-                  hintText: context.l10n?.phoneNumber ?? "",
-                  error: provider.phoneNumberError,
-                  headerColor: ColorRes.black,
-                  isMandatory: true,
-                ),
-              ],
+                  ///Space
+                  10.pw.spaceVertical,
+                ],
+              ),
             ),
           ),
         );

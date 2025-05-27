@@ -56,33 +56,34 @@ class AppTextField extends StatelessWidget {
         if (header != null)
           Padding(
             padding: EdgeInsets.only(bottom: 10.ph),
-            child: isMandatory
-                ? RichText(
-                  text: TextSpan(
-                    text: '* ',
-                    style: TextStyle(color: Colors.red, fontSize: 16),
-                    children: [
-                      TextSpan(
-                        text: header,
-                        style: styleW600S14.copyWith(
-                          color:
-                              headerColor ??
-                              ColorRes.black2.withValues(alpha: 0.6),
-                        ),
+            child:
+                isMandatory
+                    ? RichText(
+                      text: TextSpan(
+                        text: '*',
+                        style: TextStyle(color: Colors.red, fontSize: 16),
+                        children: [
+                          TextSpan(
+                            text: header,
+                            style: styleW600S14.copyWith(
+                              color: ColorRes.black2,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                )
-                : Text(
-              header ?? "",
-              style: styleW400S14.copyWith(
-                color: headerColor ?? ColorRes.black2.withValues(alpha: 0.6),
-              ),
-            ),
+                    )
+                    : Text(
+                      header ?? "",
+                      style: styleW400S14.copyWith(
+                        color:
+                            headerColor ??
+                            ColorRes.black2.withValues(alpha: 0.6),
+                      ),
+                    ),
           ),
 
         TextField(
-          style: styleW400S14,
+          style: styleW600S14,
           controller: controller,
           onTapOutside: (e) => hideKeyboard(context: context),
           keyboardType: textInputType,
@@ -92,7 +93,7 @@ class AppTextField extends StatelessWidget {
           maxLength: maxLength,
           textCapitalization: textCapitalization,
           maxLines: obscureText ? 1 : maxLine,
-          minLines: minLine??1,
+          minLines: minLine ?? 1,
           obscureText: obscureText,
           obscuringCharacter: "*",
           readOnly: readOnly,
@@ -108,9 +109,9 @@ class AppTextField extends StatelessWidget {
             hintText: hintText,
             fillColor: ColorRes.lightGrey2,
 
-
             filled: true,
-            hintStyle: styleW400S14.copyWith(
+
+            hintStyle: styleW500S14.copyWith(
               color:
                   (error ?? '').isNotEmpty
                       ? ColorRes.red

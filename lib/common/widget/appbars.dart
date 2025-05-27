@@ -1,16 +1,18 @@
 import 'package:qbits/qbits.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  final String? title;
   final List<Widget>? actions;
   final Color backgroundColor;
   final bool centerTitle;
   final bool showBackBtn;
+  final Widget? appBarWidget;
 
   const CustomAppBar({
     super.key,
-    required this.title,
+      this.title,
     this.actions,
+    this.appBarWidget,
     this.backgroundColor = ColorRes.primaryColor,
     this.centerTitle = true,
     this.showBackBtn = true,
@@ -19,7 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title, style: styleW600S20.copyWith(color: ColorRes.white)),
+      title: appBarWidget??Text(title??"", style: styleW600S20.copyWith(color: ColorRes.white)),
       centerTitle: centerTitle,
       backgroundColor: backgroundColor,
       leading:

@@ -549,6 +549,24 @@ abstract class AppLocalizations {
   /// **'Send'**
   String get send;
 
+  /// No description provided for @going.
+  ///
+  /// In en, this message translates to:
+  /// **'Going'**
+  String get going;
+
+  /// No description provided for @recovered.
+  ///
+  /// In en, this message translates to:
+  /// **'Recovered'**
+  String get recovered;
+
+  /// No description provided for @fault.
+  ///
+  /// In en, this message translates to:
+  /// **'Fault'**
+  String get fault;
+
   /// No description provided for @mail.
   ///
   /// In en, this message translates to:

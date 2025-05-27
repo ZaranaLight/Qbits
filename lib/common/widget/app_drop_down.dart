@@ -37,7 +37,7 @@ class AppDropDown<T> extends StatelessWidget {
             if (header?.isNotEmpty ?? false)
               isMandatory
                   ? Padding(
-                padding: EdgeInsets.only(bottom: 10.ph),
+                    padding: EdgeInsets.only(bottom: 10.ph),
                     child: RichText(
                       text: TextSpan(
                         text: '* ',
@@ -46,9 +46,7 @@ class AppDropDown<T> extends StatelessWidget {
                           TextSpan(
                             text: header,
                             style: styleW600S14.copyWith(
-                              color:
-                                  headerColor ??
-                                  ColorRes.black2.withValues(alpha: 0.6),
+                              color: ColorRes.black2,
                             ),
                           ),
                         ],
