@@ -17,7 +17,7 @@ class RoleChoiceProvider extends ChangeNotifier {
         context.navigator.pushNamed(IndividualRegistrationScreen.routeName);
         break;
       case UserRole.company:
-        // Navigator.pushNamed(context, CompanyRegistrationScreen.routeName);
+        Navigator.pushNamed(context, CompanyRegistrationScreen.routeName);
         break;
       default:
         debugPrint("Role is not selected.");
