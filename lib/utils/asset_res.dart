@@ -47,6 +47,15 @@ class AssetRes {
   static const sendIcon = "${_icons}send_icon.svg";
   static const mailIcon = "${_icons}mail_icon.svg";
   static const companyCodeIcon = "${_icons}company_code_icon.svg";
+  static const emailIcon = "${_icons}email_icon.svg";
+  static const textIcon = "${_icons}text_icon.svg";
+  static const securityIcon = "${_icons}security_icon.svg";
+  static const currencyIcon = "${_icons}currency_icon.svg";
+  static const signOutIcon = "${_icons}sign_out_icon.svg";
+  static const phoneIcon = "${_icons}phone_icon.svg";
+  static const popUpCloseIcon = "${_icons}popup_close_icon.svg";
+  static const lockIcon = "${_icons}lock_icon.svg";
+  static const profitIcon = "${_icons}profit_icon.svg";
 
   static const greenBatteryIcon = "${_icons}green_battery.svg";
   static const redBatteryIcon = "${_icons}red_battery.svg";
@@ -64,6 +73,7 @@ class AssetRes {
 
   ///__________________________________ images __________________________________///
   static const blueToothMobileImg = "${_images}bluetooth_mobile_img.png";
+  static const profileImg = "${_images}profile_img.png";
 
   ///__________________________________ animations __________________________________///
   static const qrScanAnimation = "${_animations}qr_scan_animation.gif";

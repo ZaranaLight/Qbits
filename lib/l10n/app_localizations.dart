@@ -633,6 +633,66 @@ abstract class AppLocalizations {
   /// **'Dashboard'**
   String get dashboard;
 
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @accountSecurity.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Security'**
+  String get accountSecurity;
+
+  /// No description provided for @currency.
+  ///
+  /// In en, this message translates to:
+  /// **'Currency'**
+  String get currency;
+
+  /// No description provided for @signOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out'**
+  String get signOut;
+
+  /// No description provided for @profileInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Information'**
+  String get profileInformation;
+
+  /// No description provided for @setPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Password'**
+  String get setPassword;
+
+  /// No description provided for @accountCancellation.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Cancellation'**
+  String get accountCancellation;
+
+  /// No description provided for @setProfitComputeMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Profit Compute Mode'**
+  String get setProfitComputeMode;
+
+  /// No description provided for @autoSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto Sign In'**
+  String get autoSignIn;
+
+  /// No description provided for @clickToImproveContentInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Click To Improve Content Information'**
+  String get clickToImproveContentInformation;
+
   /// No description provided for @openSettings.
   ///
   /// In en, this message translates to:

@@ -117,6 +117,34 @@ class RouteManager {
           settings: settings,
         );
 
+      /// Profile Information Screen
+      case ProfileInformationScreen.routeName:
+        return MaterialPageRoute(
+          builder: ProfileInformationScreen.builder,
+          settings: settings,
+        );
+
+      /// Profile Info OTP Verification Screen
+      case ProfileInfoOTPVerificationScreen.routeName:
+        return MaterialPageRoute(
+          builder: ProfileInfoOTPVerificationScreen.builder,
+          settings: settings,
+        );
+
+      /// Account Security Screen
+      case AccountSecurityScreen.routeName:
+        return MaterialPageRoute(
+          builder: AccountSecurityScreen.builder,
+          settings: settings,
+        );
+
+      /// User Center Options Screen
+      case UserCenterOptionsScreen.routeName:
+        return MaterialPageRoute(
+          builder: UserCenterOptionsScreen.builder,
+          settings: settings,
+        );
+
       /// Plant Detail Screen
       case PlantDetailScreen.routeName:
         return MaterialPageRoute(

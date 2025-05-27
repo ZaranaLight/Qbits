@@ -279,6 +279,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dashboard => 'Dashboard';
 
   @override
+  String get profile => 'Profile';
+
+  @override
+  String get accountSecurity => 'Account Security';
+
+  @override
+  String get currency => 'Currency';
+
+  @override
+  String get signOut => 'Sign Out';
+
+  @override
+  String get profileInformation => 'Profile Information';
+
+  @override
+  String get setPassword => 'Set Password';
+
+  @override
+  String get accountCancellation => 'Account Cancellation';
+
+  @override
+  String get setProfitComputeMode => 'Set Profit Compute Mode';
+
+  @override
+  String get autoSignIn => 'Auto Sign In';
+
+  @override
+  String get clickToImproveContentInformation => 'Click To Improve Content Information';
+
+  @override
   String get openSettings => 'Open Settings';
 
   @override
