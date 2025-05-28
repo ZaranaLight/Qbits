@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/auth/bluetooth_manually/bluetooth_manually_provider.dart';
 
 class BluetoothManuallyScreen extends StatelessWidget {
   const BluetoothManuallyScreen({super.key});

@@ -1,5 +1,5 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/inverter/inverter_provider.dart';
+import 'package:qbits/screens/alarm_flow/inverter/inverter_provider.dart';
 
 class InverterScreen extends StatelessWidget {
   const InverterScreen({super.key});
@@ -305,13 +305,17 @@ class InverterScreen extends StatelessWidget {
                                 Text(
                                   'Energy',
                                   style: styleW400S16.copyWith(
-                                    color: ColorRes.black.withValues(alpha: 0.6),
+                                    color: ColorRes.black.withValues(
+                                      alpha: 0.6,
+                                    ),
                                   ),
                                 ),
                                 Text(
                                   '15.4 kWh',
                                   style: styleW600S16.copyWith(
-                                    color: ColorRes.black.withValues(alpha: 0.6),
+                                    color: ColorRes.black.withValues(
+                                      alpha: 0.6,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -324,7 +328,7 @@ class InverterScreen extends StatelessWidget {
                           Divider(color: ColorRes.black.withValues(alpha: 0.1)),
 
                           ///Space
-                         0.pw.spaceVertical,
+                          0.pw.spaceVertical,
 
                           /// Preference Dropdown
                           Padding(
@@ -337,7 +341,9 @@ class InverterScreen extends StatelessWidget {
                               isExpanded: false,
                               underline: SizedBox(),
                               items:
-                                  provider.preferenceOptions.map((String value) {
+                                  provider.preferenceOptions.map((
+                                    String value,
+                                  ) {
                                     return DropdownMenuItem<String>(
                                       value: value,
                                       child: Text(value),
@@ -434,7 +440,9 @@ class InverterScreen extends StatelessWidget {
                                   borderData: FlBorderData(
                                     show: true,
                                     border: Border.all(
-                                      color: Colors.black.withValues(alpha: 0.1),
+                                      color: Colors.black.withValues(
+                                        alpha: 0.1,
+                                      ),
                                     ),
                                   ),
                                 ),

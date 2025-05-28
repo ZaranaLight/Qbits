@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/auth/company_registartion/company_registartion_screen.dart';
 
 class RoleChoiceProvider extends ChangeNotifier {
   UserRole? role;

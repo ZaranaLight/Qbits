@@ -1,17 +1,14 @@
 import 'package:qbits/qbits.dart';
 
-import 'package:qbits/screens/account_security/account_security_provider.dart';
-import 'package:qbits/screens/account_security/user_center_option.dart';
+class UserCenterOptionsScreen extends StatelessWidget {
+  const UserCenterOptionsScreen({super.key});
 
-class AccountSecurityScreen extends StatelessWidget {
-  const AccountSecurityScreen({super.key});
-
-  static const routeName = "account_security_screen";
+  static const routeName = "user_center_options_screen";
 
   static Widget builder(BuildContext context) {
     return ChangeNotifierProvider<AccountSecurityProvider>(
       create: (c) => AccountSecurityProvider(),
-      child: AccountSecurityScreen(),
+      child: UserCenterOptionsScreen(),
     );
   }
 
@@ -21,7 +18,7 @@ class AccountSecurityScreen extends StatelessWidget {
       builder: (context, provider, child) {
         return Scaffold(
           backgroundColor: ColorRes.white,
-          appBar: CustomAppBar(title: context.l10n?.accountSecurity ?? ""),
+          appBar: CustomAppBar(title: context.l10n?.userCenter ?? ""),
           body: CustomSingleChildScroll(
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
@@ -49,46 +46,6 @@ class AccountSecurityScreen extends StatelessWidget {
                           children: [
                             SvgAsset(
                               width: 20.pw,
-                              imagePath: AssetRes.phoneIcon,
-                            ),
-
-                            /// Space
-                            10.pw.spaceHorizontal,
-
-                            Text(
-                              context.l10n?.phoneNumber ?? "",
-                              style: styleW600S16.copyWith(
-                                color: ColorRes.black2,
-                              ),
-                            ),
-
-                            Spacer(),
-
-                            /// Forward Icon
-                            SvgAsset(imagePath: AssetRes.forwardIcon),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 15.ph),
-                      height: 1.ph,
-                      color: ColorRes.black.withValues(alpha: 0.1),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: InkWell(
-                        onTap: () {
-                          context.navigator.pushNamed(
-                            UserCenterOptionsScreen.routeName,
-                          );
-                        },
-                        child: Row(
-                          children: [
-                            SvgAsset(
-                              width: 18.pw,
                               imagePath: AssetRes.lockIcon,
                             ),
 
@@ -128,15 +85,55 @@ class AccountSecurityScreen extends StatelessWidget {
                         child: Row(
                           children: [
                             SvgAsset(
-                              width: 20.pw,
-                              imagePath: AssetRes.deleteIcon,
+                              width: 18.pw,
+                              imagePath: AssetRes.profitIcon,
                             ),
 
                             /// Space
                             10.pw.spaceHorizontal,
 
                             Text(
-                              context.l10n?.accountCancellation ?? "",
+                              context.l10n?.setProfitComputeMode ?? "",
+                              style: styleW600S16.copyWith(
+                                color: ColorRes.black2,
+                              ),
+                            ),
+
+                            Spacer(),
+
+                            /// Forward Icon
+                            SvgAsset(imagePath: AssetRes.forwardIcon),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 15.ph),
+                      height: 1.ph,
+                      color: ColorRes.black.withValues(alpha: 0.1),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5),
+                      child: InkWell(
+                        onTap: () {
+                          // context.navigator.pushNamed(
+                          //   MyWatchlistScreen.routeName,
+                          // );
+                        },
+                        child: Row(
+                          children: [
+                            SvgAsset(
+                              width: 20.pw,
+                              imagePath: AssetRes.profileIcon,
+                            ),
+
+                            /// Space
+                            10.pw.spaceHorizontal,
+
+                            Text(
+                              context.l10n?.autoSignIn ?? "",
                               style: styleW600S16.copyWith(
                                 color: ColorRes.black2,
                               ),

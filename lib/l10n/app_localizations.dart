@@ -633,6 +633,36 @@ abstract class AppLocalizations {
   /// **'Auto Sign In'**
   String get autoSignIn;
 
+  /// No description provided for @endUser.
+  ///
+  /// In en, this message translates to:
+  /// **'End User'**
+  String get endUser;
+
+  /// No description provided for @qa.
+  ///
+  /// In en, this message translates to:
+  /// **'QA'**
+  String get qa;
+
+  /// No description provided for @noEquipment.
+  ///
+  /// In en, this message translates to:
+  /// **'No Equipment'**
+  String get noEquipment;
+
+  /// No description provided for @privacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicy;
+
+  /// No description provided for @operationGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Operation Guide'**
+  String get operationGuide;
+
   /// No description provided for @enterMailBox.
   ///
   /// In en, this message translates to:

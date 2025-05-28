@@ -1,6 +1,5 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/account_security/account_security_screen.dart';
-import 'package:qbits/screens/profile_information/profile_info_screen.dart';
+import 'package:qbits/screens/user_center_flow/currency/curency_screen.dart';
 
 class UserCenterScreen extends StatelessWidget {
   const UserCenterScreen({super.key});
@@ -92,6 +91,7 @@ class UserCenterScreen extends StatelessWidget {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
+                                            ///Guest
                                             Text(
                                               "Guest",
                                               style: styleW600S16.copyWith(
@@ -99,6 +99,7 @@ class UserCenterScreen extends StatelessWidget {
                                               ),
                                             ),
 
+                                            ///Company Code
                                             Text(
                                               context.l10n?.companyCode ?? "",
                                               style: styleW400S12.copyWith(
@@ -161,8 +162,10 @@ class UserCenterScreen extends StatelessWidget {
                             ),
                             child: Column(
                               children: [
+                                ///Space
                                 5.ph.spaceVertical,
 
+                                ///Security
                                 Padding(
                                   padding: const EdgeInsets.only(left: 5),
                                   child: InkWell(
@@ -187,8 +190,6 @@ class UserCenterScreen extends StatelessWidget {
                                           ),
                                         ),
 
-                                        Spacer(),
-
                                         /// Forward Icon
                                         SvgAsset(
                                           imagePath: AssetRes.forwardIcon,
@@ -209,7 +210,7 @@ class UserCenterScreen extends StatelessWidget {
                                   child: InkWell(
                                     onTap: () {
                                       context.navigator.pushNamed(
-                                        MyWatchlistScreen.routeName,
+                                        CurrencyScreen.routeName,
                                       );
                                     },
                                     child: Row(

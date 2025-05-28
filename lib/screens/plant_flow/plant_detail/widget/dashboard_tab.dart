@@ -309,8 +309,8 @@ class DashBoardTab extends StatelessWidget {
               height: 286.ph,
               enlargeCenterPage: false,
               autoPlay: false,
-              viewportFraction:
-                  1.0, // Makes each item take full width of the screen
+              viewportFraction: 1.0,
+              // Makes each item take full width of the screen
               autoPlayInterval: Duration(seconds: 3),
             ),
           ),
@@ -568,8 +568,10 @@ class _DashboardBarChartTabsState extends State<DashboardBarChartTabs>
             drawVerticalLine: false,
             horizontalInterval: 2000,
             getDrawingHorizontalLine:
-                (value) =>
-                    FlLine(color: Colors.grey.withValues(alpha: 0.3), strokeWidth: 1),
+                (value) => FlLine(
+                  color: Colors.grey.withValues(alpha: 0.3),
+                  strokeWidth: 1,
+                ),
           ),
           titlesData: FlTitlesData(
             bottomTitles: AxisTitles(

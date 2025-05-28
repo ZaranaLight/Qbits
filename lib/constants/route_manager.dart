@@ -1,9 +1,6 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/account_security/account_security_screen.dart';
-import 'package:qbits/screens/account_security/user_center_option.dart';
-import 'package:qbits/screens/auth/company_registartion/company_registartion_screen.dart';
-import 'package:qbits/screens/inverter/inverter_screen.dart';
-import 'package:qbits/screens/profile_information/profile_info_screen.dart';
+import 'package:qbits/screens/user_center_flow/currency/curency_screen.dart';
+import 'package:qbits/screens/user_center_flow/end_user/end_user_screen.dart';
 
 class RouteManager {
   static String get initialRoute => SplashScreen.routeName;
@@ -157,35 +154,48 @@ class RouteManager {
           settings: settings,
         );
 
-
-    /// Profile Information Screen
+      /// Profile Information Screen
       case ProfileInformationScreen.routeName:
         return MaterialPageRoute(
           builder: ProfileInformationScreen.builder,
           settings: settings,
         );
 
-    /// Profile Info OTP Verification Screen
+      /// Profile Info OTP Verification Screen
       case ProfileInfoOTPVerificationScreen.routeName:
         return MaterialPageRoute(
           builder: ProfileInfoOTPVerificationScreen.builder,
           settings: settings,
         );
 
-    /// Account Security Screen
+      /// Account Security Screen
       case AccountSecurityScreen.routeName:
         return MaterialPageRoute(
           builder: AccountSecurityScreen.builder,
           settings: settings,
         );
 
-    /// builderUser Center Options Screen
+      /// builderUser Center Options Screen
       case UserCenterOptionsScreen.routeName:
         return MaterialPageRoute(
           builder: UserCenterOptionsScreen.builder,
           settings: settings,
         );
 
+      /// Currency Screen
+      case CurrencyScreen.routeName:
+        return MaterialPageRoute(
+          builder: CurrencyScreen.builder,
+          settings: settings,
+        );
+
+
+      /// Currency Screen
+      case EndUserScreen.routeName:
+        return MaterialPageRoute(
+          builder: EndUserScreen.builder,
+          settings: settings,
+        );
 
       default:
         return MaterialPageRoute(

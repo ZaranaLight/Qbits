@@ -18,6 +18,7 @@ class SearchTextField extends StatelessWidget {
     this.textCapitalization = TextCapitalization.none,
     this.showMandatoryIcon = false,
     this.readOnly = false,
+    this.fillColor,
     this.onSuffixTap,
     this.header,
   });
@@ -39,6 +40,7 @@ class SearchTextField extends StatelessWidget {
   final bool showMandatoryIcon;
   final bool readOnly;
   final String? header;
+  final Color? fillColor;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,7 @@ class SearchTextField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         isDense: true,
-        fillColor: ColorRes.white.withValues(alpha: 0.14),
+        fillColor: fillColor??ColorRes.white.withValues(alpha: 0.14),
         filled: true,
         hintStyle: styleW400S14.copyWith(color: ColorRes.white),
         contentPadding: EdgeInsets.only(

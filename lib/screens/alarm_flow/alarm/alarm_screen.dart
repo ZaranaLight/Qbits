@@ -1,5 +1,5 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/alarm/widget/alarm_list_widget.dart';
+import 'package:qbits/screens/alarm_flow/alarm/widget/alarm_list_widget.dart';
 
 class AlarmScreen extends StatelessWidget {
   const AlarmScreen({super.key});

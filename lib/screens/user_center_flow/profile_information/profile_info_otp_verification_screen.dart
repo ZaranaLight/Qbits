@@ -39,7 +39,9 @@ class ProfileInfoOTPVerificationScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              bottom: Constants.safeAreaPadding.bottom + Constants.horizontalPadding,
+              bottom:
+                  Constants.safeAreaPadding.bottom +
+                  Constants.horizontalPadding,
               top: 20.pw,
             ),
             child: Column(
@@ -62,9 +64,16 @@ class ProfileInfoOTPVerificationScreen extends StatelessWidget {
 
                 Pinput(
                   length: 6,
-                  onCompleted: (str) => context.read<ProfileInformationProvider>().onVerifyTap(context),
-                  onSubmitted: (str) => context.read<ProfileInformationProvider>().onVerifyTap(context),
-                  onChanged: context.read<ProfileInformationProvider>().onOtpChanged,
+                  onCompleted:
+                      (str) => context
+                          .read<ProfileInformationProvider>()
+                          .onVerifyTap(context),
+                  onSubmitted:
+                      (str) => context
+                          .read<ProfileInformationProvider>()
+                          .onVerifyTap(context),
+                  onChanged:
+                      context.read<ProfileInformationProvider>().onOtpChanged,
                   autofocus: true,
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
                   defaultPinTheme: pinTheme(),

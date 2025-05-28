@@ -279,6 +279,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get autoSignIn => 'Auto Sign In';
 
   @override
+  String get endUser => 'End User';
+
+  @override
+  String get qa => 'QA';
+
+  @override
+  String get noEquipment => 'No Equipment';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get operationGuide => 'Operation Guide';
+
+  @override
   String get enterMailBox => 'Enter Mail Box';
 
   @override

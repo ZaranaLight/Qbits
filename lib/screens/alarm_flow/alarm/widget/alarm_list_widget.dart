@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/inverter/inverter_screen.dart';
 
 class AlarmListWidget extends StatelessWidget {
   final String? alarmType;
