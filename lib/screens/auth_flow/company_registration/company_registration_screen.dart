@@ -23,9 +23,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              bottom:
-                  Constants.safeAreaPadding.bottom +
-                  Constants.horizontalPadding,
+              bottom: Constants.safeAreaPadding.bottom + Constants.horizontalPadding,
               top: 20.pw,
             ),
             child: Column(

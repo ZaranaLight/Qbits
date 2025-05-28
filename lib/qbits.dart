@@ -41,6 +41,7 @@ export 'package:qbits/screens/dashboard_flow/dashboard/dashboard_screen.dart';
 export 'package:qbits/common/widget/custom_scroll.dart';
 export 'package:qbits/screens/auth_flow/select_region/select_region_provider.dart';
 export 'package:qbits/screens/auth_flow/select_region/select_region_screen.dart';
+export 'package:qbits/screens/auth_flow/select_region/select_region_description_screen.dart';
 export 'package:qbits/common/widget/app_text_form_field.dart';
 export 'package:qbits/common/widget/buttons.dart';
 export 'package:qbits/common/widget/appbars.dart';
@@ -98,6 +99,9 @@ export 'package:qbits/screens/user_center_flow/profile_information/profile_info_
 export 'package:qbits/screens/user_center_flow/profile_information/profile_info_provider.dart';
 export 'package:qbits/screens/user_center_flow/account_security/account_security_screen.dart';
 export 'package:qbits/screens/user_center_flow/user_center/user_center_screen.dart';
+export 'package:qbits/screens/user_center_flow/account_security/user_center_option.dart';
+export 'package:qbits/screens/user_center_flow/guest/guest_provider.dart';
+export 'package:qbits/screens/user_center_flow/guest/guest_screen.dart';
 export 'package:qbits/screens/auth_flow/company_registration/company_registration_screen.dart';
 export 'package:qbits/screens/alarm_flow/inverter/inverter_screen.dart';
 export 'package:qbits/screens/user_center_flow/profile_information/profile_info_screen.dart';
@@ -108,6 +112,10 @@ export 'package:qbits/screens/user_center_flow/profit_compute_mode/profit_comput
 export 'package:qbits/screens/user_center_flow/currency/currency_screen.dart';
 export 'package:qbits/screens/user_center_flow/end_user/end_user_provider.dart';
 export 'package:qbits/screens/user_center_flow/end_user/end_user_screen.dart';
+export 'package:qbits/screens/user_center_flow/account_cancellation/account_cancellation_provider.dart';
+export 'package:qbits/screens/user_center_flow/account_cancellation/account_cancellation_screen.dart';
+export 'package:qbits/screens/user_center_flow/set_password/set_password_provider.dart';
+export 'package:qbits/screens/user_center_flow/set_password/set_password_screen.dart';
 export 'package:qbits/screens/auth_flow/bluetooth_manually/bluetooth_manually_provider.dart';
 export 'package:qbits/screens/user_center_flow/guest/guest_screen.dart';
 export 'package:qbits/screens/user_center_flow/user_center/user_center_provider.dart';

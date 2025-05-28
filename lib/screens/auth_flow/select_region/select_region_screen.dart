@@ -124,7 +124,11 @@ class SelectRegionScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerRight,
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      context.navigator.pushNamed(
+                        SelectRegionDescriptionScreen.routeName,
+                      );
+                    },
                     borderRadius: BorderRadius.circular(5.pw),
                     child: Padding(
                       padding: EdgeInsets.all(5.pw),

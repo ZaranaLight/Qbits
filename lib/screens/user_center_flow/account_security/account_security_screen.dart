@@ -1,4 +1,3 @@
-import 'package:qbits/common/widget/app_tab_widget.dart';
 import 'package:qbits/qbits.dart';
 
 class AccountSecurityScreen extends StatelessWidget {

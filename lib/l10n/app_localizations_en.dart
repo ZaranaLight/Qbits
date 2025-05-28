@@ -33,6 +33,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectRegion => 'Select Region';
 
   @override
+  String get selectRegionDescription => 'Select Region Description';
+
+  @override
   String get pleaseSelectTheRegionThatCorrespondsTo => 'Please Select the region that corresponds to \nyour business scope. The system will provide\naccess to dataand services specific to your.';
 
   @override
@@ -213,6 +216,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get accountCancellation => 'Account Cancellation';
 
   @override
+  String get submit => 'Submit';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get howDoIAddressYou => 'How do i address you';
+
+  @override
+  String get qq => 'QQ';
+
+  @override
+  String get contactInformation => 'Contact Information';
+
+  @override
+  String get questionOrSuggestion => 'Question or Suggestion';
+
+  @override
   String get currency => 'Currency';
 
   @override
@@ -285,6 +306,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordIsRequired => 'Password Is Required';
 
   @override
+  String get originalPasswordIsRequired => 'Original Password Is Required';
+
+  @override
+  String get newPasswordIsRequired => 'New Password Is Required';
+
+  @override
   String get stationNameIsRequired => 'Station Name Is Required';
 
   @override
@@ -295,6 +322,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwordAndConfirmPasswordIsNotMatching => 'Password and Confirm Password Isn\'t Matching';
+
+  @override
+  String get confirmNewPasswordIsRequired => 'Confirm New Password Is Required';
+
+  @override
+  String get newPasswordAndConfirmNewPasswordIsNotMatching => 'New Password and Confirm New Password Isn\'t Matching';
 
   @override
   String get yourCityIsRequired => 'Your City Is Required';
@@ -340,6 +373,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get setPassword => 'Set Password';
+
+  @override
+  String get originalPassword => 'Original Password';
+
+  @override
+  String get enterOriginalPassword => 'Enter Original Password';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get enterNewPassword => 'Enter New Password';
+
+  @override
+  String get confirmNewPassword => 'Confirm New Password';
+
+  @override
+  String get enterConfirmNewPassword => 'Enter Confirm New Password';
 
   @override
   String get setProfitComputeMode => 'Set Profit Compute Mode';

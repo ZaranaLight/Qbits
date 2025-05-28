@@ -49,6 +49,13 @@ class RouteManager {
           settings: settings,
         );
 
+      /// Select Region Description Screen
+      case SelectRegionDescriptionScreen.routeName:
+        return MaterialPageRoute(
+          builder: SelectRegionDescriptionScreen.builder,
+          settings: settings,
+        );
+
       /// Select Language Screen
       case SelectLanguageScreen.routeName:
         return MaterialPageRoute(
@@ -175,10 +182,26 @@ class RouteManager {
           settings: settings,
         );
 
+      /// Account Cancellation Screen
+      case AccountCancellationScreen.routeName:
+        return MaterialPageRoute(
+          builder: AccountCancellationScreen.builder,
+          settings: settings,
+        );
+
+      /// User Center Options Screen
+      case UserCenterOptionsScreen.routeName:
       ///User Center Screen
       case UserCenterScreen.routeName:
         return MaterialPageRoute(
           builder: UserCenterScreen.builder,
+          settings: settings,
+        );
+
+      /// Set Password Screen
+      case SetPasswordScreen.routeName:
+        return MaterialPageRoute(
+          builder: SetPasswordScreen.builder,
           settings: settings,
         );
 
