@@ -58,13 +58,19 @@ class IndividualRegistrationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> scanQRCode(BuildContext context) async {
+  Future<void> scanQRCode(BuildContext context, String scannedQR) async {
     final scannedResult = await context.navigator.push<String>(
       MaterialPageRoute(builder: (_) => QRScannerScreen()),
     );
 
     if (scannedResult != null && scannedResult.isNotEmpty) {
-      modelController.text = scannedResult;
+      if(scannedQR == 'model') {
+        modelController.text = scannedResult;
+      }
+
+      if(scannedQR == 'collector_address') {
+        collectorAddressController.text = scannedResult;
+      }
       notifyListeners(); // notify UI about the change
     }
   }

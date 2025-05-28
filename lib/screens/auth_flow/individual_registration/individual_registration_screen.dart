@@ -70,7 +70,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
                     hintText: context.l10n?.model ?? "",
                     error: provider.modelError,
                     suffixIcon: InkWell(
-                      onTap: () => provider.scanQRCode(context),
+                      onTap: () => provider.scanQRCode(context, 'model'),
                       child: SvgAsset(
                         imagePath: AssetRes.scannerIcon,
                         color: ColorRes.black.withValues(alpha: 0.5),
@@ -172,9 +172,12 @@ class IndividualRegistrationScreen extends StatelessWidget {
                     header: context.l10n?.collectorAddress ?? "",
                     hintText: context.l10n?.collectorAddress ?? "",
                     error: provider.collectorAddressError,
-                    suffixIcon: SvgAsset(
-                      imagePath: AssetRes.scannerIcon,
-                      color: ColorRes.black.withValues(alpha: 0.5),
+                    suffixIcon: InkWell(
+                      onTap: () => provider.scanQRCode(context, 'collector_address'),
+                      child: SvgAsset(
+                        imagePath: AssetRes.scannerIcon,
+                        color: ColorRes.black.withValues(alpha: 0.5),
+                      ),
                     ),
                   ),
 

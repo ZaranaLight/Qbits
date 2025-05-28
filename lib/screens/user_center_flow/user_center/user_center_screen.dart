@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/user_center_flow/currency/curency_screen.dart';
 
 class UserCenterScreen extends StatelessWidget {
   const UserCenterScreen({super.key});

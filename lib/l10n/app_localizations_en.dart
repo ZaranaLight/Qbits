@@ -141,30 +141,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get guidance => 'Guidance';
 
   @override
-  String get passwordAndConfirmPasswordIsNotMatching => 'Password and Confirm Password is not matching';
-
-  @override
-  String get yourCityIsRequired => 'Your City is Required';
-
-  @override
-  String get collectorAddressIsRequired => 'Collector Address is Required';
-
-  @override
-  String get timezoneIsRequired => 'Timezone is Required';
-
-  @override
-  String get stationTypeIsRequired => 'Station Type is Required';
-
-  @override
-  String get stationNameIsRequired => 'Station Name is Required';
-
-  @override
-  String get modelIsRequired => 'Model is Required';
-
-  @override
-  String get phoneNumberIsRequired => 'Phone Number is Required';
-
-  @override
   String get required => 'Station Owner Is Required';
 
   @override
@@ -174,28 +150,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enterValid10DigitPhoneNumber => 'Enter a valid 10-digit phone number';
 
   @override
-  String get confirmPasswordIsRequired => 'Confirm Password is Required';
-
-  @override
   String get stationOwner => 'Station Owner';
 
   @override
   String get company => 'Company';
-
-  @override
-  String get companyCodeIsRequired => 'Company Code Is Required';
-
-  @override
-  String get mailIsRequired => 'Mail Is Required';
-
-  @override
-  String get mailIsNotValid => 'Mail Is Not Valid';
-
-  @override
-  String get verificationCodeIsRequired => 'Verification Code Is Required';
-
-  @override
-  String get verificationCodeIsntMatching => 'Verification Code Isn\'t Matching';
 
   @override
   String get installer => 'Installer';
@@ -327,13 +285,73 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordIsRequired => 'Password Is Required';
 
   @override
+  String get stationNameIsRequired => 'Station Name Is Required';
+
+  @override
+  String get modelIsRequired => 'Model Is Required';
+
+  @override
+  String get confirmPasswordIsRequired => 'Confirm Password Is Required';
+
+  @override
+  String get passwordAndConfirmPasswordIsNotMatching => 'Password and Confirm Password Isn\'t Matching';
+
+  @override
+  String get yourCityIsRequired => 'Your City Is Required';
+
+  @override
+  String get collectorAddressIsRequired => 'Collector Address Is Required';
+
+  @override
+  String get timezoneIsRequired => 'Timezone Is Required';
+
+  @override
+  String get stationTypeIsRequired => 'Station Type Is Required';
+
+  @override
+  String get phoneNumberIsRequired => 'Phone Number Is Required';
+
+  @override
+  String get companyCodeIsRequired => 'Company Code Is Required';
+
+  @override
+  String get mailIsRequired => 'Mail Is Required';
+
+  @override
+  String get mailIsNotValid => 'Mail Is Not Valid';
+
+  @override
+  String get verificationCodeIsRequired => 'Verification Code Is Required';
+
+  @override
+  String get verificationCodeIsntMatching => 'Verification Code Isn\'t Matching';
+
+  @override
   String get continueCap => 'Continue';
 
   @override
-  String get pleaseUseYourPhoneNumberOrEmailToObtain => 'Please use your phone number or email  to obtain \nthe verification code';
+  String get pleaseUseYourPhoneNumberOrEmailToObtain => 'Please use your phone number or email  to obtain the verification code';
 
   @override
   String get dashboard => 'Dashboard';
+
+  @override
+  String get profitComputeMode => 'Profit Compute Mode';
+
+  @override
+  String get myProfit => 'My Profit';
+
+  @override
+  String get totalEnergy => 'Total Energy';
+
+  @override
+  String get averageElectricPrice => 'Average Electric Price';
+
+  @override
+  String get parameterSet => 'Parameter Set';
+
+  @override
+  String get energySubsidizedPrice => 'Energy Subsidized Price';
 
   @override
   String get openSettings => 'Open Settings';

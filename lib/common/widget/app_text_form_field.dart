@@ -23,7 +23,10 @@ class AppTextField extends StatelessWidget {
     this.isMandatory = false,
     this.headerColor,
     this.onSuffixTap,
+    this.isDense,
     this.header,
+    this.customBorder,
+    this.customPadding,
   });
 
   final String? hintText;
@@ -45,7 +48,10 @@ class AppTextField extends StatelessWidget {
   final bool readOnly;
   final bool isMandatory;
   final Color? headerColor;
+  final bool? isDense;
   final String? header;
+  final InputBorder? customBorder;
+  final EdgeInsets? customPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -108,29 +114,28 @@ class AppTextField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hintText,
             fillColor: ColorRes.lightGrey2,
-
+            isDense: isDense ?? false,
             filled: true,
-
             hintStyle: styleW500S14.copyWith(
               color:
                   (error ?? '').isNotEmpty
                       ? ColorRes.red
                       : ColorRes.black.withValues(alpha: 0.3),
             ),
-            contentPadding: EdgeInsets.only(
+            contentPadding: customPadding ?? EdgeInsets.only(
               left: 12.pw,
               right: 12.pw,
               top: 10,
               bottom: 8,
             ),
-            border: inputBorder(),
-            focusedBorder: inputBorder().copyWith(
+            border: customBorder ?? inputBorder(),
+            focusedBorder: (customBorder ?? inputBorder()).copyWith(
               borderSide: BorderSide(color: ColorRes.primaryColor),
             ),
-            disabledBorder: inputBorder(),
-            errorBorder: inputBorder(),
-            focusedErrorBorder: inputBorder(),
-            enabledBorder: inputBorder(),
+            disabledBorder: customBorder ?? inputBorder(),
+            errorBorder: customBorder ?? inputBorder(),
+            focusedErrorBorder: customBorder ?? inputBorder(),
+            enabledBorder: customBorder ?? inputBorder(),
             prefixIcon: prefixIcon,
             suffixIconConstraints: BoxConstraints(maxWidth: 44, maxHeight: 40),
             suffixIcon: InkWell(

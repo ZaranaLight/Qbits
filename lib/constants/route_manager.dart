@@ -183,6 +183,13 @@ class RouteManager {
           settings: settings,
         );
 
+      /// Profit Compute Mode Screen
+      case ProfitComputeModeScreen.routeName:
+        return MaterialPageRoute(
+          builder: ProfitComputeModeScreen.builder,
+          settings: settings,
+        );
+
       /// Currency Screen
       case CurrencyScreen.routeName:
         return MaterialPageRoute(
@@ -191,7 +198,7 @@ class RouteManager {
         );
 
 
-      /// Currency Screen
+      /// End User Screen
       case EndUserScreen.routeName:
         return MaterialPageRoute(
           builder: EndUserScreen.builder,
