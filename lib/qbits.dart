@@ -99,7 +99,6 @@ export 'package:qbits/screens/user_center_flow/profile_information/profile_info_
 export 'package:qbits/screens/user_center_flow/profile_information/profile_info_provider.dart';
 export 'package:qbits/screens/user_center_flow/account_security/account_security_screen.dart';
 export 'package:qbits/screens/user_center_flow/user_center/user_center_screen.dart';
-export 'package:qbits/screens/user_center_flow/account_security/user_center_option.dart';
 export 'package:qbits/screens/user_center_flow/guest/guest_provider.dart';
 export 'package:qbits/screens/user_center_flow/guest/guest_screen.dart';
 export 'package:qbits/screens/auth_flow/company_registration/company_registration_screen.dart';
@@ -117,6 +116,9 @@ export 'package:qbits/screens/user_center_flow/account_cancellation/account_canc
 export 'package:qbits/screens/user_center_flow/set_password/set_password_provider.dart';
 export 'package:qbits/screens/user_center_flow/set_password/set_password_screen.dart';
 export 'package:qbits/screens/auth_flow/bluetooth_manually/bluetooth_manually_provider.dart';
-export 'package:qbits/screens/user_center_flow/guest/guest_screen.dart';
 export 'package:qbits/screens/user_center_flow/user_center/user_center_provider.dart';
+export 'package:qbits/screens/user_center_flow/end_user/widget/end_user_list_widget.dart';
+export 'package:qbits/screens/user_center_flow/qa/qa_screen.dart';
+
+
 

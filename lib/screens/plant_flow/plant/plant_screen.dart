@@ -193,22 +193,28 @@ class _TabContent extends StatelessWidget {
         16.ph.spaceVertical,
 
         Expanded(
-          child: CustomListView(
-            itemCount: 10,
-            separatorBuilder: (ctx, ind) {
-              return Container(
-                margin: EdgeInsets.symmetric(vertical: 20.ph),
-                height: 1.ph,
-                width: 100.pw,
-                color: ColorRes.black.withValues(alpha: 0.1),
-              );
-            },
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.pw),
-                child: MyWatchlistCell(),
-              );
-            },
+          child:   Container(
+            padding: EdgeInsets.symmetric(vertical: 16.pw),
+            decoration: BoxDecoration(
+                color: ColorRes.white
+            ),
+            child: CustomListView(
+              itemCount: 10,
+              separatorBuilder: (ctx, ind) {
+                return Container(
+                  margin: EdgeInsets.symmetric(vertical: 20.ph),
+                  height: 1.ph,
+                  width: 100.pw,
+                  color: ColorRes.black.withValues(alpha: 0.1),
+                );
+              },
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.pw),
+                  child: MyWatchlistCell(),
+                );
+              },
+            ),
           ),
         ),
 

@@ -3,7 +3,7 @@ import 'package:qbits/qbits.dart';
 class SelectRegionDescriptionScreen extends StatelessWidget {
   const SelectRegionDescriptionScreen({super.key});
 
-  static const routeName = "account_cancellation_screen";
+  static const routeName = "select_region_description";
 
   static Widget builder(BuildContext context) {
     return ChangeNotifierProvider<SelectRegionProvider>(
@@ -18,25 +18,26 @@ class SelectRegionDescriptionScreen extends StatelessWidget {
       builder: (context, provider, child) {
         return Scaffold(
           backgroundColor: ColorRes.white,
-          appBar: CustomAppBar(title: context.l10n?.selectRegionDescription ?? ""),
+          appBar: CustomAppBar(
+            title: context.l10n?.selectRegionDescription ?? "",
+          ),
           body: CustomSingleChildScroll(
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              bottom: Constants.safeAreaPadding.bottom + Constants.horizontalPadding,
+              bottom:
+                  Constants.safeAreaPadding.bottom +
+                  Constants.horizontalPadding,
               top: 20.pw,
             ),
             child: Column(
               children: [
-
                 Text(
                   "Lorem Ipsum is simply dummy text of the printing and "
                   "setting industry. Lorem Ipsum has been the industry's "
                   "standard dummy text ever since the 1500s, when an"
                   "unknown printer took a galley of type.",
-                  style: styleW400S14.copyWith(
-                    color: ColorRes.black2,
-                  ),
+                  style: styleW400S14.copyWith(color: ColorRes.black2),
                 ),
 
                 /// Space
@@ -44,9 +45,7 @@ class SelectRegionDescriptionScreen extends StatelessWidget {
 
                 Text(
                   "What is Lorem Ipsum?",
-                  style: styleW600S14.copyWith(
-                    color: ColorRes.black2,
-                  ),
+                  style: styleW600S14.copyWith(color: ColorRes.black2),
                 ),
 
                 /// Space
@@ -57,9 +56,7 @@ class SelectRegionDescriptionScreen extends StatelessWidget {
                   "setting industry. Lorem Ipsum has been the industry's"
                   "standard dummy text ever since the 1500s, when an"
                   "unknown printer took a galley of type.",
-                  style: styleW400S14.copyWith(
-                    color: ColorRes.black2,
-                  ),
+                  style: styleW400S14.copyWith(color: ColorRes.black2),
                 ),
 
                 /// Space
@@ -70,9 +67,7 @@ class SelectRegionDescriptionScreen extends StatelessWidget {
                   "setting industry. Lorem Ipsum has been the industry's"
                   "standard dummy text ever since the 1500s, when an"
                   "unknown printer took a galley of type.",
-                  style: styleW400S14.copyWith(
-                    color: ColorRes.black2,
-                  ),
+                  style: styleW400S14.copyWith(color: ColorRes.black2),
                 ),
               ],
             ),

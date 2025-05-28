@@ -38,7 +38,11 @@ class UserCenterScreen extends StatelessWidget {
                     _TabWidget(
                       title: context.l10n?.setPassword ?? "",
                       imagePath: AssetRes.lockIcon,
-                      onTap: () {},
+                      onTap: () {
+                        context.navigator.pushNamed(
+                          SetPasswordScreen.routeName,
+                        );
+                      },
                     ),
 
                     /// Divider
@@ -71,10 +75,8 @@ class UserCenterScreen extends StatelessWidget {
                       trailingWidget: SizedBox(
                         height: 20.pw,
                         child: Switch(
-                          // This bool value toggles the switch.
                           value: provider.isAutoSignInOn,
                           padding: EdgeInsets.zero,
-
                           activeColor: ColorRes.primaryColor,
                           inactiveThumbColor: ColorRes.lightGrey,
                           trackOutlineColor:

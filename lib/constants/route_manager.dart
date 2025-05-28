@@ -1,6 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/user_center_flow/guest/guest_screen.dart';
-import 'package:qbits/screens/user_center_flow/qa/qa_screen.dart';
 
 class RouteManager {
   static String get initialRoute => SplashScreen.routeName;
@@ -189,8 +187,6 @@ class RouteManager {
           settings: settings,
         );
 
-      /// User Center Options Screen
-      case UserCenterOptionsScreen.routeName:
       ///User Center Screen
       case UserCenterScreen.routeName:
         return MaterialPageRoute(

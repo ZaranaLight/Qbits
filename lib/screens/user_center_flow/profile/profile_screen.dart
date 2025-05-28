@@ -204,12 +204,12 @@ class ProfileScreen extends StatelessWidget {
                                   imagePath: AssetRes.logoutIcon,
                                   isLogout: true,
                                   onTap: () {
-                                    context.navigator.pushNamed(
+                                    context.navigator.pushNamedAndRemoveUntil(
                                       SignInScreen.routeName,
+                                      (route) => false,
                                     );
                                   },
                                 ),
-
 
                                 5.ph.spaceVertical,
                               ],
