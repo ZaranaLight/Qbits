@@ -210,13 +210,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileInformation => 'Profile Information';
 
   @override
-  String get accountSecurity => 'Account Security';
-
-  @override
   String get accountCancellation => 'Account Cancellation';
-
-  @override
-  String get setPassword => 'Set Password';
 
   @override
   String get currency => 'Currency';
@@ -229,9 +223,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'Profile';
-
-  @override
-  String get setProfitComputeMode => 'Set Profit Compute Mode';
 
   @override
   String get autoSignIn => 'Auto Sign In';
@@ -256,6 +247,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get enterMailBox => 'Enter Mail Box';
+
+  @override
+  String get realTimePower => 'Real Time Power';
+
+  @override
+  String get generationToday => 'Generation Today';
+
+  @override
+  String get cumulativeGeneration => 'Cumulative Generation';
 
   @override
   String get code => 'Code';
@@ -334,6 +334,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dashboard => 'Dashboard';
+
+  @override
+  String get accountSecurity => 'Account Security';
+
+  @override
+  String get setPassword => 'Set Password';
+
+  @override
+  String get setProfitComputeMode => 'Set Profit Compute Mode';
 
   @override
   String get profitComputeMode => 'Profit Compute Mode';

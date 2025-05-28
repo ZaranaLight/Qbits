@@ -13,4 +13,6 @@ class ProfitComputeModeProvider extends ChangeNotifier {
   String loremIpsumError2 = "";
   String loremIpsumError3 = "";
   String loremIpsumError4 = "";
+
+
 }

@@ -495,23 +495,11 @@ abstract class AppLocalizations {
   /// **'Profile Information'**
   String get profileInformation;
 
-  /// No description provided for @accountSecurity.
-  ///
-  /// In en, this message translates to:
-  /// **'Account Security'**
-  String get accountSecurity;
-
   /// No description provided for @accountCancellation.
   ///
   /// In en, this message translates to:
   /// **'Account Cancellation'**
   String get accountCancellation;
-
-  /// No description provided for @setPassword.
-  ///
-  /// In en, this message translates to:
-  /// **'Set Password'**
-  String get setPassword;
 
   /// No description provided for @currency.
   ///
@@ -536,12 +524,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
-
-  /// No description provided for @setProfitComputeMode.
-  ///
-  /// In en, this message translates to:
-  /// **'Set Profit Compute Mode'**
-  String get setProfitComputeMode;
 
   /// No description provided for @autoSignIn.
   ///
@@ -590,6 +572,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Enter Mail Box'**
   String get enterMailBox;
+
+  /// No description provided for @realTimePower.
+  ///
+  /// In en, this message translates to:
+  /// **'Real Time Power'**
+  String get realTimePower;
+
+  /// No description provided for @generationToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Generation Today'**
+  String get generationToday;
+
+  /// No description provided for @cumulativeGeneration.
+  ///
+  /// In en, this message translates to:
+  /// **'Cumulative Generation'**
+  String get cumulativeGeneration;
 
   /// No description provided for @code.
   ///
@@ -666,7 +666,7 @@ abstract class AppLocalizations {
   /// No description provided for @passwordAndConfirmPasswordIsNotMatching.
   ///
   /// In en, this message translates to:
-  /// **'Password and Confirm Password Isn't Matching'**
+  /// **'Password and Confirm Password Isn\'t Matching'**
   String get passwordAndConfirmPasswordIsNotMatching;
 
   /// No description provided for @yourCityIsRequired.
@@ -726,7 +726,7 @@ abstract class AppLocalizations {
   /// No description provided for @verificationCodeIsntMatching.
   ///
   /// In en, this message translates to:
-  /// **'Verification Code Isn't Matching'**
+  /// **'Verification Code Isn\'t Matching'**
   String get verificationCodeIsntMatching;
 
   /// No description provided for @continueCap.
@@ -746,6 +746,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Dashboard'**
   String get dashboard;
+
+  /// No description provided for @accountSecurity.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Security'**
+  String get accountSecurity;
+
+  /// No description provided for @setPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Password'**
+  String get setPassword;
+
+  /// No description provided for @setProfitComputeMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Profit Compute Mode'**
+  String get setProfitComputeMode;
 
   /// No description provided for @profitComputeMode.
   ///

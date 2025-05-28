@@ -1,5 +1,6 @@
 import 'package:qbits/qbits.dart';
 import 'package:qbits/screens/user_center_flow/end_user/end_user_screen.dart';
+import 'package:qbits/screens/user_center_flow/qa/qa_screen.dart';
 
 class CurrencyScreen extends StatelessWidget {
   const CurrencyScreen({super.key});
@@ -43,7 +44,9 @@ class CurrencyScreen extends StatelessWidget {
             _CurrencyTabWidget(
               title: context.l10n?.qa ?? "",
               imagePath: AssetRes.searchIcon,
-              onTap: () {},
+              onTap: () {
+                context.navigator.pushNamed(QaScreen.routeName);
+              },
             ),
 
             ///Divider

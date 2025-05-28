@@ -1,3 +1,4 @@
+import 'package:qbits/common/widget/app_tab_widget.dart';
 import 'package:qbits/qbits.dart';
 
 class AccountSecurityScreen extends StatelessWidget {
@@ -30,127 +31,46 @@ class AccountSecurityScreen extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Column(
-                  children: [
-                    5.ph.spaceVertical,
+                /// Space
+                5.ph.spaceVertical,
 
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: InkWell(
-                        onTap: () {
-                          // context.navigator.pushNamed(
-                          //   MyWatchlistScreen.routeName,
-                          // );
-                        },
-                        child: Row(
-                          children: [
-                            SvgAsset(
-                              width: 20.pw,
-                              imagePath: AssetRes.phoneIcon,
-                            ),
-
-                            /// Space
-                            10.pw.spaceHorizontal,
-
-                            Text(
-                              context.l10n?.phoneNumber ?? "",
-                              style: styleW600S16.copyWith(
-                                color: ColorRes.black2,
-                              ),
-                            ),
-
-                            Spacer(),
-
-                            /// Forward Icon
-                            SvgAsset(imagePath: AssetRes.forwardIcon),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 15.ph),
-                      height: 1.ph,
-                      color: ColorRes.black.withValues(alpha: 0.1),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: InkWell(
-                        onTap: () {
-                          context.navigator.pushNamed(
-                            UserCenterOptionsScreen.routeName,
-                          );
-                        },
-                        child: Row(
-                          children: [
-                            SvgAsset(
-                              width: 18.pw,
-                              imagePath: AssetRes.lockIcon,
-                            ),
-
-                            /// Space
-                            10.pw.spaceHorizontal,
-
-                            Text(
-                              context.l10n?.setPassword ?? "",
-                              style: styleW600S16.copyWith(
-                                color: ColorRes.black2,
-                              ),
-                            ),
-
-                            Spacer(),
-
-                            /// Forward Icon
-                            SvgAsset(imagePath: AssetRes.forwardIcon),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 15.ph),
-                      height: 1.ph,
-                      color: ColorRes.black.withValues(alpha: 0.1),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: InkWell(
-                        onTap: () {
-                          // context.navigator.pushNamed(
-                          //   MyWatchlistScreen.routeName,
-                          // );
-                        },
-                        child: Row(
-                          children: [
-                            SvgAsset(
-                              width: 20.pw,
-                              imagePath: AssetRes.deleteIcon,
-                            ),
-
-                            /// Space
-                            10.pw.spaceHorizontal,
-
-                            Text(
-                              context.l10n?.accountCancellation ?? "",
-                              style: styleW600S16.copyWith(
-                                color: ColorRes.black2,
-                              ),
-                            ),
-
-                            Spacer(),
-
-                            /// Forward Icon
-                            SvgAsset(imagePath: AssetRes.forwardIcon),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    5.ph.spaceVertical,
-                  ],
+                ///Phone Number
+                TabWidget(
+                  title: context.l10n?.phoneNumber ?? "",
+                  imagePath: AssetRes.phoneIcon,
+                  onTap: () {},
                 ),
+
+                ///Divider
+                Divider(
+                  height: 0,
+                  color: ColorRes.black.withValues(alpha: 0.1),
+                ),
+
+                ///Set Password
+                TabWidget(
+                  title: context.l10n?.setPassword ?? "",
+                  imagePath: AssetRes.lockIcon,
+                  onTap: () {
+                    context.navigator.pushNamed(UserCenterScreen.routeName);
+                  },
+                ),
+
+                ///Divider
+                Divider(
+                  height: 0,
+                  color: ColorRes.black.withValues(alpha: 0.1),
+                ),
+
+                ///Account Cancellation
+                TabWidget(
+                  title: context.l10n?.accountCancellation ?? "",
+                  imagePath: AssetRes.deleteIcon,
+                  onTap: () {},
+                ),
+
+                ///Space
+                5.ph.spaceVertical,
               ],
             ),
           ),

@@ -105,7 +105,7 @@ class AlarmScreen extends StatelessWidget {
                                 width: double.infinity,
                               );
                             },
-                            shrinkWrap: true,
+
                             itemBuilder:
                                 (p0, p1) => AlarmListWidget(
                                   alarmType: context.l10n?.all,
@@ -113,14 +113,15 @@ class AlarmScreen extends StatelessWidget {
                           );
                         case 1:
                           return CustomListView(
-                            itemCount: 10,
+                            itemCount: 3,
+
                             separatorBuilder: (context, index) {
                               return Container(
                                 margin: EdgeInsets.symmetric(horizontal: 20.pw),
                                 width: double.infinity,
                               );
                             },
-                            shrinkWrap: true,
+
                             itemBuilder:
                                 (p0, p1) => AlarmListWidget(
                                   alarmType: context.l10n?.going,
@@ -128,21 +129,21 @@ class AlarmScreen extends StatelessWidget {
                           );
                         case 2:
                           return CustomListView(
-                            itemCount: 10,
+                            itemCount: 5,
                             separatorBuilder: (context, index) {
                               return Container(
                                 margin: EdgeInsets.symmetric(horizontal: 20.pw),
                                 width: double.infinity,
                               );
                             },
-                            shrinkWrap: true,
+
                             itemBuilder:
                                 (p0, p1) => AlarmListWidget(
                                   alarmType: context.l10n?.recovered,
                                 ),
                           );
                         default:
-                          return const Center(child: Text('Invalid Tab'));
+                          return const Center(child: Text('Not Found'));
                       }
                     },
                   ),

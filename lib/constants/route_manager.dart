@@ -1,5 +1,6 @@
 import 'package:qbits/qbits.dart';
 import 'package:qbits/screens/user_center_flow/guest/guest_screen.dart';
+import 'package:qbits/screens/user_center_flow/qa/qa_screen.dart';
 
 class RouteManager {
   static String get initialRoute => SplashScreen.routeName;
@@ -111,10 +112,10 @@ class RouteManager {
           settings: settings,
         );
 
-      /// User Center Screen
-      case UserCenterScreen.routeName:
+      /// Profile Screen
+      case ProfileScreen.routeName:
         return MaterialPageRoute(
-          builder: UserCenterScreen.builder,
+          builder: ProfileScreen.builder,
           settings: settings,
         );
 
@@ -174,10 +175,10 @@ class RouteManager {
           settings: settings,
         );
 
-      /// builderUser Center Options Screen
-      case UserCenterOptionsScreen.routeName:
+      ///User Center Screen
+      case UserCenterScreen.routeName:
         return MaterialPageRoute(
-          builder: UserCenterOptionsScreen.builder,
+          builder: UserCenterScreen.builder,
           settings: settings,
         );
 
@@ -195,7 +196,6 @@ class RouteManager {
           settings: settings,
         );
 
-
       /// End User Screen
       case EndUserScreen.routeName:
         return MaterialPageRoute(
@@ -209,6 +209,10 @@ class RouteManager {
           builder: GuestScreen.builder,
           settings: settings,
         );
+
+      /// Qa Screen
+      case QaScreen.routeName:
+        return MaterialPageRoute(builder: QaScreen.builder, settings: settings);
 
       default:
         return MaterialPageRoute(

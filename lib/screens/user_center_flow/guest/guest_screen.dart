@@ -1,4 +1,5 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/user_center_flow/guest/widget/guest_list_widget.dart';
 
 class GuestScreen extends StatelessWidget {
   const GuestScreen({super.key});
@@ -72,28 +73,27 @@ class GuestScreen extends StatelessWidget {
                 16.pw.spaceVertical,
 
                 Expanded(
-                  child: CustomListView(
-                    itemCount: 2,
-                    separatorBuilder: (context, index) {
-                      return Container(
-                        height: 1,
-                        margin: EdgeInsets.symmetric(vertical: 14.pw),
-                        width: double.infinity,
-                        color: ColorRes.black.withValues(alpha: 0.1),
-                      );
-                    },
-                    itemBuilder: (context, index) {
-                    return Container(  padding: EdgeInsets.symmetric(
-                      // horizontal: 34.pw,
-                      vertical: 24.pw,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: ColorRes.white,
+                      borderRadius: BorderRadius.circular(8.pw),
                     ),
-                      decoration: BoxDecoration(
-                        color: ColorRes.white,
-                        borderRadius: BorderRadius.circular(8.pw),
-                      ),);
-                  },),
-                )
 
+                    child: CustomListView(
+                      itemCount: 3,
+                      separatorBuilder: (context, index) {
+                        return Container(
+                          height: 1,
+                          width: double.infinity,
+                          color: ColorRes.black.withValues(alpha: 0.1),
+                        );
+                      },
+                      itemBuilder: (context, index) {
+                        return GuestListWidget();
+                      },
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -106,7 +106,7 @@ class GuestScreen extends StatelessWidget {
 class _TopImgWidget extends StatelessWidget {
   final String? name;
 
-  const _TopImgWidget({super.key, this.name});
+  const _TopImgWidget({this.name});
 
   @override
   Widget build(BuildContext context) {

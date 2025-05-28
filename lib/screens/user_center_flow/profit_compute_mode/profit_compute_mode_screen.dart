@@ -39,12 +39,13 @@ class ProfitComputeModeScreen extends StatelessWidget {
           ),
           body: CustomSingleChildScroll(
             padding: EdgeInsets.only(
-              bottom: Constants.safeAreaPadding.bottom + Constants.horizontalPadding,
+              bottom:
+                  Constants.safeAreaPadding.bottom +
+                  Constants.horizontalPadding,
               top: 20.pw,
             ),
             child: Column(
               children: [
-
                 /// My Profit
                 Padding(
                   padding: EdgeInsets.only(
@@ -55,9 +56,7 @@ class ProfitComputeModeScreen extends StatelessWidget {
                     children: [
                       Text(
                         "${context.l10n?.myProfit ?? ""}:",
-                        style: styleW500S18.copyWith(
-                          color: ColorRes.black2,
-                        ),
+                        style: styleW500S18.copyWith(color: ColorRes.black2),
                       ),
 
                       /// Space
@@ -65,9 +64,7 @@ class ProfitComputeModeScreen extends StatelessWidget {
 
                       Text(
                         "371974.00",
-                        style: styleW500S18.copyWith(
-                          color: ColorRes.red,
-                        ),
+                        style: styleW500S18.copyWith(color: ColorRes.red),
                       ),
 
                       /// Space
@@ -96,19 +93,16 @@ class ProfitComputeModeScreen extends StatelessWidget {
                       children: [
                         Text(
                           "${context.l10n?.totalEnergy ?? ""}:",
-                          style: styleW500S14.copyWith(
-                            color: ColorRes.black2,
-                          ),
+                          style: styleW500S14.copyWith(color: ColorRes.black2),
                         ),
 
                         /// Space
                         5.pw.spaceHorizontal,
 
+                        /// Energy Value
                         Text(
                           "185987 kWh",
-                          style: styleW500S14.copyWith(
-                            color: ColorRes.black2,
-                          ),
+                          style: styleW500S14.copyWith(color: ColorRes.black2),
                         ),
                       ],
                     ),
@@ -130,21 +124,19 @@ class ProfitComputeModeScreen extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
+                        /// Average Electric Price Text
                         Text(
                           "${context.l10n?.averageElectricPrice ?? ""}:",
-                          style: styleW500S14.copyWith(
-                            color: ColorRes.black2,
-                          ),
+                          style: styleW500S14.copyWith(color: ColorRes.black2),
                         ),
 
                         /// Space
                         5.pw.spaceHorizontal,
 
+                        /// Average Electric Price Value
                         Text(
                           "2.00",
-                          style: styleW500S14.copyWith(
-                            color: ColorRes.black2,
-                          ),
+                          style: styleW500S14.copyWith(color: ColorRes.black2),
                         ),
 
                         /// Space
@@ -172,9 +164,7 @@ class ProfitComputeModeScreen extends StatelessWidget {
                     ),
                     child: Text(
                       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
-                      style: styleW500S14.copyWith(
-                        color: ColorRes.black2,
-                      ),
+                      style: styleW500S14.copyWith(color: ColorRes.black2),
                     ),
                   ),
                 ),
@@ -191,9 +181,7 @@ class ProfitComputeModeScreen extends StatelessWidget {
                   ),
                   child: Text(
                     context.l10n?.parameterSet ?? "",
-                    style: styleW500S18.copyWith(
-                      color: ColorRes.black2,
-                    ),
+                    style: styleW500S18.copyWith(color: ColorRes.black2),
                   ),
                 ),
 
@@ -201,284 +189,151 @@ class ProfitComputeModeScreen extends StatelessWidget {
                 10.pw.spaceVertical,
 
                 /// Energy Subsidized Price
-                Container(
-                  decoration: BoxDecoration(
-                    color: ColorRes.primaryColor.withValues(alpha: 0.1),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: Constants.horizontalPadding,
-                      vertical: 12.ph,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            "${context.l10n?.energySubsidizedPrice ?? ""}:",
-                            style: styleW500S14.copyWith(
-                              color: ColorRes.black2,
-                            ),
-                          ),
-                        ),
-
-                        /// Space
-                        20.pw.spaceHorizontal,
-
-                        SizedBox(
-                          width: 25.w,
-                          child: AppTextField(
-                            isDense: true,
-                            textInputType: TextInputType.numberWithOptions(decimal: true),
-                            controller: provider.energySubsidizedPriceController,
-                            error: provider.energySubsidizedPriceError,
-                            customPadding: EdgeInsets.symmetric(horizontal: 12.pw),
-                            customBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(4.pw),
-                              borderSide: BorderSide(
-                                color: provider.energySubsidizedPriceError.isNotEmpty
-                                    ? ColorRes.red : ColorRes.primaryColor.withValues(alpha: 0.5),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        /// Space
-                        10.pw.spaceHorizontal,
-
-                        /// Coin Icon
-                        SvgAsset(imagePath: AssetRes.coinIcon),
-                      ],
-                    ),
-                  ),
+                CommonParameterSetWidget(
+                  title: "${context.l10n?.energySubsidizedPrice ?? ""}:",
+                  isPercentIconVisible: false,
+                  textEditingController:
+                      provider.energySubsidizedPriceController,
+                  errorText: provider.energySubsidizedPriceError,
                 ),
 
                 /// Space
                 10.pw.spaceVertical,
 
-                Container(
-                  decoration: BoxDecoration(
-                    color: ColorRes.primaryColor.withValues(alpha: 0.1),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: Constants.horizontalPadding,
-                      vertical: 12.ph,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            "Lorem Ipsum is Simply:",
-                            style: styleW500S14.copyWith(
-                              color: ColorRes.black2,
-                            ),
-                          ),
-                        ),
-
-                        /// Space
-                        20.pw.spaceHorizontal,
-
-                        SizedBox(
-                          width: 25.w,
-                          child: AppTextField(
-                            isDense: true,
-                            textInputType: TextInputType.numberWithOptions(decimal: true),
-                            controller: provider.loremIpsumController1,
-                            error: provider.loremIpsumError1,
-                            customPadding: EdgeInsets.symmetric(horizontal: 12.pw),
-                            customBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(4.pw),
-                              borderSide: BorderSide(
-                                color: provider.loremIpsumError1.isNotEmpty
-                                    ? ColorRes.red : ColorRes.primaryColor.withValues(alpha: 0.5),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        /// Space
-                        10.pw.spaceHorizontal,
-
-                        /// Coin Icon
-                        SvgAsset(imagePath: AssetRes.coinIcon),
-                      ],
-                    ),
-                  ),
+                /// Energy Subsidized Price
+                CommonParameterSetWidget(
+                  title: "Lorem Ipsum is Simply:",
+                  isPercentIconVisible: false,
+                  textEditingController: provider.loremIpsumController1,
+                  errorText: provider.loremIpsumError1,
                 ),
 
                 /// Space
                 10.pw.spaceVertical,
 
-                Container(
-                  decoration: BoxDecoration(
-                    color: ColorRes.primaryColor.withValues(alpha: 0.1),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: Constants.horizontalPadding,
-                      vertical: 12.ph,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            "Lorem Ipsum is Simply:",
-                            style: styleW500S14.copyWith(
-                              color: ColorRes.black2,
-                            ),
-                          ),
-                        ),
-
-                        /// Space
-                        20.pw.spaceHorizontal,
-
-                        SizedBox(
-                          width: 25.w,
-                          child: AppTextField(
-                            isDense: true,
-                            textInputType: TextInputType.numberWithOptions(decimal: true),
-                            controller: provider.loremIpsumController2,
-                            error: provider.loremIpsumError2,
-                            customPadding: EdgeInsets.symmetric(horizontal: 12.pw),
-                            customBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(4.pw),
-                              borderSide: BorderSide(
-                                color: provider.loremIpsumError2.isNotEmpty
-                                    ? ColorRes.red : ColorRes.primaryColor.withValues(alpha: 0.5),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        /// Space
-                        10.pw.spaceHorizontal,
-
-                        /// Coin Icon
-                        SvgAsset(imagePath: AssetRes.coinIcon),
-                      ],
-                    ),
-                  ),
+                /// Energy Subsidized Price
+                CommonParameterSetWidget(
+                  title: "Lorem Ipsum is Simply:",
+                  isPercentIconVisible: false,
+                  textEditingController: provider.loremIpsumController2,
+                  errorText: provider.loremIpsumError2,
                 ),
 
                 /// Space
                 10.pw.spaceVertical,
 
-                Container(
-                  decoration: BoxDecoration(
-                    color: ColorRes.primaryColor.withValues(alpha: 0.1),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: Constants.horizontalPadding,
-                      vertical: 12.ph,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            "Lorem Ipsum is Simply:",
-                            style: styleW500S14.copyWith(
-                              color: ColorRes.black2,
-                            ),
-                          ),
-                        ),
-
-                        /// Space
-                        20.pw.spaceHorizontal,
-
-                        SizedBox(
-                          width: 25.w,
-                          child: AppTextField(
-                            isDense: true,
-                            textInputType: TextInputType.numberWithOptions(decimal: true),
-                            controller: provider.loremIpsumController3,
-                            error: provider.loremIpsumError3,
-                            customPadding: EdgeInsets.symmetric(horizontal: 12.pw),
-                            customBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(4.pw),
-                              borderSide: BorderSide(
-                                color: provider.loremIpsumError3.isNotEmpty
-                                    ? ColorRes.red : ColorRes.primaryColor.withValues(alpha: 0.5),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        /// Space
-                        10.pw.spaceHorizontal,
-
-                        Text(
-                          "%",
-                          style: styleW500S16.copyWith(
-                            color: ColorRes.black2,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                /// Energy Subsidized Price
+                CommonParameterSetWidget(
+                  title: "Lorem Ipsum is Simply:",
+                  isPercentIconVisible: true,
+                  textEditingController: provider.loremIpsumController3,
+                  errorText: provider.loremIpsumError3,
                 ),
 
                 /// Space
                 10.pw.spaceVertical,
 
-                Container(
-                  decoration: BoxDecoration(
-                    color: ColorRes.primaryColor.withValues(alpha: 0.1),
+                /// Energy Subsidized Price
+                CommonParameterSetWidget(
+                  title: "Lorem Ipsum is Simply:",
+                  isPercentIconVisible: true,
+                  textEditingController: provider.loremIpsumController4,
+                  errorText: provider.loremIpsumError4,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class CommonParameterSetWidget extends StatelessWidget {
+  final String? title;
+  final TextEditingController? textEditingController;
+  final String? errorText;
+  final bool isPercentIconVisible;
+
+  const CommonParameterSetWidget({
+    super.key,
+    this.title,
+    this.textEditingController,
+    this.errorText,
+    this.isPercentIconVisible = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<ProfitComputeModeProvider>(
+      builder: (context, provider, child) {
+        return Container(
+          decoration: BoxDecoration(
+            color: ColorRes.primaryColor.withValues(alpha: 0.1),
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: Constants.horizontalPadding,
+              vertical: 12.ph,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                /// Title
+                Expanded(
+                  child: Text(
+                    title ?? "",
+                    style: styleW500S14.copyWith(color: ColorRes.black2),
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: Constants.horizontalPadding,
-                      vertical: 12.ph,
+                ),
+
+                /// Space
+                20.pw.spaceHorizontal,
+
+                /// Text Field
+                SizedBox(
+                  width: 25.w,
+                  child: AppTextField(
+                    isDense: true,
+                    textInputType: TextInputType.numberWithOptions(
+                      decimal: true,
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            "Lorem Ipsum is Simply:",
-                            style: styleW500S14.copyWith(
+                    controller: textEditingController,
+                    error: errorText,
+                    customPadding: EdgeInsets.symmetric(
+                      horizontal: 12.pw,
+                      vertical: 0,
+                    ),
+                    customBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(4.pw),
+                      borderSide: BorderSide(
+                        color:
+                            provider.loremIpsumError4.isNotEmpty
+                                ? ColorRes.red
+                                : ColorRes.primaryColor.withValues(alpha: 0.5),
+                      ),
+                    ),
+                  ),
+                ),
+
+                /// Space
+                10.pw.spaceHorizontal,
+
+                /// Percent Icon or Coin Icon
+                SizedBox(
+                  width: 20.pw,
+                  child:
+                      (isPercentIconVisible)
+                          ? Text(
+                            "%",
+                            textAlign: TextAlign.end,
+                            style: styleW500S16.copyWith(
                               color: ColorRes.black2,
                             ),
-                          ),
-                        ),
-
-                        /// Space
-                        20.pw.spaceHorizontal,
-
-                        SizedBox(
-                          width: 25.w,
-                          child: AppTextField(
-                            isDense: true,
-                            textInputType: TextInputType.numberWithOptions(decimal: true),
-                            controller: provider.loremIpsumController4,
-                            error: provider.loremIpsumError4,
-                            customPadding: EdgeInsets.symmetric(horizontal: 12.pw, vertical: 0),
-                            customBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(4.pw),
-                              borderSide: BorderSide(
-                                color: provider.loremIpsumError4.isNotEmpty
-                                    ? ColorRes.red : ColorRes.primaryColor.withValues(alpha: 0.5),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        /// Space
-                        10.pw.spaceHorizontal,
-
-                        Text(
-                          "%",
-                          style: styleW500S16.copyWith(
-                            color: ColorRes.black2,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                          )
+                          :
+                          /// Coin Icon
+                          SvgAsset(imagePath: AssetRes.coinIcon),
                 ),
               ],
             ),

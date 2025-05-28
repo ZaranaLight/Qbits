@@ -69,7 +69,7 @@ class AssetRes {
   ///________________________________ Temp images ______________________________///
 
   static const tempSolarImg = "${_temp}solar_img.png";
-  static const tempSolarDiagramImg = "${_temp}solar_diagram.png";
+  static const tempSolarDiagramImg = "${_temp}solar-diagram.png";
   static const profileImg = "${_temp}profile.png";
 
   ///__________________________________ images __________________________________///
