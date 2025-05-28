@@ -1,6 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/user_center_flow/currency/curency_screen.dart';
-import 'package:qbits/screens/user_center_flow/end_user/end_user_screen.dart';
 import 'package:qbits/screens/user_center_flow/guest/guest_screen.dart';
 
 class RouteManager {
