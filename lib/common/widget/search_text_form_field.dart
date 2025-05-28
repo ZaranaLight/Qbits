@@ -71,7 +71,7 @@ class SearchTextField extends StatelessWidget {
         isDense: true,
         fillColor: fillColor??ColorRes.white.withValues(alpha: 0.14),
         filled: true,
-        hintStyle: styleW400S14.copyWith(color: ColorRes.white),
+        hintStyle: styleW400S14.copyWith(color: fillColor != null?ColorRes.black:ColorRes.white),
         contentPadding: EdgeInsets.only(
           left: 12.pw,
           right: 12.pw,

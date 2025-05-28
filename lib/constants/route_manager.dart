@@ -1,6 +1,7 @@
 import 'package:qbits/qbits.dart';
 import 'package:qbits/screens/user_center_flow/currency/curency_screen.dart';
 import 'package:qbits/screens/user_center_flow/end_user/end_user_screen.dart';
+import 'package:qbits/screens/user_center_flow/guest/guest_screen.dart';
 
 class RouteManager {
   static String get initialRoute => SplashScreen.routeName;
@@ -194,6 +195,13 @@ class RouteManager {
       case EndUserScreen.routeName:
         return MaterialPageRoute(
           builder: EndUserScreen.builder,
+          settings: settings,
+        );
+
+      /// Guest Screen
+      case GuestScreen.routeName:
+        return MaterialPageRoute(
+          builder: GuestScreen.builder,
           settings: settings,
         );
 

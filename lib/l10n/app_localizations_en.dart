@@ -285,6 +285,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get qa => 'QA';
 
   @override
+  String get guest => 'Guest';
+
+  @override
   String get noEquipment => 'No Equipment';
 
   @override
