@@ -17,6 +17,10 @@ class InverterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InverterProvider>(
       builder: (context, provider, child) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          provider.initialize();
+        });
+
         return Scaffold(
           appBar: CustomAppBar(title: context.l10n?.inverter ?? ""),
           body: CustomSingleChildScroll(
@@ -157,257 +161,320 @@ class InverterScreen extends StatelessWidget {
                 Consumer<InverterProvider>(
                   builder: (context, provider, child) {
                     return Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20.pw,
-                        vertical: 15.pw,
-                      ),
+                      padding: EdgeInsets.symmetric(vertical: 15.pw),
                       decoration: BoxDecoration(color: ColorRes.white),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // ///Dropdown for Chart Type
-                          // Row(
-                          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          //   children:
-                          //       ChartViewType.values.map((type) {
-                          //         final isSelected = provider.viewType == type;
-                          //         return InkWell(
-                          //           onTap: () => provider.setViewType(type),
-                          //           child: Container(
-                          //             padding: const EdgeInsets.symmetric(
-                          //               horizontal: 12,
-                          //
-                          //               vertical: 8,
-                          //             ),
-                          //             decoration: BoxDecoration(
-                          //               borderRadius: BorderRadius.circular(20),
-                          //             ),
-                          //             child: Text(
-                          //               enumToCapitalizedString(type.name),
-                          //               style: styleW600S16.copyWith(
-                          //                 color:
-                          //                     isSelected
-                          //                         ? ColorRes.primaryColor
-                          //                         : Colors.black.withValues(
-                          //                           alpha: 0.5,
-                          //                         ),
-                          //               ),
-                          //             ),
-                          //           ),
-                          //         );
-                          //       }).toList(),
-                          // ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children:
-                                provider.tabs.asMap().entries.map((entry) {
-                                  int index = entry.key;
-                                  String tab = entry.value;
-                                  bool isSelected =
-                                      provider.selectedIndex == index;
-                                  return GestureDetector(
-                                    onTap: () => provider.selectTab(index),
-                                    child: Container(
-                                      margin: EdgeInsets.symmetric(
-                                        horizontal: 8,
+                          /// Tabs Day, Month, Year
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children:
+                                  provider.tabs.asMap().entries.map((entry) {
+                                    int index = entry.key;
+                                    String tab = entry.value;
+                                    bool isSelected =
+                                        provider.selectedIndex == index;
+                                    return InkWell(
+                                      onTap: () => provider.selectTab(index),
+                                      child: Container(
+                                        margin: EdgeInsets.symmetric(
+                                          horizontal: 8,
+                                        ),
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 0,
+                                          vertical: 6,
+                                        ),
+
+                                        child: Text(
+                                          tab,
+                                          style: styleW600S16.copyWith(
+                                            color:
+                                                isSelected
+                                                    ? ColorRes.primaryColor
+                                                    : ColorRes.black.withValues(
+                                                      alpha: 0.5,
+                                                    ),
+                                          ),
+                                        ),
                                       ),
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 12,
-                                        vertical: 6,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color:
-                                            isSelected
-                                                ? Colors.blue
-                                                : Colors.grey[300],
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Text(
-                                        tab,
-                                        style: TextStyle(
-                                          color:
-                                              isSelected
-                                                  ? Colors.white
-                                                  : Colors.black,
-                                          fontWeight: FontWeight.bold,
+                                    );
+                                  }).toList(),
+                            ),
+                          ),
+
+                          ///Space
+                          8.pw.spaceVertical,
+
+                          /// Date Picker
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: InkWell(
+                              onTap: () async {
+                                DateTime? picked;
+                                if (provider.viewType == ChartViewType.day) {
+                                  picked = await showDatePicker(
+                                    context: context,
+                                    initialDate: provider.selectedDate,
+                                    firstDate: DateTime(2000),
+                                    lastDate: DateTime.now(),
+                                  );
+                                } else if (provider.viewType ==
+                                    ChartViewType.month) {
+                                  picked = await showDatePicker(
+                                    context: context,
+                                    initialDate: provider.selectedDate,
+                                    firstDate: DateTime(2000),
+                                    lastDate: DateTime.now(),
+                                    helpText: 'Pick Month',
+                                    fieldHintText: 'YYYY-MM',
+                                  );
+                                } else if (provider.viewType ==
+                                    ChartViewType.year) {
+                                  picked = await showDatePicker(
+                                    context: context,
+                                    initialDate: provider.selectedDate,
+                                    firstDate: DateTime(2000),
+                                    lastDate: DateTime.now(),
+                                    helpText: 'Pick Year',
+                                    fieldHintText: 'YYYY',
+                                  );
+                                }
+
+                                if (picked != null) {
+                                  provider.updateDate(picked);
+                                }
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 30.pw,
+                                ),
+
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    InkWell(
+                                      onTap: () => provider.previousTab(),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: SvgAsset(
+                                          imagePath: AssetRes.leftArrowIcon,
+                                          width: 8.pw,
                                         ),
                                       ),
                                     ),
-                                  );
-                                }).toList(),
-                          ),
 
-                          ///Space
-                          16.pw.spaceVertical,
+                                    Row(
+                                      children: [
+                                        Text(
+                                          provider.displayDate,
 
-                          InkWell(
-                            onTap: () async {
-                              DateTime? picked;
-                              if (provider.viewType == ChartViewType.day) {
-                                picked = await showDatePicker(
-                                  context: context,
-                                  initialDate: provider.selectedDate,
-                                  firstDate: DateTime(2000),
-                                  lastDate: DateTime.now(),
-                                );
-                              } else if (provider.viewType ==
-                                  ChartViewType.month) {
-                                picked = await showDatePicker(
-                                  context: context,
-                                  initialDate: provider.selectedDate,
-                                  firstDate: DateTime(2000),
-                                  lastDate: DateTime.now(),
-                                  helpText: 'Pick Month',
-                                  fieldHintText: 'YYYY-MM',
-                                );
-                              } else if (provider.viewType ==
-                                  ChartViewType.year) {
-                                picked = await showDatePicker(
-                                  context: context,
-                                  initialDate: provider.selectedDate,
-                                  firstDate: DateTime(2000),
-                                  lastDate: DateTime.now(),
-                                  helpText: 'Pick Year',
-                                  fieldHintText: 'YYYY',
-                                );
-                              }
+                                          style: styleW600S16,
+                                        ),
+                                      ],
+                                    ),
 
-                              if (picked != null) {
-                                provider.updateDate(picked);
-                              }
-                            },
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 30.pw),
-
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  // Icon(
-                                  //   Icons.calendar_today,
-                                  //   size: 18,
-                                  //   color: Colors.grey[700],
-                                  // ),
-                                  // const SizedBox(width: 6),
-                                  // Text(
-                                  //   provider.displayDate,
-                                  //   style: const TextStyle(fontSize: 16),
-                                  // ),
-                                  InkWell(
-                                    onTap: () => provider.previousTab(),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: SvgAsset(
-                                        imagePath: AssetRes.leftArrowIcon,
-                                        width: 8.pw,
+                                    InkWell(
+                                      onTap: () => provider.nextTab(),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: SvgAsset(
+                                          imagePath: AssetRes.rightArrowIcon,
+                                          width: 8.pw,
+                                        ),
                                       ),
                                     ),
-                                  ),
-
-                                  Text(
-                                    provider.displayDate,
-                                    style: styleW600S16,
-                                  ),
-
-                                  InkWell(
-                                    onTap: () => provider.nextTab(),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: SvgAsset(
-                                        imagePath: AssetRes.rightArrowIcon,
-                                        width: 8.pw,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
 
                           ///Space
-                          16.pw.spaceVertical,
-                          // SizedBox(
-                          //   height: 300,
-                          //   child: BarChart(
-                          //     BarChartData(
-                          //       titlesData: FlTitlesData(show: true),
-                          //       barGroups: provider.getChartData(),
-                          //     ),
-                          //   ),
-                          // ),
-                          ///
-                          SizedBox(
-                            height: 200.pw,
-                            child: LineChart(
-                              LineChartData(
-                                minX: 0,
-                                maxX:10,
-                                minY: 0,
-                                maxY: 20,
-                                lineBarsData: [
-                                  LineChartBarData(
-                                    spots: provider.chartData,
-                                    isCurved: true,
-                                    barWidth: 2,
+                          10.pw.spaceVertical,
+
+                          /// Energy Usage
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Energy',
+                                  style: styleW400S16.copyWith(
+                                    color: ColorRes.black.withValues(alpha: 0.6),
+                                  ),
+                                ),
+                                Text(
+                                  '15.4 kWh',
+                                  style: styleW600S16.copyWith(
+                                    color: ColorRes.black.withValues(alpha: 0.6),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          ///Space
+                          3.pw.spaceVertical,
+
+                          Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+
+                          ///Space
+                         0.pw.spaceVertical,
+
+                          /// Preference Dropdown
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: DropdownButton<String>(
+                              elevation: 0,
+                              padding: EdgeInsets.zero,
+                              isDense: true,
+                              hint: Text("Preference", style: styleW500S14),
+                              isExpanded: false,
+                              underline: SizedBox(),
+                              items:
+                                  provider.preferenceOptions.map((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                              onChanged: (String? newValue) {
+                                if (newValue != null) {
+                                  provider.updateSelectedPreference(newValue);
+                                }
+                              },
+                            ),
+                          ),
+
+                          ///Space
+                          6.pw.spaceVertical,
+
+                          /// KWh Label
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: Text('kWh', style: styleW400S12),
+                          ),
+
+                          ///Space
+                          6.pw.spaceVertical,
+
+                          /// Chart
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: SizedBox(
+                              height: 200.pw,
+                              child: LineChart(
+                                LineChartData(
+                                  minX: 0,
+                                  maxX: 10,
+                                  minY: 0,
+                                  maxY: 20,
+                                  lineBarsData: [
+                                    LineChartBarData(
+                                      spots: provider.chartData,
+                                      isCurved: true,
+                                      barWidth: 2,
+                                      isStrokeCapRound: true,
+                                      color: ColorRes.primaryColor,
+                                      belowBarData: BarAreaData(
+                                        show: true,
+                                        color: ColorRes.primaryColor.withValues(
+                                          alpha: 0.2,
+                                        ),
+                                      ),
+                                      dotData: FlDotData(show: false),
+                                    ),
+                                  ],
+                                  titlesData: FlTitlesData(
+                                    topTitles: AxisTitles(
+                                      sideTitles: SideTitles(showTitles: false),
+                                    ),
+                                    rightTitles: AxisTitles(
+                                      sideTitles: SideTitles(showTitles: false),
+                                    ),
+                                    bottomTitles: AxisTitles(
+                                      sideTitles: SideTitles(
+                                        showTitles: true,
+                                        interval: 2,
+                                        getTitlesWidget:
+                                            (value, meta) => Padding(
+                                              padding: const EdgeInsets.only(
+                                                top: 8.0,
+                                              ),
+                                              child: Text(
+                                                value.toStringAsFixed(0),
+                                                style: TextStyle(fontSize: 10),
+                                              ),
+                                            ),
+                                      ),
+                                    ),
+                                    leftTitles: AxisTitles(
+                                      sideTitles: SideTitles(
+                                        showTitles: true,
+                                        interval: 10,
+                                        getTitlesWidget:
+                                            (value, meta) => Padding(
+                                              padding: const EdgeInsets.only(
+                                                right: 8.0,
+                                              ),
+                                              child: Text(
+                                                value.toInt().toString(),
+                                                style: TextStyle(fontSize: 10),
+                                              ),
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  gridData: FlGridData(show: true),
+                                  borderData: FlBorderData(
+                                    show: true,
+                                    border: Border.all(
+                                      color: Colors.black.withValues(alpha: 0.1),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          ///Space
+                          15.pw.spaceVertical,
+
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                /// Circle
+                                Container(
+                                  width: 10.pw,
+                                  height: 10.pw,
+                                  decoration: BoxDecoration(
                                     color: ColorRes.primaryColor,
-                                    belowBarData: BarAreaData(
-                                      show: true,
-                                      color: ColorRes.primaryColor.withValues(
-                                        alpha: 0.1,
-                                      ),
-                                    ),
-                                    dotData: FlDotData(show: false),
-                                  ),
-                                ],
-                                titlesData: FlTitlesData(
-                                  topTitles: AxisTitles(
-                                    sideTitles: SideTitles(showTitles: false),
-                                  ),
-                                  rightTitles: AxisTitles(
-                                    sideTitles: SideTitles(showTitles: false),
-                                  ),
-                                  bottomTitles: AxisTitles(
-                                    sideTitles: SideTitles(
-                                      showTitles: true,
-                                      interval: 2,
-                                      getTitlesWidget:
-                                          (value, meta) => Padding(
-                                            padding: const EdgeInsets.only(
-                                              top: 8.0,
-                                            ),
-                                            child: Text(
-                                              value.toStringAsFixed(0),
-                                              style: TextStyle(fontSize: 10),
-                                            ),
-                                          ),
-                                    ),
-                                  ),
-                                  leftTitles: AxisTitles(
-                                    sideTitles: SideTitles(
-                                      showTitles: true,
-                                      interval: 10,
-                                      getTitlesWidget:
-                                          (value, meta) => Padding(
-                                            padding: const EdgeInsets.only(
-                                              right: 8.0,
-                                            ),
-                                            child: Text(
-                                              value.toInt().toString(),
-                                              style: TextStyle(fontSize: 10),
-                                            ),
-                                          ),
-                                    ),
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
-                                gridData: FlGridData(show: true),
-                                borderData: FlBorderData(
-                                  show: true,
-                                  border: Border.all(
-                                    color: Colors.black.withOpacity(0.1),
-                                  ),
+
+                                ///Space
+                                6.pw.spaceHorizontal,
+
+                                /// Text
+                                Text(
+                                  provider.selectedPreference,
+                                  style: styleW600S14,
                                 ),
-                              ),
+                              ],
                             ),
                           ),
+
+                          ///Space
+                          15.pw.spaceVertical,
                         ],
                       ),
                     );

@@ -1,6 +1,17 @@
 import 'package:qbits/qbits.dart';
 
 class InverterProvider extends ChangeNotifier {
+  InverterProvider() {
+    initialize();
+  }
+
+  void initialize() {
+    if (!_isInitialized) {
+      _loadChartData();
+      _isInitialized = true;
+    }
+  }
+
   int? _expandedIndex;
 
   int? get expandedIndex => _expandedIndex;
@@ -26,66 +37,72 @@ class InverterProvider extends ChangeNotifier {
 
   ChartViewType get viewType => _viewType;
 
-  // List<FlSpot> get chartData {
-  //   switch (_viewType) {
-  //     case ChartViewType.day:
-  //       return _dayData;
-  //     case ChartViewType.month:
-  //       return _monthData;
-  //     case ChartViewType.year:
-  //       return _yearData;
-  //     case ChartViewType.total:
-  //       return _totalData;
-  //   }
-  // }
-
-  void setViewType(ChartViewType type) {
-    _viewType = type;
-    notifyListeners();
-  }
-
-  final List<FlSpot> _dayData = [
-    FlSpot(0, 0),
-    FlSpot(2, 5),
-    FlSpot(4, 10),
-    FlSpot(6, 7),
-    FlSpot(8, 2),
-    FlSpot(10, 0),
-  ];
-
-  final List<FlSpot> _monthData = [
-    FlSpot(0, 10),
-    FlSpot(1, 12),
-    FlSpot(2, 9),
-    FlSpot(3, 14),
-    FlSpot(4, 11),
-  ];
-
-  final List<FlSpot> _yearData = [
-    FlSpot(0, 50),
-    FlSpot(1, 80),
-    FlSpot(2, 40),
-    FlSpot(3, 90),
-    FlSpot(4, 70),
-  ];
-
-  final List<FlSpot> _totalData = [
-    FlSpot(0, 150),
-    FlSpot(1, 180),
-    FlSpot(2, 170),
-    FlSpot(3, 190),
-  ];
-
   DateTime selectedDate = DateTime.now();
-
-  void updateType(ChartViewType type) {
-    _viewType = type;
-    notifyListeners();
-  }
 
   void updateDate(DateTime date) {
     selectedDate = date;
     notifyListeners();
+  }
+
+  void setViewType(ChartViewType type) {
+    _viewType = type;
+
+    // Adjust selectedDate based on viewType
+    switch (_viewType) {
+      case ChartViewType.day:
+        // Keep the selectedDate as is or set to today if needed
+        selectedDate = DateTime.now();
+        break;
+
+      case ChartViewType.month:
+        // Reset to the first day of the selected month
+        selectedDate = DateTime(selectedDate.year, selectedDate.month, 1);
+        break;
+
+      case ChartViewType.year:
+        // Reset to Jan 1 of selected year
+        selectedDate = DateTime(selectedDate.year, 1, 1);
+        break;
+
+      case ChartViewType.total:
+        // You might want to clear date or do nothing
+        // For example:
+        selectedDate = DateTime.now(); // or keep as is
+        break;
+    }
+
+    // Optionally reset tab index if your tabs depend on this
+    // _selectedIndex = 0;
+
+    // Load data for the new view type
+    _loadChartData();
+
+    notifyListeners();
+  }
+
+  void selectTab(int index) {
+    _selectedIndex = index;
+
+    // Sync viewType with tab index
+    switch (_tabs[_selectedIndex]) {
+      case 'Day':
+        _viewType = ChartViewType.day;
+        break;
+      case 'Month':
+        _viewType = ChartViewType.month;
+        break;
+      case 'Year':
+        _viewType = ChartViewType.year;
+        break;
+      case 'Total':
+        _viewType = ChartViewType.total;
+        break;
+    }
+
+    // Adjust selectedDate on tab change
+    setViewType(_viewType); // this will load data & notify
+
+    // No need for notifyListeners here because setViewType calls it
   }
 
   String get displayDate {
@@ -97,7 +114,7 @@ class InverterProvider extends ChangeNotifier {
       case ChartViewType.year:
         return "${selectedDate.year}";
       default:
-        return "";
+        return "-";
     }
   }
 
@@ -109,6 +126,7 @@ class InverterProvider extends ChangeNotifier {
   String _pad(int value) => value.toString().padLeft(2, '0');
 
   final List<String> _tabs = ['Day', 'Month', 'Year', 'Total'];
+
   int _selectedIndex = 0;
 
   List<FlSpot> _chartData = [];
@@ -121,20 +139,19 @@ class InverterProvider extends ChangeNotifier {
 
   List<String> get tabs => _tabs;
 
-  void selectTab(int index) {
-    _selectedIndex = index;
-    _loadChartData();
-    notifyListeners();
-  }
+  bool _isInitialized = false;
 
   void nextTab() {
     _selectedIndex = (_selectedIndex + 1) % _tabs.length;
+    selectTab(_selectedIndex);
     _loadChartData();
     notifyListeners();
   }
 
   void previousTab() {
     _selectedIndex = (_selectedIndex - 1 + _tabs.length) % _tabs.length;
+    selectTab(_selectedIndex);
+
     _loadChartData();
     notifyListeners();
   }
@@ -160,4 +177,36 @@ class InverterProvider extends ChangeNotifier {
         break;
     }
   }
+  final List<String> preferenceOptions = ['AC Power', 'Voltage V1', 'Voltage V2'];
+  // Currently selected preference
+  String _selectedPreference = 'AC Power';
+  String get selectedPreference => _selectedPreference;
+  // Data related to each preference
+  double? acPower;
+  double? voltageV1;
+  double? voltageV2;
+
+// Handle dropdown selection
+  void updateSelectedPreference(String value) {
+    _selectedPreference = value;
+    _loadFieldData(); // Optional: load data for selected field
+    notifyListeners();
+  }
+
+// Simulate loading or fetching data
+  void _loadFieldData() {
+    switch (_selectedPreference) {
+      case 'AC Power':
+        acPower = 345.6; // Mock data or fetched from backend
+        break;
+      case 'Voltage V1':
+        voltageV1 = 230.0;
+        break;
+      case 'Voltage V2':
+        voltageV2 = 235.5;
+        break;
+    }
+  }
+
+
 }
