@@ -32,6 +32,7 @@ class ProfitComputeModeScreen extends StatelessWidget {
                 onTap: () {
                   context.navigator.pop();
                   context.navigator.pop();
+                  context.navigator.pop();
                 },
               ),
             ),
