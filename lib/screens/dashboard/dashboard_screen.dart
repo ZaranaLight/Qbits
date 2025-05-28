@@ -17,6 +17,7 @@ class DashboardScreen extends StatelessWidget {
     return Consumer<DashboardProvider>(
       builder: (context, state, child) {
         return Scaffold(
+          backgroundColor: ColorRes.lightGrey2,
           body: Builder(
             builder: (context) {
               switch (state.pageIndex) {

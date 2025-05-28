@@ -249,6 +249,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get mail => 'Mail';
 
   @override
+  String get profileInformation => 'Profile Information';
+
+  @override
+  String get accountSecurity => 'Account Security';
+
+  @override
+  String get accountCancellation => 'Account Cancellation';
+
+  @override
+  String get setPassword => 'Set Password';
+
+  @override
+  String get currency => 'Currency';
+
+  @override
+  String get signOut => 'Sign Out';
+
+  @override
+  String get clickToImproveContentInformation => 'Click to improve content information';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
   String get enterMailBox => 'Enter Mail Box';
 
   @override

@@ -94,5 +94,9 @@ export 'package:qbits/constants/enum.dart';
 export 'package:qbits/screens/auth/role_choice/role_choice_provider.dart';
 export 'package:qbits/common/widget/app_drop_down.dart';
 export 'package:qbits/screens/auth/company_registartion/comapny_registartion_provider.dart';
+export 'package:qbits/screens/profile_information/profile_info_otp_verification_screen.dart';
+export 'package:qbits/screens/profile_information/profile_info_provider.dart';
+
+
 
 

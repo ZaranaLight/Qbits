@@ -573,6 +573,54 @@ abstract class AppLocalizations {
   /// **'Mail'**
   String get mail;
 
+  /// No description provided for @profileInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Information'**
+  String get profileInformation;
+
+  /// No description provided for @accountSecurity.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Security'**
+  String get accountSecurity;
+
+  /// No description provided for @accountCancellation.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Cancellation'**
+  String get accountCancellation;
+
+  /// No description provided for @setPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Password'**
+  String get setPassword;
+
+  /// No description provided for @currency.
+  ///
+  /// In en, this message translates to:
+  /// **'Currency'**
+  String get currency;
+
+  /// No description provided for @signOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out'**
+  String get signOut;
+
+  /// No description provided for @clickToImproveContentInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Click to improve content information'**
+  String get clickToImproveContentInformation;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
   /// No description provided for @enterMailBox.
   ///
   /// In en, this message translates to:

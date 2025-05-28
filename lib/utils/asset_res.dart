@@ -44,6 +44,7 @@ class AssetRes {
   static const cameraIcon = "${_icons}camera_icon.svg";
   static const sendIcon = "${_icons}send_icon.svg";
   static const resetIcon = "${_icons}reset_icon.svg";
+  static const closeRoundIcon = "${_icons}close_round_icon.svg";
 
   static const greenBatteryIcon = "${_icons}green_battery.svg";
   static const redBatteryIcon = "${_icons}red_battery.svg";
@@ -55,11 +56,19 @@ class AssetRes {
   static const groupUserIcon = "${_icons}group_user.svg";
   static const leftArrowIcon = "${_icons}left_arrow_icon.svg";
   static const rightArrowIcon = "${_icons}right_arrow_icon.svg";
+  static const phoneIcon = "${_icons}phone_icon.svg";
+  static const emailIcon = "${_icons}email_icon.svg";
+  static const chatIcon = "${_icons}chat_icon.svg";
+  static const securityIcon = "${_icons}security_icon.svg";
+  static const currencyIcon = "${_icons}currency_icon.svg";
+  static const logoutIcon = "${_icons}logout_icon.svg";
+  static const lockIcon = "${_icons}lock_icon.svg";
 
   ///________________________________ Temp images ______________________________///
 
   static const tempSolarImg = "${_temp}solar_img.png";
   static const tempSolarDiagramImg = "${_temp}solar_diagram.png";
+  static const profileImg = "${_temp}profile.png";
 
   ///__________________________________ images __________________________________///
   static const blueToothMobileImg = "${_images}bluetooth_mobile_img.png";

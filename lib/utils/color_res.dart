@@ -17,6 +17,7 @@ class ColorRes {
   static const Color lightGrey = Color(0xFFE8E8E8);
   static const Color lightGrey2 = Color(0xFFF6F5FA);
   static const Color red = Color(0xFFFA5753);
+  static const Color darkRed = Color(0xFFDC2D16);
   static const Color blue = Color(0xFF038FFE);
   static const Color purple = Color(0xFF6F7DFE);
   static const Color darkGrey = Color(0xFF808080);
