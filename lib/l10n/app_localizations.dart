@@ -621,6 +621,18 @@ abstract class AppLocalizations {
   /// **'Profile'**
   String get profile;
 
+  /// No description provided for @setProfitComputeMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Profit Compute Mode'**
+  String get setProfitComputeMode;
+
+  /// No description provided for @autoSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto Sign In'**
+  String get autoSignIn;
+
   /// No description provided for @enterMailBox.
   ///
   /// In en, this message translates to:

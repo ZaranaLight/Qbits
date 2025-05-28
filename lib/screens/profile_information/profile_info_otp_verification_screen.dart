@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/profile_information/profile_info_provider.dart';
 
 class ProfileInfoOTPVerificationScreen extends StatelessWidget {
   const ProfileInfoOTPVerificationScreen({super.key});

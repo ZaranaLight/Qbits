@@ -273,6 +273,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profile => 'Profile';
 
   @override
+  String get setProfitComputeMode => 'Set Profit Compute Mode';
+
+  @override
+  String get autoSignIn => 'Auto Sign In';
+
+  @override
   String get enterMailBox => 'Enter Mail Box';
 
   @override

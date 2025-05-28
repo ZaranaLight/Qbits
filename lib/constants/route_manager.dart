@@ -1,5 +1,6 @@
 import 'package:qbits/qbits.dart';
 import 'package:qbits/screens/account_security/account_security_screen.dart';
+import 'package:qbits/screens/account_security/user_center_option.dart';
 import 'package:qbits/screens/auth/company_registartion/company_registartion_screen.dart';
 import 'package:qbits/screens/inverter/inverter_screen.dart';
 import 'package:qbits/screens/profile_information/profile_info_screen.dart';
@@ -178,12 +179,12 @@ class RouteManager {
           settings: settings,
         );
 
-    // /// User Center Options Screen
-    //   case UserCenterOptionsScreen.routeName:
-    //     return MaterialPageRoute(
-    //       builder: UserCenterOptionsScreen.builder,
-    //       settings: settings,
-    //     );
+    /// builderUser Center Options Screen
+      case UserCenterOptionsScreen.routeName:
+        return MaterialPageRoute(
+          builder: UserCenterOptionsScreen.builder,
+          settings: settings,
+        );
 
 
       default:

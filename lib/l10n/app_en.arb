@@ -87,6 +87,8 @@
   "signOut": "Sign Out",
   "clickToImproveContentInformation": "Click to improve content information",
   "profile": "Profile",
+  "setProfitComputeMode": "Set Profit Compute Mode",
+  "autoSignIn": "Auto Sign In",
   "enterMailBox": "Enter Mail Box",
   "code": "Code",
   "otp": "Otp",
