@@ -164,32 +164,71 @@ class InverterScreen extends StatelessWidget {
                       decoration: BoxDecoration(color: ColorRes.white),
                       child: Column(
                         children: [
-                          ///Dropdown for Chart Type
+                          // ///Dropdown for Chart Type
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //   children:
+                          //       ChartViewType.values.map((type) {
+                          //         final isSelected = provider.viewType == type;
+                          //         return InkWell(
+                          //           onTap: () => provider.setViewType(type),
+                          //           child: Container(
+                          //             padding: const EdgeInsets.symmetric(
+                          //               horizontal: 12,
+                          //
+                          //               vertical: 8,
+                          //             ),
+                          //             decoration: BoxDecoration(
+                          //               borderRadius: BorderRadius.circular(20),
+                          //             ),
+                          //             child: Text(
+                          //               enumToCapitalizedString(type.name),
+                          //               style: styleW600S16.copyWith(
+                          //                 color:
+                          //                     isSelected
+                          //                         ? ColorRes.primaryColor
+                          //                         : Colors.black.withValues(
+                          //                           alpha: 0.5,
+                          //                         ),
+                          //               ),
+                          //             ),
+                          //           ),
+                          //         );
+                          //       }).toList(),
+                          // ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children:
-                                ChartViewType.values.map((type) {
-                                  final isSelected = provider.viewType == type;
-                                  return InkWell(
-                                    onTap: () => provider.setViewType(type),
+                                provider.tabs.asMap().entries.map((entry) {
+                                  int index = entry.key;
+                                  String tab = entry.value;
+                                  bool isSelected =
+                                      provider.selectedIndex == index;
+                                  return GestureDetector(
+                                    onTap: () => provider.selectTab(index),
                                     child: Container(
-                                      padding: const EdgeInsets.symmetric(
+                                      margin: EdgeInsets.symmetric(
+                                        horizontal: 8,
+                                      ),
+                                      padding: EdgeInsets.symmetric(
                                         horizontal: 12,
-
-                                        vertical: 8,
+                                        vertical: 6,
                                       ),
                                       decoration: BoxDecoration(
+                                        color:
+                                            isSelected
+                                                ? Colors.blue
+                                                : Colors.grey[300],
                                         borderRadius: BorderRadius.circular(20),
                                       ),
                                       child: Text(
-                                        enumToCapitalizedString(type.name),
-                                        style: styleW600S16.copyWith(
+                                        tab,
+                                        style: TextStyle(
                                           color:
                                               isSelected
-                                                  ? ColorRes.primaryColor
-                                                  : Colors.black.withValues(
-                                                    alpha: 0.5,
-                                                  ),
+                                                  ? Colors.white
+                                                  : Colors.black,
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                     ),
@@ -253,18 +292,31 @@ class InverterScreen extends StatelessWidget {
                                   //   provider.displayDate,
                                   //   style: const TextStyle(fontSize: 16),
                                   // ),
-                                  SvgAsset(
-                                    imagePath: AssetRes.leftArrowIcon,
-                                    width: 8.pw,
+                                  InkWell(
+                                    onTap: () => provider.previousTab(),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: SvgAsset(
+                                        imagePath: AssetRes.leftArrowIcon,
+                                        width: 8.pw,
+                                      ),
+                                    ),
                                   ),
 
                                   Text(
                                     provider.displayDate,
                                     style: styleW600S16,
                                   ),
-                                  SvgAsset(
-                                    imagePath: AssetRes.rightArrowIcon,
-                                    width: 8.pw,
+
+                                  InkWell(
+                                    onTap: () => provider.nextTab(),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: SvgAsset(
+                                        imagePath: AssetRes.rightArrowIcon,
+                                        width: 8.pw,
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -273,11 +325,39 @@ class InverterScreen extends StatelessWidget {
 
                           ///Space
                           16.pw.spaceVertical,
-
+                          // SizedBox(
+                          //   height: 300,
+                          //   child: BarChart(
+                          //     BarChartData(
+                          //       titlesData: FlTitlesData(show: true),
+                          //       barGroups: provider.getChartData(),
+                          //     ),
+                          //   ),
+                          // ),
+                          ///
                           SizedBox(
-                            height: 250.pw,
+                            height: 200.pw,
                             child: LineChart(
                               LineChartData(
+                                minX: 0,
+                                maxX:10,
+                                minY: 0,
+                                maxY: 20,
+                                lineBarsData: [
+                                  LineChartBarData(
+                                    spots: provider.chartData,
+                                    isCurved: true,
+                                    barWidth: 2,
+                                    color: ColorRes.primaryColor,
+                                    belowBarData: BarAreaData(
+                                      show: true,
+                                      color: ColorRes.primaryColor.withValues(
+                                        alpha: 0.1,
+                                      ),
+                                    ),
+                                    dotData: FlDotData(show: false),
+                                  ),
+                                ],
                                 titlesData: FlTitlesData(
                                   topTitles: AxisTitles(
                                     sideTitles: SideTitles(showTitles: false),
@@ -288,49 +368,43 @@ class InverterScreen extends StatelessWidget {
                                   bottomTitles: AxisTitles(
                                     sideTitles: SideTitles(
                                       showTitles: true,
+                                      interval: 2,
                                       getTitlesWidget:
-                                          (value, _) =>
-                                              Text(value.toStringAsFixed(0)),
+                                          (value, meta) => Padding(
+                                            padding: const EdgeInsets.only(
+                                              top: 8.0,
+                                            ),
+                                            child: Text(
+                                              value.toStringAsFixed(0),
+                                              style: TextStyle(fontSize: 10),
+                                            ),
+                                          ),
                                     ),
                                   ),
                                   leftTitles: AxisTitles(
                                     sideTitles: SideTitles(
                                       showTitles: true,
+                                      interval: 10,
                                       getTitlesWidget:
-                                          (value, _) =>
-                                              Text('${value.toInt()}'),
+                                          (value, meta) => Padding(
+                                            padding: const EdgeInsets.only(
+                                              right: 8.0,
+                                            ),
+                                            child: Text(
+                                              value.toInt().toString(),
+                                              style: TextStyle(fontSize: 10),
+                                            ),
+                                          ),
                                     ),
                                   ),
                                 ),
-                                minX: 0,
-                                maxX: 10,
-                                minY: 0,
-                                maxY: 200,
-
+                                gridData: FlGridData(show: true),
                                 borderData: FlBorderData(
                                   show: true,
                                   border: Border.all(
-                                    color: ColorRes.black.withValues(
-                                      alpha: 0.1,
-                                    ),
+                                    color: Colors.black.withOpacity(0.1),
                                   ),
                                 ),
-                                lineBarsData: [
-                                  LineChartBarData(
-                                    spots: provider.chartData,
-                                    isCurved: true,
-                                    barWidth: 2,
-                                    color: ColorRes.primaryColor,
-                                    belowBarData: BarAreaData(
-                                      show: true,
-                                      color: ColorRes.primaryColor.withValues(
-                                        alpha: 0.2,
-                                      ),
-                                    ),
-
-                                    dotData: FlDotData(show: false),
-                                  ),
-                                ],
                               ),
                             ),
                           ),

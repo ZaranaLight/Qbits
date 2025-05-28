@@ -26,18 +26,18 @@ class InverterProvider extends ChangeNotifier {
 
   ChartViewType get viewType => _viewType;
 
-  List<FlSpot> get chartData {
-    switch (_viewType) {
-      case ChartViewType.day:
-        return _dayData;
-      case ChartViewType.month:
-        return _monthData;
-      case ChartViewType.year:
-        return _yearData;
-      case ChartViewType.total:
-        return _totalData;
-    }
-  }
+  // List<FlSpot> get chartData {
+  //   switch (_viewType) {
+  //     case ChartViewType.day:
+  //       return _dayData;
+  //     case ChartViewType.month:
+  //       return _monthData;
+  //     case ChartViewType.year:
+  //       return _yearData;
+  //     case ChartViewType.total:
+  //       return _totalData;
+  //   }
+  // }
 
   void setViewType(ChartViewType type) {
     _viewType = type;
@@ -107,4 +107,57 @@ class InverterProvider extends ChangeNotifier {
   String _formatMonth(DateTime date) => "${date.year}-${_pad(date.month)}";
 
   String _pad(int value) => value.toString().padLeft(2, '0');
+
+  final List<String> _tabs = ['Day', 'Month', 'Year', 'Total'];
+  int _selectedIndex = 0;
+
+  List<FlSpot> _chartData = [];
+
+  List<FlSpot> get chartData => _chartData;
+
+  String get currentTab => _tabs[_selectedIndex];
+
+  int get selectedIndex => _selectedIndex;
+
+  List<String> get tabs => _tabs;
+
+  void selectTab(int index) {
+    _selectedIndex = index;
+    _loadChartData();
+    notifyListeners();
+  }
+
+  void nextTab() {
+    _selectedIndex = (_selectedIndex + 1) % _tabs.length;
+    _loadChartData();
+    notifyListeners();
+  }
+
+  void previousTab() {
+    _selectedIndex = (_selectedIndex - 1 + _tabs.length) % _tabs.length;
+    _loadChartData();
+    notifyListeners();
+  }
+
+  void updateChart(List<FlSpot> newData) {
+    _chartData = newData;
+    notifyListeners();
+  }
+
+  void _loadChartData() {
+    switch (currentTab) {
+      case 'Day':
+        updateChart([FlSpot(0, 1), FlSpot(2, 4), FlSpot(6, 7), FlSpot(8, 10)]);
+        break;
+      case 'Month':
+        updateChart([FlSpot(0, 3), FlSpot(2, 6), FlSpot(4, 9), FlSpot(8, 8)]);
+        break;
+      case 'Year':
+        updateChart([FlSpot(0, 5), FlSpot(2, 9), FlSpot(4, 13), FlSpot(6, 10)]);
+        break;
+      case 'Total':
+        updateChart([FlSpot(0, 8), FlSpot(4, 12), FlSpot(5, 10), FlSpot(6, 5)]);
+        break;
+    }
+  }
 }
