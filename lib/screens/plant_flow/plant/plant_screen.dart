@@ -193,11 +193,9 @@ class _TabContent extends StatelessWidget {
         16.ph.spaceVertical,
 
         Expanded(
-          child:   Container(
+          child: Container(
             padding: EdgeInsets.symmetric(vertical: 16.pw),
-            decoration: BoxDecoration(
-                color: ColorRes.white
-            ),
+            decoration: BoxDecoration(color: ColorRes.white),
             child: CustomListView(
               itemCount: 10,
               separatorBuilder: (ctx, ind) {
