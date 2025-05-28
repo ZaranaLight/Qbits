@@ -357,54 +357,6 @@ abstract class AppLocalizations {
   /// **'Guidance'**
   String get guidance;
 
-  /// No description provided for @passwordAndConfirmPasswordIsNotMatching.
-  ///
-  /// In en, this message translates to:
-  /// **'Password and Confirm Password is not matching'**
-  String get passwordAndConfirmPasswordIsNotMatching;
-
-  /// No description provided for @yourCityIsRequired.
-  ///
-  /// In en, this message translates to:
-  /// **'Your City is Required'**
-  String get yourCityIsRequired;
-
-  /// No description provided for @collectorAddressIsRequired.
-  ///
-  /// In en, this message translates to:
-  /// **'Collector Address is Required'**
-  String get collectorAddressIsRequired;
-
-  /// No description provided for @timezoneIsRequired.
-  ///
-  /// In en, this message translates to:
-  /// **'Timezone is Required'**
-  String get timezoneIsRequired;
-
-  /// No description provided for @stationTypeIsRequired.
-  ///
-  /// In en, this message translates to:
-  /// **'Station Type is Required'**
-  String get stationTypeIsRequired;
-
-  /// No description provided for @stationNameIsRequired.
-  ///
-  /// In en, this message translates to:
-  /// **'Station Name is Required'**
-  String get stationNameIsRequired;
-
-  /// No description provided for @modelIsRequired.
-  ///
-  /// In en, this message translates to:
-  /// **'Model is Required'**
-  String get modelIsRequired;
-
-  /// No description provided for @phoneNumberIsRequired.
-  ///
-  /// In en, this message translates to:
-  /// **'Phone Number is Required'**
-  String get phoneNumberIsRequired;
-
   /// No description provided for @required.
   ///
   /// In en, this message translates to:
@@ -423,12 +375,6 @@ abstract class AppLocalizations {
   /// **'Enter a valid 10-digit phone number'**
   String get enterValid10DigitPhoneNumber;
 
-  /// No description provided for @confirmPasswordIsRequired.
-  ///
-  /// In en, this message translates to:
-  /// **'Confirm Password is Required'**
-  String get confirmPasswordIsRequired;
-
   /// No description provided for @stationOwner.
   ///
   /// In en, this message translates to:
@@ -440,36 +386,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Company'**
   String get company;
-
-  /// No description provided for @companyCodeIsRequired.
-  ///
-  /// In en, this message translates to:
-  /// **'Company Code Is Required'**
-  String get companyCodeIsRequired;
-
-  /// No description provided for @mailIsRequired.
-  ///
-  /// In en, this message translates to:
-  /// **'Mail Is Required'**
-  String get mailIsRequired;
-
-  /// No description provided for @mailIsNotValid.
-  ///
-  /// In en, this message translates to:
-  /// **'Mail Is Not Valid'**
-  String get mailIsNotValid;
-
-  /// No description provided for @verificationCodeIsRequired.
-  ///
-  /// In en, this message translates to:
-  /// **'Verification Code Is Required'**
-  String get verificationCodeIsRequired;
-
-  /// No description provided for @verificationCodeIsntMatching.
-  ///
-  /// In en, this message translates to:
-  /// **'Verification Code Isn\'t Matching'**
-  String get verificationCodeIsntMatching;
 
   /// No description provided for @installer.
   ///
@@ -723,6 +639,90 @@ abstract class AppLocalizations {
   /// **'Password Is Required'**
   String get passwordIsRequired;
 
+  /// No description provided for @stationNameIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Station Name Is Required'**
+  String get stationNameIsRequired;
+
+  /// No description provided for @modelIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Model Is Required'**
+  String get modelIsRequired;
+
+  /// No description provided for @confirmPasswordIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password Is Required'**
+  String get confirmPasswordIsRequired;
+
+  /// No description provided for @passwordAndConfirmPasswordIsNotMatching.
+  ///
+  /// In en, this message translates to:
+  /// **'Password and Confirm Password Isn't Matching'**
+  String get passwordAndConfirmPasswordIsNotMatching;
+
+  /// No description provided for @yourCityIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Your City Is Required'**
+  String get yourCityIsRequired;
+
+  /// No description provided for @collectorAddressIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Collector Address Is Required'**
+  String get collectorAddressIsRequired;
+
+  /// No description provided for @timezoneIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Timezone Is Required'**
+  String get timezoneIsRequired;
+
+  /// No description provided for @stationTypeIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Station Type Is Required'**
+  String get stationTypeIsRequired;
+
+  /// No description provided for @phoneNumberIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number Is Required'**
+  String get phoneNumberIsRequired;
+
+  /// No description provided for @companyCodeIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Company Code Is Required'**
+  String get companyCodeIsRequired;
+
+  /// No description provided for @mailIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Mail Is Required'**
+  String get mailIsRequired;
+
+  /// No description provided for @mailIsNotValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Mail Is Not Valid'**
+  String get mailIsNotValid;
+
+  /// No description provided for @verificationCodeIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification Code Is Required'**
+  String get verificationCodeIsRequired;
+
+  /// No description provided for @verificationCodeIsntMatching.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification Code Isn't Matching'**
+  String get verificationCodeIsntMatching;
+
   /// No description provided for @continueCap.
   ///
   /// In en, this message translates to:
@@ -732,7 +732,7 @@ abstract class AppLocalizations {
   /// No description provided for @pleaseUseYourPhoneNumberOrEmailToObtain.
   ///
   /// In en, this message translates to:
-  /// **'Please use your phone number or email  to obtain \nthe verification code'**
+  /// **'Please use your phone number or email  to obtain the verification code'**
   String get pleaseUseYourPhoneNumberOrEmailToObtain;
 
   /// No description provided for @dashboard.
@@ -740,6 +740,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Dashboard'**
   String get dashboard;
+
+  /// No description provided for @profitComputeMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Profit Compute Mode'**
+  String get profitComputeMode;
+
+  /// No description provided for @myProfit.
+  ///
+  /// In en, this message translates to:
+  /// **'My Profit'**
+  String get myProfit;
+
+  /// No description provided for @totalEnergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Energy'**
+  String get totalEnergy;
+
+  /// No description provided for @averageElectricPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Average Electric Price'**
+  String get averageElectricPrice;
+
+  /// No description provided for @parameterSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Parameter Set'**
+  String get parameterSet;
+
+  /// No description provided for @energySubsidizedPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Energy Subsidized Price'**
+  String get energySubsidizedPrice;
 
   /// No description provided for @openSettings.
   ///

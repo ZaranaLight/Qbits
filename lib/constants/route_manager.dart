@@ -1,6 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/user_center_flow/currency/curency_screen.dart';
-import 'package:qbits/screens/user_center_flow/end_user/end_user_screen.dart';
 
 class RouteManager {
   static String get initialRoute => SplashScreen.routeName;
@@ -182,6 +180,13 @@ class RouteManager {
           settings: settings,
         );
 
+      /// Profit Compute Mode Screen
+      case ProfitComputeModeScreen.routeName:
+        return MaterialPageRoute(
+          builder: ProfitComputeModeScreen.builder,
+          settings: settings,
+        );
+
       /// Currency Screen
       case CurrencyScreen.routeName:
         return MaterialPageRoute(
@@ -190,7 +195,7 @@ class RouteManager {
         );
 
 
-      /// Currency Screen
+      /// End User Screen
       case EndUserScreen.routeName:
         return MaterialPageRoute(
           builder: EndUserScreen.builder,
