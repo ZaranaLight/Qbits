@@ -33,7 +33,7 @@ class ProfileInformationScreen extends StatelessWidget {
               ),
             ),
           ),
-          body: CustomSingleChildScroll(
+          body: Padding(
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,

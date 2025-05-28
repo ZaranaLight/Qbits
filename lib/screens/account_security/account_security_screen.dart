@@ -19,7 +19,7 @@ class AccountSecurityScreen extends StatelessWidget {
         return Scaffold(
           backgroundColor: ColorRes.white,
           appBar: CustomAppBar(title: context.l10n?.accountSecurity ?? ""),
-          body: CustomSingleChildScroll(
+          body: Padding(
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,

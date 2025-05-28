@@ -687,6 +687,42 @@ abstract class AppLocalizations {
   /// **'Auto Sign In'**
   String get autoSignIn;
 
+  /// No description provided for @profitComputeMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Profit Compute Mode'**
+  String get profitComputeMode;
+
+  /// No description provided for @myProfit.
+  ///
+  /// In en, this message translates to:
+  /// **'My Profit'**
+  String get myProfit;
+
+  /// No description provided for @totalEnergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Energy'**
+  String get totalEnergy;
+
+  /// No description provided for @averageElectricPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Average Electric Price'**
+  String get averageElectricPrice;
+
+  /// No description provided for @parameterSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Parameter Set'**
+  String get parameterSet;
+
+  /// No description provided for @energySubsidizedPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Energy Subsidized Price'**
+  String get energySubsidizedPrice;
+
   /// No description provided for @clickToImproveContentInformation.
   ///
   /// In en, this message translates to:

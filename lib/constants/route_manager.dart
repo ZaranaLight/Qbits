@@ -145,6 +145,13 @@ class RouteManager {
           settings: settings,
         );
 
+      /// Profit Compute Mode Screen
+      case ProfitComputeModeScreen.routeName:
+        return MaterialPageRoute(
+          builder: ProfitComputeModeScreen.builder,
+          settings: settings,
+        );
+
       /// Plant Detail Screen
       case PlantDetailScreen.routeName:
         return MaterialPageRoute(

@@ -74,6 +74,8 @@ export 'package:qbits/screens/account_security/user_center_options_screen.dart';
 export 'package:qbits/screens/profile_information/profile_information_provider.dart';
 export 'package:qbits/screens/profile_information/profile_information_screen.dart';
 export 'package:qbits/screens/profile_information/profile_info_otp_verification_screen.dart';
+export 'package:qbits/screens/profit_compute_mode/profit_compute_mode_provider.dart';
+export 'package:qbits/screens/profit_compute_mode/profit_compute_mode_screen.dart';
 export 'package:qbits/screens/alarm/alarm_screen.dart';
 export 'package:qbits/screens/plant/plant_screen.dart';
 export 'package:qbits/screens/my_watchlist/widget/watchlist_cell.dart';

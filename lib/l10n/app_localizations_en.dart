@@ -306,6 +306,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get autoSignIn => 'Auto Sign In';
 
   @override
+  String get profitComputeMode => 'Profit Compute Mode';
+
+  @override
+  String get myProfit => 'My Profit';
+
+  @override
+  String get totalEnergy => 'Total Energy';
+
+  @override
+  String get averageElectricPrice => 'Average Electric Price';
+
+  @override
+  String get parameterSet => 'Parameter Set';
+
+  @override
+  String get energySubsidizedPrice => 'Energy Subsidized Price';
+
+  @override
   String get clickToImproveContentInformation => 'Click To Improve Content Information';
 
   @override

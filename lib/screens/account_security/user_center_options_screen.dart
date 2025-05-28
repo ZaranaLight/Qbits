@@ -19,7 +19,7 @@ class UserCenterOptionsScreen extends StatelessWidget {
         return Scaffold(
           backgroundColor: ColorRes.white,
           appBar: CustomAppBar(title: context.l10n?.userCenter ?? ""),
-          body: CustomSingleChildScroll(
+          body: Padding(
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
@@ -76,9 +76,9 @@ class UserCenterOptionsScreen extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 5),
                       child: InkWell(
                         onTap: () {
-                          // context.navigator.pushNamed(
-                          //   MyWatchlistScreen.routeName,
-                          // );
+                          context.navigator.pushNamed(
+                            ProfitComputeModeScreen.routeName,
+                          );
                         },
                         child: Row(
                           children: [
@@ -139,8 +139,20 @@ class UserCenterOptionsScreen extends StatelessWidget {
 
                             Spacer(),
 
-                            /// Forward Icon
-                            SvgAsset(imagePath: AssetRes.forwardIcon),
+                            /// Auto Sign In Switch
+                            Switch(
+                              // This bool value toggles the switch.
+                              value: provider.isAutoSignInOn,
+                              activeColor: ColorRes.primaryColor,
+                              inactiveThumbColor: ColorRes.lightGrey,
+                              trackOutlineColor: WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+                                return provider.isAutoSignInOn ? null : ColorRes.lightGrey;
+                              }),
+                              onChanged: (bool value) {
+                                // This is called when the user toggles the switch.
+                                provider.updateAutoSignInSetting(value);
+                              },
+                            )
                           ],
                         ),
                       ),
