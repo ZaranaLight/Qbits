@@ -108,5 +108,7 @@ export 'package:qbits/screens/user_center_flow/profit_compute_mode/profit_comput
 export 'package:qbits/screens/user_center_flow/currency/currency_screen.dart';
 export 'package:qbits/screens/user_center_flow/end_user/end_user_provider.dart';
 export 'package:qbits/screens/user_center_flow/end_user/end_user_screen.dart';
+export 'package:qbits/screens/user_center_flow/account_cancellation/account_cancellation_provider.dart';
+export 'package:qbits/screens/user_center_flow/account_cancellation/account_cancellation_screen.dart';
 export 'package:qbits/screens/auth_flow/bluetooth_manually/bluetooth_manually_provider.dart';
 

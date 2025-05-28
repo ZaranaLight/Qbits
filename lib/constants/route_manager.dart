@@ -174,6 +174,13 @@ class RouteManager {
           settings: settings,
         );
 
+      /// Account Cancellation Screen
+      case AccountCancellationScreen.routeName:
+        return MaterialPageRoute(
+          builder: AccountCancellationScreen.builder,
+          settings: settings,
+        );
+
       /// builderUser Center Options Screen
       case UserCenterOptionsScreen.routeName:
         return MaterialPageRoute(

@@ -216,6 +216,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get accountCancellation => 'Account Cancellation';
 
   @override
+  String get submit => 'Submit';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get howDoIAddressYou => 'How do i address you';
+
+  @override
+  String get qq => 'QQ';
+
+  @override
+  String get contactInformation => 'Contact Information';
+
+  @override
+  String get questionOrSuggestion => 'Question or Suggestion';
+
+  @override
   String get setPassword => 'Set Password';
 
   @override

@@ -507,6 +507,42 @@ abstract class AppLocalizations {
   /// **'Account Cancellation'**
   String get accountCancellation;
 
+  /// No description provided for @submit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get submit;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @howDoIAddressYou.
+  ///
+  /// In en, this message translates to:
+  /// **'How do i address you'**
+  String get howDoIAddressYou;
+
+  /// No description provided for @contactInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Information'**
+  String get contactInformation;
+
+  /// No description provided for @QQ.
+  ///
+  /// In en, this message translates to:
+  /// **'QQ'**
+  String get qq;
+
+  /// No description provided for @questionOrSuggestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Question or Suggestion'**
+  String get questionOrSuggestion;
+
   /// No description provided for @setPassword.
   ///
   /// In en, this message translates to:
