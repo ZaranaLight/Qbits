@@ -7,6 +7,7 @@
   "signIn": "Sign In",
   "register": "Register",
   "selectRegion": "Select Region",
+  "selectRegionDescription": "Select Region Description",
   "pleaseSelectTheRegionThatCorrespondsTo": "Please Select the region that corresponds to \nyour business scope. The system will provide\naccess to dataand services specific to your.",
   "china": "China",
   "africa": "Africa",

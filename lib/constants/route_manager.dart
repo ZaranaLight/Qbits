@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/user_center_flow/guest/guest_screen.dart';
 
 class RouteManager {
   static String get initialRoute => SplashScreen.routeName;
@@ -45,6 +44,13 @@ class RouteManager {
       case SelectRegionScreen.routeName:
         return MaterialPageRoute(
           builder: SelectRegionScreen.builder,
+          settings: settings,
+        );
+
+      /// Select Region Description Screen
+      case SelectRegionDescriptionScreen.routeName:
+        return MaterialPageRoute(
+          builder: SelectRegionDescriptionScreen.builder,
           settings: settings,
         );
 

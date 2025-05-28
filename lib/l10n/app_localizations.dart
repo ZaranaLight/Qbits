@@ -141,6 +141,12 @@ abstract class AppLocalizations {
   /// **'Select Region'**
   String get selectRegion;
 
+  /// No description provided for @selectRegionDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Region Description'**
+  String get selectRegionDescription;
+
   /// No description provided for @pleaseSelectTheRegionThatCorrespondsTo.
   ///
   /// In en, this message translates to:

@@ -33,6 +33,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectRegion => 'Select Region';
 
   @override
+  String get selectRegionDescription => 'Select Region Description';
+
+  @override
   String get pleaseSelectTheRegionThatCorrespondsTo => 'Please Select the region that corresponds to \nyour business scope. The system will provide\naccess to dataand services specific to your.';
 
   @override
