@@ -187,10 +187,17 @@ class RouteManager {
           settings: settings,
         );
 
-      /// builderUser Center Options Screen
+      /// User Center Options Screen
       case UserCenterOptionsScreen.routeName:
         return MaterialPageRoute(
           builder: UserCenterOptionsScreen.builder,
+          settings: settings,
+        );
+
+      /// Set Password Screen
+      case SetPasswordScreen.routeName:
+        return MaterialPageRoute(
+          builder: SetPasswordScreen.builder,
           settings: settings,
         );
 
@@ -207,7 +214,6 @@ class RouteManager {
           builder: CurrencyScreen.builder,
           settings: settings,
         );
-
 
       /// End User Screen
       case EndUserScreen.routeName:

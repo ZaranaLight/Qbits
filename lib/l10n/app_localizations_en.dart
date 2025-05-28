@@ -240,6 +240,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get setPassword => 'Set Password';
 
   @override
+  String get originalPassword => 'Original Password';
+
+  @override
+  String get enterOriginalPassword => 'Enter Original Password';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get enterNewPassword => 'Enter New Password';
+
+  @override
+  String get confirmNewPassword => 'Confirm New Password';
+
+  @override
+  String get enterConfirmNewPassword => 'Enter Confirm New Password';
+
+  @override
   String get currency => 'Currency';
 
   @override
@@ -306,6 +324,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordIsRequired => 'Password Is Required';
 
   @override
+  String get originalPasswordIsRequired => 'Original Password Is Required';
+
+  @override
+  String get newPasswordIsRequired => 'New Password Is Required';
+
+  @override
   String get stationNameIsRequired => 'Station Name Is Required';
 
   @override
@@ -316,6 +340,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwordAndConfirmPasswordIsNotMatching => 'Password and Confirm Password Isn\'t Matching';
+
+  @override
+  String get confirmNewPasswordIsRequired => 'Confirm New Password Is Required';
+
+  @override
+  String get newPasswordAndConfirmNewPasswordIsNotMatching => 'New Password and Confirm New Password Isn\'t Matching';
 
   @override
   String get yourCityIsRequired => 'Your City Is Required';

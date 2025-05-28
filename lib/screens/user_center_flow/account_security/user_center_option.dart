@@ -38,9 +38,9 @@ class UserCenterOptionsScreen extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 5),
                       child: InkWell(
                         onTap: () {
-                          // context.navigator.pushNamed(
-                          //   MyWatchlistScreen.routeName,
-                          // );
+                          context.navigator.pushNamed(
+                            SetPasswordScreen.routeName,
+                          );
                         },
                         child: Row(
                           children: [

@@ -555,6 +555,42 @@ abstract class AppLocalizations {
   /// **'Set Password'**
   String get setPassword;
 
+  /// No description provided for @originalPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Original Password'**
+  String get originalPassword;
+
+  /// No description provided for @enterOriginalPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Original Password'**
+  String get enterOriginalPassword;
+
+  /// No description provided for @newPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get newPassword;
+
+  /// No description provided for @enterNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter New Password'**
+  String get enterNewPassword;
+
+  /// No description provided for @confirmNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm New Password'**
+  String get confirmNewPassword;
+
+  /// No description provided for @enterConfirmNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Confirm New Password'**
+  String get enterConfirmNewPassword;
+
   /// No description provided for @currency.
   ///
   /// In en, this message translates to:
@@ -687,6 +723,18 @@ abstract class AppLocalizations {
   /// **'Password Is Required'**
   String get passwordIsRequired;
 
+  /// No description provided for @originalPasswordIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Original Password Is Required'**
+  String get originalPasswordIsRequired;
+
+  /// No description provided for @newPasswordIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password Is Required'**
+  String get newPasswordIsRequired;
+
   /// No description provided for @stationNameIsRequired.
   ///
   /// In en, this message translates to:
@@ -710,6 +758,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Password and Confirm Password Isn't Matching'**
   String get passwordAndConfirmPasswordIsNotMatching;
+
+  /// No description provided for @confirmNewPasswordIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm New Password Is Required'**
+  String get confirmNewPasswordIsRequired;
+
+  /// No description provided for @newPasswordAndConfirmNewPasswordIsNotMatching.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password and Confirm New Password Isn't Matching'**
+  String get newPasswordAndConfirmNewPasswordIsNotMatching;
 
   /// No description provided for @yourCityIsRequired.
   ///
