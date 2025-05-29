@@ -172,27 +172,30 @@ class CheckBoxBtn extends StatelessWidget {
         }
       },
       borderRadius: BorderRadius.circular(4.pw),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ///CheckBOx Ion
-          checkbox,
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 14.pw),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ///CheckBOx Ion
+            checkbox,
 
-          ///Space
-          10.ph.spaceHorizontal,
+            ///Space
+            10.ph.spaceHorizontal,
 
-          ///Text
-          Padding(
-            padding: EdgeInsets.only(right: 15.pw),
-            child: Text(
-              text!,
-              style:
-                  value
-                      ? styleW600S16.copyWith(color: ColorRes.primaryColor)
-                      : styleW500S16.copyWith(color: ColorRes.black),
+            ///Text
+            Padding(
+              padding: EdgeInsets.only(right: 15.pw),
+              child: Text(
+                text!,
+                style:
+                    value
+                        ? styleW600S16.copyWith(color: ColorRes.primaryColor)
+                        : styleW500S16.copyWith(color: ColorRes.black),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

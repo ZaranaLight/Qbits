@@ -150,7 +150,7 @@ abstract class AppLocalizations {
   /// No description provided for @pleaseSelectTheRegionThatCorrespondsTo.
   ///
   /// In en, this message translates to:
-  /// **'Please Select the region that corresponds to \nyour business scope. The system will provide\naccess to dataand services specific to your.'**
+  /// **'Please Select the region that corresponds to your business scope. The system will provide access to data and services specific to your.'**
   String get pleaseSelectTheRegionThatCorrespondsTo;
 
   /// No description provided for @china.
