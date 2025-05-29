@@ -7,8 +7,8 @@ class PlantScreen extends StatelessWidget {
 
   static Widget builder(BuildContext context) {
     return ChangeNotifierProvider<PlantProvider>(
-      create: (c) => PlantProvider(),
-      child: PlantScreen(),
+      create: (_) => PlantProvider(),
+      child: const PlantScreen(),
     );
   }
 
@@ -20,15 +20,23 @@ class PlantScreen extends StatelessWidget {
         builder: (context, state, child) {
           return Column(
             children: [
+              /// AppBar with Search and Tabs
               const _AppBar(),
 
-              /// Expanded TabBarView
+              /// TabBarView for content
               Expanded(
                 child: TabBarView(
                   children: [
+                    ///All Tab Content
                     _TabContent(),
+
+                    ///Normal Tab Content
                     _TabContent(),
+
+                    ///Alarm Tab Content
                     _TabContent(),
+
+                    ///Offline Tab Content
                     _TabContent(),
                   ],
                 ),
@@ -41,6 +49,7 @@ class PlantScreen extends StatelessWidget {
   }
 }
 
+/// AppBar with Search and Tabs
 class _AppBar extends StatelessWidget {
   const _AppBar();
 
@@ -145,87 +154,85 @@ class _TabContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-
       mainAxisSize: MainAxisSize.min,
       children: [
-        /// Space between tabs and content
+        /// Space
         16.ph.spaceVertical,
 
+        /// Filter, Rank, and Preference Buttons
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding),
+          padding: EdgeInsets.symmetric(
+            horizontal: Constants.horizontalPadding,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              ///Rank,
               _ellipseButton(
+                context: context,
                 text: context.l10n?.rank ?? "",
                 imagePath: AssetRes.dropDownArrowIcon,
-                onTap: () {
-                  RankDialogBox.show(context: context);
-                },
+                onTap: () => RankDialogBox.show(context: context),
               ),
 
-              ///
+              ///Space
               Constants.horizontalPadding.spaceHorizontal,
 
+              /// Preference
               _ellipseButton(
+                context: context,
                 text: context.l10n?.preference ?? "",
                 imagePath: AssetRes.dropDownArrowIcon,
-                onTap: () {
-                  PreferenceDialogBox.show(context: context);
-                },
+                onTap: () => PreferenceDialogBox.show(context: context),
               ),
 
-              ///
+              ///Space
               Constants.horizontalPadding.spaceHorizontal,
 
+              /// Filter
               _ellipseButton(
+                context: context,
                 text: context.l10n?.filter ?? "",
                 imagePath: AssetRes.filterIcon,
-                onTap: () {
-                  FilterDialogBox.show(context: context);
-                },
+                onTap: () => FilterDialogBox.show(context: context),
               ),
             ],
           ),
         ),
 
-        /// Space between buttons and content
+        ///Space
         16.ph.spaceVertical,
 
+        /// Watchlist Section
         Expanded(
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: Constants.horizontalPadding),
             decoration: BoxDecoration(color: ColorRes.white),
             child: CustomListView(
               itemCount: 10,
-              separatorBuilder: (ctx, ind) {
-                return Container(
-                  margin: EdgeInsets.symmetric(vertical: 20.ph),
-                  height: 1.ph,
-                  width: 100.pw,
-                  color: ColorRes.black.withValues(alpha: 0.1),
-                );
-              },
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding),
-                  child: MyWatchlistCell(),
-                );
-              },
+              separatorBuilder:
+                  (ctx, ind) => Container(
+                    height: 1.ph,
+                    width: 100.pw,
+                    color: ColorRes.black.withOpacity(0.1),
+                  ),
+              itemBuilder:
+                  (context, index) => MyWatchlistCell(),
             ),
           ),
         ),
 
-        /// Space
+        /// Space at the bottom
         20.ph.spaceVertical,
       ],
     );
   }
 
+  /// Reusable Ellipse Button
   Widget _ellipseButton({
+    required BuildContext context,
     required String text,
     required String imagePath,
-    required Function()? onTap,
+    required VoidCallback onTap,
   }) {
     return Expanded(
       child: Container(
@@ -243,8 +250,13 @@ class _TabContent extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  /// Text and Icon
                   Text(text, style: styleW500S14),
+
+                  /// Space
                   4.pw.spaceHorizontal,
+
+                  /// Icon
                   SvgAsset(imagePath: imagePath),
                 ],
               ),

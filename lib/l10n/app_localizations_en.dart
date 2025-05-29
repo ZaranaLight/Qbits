@@ -45,6 +45,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get africa => 'Africa';
 
   @override
+  String get production => 'Production';
+
+  @override
+  String get dayEnergy => 'Day Energy';
+
+  @override
+  String get plantInfo => 'Plant Info';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get longitude => 'Longitude';
+
+  @override
+  String get latitude => 'Latitude';
+
+  @override
+  String get ownerPhone => 'Owner’s Phone';
+
+  @override
   String get oceania => 'Oceania';
 
   @override

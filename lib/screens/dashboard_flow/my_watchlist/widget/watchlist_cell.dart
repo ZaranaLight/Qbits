@@ -10,11 +10,10 @@ class MyWatchlistCellListView extends StatelessWidget {
         return StackedLoader(
           loading: state.loader,
           child: CustomListView(
-            padding: EdgeInsets.all(Constants.horizontalPadding),
             itemCount: 10,
+
             separatorBuilder: (ctx, ind) {
               return Container(
-                margin: EdgeInsets.symmetric(vertical: 20.ph),
                 height: 1.ph,
                 width: 100.pw,
                 color: ColorRes.black.withValues(alpha: 0.1),
@@ -35,60 +34,65 @@ class MyWatchlistCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        context.navigator.pushNamed(PlantDetailScreen.routeName);
-      },
-      child: SizedBox(
-        width: 100.w,
-        child: Row(
-          children: [
-            /// Image
-            AssetsImg(
-              imagePath: AssetRes.tempSolarImg,
-              height: 80.ph,
-              width: 100.pw,
-            ),
-
-            /// Space
-            10.pw.spaceHorizontal,
-
-            Expanded(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("What is Lorem Ipsum?", style: styleW600S14),
-
-                      SvgAsset(imagePath: AssetRes.starIcon),
-                    ],
-                  ),
-
-                  /// Space
-                  20.ph.spaceVertical,
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _buildData(
-                        title: context.l10n?.day ?? "",
-                        value: "37.75kwh",
-                      ),
-                      _buildData(
-                        title: context.l10n?.power ?? "",
-                        value: "37.75kwh",
-                      ),
-                      _buildData(
-                        title: context.l10n?.total ?? "",
-                        value: "37.75kwh",
-                      ),
-                    ],
-                  ),
-                ],
+    return Material(
+      color: ColorRes.transparent,
+      child: InkWell(
+        onTap: () {
+          context.navigator.pushNamed(PlantDetailScreen.routeName);
+        },
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding),
+          margin: EdgeInsets.symmetric(vertical: 20.ph),
+          width: 100.w,
+          child: Row(
+            children: [
+              /// Image
+              AssetsImg(
+                imagePath: AssetRes.tempSolarImg,
+                height: 80.ph,
+                width: 100.pw,
               ),
-            ),
-          ],
+
+              /// Space
+              10.pw.spaceHorizontal,
+
+              Expanded(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("What is Lorem Ipsum?", style: styleW600S14),
+
+                        SvgAsset(imagePath: AssetRes.starIcon),
+                      ],
+                    ),
+
+                    /// Space
+                    20.ph.spaceVertical,
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _buildData(
+                          title: context.l10n?.day ?? "",
+                          value: "37.75kwh",
+                        ),
+                        _buildData(
+                          title: context.l10n?.power ?? "",
+                          value: "37.75kwh",
+                        ),
+                        _buildData(
+                          title: context.l10n?.total ?? "",
+                          value: "37.75kwh",
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

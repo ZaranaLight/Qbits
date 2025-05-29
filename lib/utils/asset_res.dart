@@ -65,6 +65,7 @@ class AssetRes {
   static const lockIcon = "${_icons}lock_icon.svg";
   static const profitIcon = "${_icons}profit_icon.svg";
   static const helpIcon = "${_icons}help_icon.svg";
+  static const dashIcon = "${_icons}dash_line.svg";
 
   ///________________________________ Temp images ______________________________///
 

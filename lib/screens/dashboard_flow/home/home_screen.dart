@@ -85,7 +85,12 @@ class HomeScreen extends StatelessWidget {
                                       Spacer(),
 
                                       /// Forward Icon
-                                      SvgAsset(imagePath: AssetRes.forwardIcon),
+                                      SvgAsset(
+                                        imagePath: AssetRes.forwardIcon,
+                                        color: ColorRes.black.withValues(
+                                          alpha: 0.3,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -115,12 +120,14 @@ class HomeScreen extends StatelessWidget {
                           16.ph.spaceVertical,
 
                           BarChartContainer(),
+
+                          /// Space
+                          16.ph.spaceVertical,
                         ],
                       ),
                     ),
                   ),
                 ),
-
               ],
             ),
           ],

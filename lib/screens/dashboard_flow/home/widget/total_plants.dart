@@ -31,7 +31,7 @@ class TotalPlantsContainer extends StatelessWidget {
                 Spacer(),
 
                 /// Forward Icon
-                SvgAsset(imagePath: AssetRes.forwardIcon),
+                SvgAsset(imagePath: AssetRes.forwardIcon,color: ColorRes.black.withValues(alpha: 0.3),),
               ],
             ),
           ),
@@ -82,9 +82,10 @@ class TotalPlantsContainer extends StatelessWidget {
 
           Text(value, style: styleW500S16),
 
-          4.pw.spaceHorizontal,
+          8.pw.spaceHorizontal,
 
-          SvgAsset(imagePath: AssetRes.forwardIcon),
+          SvgAsset(imagePath: AssetRes.forwardIcon,color: ColorRes.black.withValues(alpha: 0.3),),
+
         ],
       ),
     );

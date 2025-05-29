@@ -25,7 +25,9 @@ class PlantDetailScreen extends StatelessWidget {
                   title: context.l10n?.confirm ?? "",
                   actions: [
                     Padding(
-                      padding: EdgeInsets.only(right: Constants.horizontalPadding),
+                      padding: EdgeInsets.only(
+                        right: Constants.horizontalPadding,
+                      ),
                       child: SvgAsset(imagePath: AssetRes.starIcon),
                     ),
                   ],
@@ -59,7 +61,7 @@ class PlantDetailScreen extends StatelessWidget {
                           Spacer(),
 
                           Text(
-                            context.l10n?.offline ?? "",
+                            "text",
                             style: styleW400S14.copyWith(
                               color: ColorRes.darkGrey,
                             ),
@@ -73,7 +75,6 @@ class PlantDetailScreen extends StatelessWidget {
                       /// TabBar
                       TabBar(
                         padding: EdgeInsets.zero,
-                        tabAlignment: TabAlignment.start,
                         physics: NeverScrollableScrollPhysics(),
                         indicatorColor: ColorRes.primaryColor,
                         labelColor: ColorRes.primaryColor,
@@ -92,6 +93,7 @@ class PlantDetailScreen extends StatelessWidget {
                                     .primaryColor, // your desired underline color
                             width: 2.0,
                           ),
+                          insets: EdgeInsets.only(bottom: 10.ph),
                         ),
                         tabs: [
                           Tab(text: context.l10n?.dashboard),
@@ -99,7 +101,10 @@ class PlantDetailScreen extends StatelessWidget {
                           Tab(text: context.l10n?.alarm),
                           Tab(text: context.l10n?.about),
                         ],
-                        isScrollable: true, // Set true if long labels
+                        labelPadding: EdgeInsets.symmetric(horizontal: 10.pw),
+
+                        isScrollable: false,
+                        // Set true if long labels
                       ),
                     ],
                   ),

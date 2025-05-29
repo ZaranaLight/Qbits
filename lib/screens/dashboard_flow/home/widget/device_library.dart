@@ -25,7 +25,8 @@ class DeviceLiberyContainer extends StatelessWidget {
                 ),
 
                 /// Forward Icon
-                SvgAsset(imagePath: AssetRes.forwardIcon),
+                SvgAsset(imagePath: AssetRes.forwardIcon,color: ColorRes.black.withValues(alpha: 0.3),),
+
               ],
             ),
           ),

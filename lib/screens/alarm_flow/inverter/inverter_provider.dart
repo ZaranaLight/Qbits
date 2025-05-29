@@ -4,13 +4,15 @@ class InverterProvider extends ChangeNotifier {
   InverterProvider() {
     initialize();
   }
-  bool loader = false;
+
   void initialize() {
     if (!_isInitialized) {
       _loadChartData();
       _isInitialized = true;
     }
   }
+
+  bool loader = false;
 
   int? _expandedIndex;
 
@@ -177,23 +179,31 @@ class InverterProvider extends ChangeNotifier {
         break;
     }
   }
-  final List<String> preferenceOptions = ['AC Power', 'Voltage V1', 'Voltage V2'];
+
+  final List<String> preferenceOptions = [
+    'AC Power',
+    'Voltage V1',
+    'Voltage V2',
+  ];
+
   // Currently selected preference
   String _selectedPreference = 'AC Power';
+
   String get selectedPreference => _selectedPreference;
+
   // Data related to each preference
   double? acPower;
   double? voltageV1;
   double? voltageV2;
 
-// Handle dropdown selection
+  // Handle dropdown selection
   void updateSelectedPreference(String value) {
     _selectedPreference = value;
     _loadFieldData(); // Optional: load data for selected field
     notifyListeners();
   }
 
-// Simulate loading or fetching data
+  // Simulate loading or fetching data
   void _loadFieldData() {
     switch (_selectedPreference) {
       case 'AC Power':
@@ -207,6 +217,4 @@ class InverterProvider extends ChangeNotifier {
         break;
     }
   }
-
-
 }

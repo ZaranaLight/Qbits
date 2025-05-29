@@ -1,6 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/alarm_flow/inverter/inverter_provider.dart';
-import 'package:qbits/screens/alarm_flow/inverter/widget/build_top_row_widget.dart';
 
 class InverterScreen extends StatelessWidget {
   const InverterScreen({super.key});
@@ -21,7 +19,6 @@ class InverterScreen extends StatelessWidget {
         WidgetsBinding.instance.addPostFrameCallback(
           (_) => provider.initialize(),
         );
-
         return StackedLoader(
           loading: provider.loader,
           child: Scaffold(
@@ -38,10 +35,19 @@ class InverterScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          /// Top Row
           _buildInfoSection(context),
-          const SizedBox(height: 16),
+
+          /// Space
+          16.pw.spaceVertical,
+
+          /// Fault Section
           _buildFaultSection(context, provider),
-          const SizedBox(height: 16),
+
+          ///Space
+          16.pw.spaceVertical,
+
+          ///Chart Section
           _buildChartSection(provider),
         ],
       ),
@@ -130,8 +136,13 @@ class InverterScreen extends StatelessWidget {
                 Expanded(
                   child: Row(
                     children: [
+                      /// Icon
                       Text(provider.titles[index], style: styleW600S14),
-                      const SizedBox(width: 8),
+
+                      ///Space
+                      8.pw.spaceHorizontal,
+
+                      ///Description
                       Text(
                         "Phase C voltage is too low",
                         style: styleW500S14.copyWith(color: ColorRes.orange2),
@@ -170,6 +181,8 @@ class InverterScreen extends StatelessWidget {
                     : null,
           ),
         ),
+
+        /// Divider
         Divider(height: 1, color: ColorRes.black.withValues(alpha: 0.1)),
       ],
     );
@@ -184,20 +197,50 @@ class InverterScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              ///Chart Header
               _buildChartTabs(provider),
-              const SizedBox(height: 8),
+
+              ///Space
+              8.pw.spaceVertical,
+
+              ///Date Picker
               _buildDatePicker(provider),
-              const SizedBox(height: 10),
+
+              ///Space
+              10.pw.spaceVertical,
+
+              ///Energy Usage and Preference Dropdown
               _buildEnergyUsage(),
+
+              ///divider
               Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+
+              ///Space
+              6.pw.spaceVertical,
+
+              ///Preference Dropdown
               _buildPreferenceDropdown(provider),
-              const SizedBox(height: 6),
+
+              ///Space
+              10.pw.spaceVertical,
+
+              ///kWh Label
               _buildKWhLabel(),
-              const SizedBox(height: 6),
+
+              ///Space
+              6.pw.spaceVertical,
+
+              /// Chart
               _buildChart(provider),
-              const SizedBox(height: 15),
+
+              /// Space
+              15.pw.spaceVertical,
+
+              /// Chart Legend
               _buildChartLegend(provider),
-              const SizedBox(height: 15),
+
+              /// Space
+              15.pw.spaceVertical,
             ],
           ),
         );
@@ -349,8 +392,13 @@ class InverterScreen extends StatelessWidget {
   }
 
   Widget _buildPreferenceDropdown(InverterProvider provider) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5.pw),
+        color: ColorRes.primaryColor.withValues(alpha: 0.1),
+      ),
+      margin: const EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: DropdownButton<String>(
         elevation: 0,
         padding: EdgeInsets.zero,

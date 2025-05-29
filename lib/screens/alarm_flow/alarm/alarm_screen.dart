@@ -31,10 +31,13 @@ class AlarmScreen extends StatelessWidget {
                   _buildTabBarContainer(context, provider),
 
                   /// Vertical space
-                  const SizedBox(height: 15),
+                  15.pw.spaceVertical,
 
                   /// Tab content
                   _buildTabContent(provider, context),
+
+                  /// Vertical space
+                  16.pw.spaceVertical,
                 ],
               ),
             ),

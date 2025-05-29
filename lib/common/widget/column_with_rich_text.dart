@@ -16,7 +16,7 @@ class ColumnWithRichText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         /// Title Text
-        Text(title, style: styleW500S16),
+        Text(title, style: styleW500S14),
 
         /// Space
         4.ph.spaceVertical,

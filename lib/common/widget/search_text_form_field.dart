@@ -45,7 +45,9 @@ class SearchTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      style: styleW400S14,
+      style: styleW400S14.copyWith(
+        color: fillColor != null ? ColorRes.white : ColorRes.black,
+      ),
       controller: controller,
       onTapOutside: (e) => hideKeyboard(context: context),
       keyboardType: textInputType,
@@ -68,10 +70,13 @@ class SearchTextField extends StatelessWidget {
       },
       decoration: InputDecoration(
         hintText: hintText,
+
         isDense: true,
-        fillColor: fillColor??ColorRes.white.withValues(alpha: 0.14),
+        fillColor: fillColor ?? ColorRes.white.withValues(alpha: 0.14),
         filled: true,
-        hintStyle: styleW400S14.copyWith(color: fillColor != null?ColorRes.black:ColorRes.white),
+        hintStyle: styleW400S14.copyWith(
+          color: fillColor != null ? ColorRes.black : ColorRes.white,
+        ),
         contentPadding: EdgeInsets.only(
           left: 12.pw,
           right: 12.pw,

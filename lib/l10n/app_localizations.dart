@@ -165,6 +165,48 @@ abstract class AppLocalizations {
   /// **'Africa'**
   String get africa;
 
+  /// No description provided for @production.
+  ///
+  /// In en, this message translates to:
+  /// **'Production'**
+  String get production;
+
+  /// No description provided for @dayEnergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Day Energy'**
+  String get dayEnergy;
+
+  /// No description provided for @plantInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Plant Info'**
+  String get plantInfo;
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
+
+  /// No description provided for @longitude.
+  ///
+  /// In en, this message translates to:
+  /// **'Longitude'**
+  String get longitude;
+
+  /// No description provided for @latitude.
+  ///
+  /// In en, this message translates to:
+  /// **'Latitude'**
+  String get latitude;
+
+  /// No description provided for @ownerPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Owner’s Phone'**
+  String get ownerPhone;
+
   /// No description provided for @oceania.
   ///
   /// In en, this message translates to:

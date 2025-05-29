@@ -21,10 +21,12 @@ class SearchScreen extends StatelessWidget {
             children: [
               AppBar(
                 backgroundColor: ColorRes.primaryColor,
+                toolbarHeight: 80.pw,
                 title: SearchTextField(
                   hintText: context.l10n?.search,
                   controller: state.searchController,
                   prefixIcon: SvgAsset(imagePath: AssetRes.searchIcon),
+                  fillColor: ColorRes.white.withValues(alpha: 0.1),
                 ),
                 // leadingWidth: ,
                 centerTitle: true,
@@ -55,12 +57,13 @@ class SearchScreen extends StatelessWidget {
                         // Navigate or show results
                       }
                     },
+                    borderRadius: BorderRadius.circular(8.pw),
                     child: Padding(
                       padding: EdgeInsets.only(
                         right: Constants.horizontalPadding,
                         left: 10.pw,
-                        bottom: 10.ph,
-                        top: 10.ph,
+                        bottom: 16.ph,
+                        top: 16.ph,
                       ),
                       child: Text(
                         context.l10n?.search ?? "",
@@ -91,7 +94,12 @@ class SearchScreen extends StatelessWidget {
                               onTap: () {
                                 context.read<SearchProvider>().clearHistory();
                               },
-                              child: SvgAsset(imagePath: AssetRes.deleteIcon),
+                              borderRadius: BorderRadius.circular(8.pw),
+
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: SvgAsset(imagePath: AssetRes.deleteIcon),
+                              ),
                             ),
                           ],
                         ),

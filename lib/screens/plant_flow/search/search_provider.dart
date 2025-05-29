@@ -6,6 +6,7 @@ class SearchProvider extends ChangeNotifier {
   List<String> _history = [];
 
   List<String> get history => _history;
+
   SearchProvider() {
     init();
   }

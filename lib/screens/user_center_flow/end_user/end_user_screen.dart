@@ -28,13 +28,20 @@ class EndUserScreen extends StatelessWidget {
             child: Column(
               children: [
                 /// Expanded Search TextField
-                SearchTextField(
-                  hintText: context.l10n?.search,
-                  fillColor: ColorRes.white,
-                  controller: provider.searchController,
-                  prefixIcon: SvgAsset(
-                    imagePath: AssetRes.searchIcon,
-                    color: ColorRes.black,
+                Container(
+
+                  decoration: BoxDecoration(
+                    color: ColorRes.white,
+                    borderRadius: BorderRadius.circular(8.pw),
+                  ),
+                  child: SearchTextField(
+                    hintText: context.l10n?.search,
+
+                    controller: provider.searchController,
+                    prefixIcon: SvgAsset(
+                      imagePath: AssetRes.searchIcon,
+                      color: ColorRes.black,
+                    ),
                   ),
                 ),
 
