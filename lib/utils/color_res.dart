@@ -1,4 +1,3 @@
-
 import 'package:qbits/qbits.dart';
 
 class ColorRes {

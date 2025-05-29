@@ -81,7 +81,6 @@ class AccountCancellationScreen extends StatelessWidget {
                   controller: provider.emailController,
                   hintText: context.l10n?.email ?? "",
                   error: provider.emailError,
-                  textInputType: TextInputType.emailAddress,
                 ),
 
                 20.ph.spaceVertical,

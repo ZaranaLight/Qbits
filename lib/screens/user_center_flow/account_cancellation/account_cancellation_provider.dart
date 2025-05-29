@@ -43,7 +43,7 @@ class AccountCancellationProvider extends ChangeNotifier {
 
     if (emailController.text.trim().isEmpty) {
       emailError = context.l10n?.emailIsRequired ?? "";
-    }else if (!emailController.text.trim().isEmailValid()) {
+    } else if (!emailController.text.trim().isEmailValid()) {
       emailError = context.l10n?.emailIdIsInvalid ?? "";
     } else {
       emailError = "";

@@ -24,7 +24,7 @@ class AssetRes {
   static const profileIcon = "${_icons}profile.svg";
   static const invisibleIcon = "${_icons}invisible_icon.svg";
   static const scannerIcon = "${_icons}scanner_icon.svg";
-  static const timeZoneIcon  = "${_icons}time_zone_icon.svg";
+  static const timeZoneIcon = "${_icons}time_zone_icon.svg";
   static const checkIcon = "${_icons}check_icon.svg";
   static const plusIcon = "${_icons}plus.svg";
   static const searchIcon = "${_icons}search.svg";

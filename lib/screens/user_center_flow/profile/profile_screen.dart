@@ -6,16 +6,16 @@ class ProfileScreen extends StatelessWidget {
   static const routeName = "profile";
 
   static Widget builder(BuildContext context) {
-    return ChangeNotifierProvider<ProfileProvider>(
-      create: (c) => ProfileProvider(),
-      child: ProfileScreen(),
+    return ChangeNotifierProvider(
+      create: (_) => ProfileProvider(),
+      child: const ProfileScreen(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<ProfileProvider>(
-      builder: (context, state, child) {
+      builder: (context, state, _) {
         return StackedLoader(
           loading: state.loader,
           child: Stack(
@@ -27,231 +27,33 @@ class ProfileScreen extends StatelessWidget {
               ),
               Column(
                 children: [
-                  _AppBar(),
-
+                  const _AppBar(),
                   Expanded(
-                    child: StackedLoader(
-                      loading: state.loader,
-                      child: CustomSingleChildScroll(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: Constants.horizontalPadding,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            /// Space
-                            12.ph.spaceVertical,
+                    child: CustomSingleChildScroll(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: Constants.horizontalPadding,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          /// Space
+                          12.ph.spaceVertical,
 
-                            /// Profile Content
-                            Container(
-                              width: 92.w,
-                              decoration: BoxDecoration(
-                                color: ColorRes.white,
-                                borderRadius: BorderRadius.circular(8),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withValues(alpha: 0.1),
-                                    offset: Offset(0, 4),
-                                    blurRadius: 10,
-                                    spreadRadius: 1,
-                                  ),
-                                ],
-                              ),
-                              child: Material(
-                                color: Colors.transparent,
-                                child: InkWell(
-                                  onTap: () {
-                                    context.navigator.pushNamed(
-                                      ProfileInformationScreen.routeName,
-                                    );
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        vertical: 18.ph,
-                                        horizontal: 20.pw,
-                                      ),
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          /// Profile Image
-                                          AssetsImg(
-                                            width: 50.pw,
-                                            height: 50.ph,
-                                            imagePath: AssetRes.profileImg,
-                                          ),
+                          /// Profile Card
+                          _buildProfileCard(context),
 
-                                          /// Space
-                                          15.pw.spaceHorizontal,
+                          /// Space
+                          20.ph.spaceVertical,
 
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              ///Guest
-                                              Text(
-                                                "Guest",
-                                                style: styleW600S16.copyWith(
-                                                  color: ColorRes.black2,
-                                                ),
-                                              ),
+                          /// Options
+                          _buildOptions(context),
 
-                                              ///Company Code
-                                              Text(
-                                                context.l10n?.companyCode ?? "",
-                                                style: styleW400S12.copyWith(
-                                                  color: ColorRes.black2,
-                                                ),
-                                              ),
+                          /// Space
+                          20.ph.spaceVertical,
 
-                                              /// Space
-                                              5.pw.spaceVertical,
-
-                                              Text(
-                                                "2022-01-18",
-                                                style: styleW400S12.copyWith(
-                                                  color: ColorRes.black2,
-                                                ),
-                                              ),
-
-                                              /// Space
-                                              10.pw.spaceVertical,
-
-                                              Row(
-                                                children: [
-                                                  SvgAsset(
-                                                    imagePath: AssetRes.phoneIcon,
-                                                  ),
-
-                                                  /// Space
-                                                  10.pw.spaceHorizontal,
-
-                                                  SvgAsset(
-                                                    imagePath: AssetRes.emailIcon,
-                                                  ),
-
-                                                  /// Space
-                                                  10.pw.spaceHorizontal,
-
-                                                  SvgAsset(
-                                                    imagePath: AssetRes.chatIcon,
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            // Space
-                            20.ph.spaceVertical,
-
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: ColorRes.white,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Column(
-                                children: [
-                                  ///Space
-                                  5.ph.spaceVertical,
-
-                                  ///Account Cancellation
-                                  TabWidget(
-                                    title: context.l10n?.accountSecurity ?? "",
-                                    imagePath: AssetRes.securityIcon,
-                                    onTap: () {
-                                      context.navigator.pushNamed(
-                                        AccountSecurityScreen.routeName,
-                                      );
-                                    },
-                                  ),
-
-                                  Divider(
-                                    height: 0.ph,
-                                    color: ColorRes.black.withValues(alpha: 0.1),
-                                  ),
-
-                                  ///Currency
-                                  TabWidget(
-                                    title: context.l10n?.currency ?? "",
-                                    imagePath: AssetRes.currencyIcon,
-                                    onTap: () {
-                                      context.navigator.pushNamed(
-                                        CurrencyScreen.routeName,
-                                      );
-                                    },
-                                  ),
-
-                                  ///Divider
-                                  Divider(
-                                    height: 0.ph,
-                                    color: ColorRes.black.withValues(alpha: 0.1),
-                                  ),
-
-                                  ///Sign Out
-                                  TabWidget(
-                                    title: context.l10n?.signOut ?? "",
-                                    imagePath: AssetRes.logoutIcon,
-                                    isLogout: true,
-                                    onTap: () {
-                                      context.navigator.pushNamedAndRemoveUntil(
-                                        SignInScreen.routeName,
-                                        (route) => false,
-                                      );
-                                    },
-                                  ),
-
-                                  5.ph.spaceVertical,
-                                ],
-                              ),
-                            ),
-
-                            // Space
-                            20.ph.spaceVertical,
-
-                            Container(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 15,
-                                vertical: 15,
-                              ),
-                              decoration: BoxDecoration(
-                                color: ColorRes.white,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    context
-                                            .l10n
-                                            ?.clickToImproveContentInformation ??
-                                        "",
-                                    style: styleW400S14.copyWith(
-                                      color: ColorRes.black2,
-                                      decoration: TextDecoration.underline,
-                                    ),
-                                  ),
-
-                                  Spacer(),
-
-                                  /// Forward Icon
-                                  SvgAsset(imagePath: AssetRes.closeRoundIcon),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                          /// Improve Section
+                          _buildImproveSection(context),
+                        ],
                       ),
                     ),
                   ),
@@ -261,6 +63,207 @@ class ProfileScreen extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildProfileCard(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: ColorRes.white,
+        borderRadius: BorderRadius.circular(8.pw),
+      ),
+      child: Material(
+        color: ColorRes.transparent,
+        child: InkWell(
+          onTap:
+              () => context.navigator.pushNamed(
+                ProfileInformationScreen.routeName,
+              ),
+          borderRadius: BorderRadius.circular(8.pw),
+          child: Container(
+            width: 92.w,
+            padding: EdgeInsets.symmetric(vertical: 18.ph, horizontal: 20.pw),
+
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                /// Profile Image
+                AssetsImg(
+                  width: 50.pw,
+                  height: 50.ph,
+                  imagePath: AssetRes.profileImg,
+                ),
+
+                /// Space
+                15.pw.spaceHorizontal,
+
+                /// Profile Details
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    /// Name
+                    Text(
+                      "Guest",
+                      style: styleW600S16.copyWith(color: ColorRes.black2),
+                    ),
+
+                    /// Space
+                    2.pw.spaceVertical,
+
+                    ///Company Code
+                    Text(
+                      context.l10n?.companyCode ?? "",
+                      style: styleW400S12.copyWith(color: ColorRes.black2),
+                    ),
+
+                    /// Space
+                    6.ph.spaceVertical,
+
+                    ///Date
+                    Text(
+                      DateTime.now().toYyyyMmDd.toString(),
+                      style: styleW400S12.copyWith(color: ColorRes.black2),
+                    ),
+
+                    /// Space
+                    10.ph.spaceVertical,
+
+                    /// Contact Icons
+                    Row(
+                      children: [
+                        /// Contact Icons
+                        Material(
+                          color: ColorRes.transparent,
+                          child: InkWell(
+                            onTap: () {},
+                            borderRadius: BorderRadius.circular(5.pw),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SvgAsset(
+                                imagePath: AssetRes.phoneIcon,
+                                width: 19.pw,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        ///Email Icon
+                        Material(
+                          color: ColorRes.transparent,
+                          child: InkWell(
+                            onTap: () {},
+                            borderRadius: BorderRadius.circular(5.pw),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SvgAsset(
+                                imagePath: AssetRes.emailIcon,
+                                width: 19.pw,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        /// Chat Icon
+                        Material(
+                          color: ColorRes.transparent,
+                          child: InkWell(
+                            onTap: () {},
+                            borderRadius: BorderRadius.circular(5.pw),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SvgAsset(
+                                imagePath: AssetRes.chatIcon,
+                                width: 19.pw,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildOptions(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: ColorRes.white,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        children: [
+          ///Space
+          5.ph.spaceVertical,
+
+          ///Account Information
+          TabWidget(
+            title: context.l10n?.accountSecurity ?? "",
+            imagePath: AssetRes.securityIcon,
+            onTap:
+                () => context.navigator.pushNamed(
+                  AccountSecurityScreen.routeName,
+                ),
+          ),
+
+          ///Divider
+          Divider(height: 0, color: Colors.black.withValues(alpha: 0.1)),
+
+          ///Currency
+          TabWidget(
+            title: context.l10n?.currency ?? "",
+            imagePath: AssetRes.currencyIcon,
+            onTap: () => context.navigator.pushNamed(CurrencyScreen.routeName),
+          ),
+
+          ///Divider
+          Divider(height: 0, color: Colors.black.withValues(alpha: 0.1)),
+
+          ///Sign Out
+          TabWidget(
+            title: context.l10n?.signOut ?? "",
+            imagePath: AssetRes.logoutIcon,
+            isLogout: true,
+
+            onTap:
+                () => context.navigator.pushNamedAndRemoveUntil(
+                  SignInScreen.routeName,
+                  (_) => false,
+                ),
+          ),
+          5.ph.spaceVertical,
+        ],
+      ),
+    );
+  }
+
+  Widget _buildImproveSection(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+      decoration: BoxDecoration(
+        color: ColorRes.white,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              context.l10n?.clickToImproveContentInformation ?? "",
+              style: styleW400S14.copyWith(
+                color: ColorRes.black2,
+                decoration: TextDecoration.underline,
+              ),
+            ),
+          ),
+          SvgAsset(imagePath: AssetRes.closeRoundIcon),
+        ],
+      ),
     );
   }
 }
@@ -283,8 +286,6 @@ class _AppBar extends StatelessWidget {
               context.l10n?.profile ?? "",
               style: styleW600S20.copyWith(color: ColorRes.white),
             ),
-
-            /// Space
             20.ph.spaceVertical,
           ],
         ),

@@ -66,7 +66,9 @@ class AlarmScreen extends StatelessWidget {
             labelColor: ColorRes.primaryColor,
             unselectedLabelColor: ColorRes.darkGrey,
             labelStyle: styleW600S14.copyWith(color: ColorRes.darkGrey),
-            unselectedLabelStyle: styleW500S14.copyWith(color: ColorRes.darkGrey),
+            unselectedLabelStyle: styleW500S14.copyWith(
+              color: ColorRes.darkGrey,
+            ),
             dividerColor: ColorRes.white,
             indicator: const UnderlineTabIndicator(
               borderSide: BorderSide(color: ColorRes.transparent, width: 0.0),
@@ -101,13 +103,18 @@ class AlarmScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAlarmListView(int itemCount, String alarmType, BuildContext context) {
+  Widget _buildAlarmListView(
+    int itemCount,
+    String alarmType,
+    BuildContext context,
+  ) {
     return CustomListView(
       itemCount: itemCount,
-      separatorBuilder: (context, index) => Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.pw),
-        width: double.infinity,
-      ),
+      separatorBuilder:
+          (context, index) => Container(
+            margin: EdgeInsets.symmetric(horizontal: 20.pw),
+            width: double.infinity,
+          ),
       itemBuilder: (context, index) => AlarmListWidget(alarmType: alarmType),
     );
   }

@@ -1,10 +1,11 @@
 import 'package:qbits/qbits.dart';
-class  RowWidget extends StatelessWidget {
+
+class RowWidget extends StatelessWidget {
   final String? title;
   final String? value;
   final bool isStatus;
 
-  const  RowWidget({super.key, this.value, this.title, this.isStatus = false});
+  const RowWidget({super.key, this.value, this.title, this.isStatus = false});
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +18,11 @@ class  RowWidget extends StatelessWidget {
             value ?? "",
             textAlign: TextAlign.end,
             style:
-            isStatus
-                ? styleW600S14.copyWith(color: ColorRes.primaryColor)
-                : styleW500S14.copyWith(
-              color: ColorRes.black.withValues(alpha: 0.6),
-            ),
+                isStatus
+                    ? styleW600S14.copyWith(color: ColorRes.primaryColor)
+                    : styleW500S14.copyWith(
+                      color: ColorRes.black.withValues(alpha: 0.6),
+                    ),
           ),
         ),
       ],

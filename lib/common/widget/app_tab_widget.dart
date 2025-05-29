@@ -12,7 +12,7 @@ class TabWidget extends StatelessWidget {
     required this.title,
     required this.imagePath,
     required this.onTap,
-      this.trailingWidget,
+    this.trailingWidget,
     this.isLogout = false,
   });
 
@@ -22,13 +22,14 @@ class TabWidget extends StatelessWidget {
       color: ColorRes.transparent,
       child: InkWell(
         onTap: onTap,
+        borderRadius: BorderRadius.circular(5.pw),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 15.ph),
+          padding: EdgeInsets.symmetric(vertical: 15.ph, horizontal: 5.pw),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ///Svg Icon
-              SvgAsset(width: 20.pw, imagePath: imagePath,  ),
+              SvgAsset(width: 20.pw, imagePath: imagePath),
 
               /// Space
               10.pw.spaceHorizontal,
@@ -37,7 +38,9 @@ class TabWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: styleW600S16.copyWith(color: ColorRes.black2),
+                  style: styleW600S16.copyWith(
+                    color: isLogout ? ColorRes.darkRed : ColorRes.black,
+                  ),
                 ),
               ),
 

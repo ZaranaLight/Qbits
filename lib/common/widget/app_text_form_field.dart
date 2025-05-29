@@ -53,7 +53,7 @@ class AppTextField extends StatelessWidget {
   final Color? headerColor;
   final bool? isDense;
   final String? header;
-  final Color?  fillColor;
+  final Color? fillColor;
   final InputBorder? customBorder;
   final EdgeInsets? customPadding;
 
@@ -117,7 +117,7 @@ class AppTextField extends StatelessWidget {
           },
           decoration: InputDecoration(
             hintText: hintText,
-            fillColor:fillColor?? ColorRes.lightGrey2,
+            fillColor: fillColor ?? ColorRes.lightGrey2,
             isDense: isDense ?? false,
             filled: true,
             hintStyle: styleW500S14.copyWith(
@@ -126,12 +126,9 @@ class AppTextField extends StatelessWidget {
                       ? ColorRes.red
                       : ColorRes.black.withValues(alpha: 0.3),
             ),
-            contentPadding: customPadding ?? EdgeInsets.only(
-              left: 12.pw,
-              right: 12.pw,
-              top: 10,
-              bottom: 8,
-            ),
+            contentPadding:
+                customPadding ??
+                EdgeInsets.only(left: 12.pw, right: 12.pw, top: 10, bottom: 8),
             border: customBorder ?? inputBorder(),
             focusedBorder: (customBorder ?? inputBorder()).copyWith(
               borderSide: BorderSide(color: ColorRes.primaryColor),
@@ -141,7 +138,10 @@ class AppTextField extends StatelessWidget {
             focusedErrorBorder: customBorder ?? inputBorder(),
             enabledBorder: customBorder ?? inputBorder(),
             prefixIcon: prefixIcon,
-            suffixIconConstraints: BoxConstraints(maxWidth: maxWidth??44, maxHeight: 40),
+            suffixIconConstraints: BoxConstraints(
+              maxWidth: maxWidth ?? 44,
+              maxHeight: 40,
+            ),
             suffixIcon: InkWell(
               onTap: onSuffixTap,
               borderRadius: BorderRadius.circular(40.pw),

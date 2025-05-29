@@ -37,7 +37,9 @@ class ProfileInformationScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              bottom: Constants.safeAreaPadding.bottom + Constants.horizontalPadding,
+              bottom:
+                  Constants.safeAreaPadding.bottom +
+                  Constants.horizontalPadding,
               top: 20.pw,
             ),
             child: Column(
@@ -47,7 +49,7 @@ class ProfileInformationScreen extends StatelessWidget {
                   textInputType: TextInputType.emailAddress,
                   controller: provider.emailController,
                   header: context.l10n?.email ?? "",
-                  hintText: context.l10n?.account ?? "",
+                  hintText: context.l10n?.email ?? "",
                   error: provider.emailError,
                 ),
               ],

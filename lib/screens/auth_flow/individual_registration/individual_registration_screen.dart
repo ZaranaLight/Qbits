@@ -173,7 +173,9 @@ class IndividualRegistrationScreen extends StatelessWidget {
                     hintText: context.l10n?.collectorAddress ?? "",
                     error: provider.collectorAddressError,
                     suffixIcon: InkWell(
-                      onTap: () => provider.scanQRCode(context, 'collector_address'),
+                      onTap:
+                          () =>
+                              provider.scanQRCode(context, 'collector_address'),
                       child: SvgAsset(
                         imagePath: AssetRes.scannerIcon,
                         color: ColorRes.black.withValues(alpha: 0.5),

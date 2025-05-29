@@ -38,7 +38,6 @@ class CompanyRegistrationProvider extends ChangeNotifier {
   }
 
   bool validation(BuildContext context) {
-
     if (accountController.text.trim().isEmpty) {
       accountError = context.l10n?.accountIsRequired ?? "";
     } else {
@@ -55,8 +54,10 @@ class CompanyRegistrationProvider extends ChangeNotifier {
       confirmPasswordError = context.l10n?.confirmPasswordIsRequired ?? "";
     } else if (passwordController.text.trim().isEmpty) {
       confirmPasswordError = context.l10n?.passwordIsRequired ?? "";
-    } else if (passwordController.text.trim() != confirmPasswordController.text.trim()) {
-      confirmPasswordError = context.l10n?.passwordAndConfirmPasswordIsNotMatching ?? "";
+    } else if (passwordController.text.trim() !=
+        confirmPasswordController.text.trim()) {
+      confirmPasswordError =
+          context.l10n?.passwordAndConfirmPasswordIsNotMatching ?? "";
     } else {
       confirmPasswordError = "";
     }
