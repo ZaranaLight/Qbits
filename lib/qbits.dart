@@ -119,6 +119,4 @@ export 'package:qbits/screens/auth_flow/bluetooth_manually/bluetooth_manually_pr
 export 'package:qbits/screens/user_center_flow/user_center/user_center_provider.dart';
 export 'package:qbits/screens/user_center_flow/end_user/widget/end_user_list_widget.dart';
 export 'package:qbits/screens/user_center_flow/qa/qa_screen.dart';
-
-
-
+export 'package:qbits/common/widget/app_tab_widget.dart';
