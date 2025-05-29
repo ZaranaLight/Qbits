@@ -46,6 +46,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               children: [
                 ///Email
                 AppTextField(
+                  textInputType: TextInputType.emailAddress,
                   controller: provider.emailController,
                   header: context.l10n?.email ?? "",
                   hintText: context.l10n?.email ?? "",

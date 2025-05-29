@@ -58,10 +58,8 @@ class SelectRegionScreen extends StatelessWidget {
                     /// Text
                     Expanded(
                       child: Text(
-                        context.l10n?.pleaseSelectTheRegionThatCorrespondsTo ??
-                            "",
+                        context.l10n?.pleaseSelectTheRegionThatCorrespondsTo ?? "",
                         style: styleW500S16,
-                        textAlign: TextAlign.justify,
                       ),
                     ),
                   ],
@@ -76,9 +74,6 @@ class SelectRegionScreen extends StatelessWidget {
                   color: ColorRes.black.withValues(alpha: 0.1),
                 ),
 
-                ///Space
-                14.pw.spaceVertical,
-
                 /// CheckBox List
                 CustomListView(
                   itemCount: provider.regionCheckBoxNameList.length,
@@ -86,7 +81,6 @@ class SelectRegionScreen extends StatelessWidget {
                   separatorBuilder: (context, index) {
                     return Container(
                       height: 1,
-                      margin: EdgeInsets.symmetric(vertical: 14.pw),
                       width: double.infinity,
                       color: ColorRes.black.withValues(alpha: 0.1),
                     );

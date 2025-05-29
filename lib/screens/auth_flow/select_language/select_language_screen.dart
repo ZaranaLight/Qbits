@@ -35,7 +35,6 @@ class SelectLanguageScreen extends StatelessWidget {
               ),
             ),
           ),
-
           body: CustomSingleChildScroll(
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
@@ -54,7 +53,6 @@ class SelectLanguageScreen extends StatelessWidget {
                   separatorBuilder: (context, index) {
                     return Container(
                       height: 1,
-                      margin: EdgeInsets.symmetric(vertical: 14.pw),
                       width: double.infinity,
                       color: ColorRes.black.withValues(alpha: 0.1),
                     );
