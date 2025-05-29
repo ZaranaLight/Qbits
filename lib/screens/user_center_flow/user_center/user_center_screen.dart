@@ -35,7 +35,7 @@ class UserCenterScreen extends StatelessWidget {
                     5.ph.spaceVertical,
 
                     ///Set Password
-                    _TabWidget(
+                    TabWidget(
                       title: context.l10n?.setPassword ?? "",
                       imagePath: AssetRes.lockIcon,
                       onTap: () {
@@ -52,7 +52,7 @@ class UserCenterScreen extends StatelessWidget {
                     ),
 
                     ///Set Profit Compute Mode
-                    _TabWidget(
+                    TabWidget(
                       title: context.l10n?.setProfitComputeMode ?? "",
                       imagePath: AssetRes.profitIcon,
                       onTap: () {
@@ -69,7 +69,7 @@ class UserCenterScreen extends StatelessWidget {
                     ),
 
                     ///Auto Sign In
-                    _TabWidget(
+                    TabWidget(
                       title: context.l10n?.autoSignIn ?? "",
                       imagePath: AssetRes.profileIcon,
                       trailingWidget: SizedBox(
@@ -104,55 +104,6 @@ class UserCenterScreen extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class _TabWidget extends StatelessWidget {
-  final String title;
-  final String imagePath;
-  final VoidCallback onTap;
-  final Widget? trailingWidget;
-
-  const _TabWidget({
-    required this.title,
-    required this.imagePath,
-    required this.onTap,
-    this.trailingWidget,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 15.ph),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            ///Svg Icon
-            SvgAsset(width: 20.pw, imagePath: imagePath, height: 20.pw),
-
-            /// Space
-            10.pw.spaceHorizontal,
-
-            ///Ti
-            Expanded(
-              child: Text(
-                title,
-                style: styleW600S16.copyWith(color: ColorRes.black2),
-              ),
-            ),
-
-            /// Forward Icon
-            trailingWidget ??
-                SvgAsset(
-                  imagePath: AssetRes.forwardIcon,
-                  color: ColorRes.black,
-                ),
-          ],
-        ),
-      ),
     );
   }
 }
