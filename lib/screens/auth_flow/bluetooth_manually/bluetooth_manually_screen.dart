@@ -22,8 +22,8 @@ class BluetoothManuallyScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(
                 bottom: 30.ph,
-                left: 16.pw,
-                right: 16.pw,
+                left: Constants.horizontalPadding,
+                right: Constants.horizontalPadding,
               ),
 
               child: SubmitButton(
@@ -35,8 +35,8 @@ class BluetoothManuallyScreen extends StatelessWidget {
           appBar: CustomAppBar(title: context.l10n?.bluetoothManually ?? ""),
           body: Padding(
             padding: EdgeInsets.only(
-              left: 16.pw,
-              right: 16.pw,
+              left: Constants.horizontalPadding,
+              right: Constants.horizontalPadding,
               bottom:
                   Constants.safeAreaPadding.bottom +
                   Constants.horizontalPadding,

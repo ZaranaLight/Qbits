@@ -38,7 +38,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     child: Center(
                       child: SvgAsset(
                         imagePath: AssetRes.backIcon,
-                        height: 16.pw,
+                        height: Constants.horizontalPadding,
                       ),
                     ),
                   ),

@@ -216,6 +216,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get accountCancellation => 'Account Cancellation';
 
   @override
+  String get nameISRequired => 'Name is Required';
+
+  @override
+  String get contactInformationISRequired => 'Contact information is Required';
+
+  @override
+  String get qqISRequired => 'QQ is Required';
+
+  @override
   String get submit => 'Submit';
 
   @override

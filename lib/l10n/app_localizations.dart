@@ -507,6 +507,24 @@ abstract class AppLocalizations {
   /// **'Account Cancellation'**
   String get accountCancellation;
 
+  /// No description provided for @nameISRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Name is Required'**
+  String get nameISRequired;
+
+  /// No description provided for @contactInformationISRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact information is Required'**
+  String get contactInformationISRequired;
+
+  /// No description provided for @qqISRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'QQ is Required'**
+  String get qqISRequired;
+
   /// No description provided for @submit.
   ///
   /// In en, this message translates to:

@@ -24,8 +24,8 @@ class AccountCancellationScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(
                 bottom: 30.ph,
-                left: 16.pw,
-                right: 16.pw,
+                left: Constants.horizontalPadding,
+                right: Constants.horizontalPadding,
               ),
               child: SubmitButton(
                 title: context.l10n?.submit ?? "",
@@ -37,7 +37,9 @@ class AccountCancellationScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              bottom: Constants.safeAreaPadding.bottom + Constants.horizontalPadding,
+              bottom:
+                  Constants.safeAreaPadding.bottom +
+                  Constants.horizontalPadding,
               top: 20.pw,
             ),
             child: Column(
@@ -58,6 +60,7 @@ class AccountCancellationScreen extends StatelessWidget {
                   header: context.l10n?.contactInformation ?? "",
                   hintText: context.l10n?.contactInformation ?? "",
                   error: provider.contactInformationError,
+                  textInputType: TextInputType.phone,
                 ),
 
                 10.ph.spaceVertical,
@@ -67,6 +70,7 @@ class AccountCancellationScreen extends StatelessWidget {
                   controller: provider.qqController,
                   hintText: context.l10n?.qq ?? "",
                   error: provider.qqError,
+                  textInputType: TextInputType.number,
                 ),
 
                 10.ph.spaceVertical,
@@ -76,6 +80,7 @@ class AccountCancellationScreen extends StatelessWidget {
                   controller: provider.emailController,
                   hintText: context.l10n?.email ?? "",
                   error: provider.emailError,
+                  textInputType: TextInputType.emailAddress,
                 ),
 
                 20.ph.spaceVertical,
@@ -84,9 +89,7 @@ class AccountCancellationScreen extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     context.l10n?.questionOrSuggestion ?? "",
-                    style: styleW400S14.copyWith(
-                      color: ColorRes.black2,
-                    ),
+                    style: styleW400S14.copyWith(color: ColorRes.black2),
                   ),
                 ),
 
@@ -104,9 +107,7 @@ class AccountCancellationScreen extends StatelessWidget {
                       "Lorem Ipsum is simply dummy text of the printing "
                       "and typesetting industry. Lorem Ipsum has been"
                       "the industry's standard dummy text",
-                      style: styleW500S14.copyWith(
-                        color: ColorRes.black2,
-                      ),
+                      style: styleW500S14.copyWith(color: ColorRes.black2),
                     ),
                   ),
                 ),

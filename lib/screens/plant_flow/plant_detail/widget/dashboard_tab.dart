@@ -526,7 +526,7 @@ class _DashboardBarChartTabsState extends State<DashboardBarChartTabs>
   Widget build(BuildContext context) {
     return Container(
       color: ColorRes.white,
-      padding: EdgeInsets.all(16.pw),
+      padding: EdgeInsets.all(Constants.horizontalPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -25,11 +25,14 @@ class AppTextField extends StatelessWidget {
     this.onSuffixTap,
     this.isDense,
     this.header,
+    this.maxWidth,
+    this.fillColor,
     this.customBorder,
     this.customPadding,
   });
 
   final String? hintText;
+  final double? maxWidth;
   final TextEditingController? controller;
   final TextInputType? textInputType;
   final TextInputAction? textInputAction;
@@ -50,6 +53,7 @@ class AppTextField extends StatelessWidget {
   final Color? headerColor;
   final bool? isDense;
   final String? header;
+  final Color?  fillColor;
   final InputBorder? customBorder;
   final EdgeInsets? customPadding;
 
@@ -113,7 +117,7 @@ class AppTextField extends StatelessWidget {
           },
           decoration: InputDecoration(
             hintText: hintText,
-            fillColor: ColorRes.lightGrey2,
+            fillColor:fillColor?? ColorRes.lightGrey2,
             isDense: isDense ?? false,
             filled: true,
             hintStyle: styleW500S14.copyWith(
@@ -137,7 +141,7 @@ class AppTextField extends StatelessWidget {
             focusedErrorBorder: customBorder ?? inputBorder(),
             enabledBorder: customBorder ?? inputBorder(),
             prefixIcon: prefixIcon,
-            suffixIconConstraints: BoxConstraints(maxWidth: 44, maxHeight: 40),
+            suffixIconConstraints: BoxConstraints(maxWidth: maxWidth??44, maxHeight: 40),
             suffixIcon: InkWell(
               onTap: onSuffixTap,
               borderRadius: BorderRadius.circular(40.pw),

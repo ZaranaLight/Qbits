@@ -21,8 +21,8 @@ class GuestScreen extends StatelessWidget {
           appBar: CustomAppBar(title: context.l10n?.guest ?? ""),
           body: Padding(
             padding: EdgeInsets.only(
-              left: 16.pw,
-              right: 16.pw,
+              left: Constants.horizontalPadding,
+              right: Constants.horizontalPadding,
               bottom:
                   Constants.safeAreaPadding.bottom +
                   Constants.horizontalPadding,
@@ -53,7 +53,7 @@ class GuestScreen extends StatelessWidget {
                       ),
 
                       /// Space
-                      16.pw.spaceVertical,
+                      Constants.horizontalPadding.spaceVertical,
 
                       /// Second Row
                       Row(
@@ -70,7 +70,7 @@ class GuestScreen extends StatelessWidget {
                 ),
 
                 ///Space
-                16.pw.spaceVertical,
+                Constants.horizontalPadding.spaceVertical,
 
                 Expanded(
                   child: Container(

@@ -17,7 +17,7 @@ class ErrorText extends StatelessWidget {
             /// Error Icon
             Padding(
               padding: EdgeInsets.only(top: 1),
-              child: SvgAsset(imagePath: AssetRes.errorIcon, height: 16.pw),
+              child: SvgAsset(imagePath: AssetRes.errorIcon, height: Constants.horizontalPadding),
             ),
 
             /// Space
@@ -134,8 +134,8 @@ class CheckBoxBtn extends StatelessWidget {
         builder: (con) {
           if (value) {
             return Container(
-              height: 16.pw,
-              width: 16.pw,
+              height: Constants.horizontalPadding,
+              width: Constants.horizontalPadding,
               decoration: BoxDecoration(
                 color: ColorRes.primaryColor,
                 borderRadius: BorderRadius.circular(4.pw),
@@ -149,8 +149,8 @@ class CheckBoxBtn extends StatelessWidget {
             );
           }
           return Container(
-            height: 16.pw,
-            width: 16.pw,
+            height: Constants.horizontalPadding,
+            width: Constants.horizontalPadding,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4.pw),
               border: Border.all(color: ColorRes.grey.withValues(alpha: 0.1)),

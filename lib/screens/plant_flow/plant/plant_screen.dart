@@ -152,7 +152,7 @@ class _TabContent extends StatelessWidget {
         16.ph.spaceVertical,
 
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.pw),
+          padding: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -165,7 +165,7 @@ class _TabContent extends StatelessWidget {
               ),
 
               ///
-              16.pw.spaceHorizontal,
+              Constants.horizontalPadding.spaceHorizontal,
 
               _ellipseButton(
                 text: context.l10n?.preference ?? "",
@@ -176,7 +176,7 @@ class _TabContent extends StatelessWidget {
               ),
 
               ///
-              16.pw.spaceHorizontal,
+              Constants.horizontalPadding.spaceHorizontal,
 
               _ellipseButton(
                 text: context.l10n?.filter ?? "",
@@ -194,7 +194,7 @@ class _TabContent extends StatelessWidget {
 
         Expanded(
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 16.pw),
+            padding: EdgeInsets.symmetric(vertical: Constants.horizontalPadding),
             decoration: BoxDecoration(color: ColorRes.white),
             child: CustomListView(
               itemCount: 10,
@@ -208,7 +208,7 @@ class _TabContent extends StatelessWidget {
               },
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.pw),
+                  padding: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding),
                   child: MyWatchlistCell(),
                 );
               },

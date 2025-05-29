@@ -104,7 +104,7 @@ class FilterDialogBox extends StatelessWidget {
                       },
                       child: Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: 16.pw,
+                          horizontal: Constants.horizontalPadding,
                           vertical: 6.ph,
                         ),
                         child: Text(
@@ -137,7 +137,7 @@ class FilterDialogBox extends StatelessWidget {
                       },
                       child: Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: 16.pw,
+                          horizontal: Constants.horizontalPadding,
                           vertical: 6.ph,
                         ),
                         child: Text(

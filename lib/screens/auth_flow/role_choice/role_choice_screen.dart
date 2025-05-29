@@ -21,7 +21,7 @@ class RoleChoiceScreen extends StatelessWidget {
           body: CustomSingleChildScroll(
             padding: EdgeInsets.symmetric(
               vertical: Constants.safeAreaPadding.bottom + 20.pw,
-              horizontal: 16.pw,
+              horizontal: Constants.horizontalPadding,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

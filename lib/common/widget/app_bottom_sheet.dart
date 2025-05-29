@@ -125,8 +125,8 @@ class AppBottomShit extends StatelessWidget {
               onTap: context.navigator.pop,
               borderRadius: BorderRadius.circular(8),
               child: Padding(
-                padding: EdgeInsets.all(16.pw),
-                child: SvgAsset(imagePath: AssetRes.closeIcon, height: 16.pw),
+                padding: EdgeInsets.all(Constants.horizontalPadding),
+                child: SvgAsset(imagePath: AssetRes.closeIcon, height: Constants.horizontalPadding),
               ),
             ),
           ),

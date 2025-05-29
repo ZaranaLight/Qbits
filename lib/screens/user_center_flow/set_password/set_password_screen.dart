@@ -24,8 +24,8 @@ class SetPasswordScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(
                 bottom: 30.ph,
-                left: 16.pw,
-                right: 16.pw,
+                left: Constants.horizontalPadding,
+                right: Constants.horizontalPadding,
               ),
               child: SubmitButton(
                 title: context.l10n?.confirm ?? "",
@@ -33,48 +33,51 @@ class SetPasswordScreen extends StatelessWidget {
               ),
             ),
           ),
-          body: CustomSingleChildScroll(
-            padding: EdgeInsets.only(
-              left: Constants.horizontalPadding,
-              right: Constants.horizontalPadding,
-              bottom: Constants.safeAreaPadding.bottom + Constants.horizontalPadding,
-              top: 20.pw,
-            ),
-            child: Column(
-              children: [
-                /// Original Password
-                AppTextField(
-                  obscureText: true,
-                  controller: provider.originalPasswordController,
-                  header: context.l10n?.originalPassword ?? "",
-                  hintText: context.l10n?.enterOriginalPassword ?? "",
-                  error: provider.originalPasswordError,
-                ),
+          body: StackedLoader(
+            loading: provider.loader,
+            child: CustomSingleChildScroll(
+              padding: EdgeInsets.only(
+                left: Constants.horizontalPadding,
+                right: Constants.horizontalPadding,
+                bottom: Constants.safeAreaPadding.bottom + Constants.horizontalPadding,
+                top: 20.pw,
+              ),
+              child: Column(
+                children: [
+                  /// Original Password
+                  AppTextField(
+                    obscureText: true,
+                    controller: provider.originalPasswordController,
+                    header: context.l10n?.originalPassword ?? "",
+                    hintText: context.l10n?.enterOriginalPassword ?? "",
+                    error: provider.originalPasswordError,
+                  ),
 
-                /// Space
-                20.ph.spaceVertical,
+                  /// Space
+                  20.ph.spaceVertical,
 
-                /// New Password
-                AppTextField(
-                  obscureText: true,
-                  controller: provider.newPasswordController,
-                  header: context.l10n?.newPassword ?? "",
-                  hintText: context.l10n?.enterNewPassword ?? "",
-                  error: provider.newPasswordError,
-                ),
+                  /// New Password
+                  AppTextField(
+                    obscureText: true,
+                    controller: provider.newPasswordController,
+                    header: context.l10n?.newPassword ?? "",
+                    hintText: context.l10n?.enterNewPassword ?? "",
+                    error: provider.newPasswordError,
+                  ),
 
-                /// Space
-                20.ph.spaceVertical,
+                  /// Space
+                  20.ph.spaceVertical,
 
-                /// Confirm New Password
-                AppTextField(
-                  obscureText: true,
-                  controller: provider.confirmNewPasswordController,
-                  header: context.l10n?.confirmNewPassword ?? "",
-                  hintText: context.l10n?.enterConfirmNewPassword ?? "",
-                  error: provider.confirmNewPasswordError,
-                ),
-              ],
+                  /// Confirm New Password
+                  AppTextField(
+                    obscureText: true,
+                    controller: provider.confirmNewPasswordController,
+                    header: context.l10n?.confirmNewPassword ?? "",
+                    hintText: context.l10n?.enterConfirmNewPassword ?? "",
+                    error: provider.confirmNewPasswordError,
+                  ),
+                ],
+              ),
             ),
           ),
         );

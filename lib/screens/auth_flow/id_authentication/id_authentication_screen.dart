@@ -28,8 +28,8 @@ class IdAuthenticationScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(
                 bottom: 30.ph,
-                left: 16.pw,
-                right: 16.pw,
+                left: Constants.horizontalPadding,
+                right: Constants.horizontalPadding,
               ),
               child: SubmitButton(
                 title: context.l10n?.continueCap ?? "",
@@ -42,7 +42,7 @@ class IdAuthenticationScreen extends StatelessWidget {
           appBar: CustomAppBar(title: context.l10n?.idAuthentication ?? ""),
           body: CustomSingleChildScroll(
             padding: EdgeInsets.symmetric(
-              horizontal: 16.pw,
+              horizontal: Constants.horizontalPadding,
               vertical: Constants.safeAreaPadding.bottom + 20.pw,
             ),
             child: Column(

@@ -40,7 +40,7 @@ class SearchScreen extends StatelessWidget {
                       child: Center(
                         child: SvgAsset(
                           imagePath: AssetRes.backIcon,
-                          height: 16.pw,
+                          height: Constants.horizontalPadding,
                         ),
                       ),
                     ),
@@ -57,7 +57,7 @@ class SearchScreen extends StatelessWidget {
                     },
                     child: Padding(
                       padding: EdgeInsets.only(
-                        right: 16.pw,
+                        right: Constants.horizontalPadding,
                         left: 10.pw,
                         bottom: 10.ph,
                         top: 10.ph,

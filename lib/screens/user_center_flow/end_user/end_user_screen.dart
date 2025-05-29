@@ -20,8 +20,8 @@ class EndUserScreen extends StatelessWidget {
           appBar: CustomAppBar(title: context.l10n?.endUser ?? ""),
           body: Padding(
             padding: EdgeInsets.only(
-              left: 16.pw,
-              right: 16.pw,
+              left: Constants.horizontalPadding,
+              right: Constants.horizontalPadding,
               bottom: Constants.safeAreaPadding.bottom + 20.pw,
               top: 20.pw,
             ),
@@ -39,7 +39,7 @@ class EndUserScreen extends StatelessWidget {
                 ),
 
                 /// Space
-                16.pw.spaceVertical,
+                Constants.horizontalPadding.spaceVertical,
 
                 Expanded(
                   child: CustomListView(

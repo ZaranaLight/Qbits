@@ -4,7 +4,7 @@ class InverterProvider extends ChangeNotifier {
   InverterProvider() {
     initialize();
   }
-
+  bool loader = false;
   void initialize() {
     if (!_isInitialized) {
       _loadChartData();

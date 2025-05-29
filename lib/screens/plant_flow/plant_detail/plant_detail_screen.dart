@@ -25,7 +25,7 @@ class PlantDetailScreen extends StatelessWidget {
                   title: context.l10n?.confirm ?? "",
                   actions: [
                     Padding(
-                      padding: EdgeInsets.only(right: 16.pw),
+                      padding: EdgeInsets.only(right: Constants.horizontalPadding),
                       child: SvgAsset(imagePath: AssetRes.starIcon),
                     ),
                   ],

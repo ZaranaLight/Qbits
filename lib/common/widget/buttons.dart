@@ -60,7 +60,7 @@ class SubmitButton extends StatelessWidget {
                         style ??
                         styleW700S17.copyWith(
                           color: ColorRes.white,
-                          fontSize: 16.pw,
+                          fontSize: Constants.horizontalPadding,
                         ),
                   ),
                 ),

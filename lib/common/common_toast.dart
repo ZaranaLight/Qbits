@@ -47,7 +47,7 @@ void showCustomToast(String msg, {bool? error}) {
                     Row(
                       children: [
                         /// Space
-                        SizedBox(width: 16.pw),
+                        SizedBox(width: Constants.horizontalPadding),
 
                         Container(
                           decoration: const BoxDecoration(

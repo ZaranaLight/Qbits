@@ -12,7 +12,7 @@ class AlarmListWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.pw),
         color: ColorRes.white,
       ),
-      margin: EdgeInsets.symmetric(horizontal: 16.pw, vertical: 8.pw),
+      margin: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding, vertical: 8.pw),
       child: Material(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8.pw),

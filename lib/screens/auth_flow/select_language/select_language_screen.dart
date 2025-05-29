@@ -24,8 +24,8 @@ class SelectLanguageScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(
                 bottom: 30.ph,
-                left: 16.pw,
-                right: 16.pw,
+                left: Constants.horizontalPadding,
+                right: Constants.horizontalPadding,
               ),
               child: SubmitButton(
                 title: context.l10n?.ok ?? "",
@@ -40,7 +40,7 @@ class SelectLanguageScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              bottom: Constants.safeAreaPadding.bottom + 16.pw,
+              bottom: Constants.safeAreaPadding.bottom + Constants.horizontalPadding,
             ),
             child: Column(
               children: [

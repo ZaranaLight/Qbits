@@ -8,8 +8,8 @@ class AlarmScreen extends StatelessWidget {
 
   static Widget builder(BuildContext context) {
     return ChangeNotifierProvider<AlarmProvider>(
-      create: (c) => AlarmProvider(),
-      child: AlarmScreen(),
+      create: (context) => AlarmProvider(),
+      child: const AlarmScreen(),
     );
   }
 
@@ -17,142 +17,98 @@ class AlarmScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<AlarmProvider>(
       builder: (context, provider, child) {
-        return DefaultTabController(
-          length: 3,
-          child: Scaffold(
-            body: Column(
-              children: [
-                /// Custom AppBar
-                CustomAppBar(
-                  title: context.l10n?.alarm ?? "",
-                  centerTitle: true,
-                  showBackBtn: false,
-                ),
+        return StackedLoader(
+          loading: provider.loader,
+          child: DefaultTabController(
+            length: 3,
+            child: Scaffold(
+              body: Column(
+                children: [
+                  /// Custom AppBar
+                  _buildAppBar(context),
 
-                /// TabBar Container
-                Container(
-                  padding: EdgeInsets.only(
-                    right: 14.pw,
-                    top: 0.ph,
-                    left: 14.pw,
-                  ),
-                  color: ColorRes.white,
-                  child: Column(
-                    children: [
-                      /// TabBar
-                      TabBar(
-                        padding: EdgeInsets.zero,
-                        isScrollable: false,
+                  /// TabBar with Container
+                  _buildTabBarContainer(context, provider),
 
-                        physics: NeverScrollableScrollPhysics(),
-                        indicatorColor: ColorRes.primaryColor,
-                        labelColor: ColorRes.primaryColor,
-                        unselectedLabelColor: ColorRes.darkGrey,
-                        labelStyle: styleW600S14.copyWith(
-                          color: ColorRes.darkGrey,
-                        ),
-                        unselectedLabelStyle: styleW500S14.copyWith(
-                          color: ColorRes.darkGrey,
-                        ),
-                        dividerColor: ColorRes.white,
-                        indicator: UnderlineTabIndicator(
-                          borderSide: BorderSide(
-                            color:
-                                ColorRes
-                                    .transparent, // your desired underline color
-                            width: 0.0,
-                          ),
-                        ),
-                        tabs: [
-                          Tab(text: context.l10n?.all),
-                          Tab(text: context.l10n?.going),
-                          Tab(text: context.l10n?.recovered),
-                        ],
-                        onTap: context.read<AlarmProvider>().changeTab,
-                      ),
+                  /// Vertical space
+                  const SizedBox(height: 15),
 
-                      /* /// Expanded TabBarView
-                      TabBarView(
-                        children: [
-                          CustomListView(
-                            itemCount: 10,
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemBuilder: (p0, p1) => AlarmListWidget(),
-                          ),
-
-
-                        ],
-                      ),*/
-                    ],
-                  ),
-                ),
-
-                ///space
-                15.pw.spaceVertical,
-
-                /// TabBarView
-                Expanded(
-                  child: Builder(
-                    builder: (context) {
-                      switch (provider.selectedIndex) {
-                        case 0:
-                          return CustomListView(
-                            itemCount: 10,
-                            separatorBuilder: (context, index) {
-                              return Container(
-                                margin: EdgeInsets.symmetric(horizontal: 20.pw),
-                                width: double.infinity,
-                              );
-                            },
-
-                            itemBuilder:
-                                (p0, p1) => AlarmListWidget(
-                                  alarmType: context.l10n?.all,
-                                ),
-                          );
-                        case 1:
-                          return CustomListView(
-                            itemCount: 3,
-
-                            separatorBuilder: (context, index) {
-                              return Container(
-                                margin: EdgeInsets.symmetric(horizontal: 20.pw),
-                                width: double.infinity,
-                              );
-                            },
-
-                            itemBuilder:
-                                (p0, p1) => AlarmListWidget(
-                                  alarmType: context.l10n?.going,
-                                ),
-                          );
-                        case 2:
-                          return CustomListView(
-                            itemCount: 5,
-                            separatorBuilder: (context, index) {
-                              return Container(
-                                margin: EdgeInsets.symmetric(horizontal: 20.pw),
-                                width: double.infinity,
-                              );
-                            },
-
-                            itemBuilder:
-                                (p0, p1) => AlarmListWidget(
-                                  alarmType: context.l10n?.recovered,
-                                ),
-                          );
-                        default:
-                          return const Center(child: Text('Not Found'));
-                      }
-                    },
-                  ),
-                ),
-              ],
+                  /// Tab content
+                  _buildTabContent(provider, context),
+                ],
+              ),
             ),
           ),
         );
       },
+    );
+  }
+
+  Widget _buildAppBar(BuildContext context) {
+    return CustomAppBar(
+      title: context.l10n?.alarm ?? "",
+      centerTitle: true,
+      showBackBtn: false,
+    );
+  }
+
+  Widget _buildTabBarContainer(BuildContext context, AlarmProvider provider) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 14.pw),
+      color: ColorRes.white,
+      child: Column(
+        children: [
+          TabBar(
+            padding: EdgeInsets.zero,
+            isScrollable: false,
+            physics: const NeverScrollableScrollPhysics(),
+            indicatorColor: ColorRes.primaryColor,
+            labelColor: ColorRes.primaryColor,
+            unselectedLabelColor: ColorRes.darkGrey,
+            labelStyle: styleW600S14.copyWith(color: ColorRes.darkGrey),
+            unselectedLabelStyle: styleW500S14.copyWith(color: ColorRes.darkGrey),
+            dividerColor: ColorRes.white,
+            indicator: const UnderlineTabIndicator(
+              borderSide: BorderSide(color: ColorRes.transparent, width: 0.0),
+            ),
+            tabs: [
+              Tab(text: context.l10n?.all),
+              Tab(text: context.l10n?.going),
+              Tab(text: context.l10n?.recovered),
+            ],
+            onTap: provider.changeTab,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTabContent(AlarmProvider provider, BuildContext context) {
+    return Expanded(
+      child: IndexedStack(
+        index: provider.selectedIndex,
+        children: [
+          // All alarms
+          _buildAlarmListView(10, context.l10n?.all ?? "", context),
+
+          // Going alarms
+          _buildAlarmListView(2, context.l10n?.going ?? "", context),
+
+          // Recovered alarms
+          _buildAlarmListView(5, context.l10n?.recovered ?? "", context),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAlarmListView(int itemCount, String alarmType, BuildContext context) {
+    return CustomListView(
+      itemCount: itemCount,
+      separatorBuilder: (context, index) => Container(
+        margin: EdgeInsets.symmetric(horizontal: 20.pw),
+        width: double.infinity,
+      ),
+      itemBuilder: (context, index) => AlarmListWidget(alarmType: alarmType),
     );
   }
 }

@@ -22,8 +22,8 @@ class QaScreen extends StatelessWidget {
 
           body: CustomSingleChildScroll(
             padding: EdgeInsets.only(
-              left: 16.pw,
-              right: 16.pw,
+              left: Constants.horizontalPadding,
+              right: Constants.horizontalPadding,
               top: 20.pw,
               bottom:
                   Constants.safeAreaPadding.bottom +
@@ -86,7 +86,7 @@ class QaScreen extends StatelessWidget {
                 ),
 
                 ///Space
-                16.pw.spaceVertical,
+                Constants.horizontalPadding.spaceVertical,
               ],
             ),
           ),

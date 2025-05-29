@@ -24,8 +24,8 @@ class OtpCodeVerificationScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(
                 bottom: 30.ph,
-                left: 16.pw,
-                right: 16.pw,
+                left: Constants.horizontalPadding,
+                right: Constants.horizontalPadding,
               ),
               child: SubmitButton(
                 title: context.l10n?.continueCap ?? "",

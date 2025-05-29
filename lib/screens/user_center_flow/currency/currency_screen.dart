@@ -102,7 +102,7 @@ class _CurrencyTabWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 16.pw),
+        padding: EdgeInsets.symmetric(vertical: Constants.horizontalPadding),
         child: Column(
           children: [
             Row(
