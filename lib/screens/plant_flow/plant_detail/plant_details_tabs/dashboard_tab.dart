@@ -134,88 +134,96 @@ class DashBoardTab extends StatelessWidget {
       width: double.infinity,
       color: ColorRes.white,
       padding: EdgeInsets.all(16.ph),
-      height: 200,
-      child: Column(
-        children: [
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ColumnWithRichText(title: topLeftTitle, value: "0.0 kwh"),
-                      ColumnWithRichText(
-                        title: topRightTitle,
-                        value: "0.0 kwh",
-                      ),
-                    ],
-                  ),
-                  24.ph.spaceVertical,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ColumnWithRichText(
-                        title: bottomLeftTitle,
-                        value: "0.0 kwh",
-                      ),
-                      ColumnWithRichText(
-                        title: bottomRightTitle,
-                        value: "0.0 kwh",
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              SvgAsset(imagePath: iconPath),
-            ],
-          ),
 
-          /// Space
-          12.pw.spaceVertical,
+      child: CustomSingleChildScroll(
+        child: Column(
+          children: [
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ColumnWithRichText(
+                          title: topLeftTitle,
+                          value: "0.0 kwh",
+                        ),
+                        ColumnWithRichText(
+                          title: topRightTitle,
+                          value: "0.0 kwh",
+                        ),
+                      ],
+                    ),
+                    24.ph.spaceVertical,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ColumnWithRichText(
+                          title: bottomLeftTitle,
+                          value: "0.0 kwh",
+                        ),
+                        ColumnWithRichText(
+                          title: bottomRightTitle,
+                          value: "0.0 kwh",
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SvgAsset(imagePath: iconPath),
+              ],
+            ),
 
-          /// Dash Icon
-          SvgAsset(imagePath: AssetRes.dashIcon),
+            /// Space
+            12.pw.spaceVertical,
 
-          /// Space
-          12.pw.spaceVertical,
+            /// Dash Icon
+            SvgAsset(imagePath: AssetRes.dashIcon),
 
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ColumnWithRichText(title: topLeftTitle, value: "0.0 kwh"),
-                      ColumnWithRichText(
-                        title: topRightTitle,
-                        value: "0.0 kwh",
-                      ),
-                    ],
-                  ),
-                  24.ph.spaceVertical,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ColumnWithRichText(
-                        title: bottomLeftTitle,
-                        value: "0.0 kwh",
-                      ),
-                      ColumnWithRichText(
-                        title: bottomRightTitle,
-                        value: "0.0 kwh",
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              SvgAsset(imagePath: iconPath),
-            ],
-          ),
-        ],
+            /// Space
+            12.pw.spaceVertical,
+
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ColumnWithRichText(
+                          title: topLeftTitle,
+                          value: "0.0 kwh",
+                        ),
+                        ColumnWithRichText(
+                          title: topRightTitle,
+                          value: "0.0 kwh",
+                        ),
+                      ],
+                    ),
+                    24.ph.spaceVertical,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ColumnWithRichText(
+                          title: bottomLeftTitle,
+                          value: "0.0 kwh",
+                        ),
+                        ColumnWithRichText(
+                          title: bottomRightTitle,
+                          value: "0.0 kwh",
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SvgAsset(imagePath: iconPath),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -148,7 +148,7 @@ class _AppBar extends StatelessWidget {
   }
 }
 
-/// Tab content as reusable widget
+/// Tab content as reusable plant_details_tabs
 class _TabContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -213,10 +213,9 @@ class _TabContent extends StatelessWidget {
                   (ctx, ind) => Container(
                     height: 1.ph,
                     width: 100.pw,
-                    color: ColorRes.black.withOpacity(0.1),
+                    color: ColorRes.black.withValues(alpha: 0.1),
                   ),
-              itemBuilder:
-                  (context, index) => MyWatchlistCell(),
+              itemBuilder: (context, index) => MyWatchlistCell(),
             ),
           ),
         ),

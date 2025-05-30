@@ -1,4 +1,5 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/utils/responsive_utils.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
@@ -10,7 +11,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   const CustomAppBar({
     super.key,
-      this.title,
+    this.title,
     this.actions,
     this.appBarWidget,
     this.backgroundColor = ColorRes.primaryColor,
@@ -21,14 +22,22 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: appBarWidget??Text(title??"", style: styleW600S20.copyWith(color: ColorRes.white)),
+      title:
+          appBarWidget ??
+          Text(
+            title ?? "",
+            style: styleW600S20.copyWith(color: ColorRes.white),
+          ),
       centerTitle: centerTitle,
       backgroundColor: backgroundColor,
       leading:
           /// Back Button
           (showBackBtn)
               ? Padding(
-                padding: EdgeInsets.only(right: 2.pw),
+                padding: EdgeInsets.only(
+                  right: 2.pw,
+                  left: Constants.isTablet ? 16.pw : 0,
+                ),
                 child: InkWell(
                   onTap: context.navigator.pop,
                   borderRadius: BorderRadius.circular(5),

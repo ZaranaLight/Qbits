@@ -28,7 +28,7 @@ class DeviceTab extends StatelessWidget {
                         decoration: BoxDecoration(
                           border: Border(
                             bottom: BorderSide(
-                              color: Colors.grey.withOpacity(0.3),
+                              color: Colors.grey.withValues(alpha: 0.3),
                               // Customize border color
                               width: 1.0, // Border thickness
                             ),

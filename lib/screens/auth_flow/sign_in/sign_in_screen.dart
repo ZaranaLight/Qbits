@@ -28,7 +28,9 @@ class SignInScreen extends StatelessWidget {
                   padding: EdgeInsets.only(
                     left: Constants.horizontalPadding,
                     right: Constants.horizontalPadding,
-                    bottom: Constants.safeAreaPadding.bottom + Constants.horizontalPadding,
+                    bottom:
+                        Constants.safeAreaPadding.bottom +
+                        Constants.horizontalPadding,
                   ),
                   child: Column(
                     children: [
@@ -94,7 +96,9 @@ class SignInScreen extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                           color: ColorRes.white,
-                          borderRadius: BorderRadius.circular(Constants.horizontalPadding),
+                          borderRadius: BorderRadius.circular(
+                            Constants.horizontalPadding,
+                          ),
                           boxShadow: [
                             BoxShadow(
                               offset: const Offset(-5, 0),

@@ -95,7 +95,7 @@ class InverterScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(height: 17, width: 5, color: ColorRes.primaryColor),
-          const SizedBox(width: 10),
+         10.pw.spaceHorizontal,
           Text(
             context.l10n?.fault ?? "",
             style: styleW600S14.copyWith(color: ColorRes.black2),
@@ -107,7 +107,11 @@ class InverterScreen extends StatelessWidget {
 
   Widget _buildFaultList(InverterProvider provider) {
     return CustomListView(
+
       itemCount: provider.titles.length,
+
+
+
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       separatorBuilder:

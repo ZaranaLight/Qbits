@@ -9,6 +9,7 @@ class AppView extends StatelessWidget {
   Widget build(BuildContext context) {
     Constants.deviceHeight = MediaQuery.of(context).size.height;
     Constants.deviceWidth = MediaQuery.of(context).size.width;
+    Constants.isTablet = MediaQuery.of(context).size.width > 600;
     Constants.safeAreaPadding = MediaQuery.of(context).padding;
     return ChangeNotifierProvider<AppProvider>(
       create: (c) => AppProvider(),

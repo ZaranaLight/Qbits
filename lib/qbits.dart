@@ -77,10 +77,10 @@ export 'package:qbits/screens/plant_flow/plant/widget/preference_dialogbox.dart'
 export 'package:qbits/screens/plant_flow/plant/widget/rank_dialogbox.dart';
 export 'package:qbits/screens/plant_flow/plant_detail/plant_detail_provider.dart';
 export 'package:qbits/screens/plant_flow/plant_detail/plant_detail_screen.dart';
-export 'package:qbits/screens/plant_flow/plant_detail/widget/dashboard_tab.dart';
-export 'package:qbits/screens/plant_flow/plant_detail/widget/device_tab.dart';
-export 'package:qbits/screens/plant_flow/plant_detail/widget/about_tab.dart';
-export 'package:qbits/screens/plant_flow/plant_detail/widget/alarm_tab.dart';
+export 'package:qbits/screens/plant_flow/plant_detail/plant_details_tabs/dashboard_tab.dart';
+export 'package:qbits/screens/plant_flow/plant_detail/plant_details_tabs/device_tab.dart';
+export 'package:qbits/screens/plant_flow/plant_detail/plant_details_tabs/about_tab.dart';
+export 'package:qbits/screens/plant_flow/plant_detail/plant_details_tabs/alarm_tab.dart';
 export 'package:qbits/screens/auth_flow/individual_registration/individual_registration_provider.dart';
 export 'package:image_picker/image_picker.dart';
 export 'package:qbits/screens/auth_flow/role_choice/role_choice_screen.dart';
@@ -124,4 +124,8 @@ export 'package:qbits/screens/alarm_flow/inverter/inverter_provider.dart';
 export 'package:qbits/screens/alarm_flow/inverter/widget/build_top_row_widget.dart';
 export 'package:carousel_slider/carousel_slider.dart';
 export 'package:qbits/common/widget/column_with_rich_text.dart';
-export 'package:qbits/screens/plant_flow/plant_detail/widget/dashboard_circular_widget.dart';
+export 'package:qbits/screens/plant_flow/plant_detail/widgets/dashboard_circular_widget.dart';
+export 'package:qbits/screens/alarm_flow/alarm/widget/alarm_list_widget.dart';
+export 'package:qbits/screens/alarm_flow/alarm/widget/alarm_list_view_wrapper.dart';
+
+

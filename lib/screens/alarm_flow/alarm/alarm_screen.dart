@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/alarm_flow/alarm/widget/alarm_list_widget.dart';
 
 class AlarmScreen extends StatelessWidget {
   const AlarmScreen({super.key});
@@ -59,66 +58,53 @@ class AlarmScreen extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 14.pw),
       color: ColorRes.white,
-      child: Column(
-        children: [
-          TabBar(
-            padding: EdgeInsets.zero,
-            isScrollable: false,
-            physics: const NeverScrollableScrollPhysics(),
-            indicatorColor: ColorRes.primaryColor,
-            labelColor: ColorRes.primaryColor,
-            unselectedLabelColor: ColorRes.darkGrey,
-            labelStyle: styleW600S14.copyWith(color: ColorRes.darkGrey),
-            unselectedLabelStyle: styleW500S14.copyWith(
-              color: ColorRes.darkGrey,
+      child: Material(
+        color: ColorRes.transparent,
+
+        child: Column(
+          children: [
+            TabBar(
+              padding: EdgeInsets.zero,
+              isScrollable: false,
+              indicatorColor: ColorRes.primaryColor,
+              labelColor: ColorRes.primaryColor,
+              unselectedLabelColor: ColorRes.darkGrey,
+              labelStyle: styleW600S14.copyWith(color: ColorRes.darkGrey),
+              unselectedLabelStyle: styleW500S14.copyWith(
+                color: ColorRes.darkGrey,
+              ),
+              dividerColor: ColorRes.white,
+              indicator: UnderlineTabIndicator(
+                borderRadius: BorderRadius.circular(20.pw),
+                borderSide: BorderSide(color: ColorRes.transparent, width: 0.0),
+              ),
+              tabs: [
+                Tab(text: context.l10n?.all),
+                Tab(text: context.l10n?.going),
+                Tab(text: context.l10n?.recovered),
+              ],
+              onTap: provider.changeTab,
             ),
-            dividerColor: ColorRes.white,
-            indicator: const UnderlineTabIndicator(
-              borderSide: BorderSide(color: ColorRes.transparent, width: 0.0),
-            ),
-            tabs: [
-              Tab(text: context.l10n?.all),
-              Tab(text: context.l10n?.going),
-              Tab(text: context.l10n?.recovered),
-            ],
-            onTap: provider.changeTab,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildTabContent(AlarmProvider provider, BuildContext context) {
     return Expanded(
-      child: IndexedStack(
-        index: provider.selectedIndex,
+      child: TabBarView(
         children: [
           // All alarms
-          _buildAlarmListView(10, context.l10n?.all ?? "", context),
+          AlarmListViewWrapper(itemCount: 10, alarmTypeKey: 'all'),
 
           // Going alarms
-          _buildAlarmListView(2, context.l10n?.going ?? "", context),
+          AlarmListViewWrapper(itemCount: 2, alarmTypeKey: 'going'),
 
           // Recovered alarms
-          _buildAlarmListView(5, context.l10n?.recovered ?? "", context),
+          AlarmListViewWrapper(itemCount: 5, alarmTypeKey: 'recovered'),
         ],
       ),
-    );
-  }
-
-  Widget _buildAlarmListView(
-    int itemCount,
-    String alarmType,
-    BuildContext context,
-  ) {
-    return CustomListView(
-      itemCount: itemCount,
-      separatorBuilder:
-          (context, index) => Container(
-            margin: EdgeInsets.symmetric(horizontal: 20.pw),
-            width: double.infinity,
-          ),
-      itemBuilder: (context, index) => AlarmListWidget(alarmType: alarmType),
     );
   }
 }

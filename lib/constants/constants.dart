@@ -5,6 +5,7 @@ class Constants {
   static const double figmaPageWidth = 393;
   static double deviceHeight = 0;
   static double deviceWidth = 0;
+  static bool isTablet = false;
   static EdgeInsets safeAreaPadding = EdgeInsets.zero;
   static double horizontalPadding = 16.pw;
 

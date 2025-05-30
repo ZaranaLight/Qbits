@@ -1,4 +1,5 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/utils/responsive_utils.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -105,10 +106,19 @@ class _BottomBar extends StatelessWidget {
                     AnimatedCrossFade(
                       firstChild: SvgAsset(
                         imagePath: image,
-                        height: 24.pw,
+
+                        height:
+                        Constants.isTablet ? 15.pw : 24.pw,
+                        width: Constants.isTablet? 15.pw : 24.pw,
                         color: ColorRes.lightGreen,
                       ),
-                      secondChild: SvgAsset(imagePath: image, height: 24.pw),
+                      secondChild: SvgAsset(
+                        imagePath: image,
+                        height:
+                        Constants.isTablet ? 15.pw : 24.pw,
+                        width:Constants.isTablet ? 15.pw : 24.pw,
+                      ),
+
                       crossFadeState:
                           isSelected
                               ? CrossFadeState.showFirst
