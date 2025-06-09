@@ -16,7 +16,7 @@ export 'package:flutter_native_splash/flutter_native_splash.dart';
 export 'package:qbits/app/app_view.dart';
 export 'package:qbits/utils/asset_res.dart';
 export 'package:qbits/utils/color_res.dart';
-export 'package:qbits/constants/route_manager.dart';
+export 'package:qbits/constants/routes_manager.dart';
 export 'dart:convert';
 export 'package:qbits/common/methods.dart';
 export 'package:qbits/common/api_response.dart';
@@ -127,5 +127,13 @@ export 'package:qbits/common/widget/column_with_rich_text.dart';
 export 'package:qbits/screens/plant_flow/plant_detail/widgets/dashboard_circular_widget.dart';
 export 'package:qbits/screens/alarm_flow/alarm/widget/alarm_list_widget.dart';
 export 'package:qbits/screens/alarm_flow/alarm/widget/alarm_list_view_wrapper.dart';
-
-
+export 'package:qbits/screens/user_center_flow/end_user/add_user/add_user_provider.dart';
+export 'package:qbits/screens/user_center_flow/end_user/add_user/add_user_form_screen.dart';
+export 'package:qbits/screens/inverter/inverter_provider.dart';
+export 'package:qbits/screens/inverter/model/info_model.dart';
+export 'package:qbits/screens/inverter/model/inverter_parameter_model.dart';
+export 'package:qbits/screens/inverter/widget/info_widget.dart';
+export 'package:qbits/screens/inverter/widget/inverter_parameter_widget.dart';
+export 'package:qbits/screens/inverter/inverter_tabs_screens/alarm_screen.dart';
+export 'package:qbits/screens/inverter/inverter_tabs_screens/parameter_screen.dart';
+export 'package:qbits/screens/inverter/inverter_tabs_screens/statistics_screen.dart';

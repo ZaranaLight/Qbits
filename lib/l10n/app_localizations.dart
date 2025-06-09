@@ -825,6 +825,18 @@ abstract class AppLocalizations {
   /// **'Phone Number Is Required'**
   String get phoneNumberIsRequired;
 
+  /// No description provided for @phoneNumberIsInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number Is Invalid'**
+  String get phoneNumberIsInvalid;
+
+  /// No description provided for @mailIsInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Mail Is Invalid'**
+  String get mailIsInvalid;
+
   /// No description provided for @companyCodeIsRequired.
   ///
   /// In en, this message translates to:
@@ -1382,6 +1394,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Inverter'**
   String get inverter;
+
+  /// No description provided for @addUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Add User'**
+  String get addUser;
+
+  /// No description provided for @enterAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Account'**
+  String get enterAccount;
+
+  /// No description provided for @enterPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Password'**
+  String get enterPassword;
+
+  /// No description provided for @enterPhoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Phone Number'**
+  String get enterPhoneNumber;
+
+  /// No description provided for @enterMail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Mail'**
+  String get enterMail;
+
+  /// No description provided for @passwordIsNotValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is not valid'**
+  String get passwordIsNotValid;
+
+  /// No description provided for @addCollector.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Collector'**
+  String get addCollector;
+
+  /// No description provided for @serialNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Serial Number'**
+  String get serialNumber;
+
+  /// No description provided for @enterSerialNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Serial Number'**
+  String get enterSerialNumber;
+
+  /// No description provided for @originalPasswordIsNotValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Original Password is not valid'**
+  String get originalPasswordIsNotValid;
+
+  /// No description provided for @newPasswordIsNotValid.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password is not valid'**
+  String get newPasswordIsNotValid;
+
+  /// No description provided for @confirmNewIsNotValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm new is not valid'**
+  String get confirmNewIsNotValid;
+
+  /// No description provided for @serialNumberIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Serial number is required'**
+  String get serialNumberIsRequired;
+
+  /// No description provided for @parameter.
+  ///
+  /// In en, this message translates to:
+  /// **'Parameter'**
+  String get parameter;
+
+  /// No description provided for @statistics.
+  ///
+  /// In en, this message translates to:
+  /// **'Statistics'**
+  String get statistics;
+
+  /// No description provided for @alerts.
+  ///
+  /// In en, this message translates to:
+  /// **'Alerts'**
+  String get alerts;
+
+  /// No description provided for @basic.
+  ///
+  /// In en, this message translates to:
+  /// **'Basic'**
+  String get basic;
 
   /// No description provided for @collector.
   ///

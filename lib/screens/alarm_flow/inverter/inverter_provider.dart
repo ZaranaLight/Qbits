@@ -1,7 +1,7 @@
 import 'package:qbits/qbits.dart';
 
-class InverterProvider extends ChangeNotifier {
-  InverterProvider() {
+class AlarmInverterProvider extends ChangeNotifier {
+  AlarmInverterProvider() {
     initialize();
   }
 

@@ -20,7 +20,7 @@ class AlarmListWidget extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(8.pw),
         child: InkWell(
-          onTap: () => {context.navigator.pushNamed(InverterScreen.routeName)},
+          onTap: () => {context.navigator.pushNamed(AlarmInverterScreen.routeName)},
           borderRadius: BorderRadius.circular(8.pw),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

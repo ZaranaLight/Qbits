@@ -1,199 +1,38 @@
 import 'package:qbits/qbits.dart';
 
-class AlarmInverterScreen extends StatelessWidget {
-  const AlarmInverterScreen({super.key});
+class StatisticsScreen extends StatelessWidget {
+  const StatisticsScreen({super.key});
 
-  static const routeName = "alarm_inverter_screen";
+  static const routeName = "statistics";
 
   static Widget builder(BuildContext context) {
-    return ChangeNotifierProvider<AlarmInverterProvider>(
-      create: (context) => AlarmInverterProvider(),
-      child: const AlarmInverterScreen(),
+    return ChangeNotifierProvider(
+      create: (_) => InverterProvider(),
+      child: const StatisticsScreen(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AlarmInverterProvider>(
+    return Consumer<InverterProvider>(
       builder: (context, provider, child) {
-        WidgetsBinding.instance.addPostFrameCallback(
-          (_) => provider.initialize(),
-        );
-        return StackedLoader(
-          loading: provider.loader,
-          child: Scaffold(
-            appBar: CustomAppBar(title: context.l10n?.inverter ?? ""),
-            body: _buildBody(context, provider),
+        return Scaffold(
+          body: Column(
+            children: [
+              ///Space
+              16.pw.spaceVertical,
+
+              ///Chart Section
+              _buildChartSection(provider),
+            ],
           ),
         );
       },
     );
   }
 
-  Widget _buildBody(BuildContext context, AlarmInverterProvider provider) {
-    return CustomSingleChildScroll(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          /// Top Row
-          _buildInfoSection(context),
-
-          /// Space
-          16.pw.spaceVertical,
-
-          /// Fault Section
-          _buildFaultSection(context, provider),
-
-          ///Space
-          16.pw.spaceVertical,
-
-          ///Chart Section
-          _buildChartSection(provider),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildInfoSection(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(color: ColorRes.white),
-      padding: EdgeInsets.symmetric(
-        horizontal: Constants.horizontalPadding,
-        vertical: 20.pw,
-      ),
-      child: Column(
-        spacing: 13.pw,
-        children: const [
-          RowWidget(title: "Status", value: "Recovered", isStatus: true),
-          RowWidget(title: "Start Time", value: "2025-03-03 11:03:49:912"),
-          RowWidget(title: "End Time", value: "2025-03-03 11:03:49:912"),
-          RowWidget(title: "ASP-20KTLC", value: ""),
-          RowWidget(title: "Station Name", value: "Agra"),
-          RowWidget(title: "Your City", value: "Agra"),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildFaultSection(BuildContext context, AlarmInverterProvider provider) {
-    return Container(
-      decoration: const BoxDecoration(color: ColorRes.white),
-      child: Column(
-        children: [
-          _buildFaultHeader(context),
-          Divider(height: 1, color: ColorRes.black.withValues(alpha: 0.1)),
-          _buildFaultList(provider),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildFaultHeader(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(height: 17, width: 5, color: ColorRes.primaryColor),
-         10.pw.spaceHorizontal,
-          Text(
-            context.l10n?.fault ?? "",
-            style: styleW600S14.copyWith(color: ColorRes.black2),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildFaultList(AlarmInverterProvider provider) {
-    return CustomListView(
-
-      itemCount: provider.titles.length,
-
-
-
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      separatorBuilder:
-          (context, index) => Container(
-            width: double.infinity,
-            height: 1,
-            color: ColorRes.black.withValues(alpha: 0.1),
-          ),
-      itemBuilder: (context, index) => _buildExpansionTile(provider, index),
-    );
-  }
-
-  Widget _buildExpansionTile(AlarmInverterProvider provider, int index) {
-    final isExpanded = provider.expandedIndex == index;
-    return Column(
-      children: [
-        InkWell(
-          onTap: () => provider.toggleExpanded(index),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 12.0,
-              horizontal: Constants.horizontalPadding,
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      /// Icon
-                      Text(provider.titles[index], style: styleW600S14),
-
-                      ///Space
-                      8.pw.spaceHorizontal,
-
-                      ///Description
-                      Text(
-                        "Phase C voltage is too low",
-                        style: styleW500S14.copyWith(color: ColorRes.orange2),
-                      ),
-                    ],
-                  ),
-                ),
-                AnimatedRotation(
-                  duration: const Duration(milliseconds: 300),
-                  turns: isExpanded ? 0.5 : 0,
-                  child: Icon(
-                    Icons.keyboard_arrow_down,
-                    color: ColorRes.black.withValues(alpha: 0.6),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        AnimatedSize(
-          duration: const Duration(milliseconds: 300),
-          child: SizedBox(
-            height: isExpanded ? null : 0,
-            child:
-                isExpanded
-                    ? Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 15.pw,
-                        vertical: 5.pw,
-                      ),
-                      child: Text(
-                        provider.contents[index],
-                        style: styleW400S14,
-                      ),
-                    )
-                    : null,
-          ),
-        ),
-
-        /// Divider
-        Divider(height: 1, color: ColorRes.black.withValues(alpha: 0.1)),
-      ],
-    );
-  }
-
-  Widget _buildChartSection(AlarmInverterProvider provider) {
-    return Consumer<AlarmInverterProvider>(
+  Widget _buildChartSection(InverterProvider provider) {
+    return Consumer<InverterProvider>(
       builder: (context, provider, child) {
         return Container(
           padding: EdgeInsets.symmetric(vertical: 15.pw),
@@ -252,7 +91,7 @@ class AlarmInverterScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildChartTabs(AlarmInverterProvider provider) {
+  Widget _buildChartTabs(InverterProvider provider) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Row(
@@ -273,11 +112,11 @@ class AlarmInverterScreen extends StatelessWidget {
                   ),
                   child: Text(
                     tab,
-                    style: styleW600S16.copyWith(
+                    style: styleW700S16.copyWith(
                       color:
                           isSelected
                               ? ColorRes.primaryColor
-                              : ColorRes.black.withValues(alpha: 0.5),
+                              : ColorRes.black.withValues(alpha: 0.8),
                     ),
                   ),
                 ),
@@ -287,7 +126,7 @@ class AlarmInverterScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDatePicker(AlarmInverterProvider provider) {
+  Widget _buildDatePicker(InverterProvider provider) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: InkWell(
@@ -316,7 +155,7 @@ class AlarmInverterScreen extends StatelessWidget {
 
   Future<void> _showDatePicker(
     BuildContext context,
-    AlarmInverterProvider provider,
+    InverterProvider provider,
   ) async {
     DateTime? picked;
 
@@ -380,13 +219,13 @@ class AlarmInverterScreen extends StatelessWidget {
         children: [
           Text(
             'Energy',
-            style: styleW400S16.copyWith(
+            style: styleW400S17.copyWith(
               color: ColorRes.black.withValues(alpha: 0.6),
             ),
           ),
           Text(
             '15.4 kWh',
-            style: styleW600S16.copyWith(
+            style: styleW600S17.copyWith(
               color: ColorRes.black.withValues(alpha: 0.6),
             ),
           ),
@@ -395,7 +234,7 @@ class AlarmInverterScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildPreferenceDropdown(AlarmInverterProvider provider) {
+  Widget _buildPreferenceDropdown(InverterProvider provider) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5.pw),
@@ -428,7 +267,7 @@ class AlarmInverterScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildChart(AlarmInverterProvider provider) {
+  Widget _buildChart(InverterProvider provider) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: SizedBox(
@@ -500,7 +339,7 @@ class AlarmInverterScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildChartLegend(AlarmInverterProvider provider) {
+  Widget _buildChartLegend(InverterProvider provider) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Row(

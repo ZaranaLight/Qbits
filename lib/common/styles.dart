@@ -34,6 +34,12 @@ TextStyle styleW400S16 = TextStyle(
   fontFamily: AssetRes.instrumentSans,
   fontWeight: FontWeight.w400,
 );
+TextStyle styleW400S17 = TextStyle(
+  color: ColorRes.black2,
+  fontSize: 17,
+  fontFamily: AssetRes.instrumentSans,
+  fontWeight: FontWeight.w400,
+);
 
 TextStyle styleW500S12 = TextStyle(
   color: ColorRes.black2,
@@ -136,6 +142,12 @@ TextStyle styleW700S10 = TextStyle(
 TextStyle styleW700S17 = TextStyle(
   color: ColorRes.black2,
   fontSize: 17,
+  fontFamily: AssetRes.instrumentSans,
+  fontWeight: FontWeight.w700,
+);
+TextStyle styleW700S16 = TextStyle(
+  color: ColorRes.black2,
+  fontSize: 16,
   fontFamily: AssetRes.instrumentSans,
   fontWeight: FontWeight.w700,
 );

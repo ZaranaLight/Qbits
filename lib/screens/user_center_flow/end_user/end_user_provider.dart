@@ -2,7 +2,8 @@ import 'package:qbits/qbits.dart';
 
 class EndUserProvider extends ChangeNotifier {
   bool loader = false;
-TextEditingController searchController = TextEditingController();
+  TextEditingController searchController = TextEditingController();
+
   EndUserProvider() {
     init();
   }

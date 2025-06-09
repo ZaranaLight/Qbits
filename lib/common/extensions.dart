@@ -11,6 +11,15 @@ extension ValidationExt on String {
   bool isPhoneValid() {
     return RegExp(r"(^(?:[+0]9)?[0-9]{10,12}$)").hasMatch(this);
   }
+  bool isValidPassword() {
+    final hasMinLength = length >= 8;
+    final hasUppercase = contains(RegExp(r'[A-Z]'));
+    final hasLowercase = contains(RegExp(r'[a-z]'));
+    final hasNumber = contains(RegExp(r'[0-9]'));
+    final hasSymbol = contains(RegExp(r'[!@#\$%^&*(),.?":{}|<>_\[\]\\/~`+=-]'));
+
+    return hasMinLength && hasUppercase && hasLowercase && hasNumber && hasSymbol;
+  }
 }
 
 extension StringFormatingExt on String {

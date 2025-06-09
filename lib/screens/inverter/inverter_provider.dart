@@ -1,29 +1,89 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/inverter/inverter_tabs_screens/basic_screen.dart';
+import 'package:qbits/screens/inverter/model/basic_info_model.dart';
 
-class PlantDetailProvider extends ChangeNotifier {
-  bool loader = false;
+class InverterProvider extends ChangeNotifier {
+  bool _isInitialized = false;
 
-  PlantDetailProvider() {
+  InverterProvider() {
     init();
   }
 
   void init() {
     if (!_isInitialized) {
-      _loadChartData();
+      // Load initial data or perform setup
+      _loadInitialData();
       _isInitialized = true;
     }
   }
 
-  int _current = 0;
+  void _loadInitialData() {
+    // Simulate data loading
+    Future.delayed(Duration(seconds: 1), () {
+      notifyListeners(); // Notify listeners after data is loaded
+    });
+  }
 
-  int get current => _current;
+  final List<String> parameterTitles = ["Inverter", "AC Info", "DC Info"];
+  final List<Widget> parameterContent = [
+    InverterParameterWidget(),
 
-  void setCurrent(int index) {
-    _current = index;
+    ExpandableInfoSection(
+      items: [
+        InfoRowModel(text: "A", voltage: "234.8", current: "4.73"),
+        InfoRowModel(text: "B", voltage: "234.8", current: "4.73"),
+        InfoRowModel(text: "C", voltage: "234.8", current: "4.73"),
+      ],
+    ),
+    ExpandableInfoSection(
+      items: [
+        InfoRowModel(text: "A", voltage: "234.8", current: "4.73"),
+        InfoRowModel(text: "E", voltage: "234.8", current: "4.73"),
+      ],
+    ),
+  ];
+  int? _expandedIndex;
+
+  int? get expandedIndex => _expandedIndex;
+
+  void toggleExpanded(int index) {
+    if (_expandedIndex == index) {
+      _expandedIndex = null; // collapse if already expanded
+    } else {
+      _expandedIndex = index; // expand this one
+    }
     notifyListeners();
   }
 
-  ///
+  final List<InverterParameterModel> _parameters = [
+    InverterParameterModel(label: 'Power', value: '0 kW'),
+    InverterParameterModel(label: 'Day', value: '2.61 kWh'),
+    InverterParameterModel(label: 'In Total', value: '1378 kWh'),
+    InverterParameterModel(label: 'Temperature', value: '58.5 ℃'),
+    InverterParameterModel(label: 'Frequency', value: '50.25 Hz'),
+    InverterParameterModel(label: 'Reactive Power', value: '0 Var'),
+    InverterParameterModel(label: 'Power Factor', value: '1'),
+    InverterParameterModel(
+      label: 'Date Updated',
+      value: '2025-05-22 13:28:55:009',
+    ),
+  ];
+
+  List<InverterParameterModel> get parameters => _parameters;
+  final List<InfoRowModel> _acInfoList = [
+    InfoRowModel(text: "A", voltage: "234.8", current: "4.73"),
+    // Add more rows if needed
+  ];
+
+  List<InfoRowModel> get acInfoList => _acInfoList;
+
+  final List<InfoRowModel> _dcInfoList = [
+    InfoRowModel(text: "A", voltage: "380.0", current: "5.20"),
+  ];
+
+  List<InfoRowModel> get dcInfoList => _dcInfoList;
+
+  ///map statistics
 
   ChartViewType _viewType = ChartViewType.day;
 
@@ -121,25 +181,15 @@ class PlantDetailProvider extends ChangeNotifier {
 
   int _selectedIndex = 0;
 
-  int get selectedIndex => _selectedIndex;
-  int _selectedTabIndex = 0;
-
-  int get selectedTabIndex => _selectedTabIndex;
-
-  void selectAlarmTab(int index) {
-    _selectedTabIndex = index;
-    notifyListeners();
-  }
-
   List<FlSpot> _chartData = [];
 
   List<FlSpot> get chartData => _chartData;
 
   String get currentTab => _tabs[_selectedIndex];
 
-  List<String> get tabs => _tabs;
+  int get selectedIndex => _selectedIndex;
 
-  bool _isInitialized = false;
+  List<String> get tabs => _tabs;
 
   void nextTab() {
     _selectedIndex = (_selectedIndex + 1) % _tabs.length;
@@ -216,47 +266,37 @@ class PlantDetailProvider extends ChangeNotifier {
     }
   }
 
-  //============Device  ---provider -----------
+  ///Basic Inverter Info
+  final List<String> basicTitles = [
+    "Station Overview",
+    "Collector",
+    "Inverter",
+  ];
 
-  final List<String> deviceOption = ['All', 'Normal', 'Fault', 'Offline'];
-
-  // Currently selected preference
-  String _selectedDeviceOption = 'All';
-
-  String get selectedDeviceOption => _selectedDeviceOption;
-
-  //  Device data
-  String? all;
-  String? normal;
-  String? fault;
-  String? offline;
-
-  // Handle dropdown selection
-  void updateSelectedDevice(String value) {
-    _selectedDeviceOption = value;
-
-    notifyListeners();
-  }
-
-  //============Alarm   ----------- -----------
-
-  int _selectedAlarmIndex = 0;
-
-  int get selectedAlarmIndex => _selectedAlarmIndex;
-
-  void changeAlarmTab(int index) {
-    _selectedAlarmIndex = index;
-    notifyListeners();
-  }
-
-  // -------------change inverter and collector tab
-  int _deviceTabIndex = 0;
-
-  int get deviceTabIndex => _deviceTabIndex;
-
-  changeDeviceTabTo(int index) {
-    _deviceTabIndex = index;
-    notifyListeners();
-    print("Device Tab Index: $_deviceTabIndex");
-  }
+  final List<Widget> basicContent = [
+    BasicContentWidget(
+      items: [
+        BasicInfoModel(key: 'Station Name', value: 'Agra'),
+        BasicInfoModel(key: 'Your City', value: 'Agra'),
+        BasicInfoModel(key: 'Created', value: '2024-11-06'),
+        BasicInfoModel(key: 'Capacity', value: '0 kW'),
+      ],
+    ),
+    BasicContentWidget(
+      items: [
+        BasicInfoModel(key: 'Collector Type', value: 'WIFI-USB-ESP32'),
+        BasicInfoModel(key: 'SN', value: '240801078'),
+        BasicInfoModel(key: 'Created', value: '240801078'),
+      ],
+    ),
+    BasicContentWidget(
+      items: [
+        BasicInfoModel(key: 'Model', value: 'ASP-3.3KTLS'),
+        BasicInfoModel(key: 'Modbus Address', value: '1'),
+        BasicInfoModel(key: 'Created', value: '2024-11-06'),
+        BasicInfoModel(key: 'Panel', value: '0(W)*0(pcs)'),
+        BasicInfoModel(key: 'Timezone', value: '8'),
+      ],
+    ),
+  ];
 }

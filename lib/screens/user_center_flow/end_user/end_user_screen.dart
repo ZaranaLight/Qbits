@@ -1,4 +1,5 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/user_center_flow/end_user/add_user/add_user_form_screen.dart';
 
 class EndUserScreen extends StatelessWidget {
   const EndUserScreen({super.key});
@@ -17,7 +18,25 @@ class EndUserScreen extends StatelessWidget {
     return Consumer<EndUserProvider>(
       builder: (context, provider, child) {
         return Scaffold(
-          appBar: CustomAppBar(title: context.l10n?.endUser ?? ""),
+          appBar: CustomAppBar(
+            title: context.l10n?.endUser ?? "",
+            actions: [
+              ///Torch Button
+              InkWell(
+                onTap: () {
+                  context.navigator.pushNamed(AddUserFormScreen.routeName);
+                },
+                borderRadius: BorderRadius.circular(5.pw),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Constants.horizontalPadding,
+                    vertical: 10.pw,
+                  ),
+                  child: SvgAsset(imagePath: AssetRes.plusIcon),
+                ),
+              ),
+            ],
+          ),
           body: Padding(
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
@@ -29,7 +48,6 @@ class EndUserScreen extends StatelessWidget {
               children: [
                 /// Expanded Search TextField
                 Container(
-
                   decoration: BoxDecoration(
                     color: ColorRes.white,
                     borderRadius: BorderRadius.circular(8.pw),

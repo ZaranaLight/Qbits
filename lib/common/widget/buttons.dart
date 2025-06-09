@@ -5,6 +5,7 @@ class SubmitButton extends StatelessWidget {
     super.key,
     this.title,
     this.onTap,
+    this.bgColor,
     this.enable = true,
     this.loading = false,
     this.style,
@@ -15,6 +16,7 @@ class SubmitButton extends StatelessWidget {
   final VoidCallback? onTap;
   final double? height;
   final TextStyle? style;
+  final Color? bgColor;
   final bool enable;
   final bool loading;
 
@@ -25,11 +27,12 @@ class SubmitButton extends StatelessWidget {
       width: 100.w,
       height: height ?? 48,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(8.pw),
         color:
             enable
-                ? ColorRes.primaryColor
-                : ColorRes.primaryColor.withValues(alpha: 0.6),
+                ? bgColor ?? ColorRes.primaryColor
+                : bgColor?.withValues(alpha: 0.6) ??
+                    ColorRes.primaryColor.withValues(alpha: 0.6),
       ),
       child: AnimatedSwitcher(
         duration: 300.milliseconds,

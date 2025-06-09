@@ -15,7 +15,7 @@ void showCustomToast(String msg, {bool? error}) {
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: ColorRes.grey,
+            color: ColorRes.white,
             boxShadow: [
               BoxShadow(
                 offset: const Offset(0, 16),
@@ -60,7 +60,7 @@ void showCustomToast(String msg, {bool? error}) {
                                 error == true
                                     ? AssetRes.closeIcon
                                     : AssetRes.rightTickIcon,
-                            color: ColorRes.white,
+                            color: ColorRes.black2,
                             height: 12.pw,
                           ),
                         ),
@@ -76,7 +76,7 @@ void showCustomToast(String msg, {bool? error}) {
                               Text(
                                 error == true ? "Error" : "Success",
                                 style: styleW700S17.copyWith(
-                                  color: ColorRes.white,
+                                  color: ColorRes.black2,
                                 ),
                               ),
 
@@ -86,7 +86,7 @@ void showCustomToast(String msg, {bool? error}) {
                               Text(
                                 msg,
                                 style: styleW400S13.copyWith(
-                                  color: ColorRes.white,
+                                  color: ColorRes.black,
                                 ),
                               ),
                             ],

@@ -375,6 +375,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get phoneNumberIsRequired => 'Phone Number Is Required';
 
   @override
+  String get phoneNumberIsInvalid => 'Phone Number Is Invalid';
+
+  @override
+  String get mailIsInvalid => 'Mail Is Invalid';
+
+  @override
   String get companyCodeIsRequired => 'Company Code Is Required';
 
   @override
@@ -652,6 +658,57 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get inverter => 'Inverter';
+
+  @override
+  String get addUser => 'Add User';
+
+  @override
+  String get enterAccount => 'Enter Account';
+
+  @override
+  String get enterPassword => 'Enter Password';
+
+  @override
+  String get enterPhoneNumber => 'Enter Phone Number';
+
+  @override
+  String get enterMail => 'Enter Mail';
+
+  @override
+  String get passwordIsNotValid => 'Password is not valid';
+
+  @override
+  String get addCollector => 'Add Collector';
+
+  @override
+  String get serialNumber => 'Serial Number';
+
+  @override
+  String get enterSerialNumber => 'Enter Serial Number';
+
+  @override
+  String get originalPasswordIsNotValid => 'Original Password is not valid';
+
+  @override
+  String get newPasswordIsNotValid => 'New Password is not valid';
+
+  @override
+  String get confirmNewIsNotValid => 'Confirm new is not valid';
+
+  @override
+  String get serialNumberIsRequired => 'Serial number is required';
+
+  @override
+  String get parameter => 'Parameter';
+
+  @override
+  String get statistics => 'Statistics';
+
+  @override
+  String get alerts => 'Alerts';
+
+  @override
+  String get basic => 'Basic';
 
   @override
   String get collector => 'Collector';

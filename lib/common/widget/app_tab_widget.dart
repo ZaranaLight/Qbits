@@ -29,7 +29,7 @@ class TabWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ///Svg Icon
-              SvgAsset(width: 20.pw, imagePath: imagePath),
+              SvgAsset(width: 20.pw, imagePath: imagePath,color: ColorRes.black2,),
 
               /// Space
               10.pw.spaceHorizontal,

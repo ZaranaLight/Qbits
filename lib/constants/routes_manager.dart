@@ -1,4 +1,9 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/collector/collector/collector_screen.dart';
+import 'package:qbits/screens/inverter/inverter_screen.dart';
+import 'package:qbits/screens/inverter/inverter_tabs_screens/parameter_screen.dart';
+import 'package:qbits/screens/plant_flow/plant_info/plant_info_screen.dart';
+import 'package:qbits/screens/collector/add_collector/add_collector_screen.dart';
 
 class RouteManager {
   static String get initialRoute => SplashScreen.routeName;
@@ -110,6 +115,13 @@ class RouteManager {
           settings: settings,
         );
 
+      /// Plant Info Screen
+      case PlantInfoScreen.routeName:
+        return MaterialPageRoute(
+          builder: PlantInfoScreen.builder,
+          settings: settings,
+        );
+
       /// Alarm Screen
       case AlarmScreen.routeName:
         return MaterialPageRoute(
@@ -145,6 +157,13 @@ class RouteManager {
           settings: settings,
         );
 
+      /// Add Collector Screen
+      case AddCollectorScreen.routeName:
+        return MaterialPageRoute(
+          builder: AddCollectorScreen.builder,
+          settings: settings,
+        );
+
       /// Company Registration Screen
       case CompanyRegistrationScreen.routeName:
         return MaterialPageRoute(
@@ -152,12 +171,27 @@ class RouteManager {
           settings: settings,
         );
 
-      /// Inverter Screen
+      /// Alarm Inverter Screen
+      case AlarmInverterScreen.routeName:
+        return MaterialPageRoute(
+          builder: AlarmInverterScreen.builder,
+          settings: settings,
+        );
+
+      ///   Inverter Screen
       case InverterScreen.routeName:
         return MaterialPageRoute(
           builder: InverterScreen.builder,
           settings: settings,
         );
+
+
+      // ///  Parameter Screen
+      // case ParameterScreen.routeName:
+      //   return MaterialPageRoute(
+      //     builder: ParameterScreen.builder,
+      //     settings: settings,
+      //   );
 
       /// Profile Information Screen
       case ProfileInformationScreen.routeName:
@@ -194,6 +228,13 @@ class RouteManager {
           settings: settings,
         );
 
+      ///AddUserFormScreen
+      case AddUserFormScreen.routeName:
+        return MaterialPageRoute(
+          builder: AddUserFormScreen.builder,
+          settings: settings,
+        );
+
       /// Set Password Screen
       case SetPasswordScreen.routeName:
         return MaterialPageRoute(
@@ -226,6 +267,13 @@ class RouteManager {
       case GuestScreen.routeName:
         return MaterialPageRoute(
           builder: GuestScreen.builder,
+          settings: settings,
+        );
+
+      /// CollectorScreen
+      case CollectorScreen.routeName:
+        return MaterialPageRoute(
+          builder: CollectorScreen.builder,
           settings: settings,
         );
 

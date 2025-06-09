@@ -26,9 +26,11 @@ class AppTextField extends StatelessWidget {
     this.isDense,
     this.header,
     this.maxWidth,
+    this.borderRadius,
     this.fillColor,
     this.customBorder,
     this.customPadding,
+    this.textAlign,
   });
 
   final String? hintText;
@@ -40,6 +42,7 @@ class AppTextField extends StatelessWidget {
   final int? maxLength;
   final int? maxLine;
   final int? minLine;
+  final double? borderRadius;
   final void Function(String)? onChanged;
   final void Function()? onTap;
   final Widget? prefixIcon;
@@ -56,6 +59,7 @@ class AppTextField extends StatelessWidget {
   final Color? fillColor;
   final InputBorder? customBorder;
   final EdgeInsets? customPadding;
+  final TextAlign? textAlign;
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +111,7 @@ class AppTextField extends StatelessWidget {
           obscureText: obscureText,
           obscuringCharacter: "*",
           readOnly: readOnly,
+          textAlign: textAlign??TextAlign.left,
           buildCounter: (
             BuildContext context, {
             required int currentLength,
@@ -144,7 +149,7 @@ class AppTextField extends StatelessWidget {
             ),
             suffixIcon: InkWell(
               onTap: onSuffixTap,
-              borderRadius: BorderRadius.circular(40.pw),
+              borderRadius: BorderRadius.circular(borderRadius ?? 40.pw),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
@@ -162,7 +167,7 @@ class AppTextField extends StatelessWidget {
 
   InputBorder inputBorder() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(40.pw),
+      borderRadius: BorderRadius.circular(borderRadius ?? 40.pw),
       borderSide: BorderSide(
         color:
             (error ?? '').isNotEmpty

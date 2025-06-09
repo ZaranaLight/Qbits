@@ -1,4 +1,5 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/plant_flow/plant_info/plant_info_screen.dart';
 
 class AboutTab extends StatelessWidget {
   const AboutTab({super.key});
@@ -18,20 +19,31 @@ class AboutTab extends StatelessWidget {
 
             child: Column(
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: Constants.horizontalPadding,
-                    vertical: Constants.horizontalPadding,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(context.l10n?.plantInfo ?? "", style: styleW500S16),
-                      SvgAsset(
-                        imagePath: AssetRes.forwardIcon,
-                        color: ColorRes.black.withValues(alpha: 0.3),
+                Material(
+                  color: ColorRes.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      context.navigator.pushNamed(PlantInfoScreen.routeName);
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: Constants.horizontalPadding,
+                        vertical: Constants.horizontalPadding,
                       ),
-                    ],
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            context.l10n?.plantInfo ?? "",
+                            style: styleW500S16,
+                          ),
+                          SvgAsset(
+                            imagePath: AssetRes.forwardIcon,
+                            color: ColorRes.black.withValues(alpha: 0.3),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
 
