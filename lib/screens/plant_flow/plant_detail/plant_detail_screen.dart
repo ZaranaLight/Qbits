@@ -113,6 +113,7 @@ class PlantDetailScreen extends StatelessWidget {
                 /// Expanded TabBarView
                 Expanded(
                   child: TabBarView(
+                    physics: NeverScrollableScrollPhysics(),
                     children: [
                       DashBoardTab(),
                       DeviceTab(),

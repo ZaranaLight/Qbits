@@ -1,5 +1,3 @@
-import 'package:qbits/qbits.dart';
-
 class PlantInfoModel {
   String stationName;
   String city;

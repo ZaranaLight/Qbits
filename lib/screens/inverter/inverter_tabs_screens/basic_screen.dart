@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/inverter/model/basic_info_model.dart';
 
 class BasicScreen extends StatelessWidget {
   const BasicScreen({super.key});

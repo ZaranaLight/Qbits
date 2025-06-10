@@ -1479,6 +1479,90 @@ abstract class AppLocalizations {
   /// **'Parameter'**
   String get parameter;
 
+  /// No description provided for @architecture.
+  ///
+  /// In en, this message translates to:
+  /// **'Architecture'**
+  String get architecture;
+
+  /// No description provided for @collectorModel.
+  ///
+  /// In en, this message translates to:
+  /// **'Collector Model'**
+  String get collectorModel;
+
+  /// No description provided for @runningStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Running Status'**
+  String get runningStatus;
+
+  /// No description provided for @collectorSN.
+  ///
+  /// In en, this message translates to:
+  /// **'Collector SN'**
+  String get collectorSN;
+
+  /// No description provided for @dataEnergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Data Energy'**
+  String get dataEnergy;
+
+  /// No description provided for @voltage.
+  ///
+  /// In en, this message translates to:
+  /// **'Voltage'**
+  String get voltage;
+
+  /// No description provided for @batteryCapacity.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery Capacity'**
+  String get batteryCapacity;
+
+  /// No description provided for @workingStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Working Status'**
+  String get workingStatus;
+
+  /// No description provided for @testStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Test Status'**
+  String get testStatus;
+
+  /// No description provided for @current.
+  ///
+  /// In en, this message translates to:
+  /// **'Current'**
+  String get current;
+
+  /// No description provided for @bmsComStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'BMS COM Status'**
+  String get bmsComStatus;
+
+  /// No description provided for @bmsTemperature.
+  ///
+  /// In en, this message translates to:
+  /// **'BMS Temperature'**
+  String get bmsTemperature;
+
+  /// No description provided for @bmsMaxChargingCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'BMS Max. Charging\nCurrent'**
+  String get bmsMaxChargingCurrent;
+
+  /// No description provided for @bmsMaxDischargingCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'BMS Max. Discharging\nCurrent'**
+  String get bmsMaxDischargingCurrent;
+
   /// No description provided for @statistics.
   ///
   /// In en, this message translates to:
@@ -1496,6 +1580,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Basic'**
   String get basic;
+
+  /// No description provided for @solar.
+  ///
+  /// In en, this message translates to:
+  /// **'Solar'**
+  String get solar;
+
+  /// No description provided for @acInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Ac Info'**
+  String get acInfo;
+
+  /// No description provided for @frequency.
+  ///
+  /// In en, this message translates to:
+  /// **'Frequency'**
+  String get frequency;
+
+  /// No description provided for @remoteControl.
+  ///
+  /// In en, this message translates to:
+  /// **'Remote control'**
+  String get remoteControl;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @totalProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Product'**
+  String get totalProduct;
+
+  /// No description provided for @totalPower.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Power'**
+  String get totalPower;
 
   /// No description provided for @collector.
   ///

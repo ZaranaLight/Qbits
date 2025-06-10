@@ -1,62 +1,51 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/collector/collector/collector_provider.dart';
 
-class ParameterScreen extends StatelessWidget {
-  const ParameterScreen({super.key});
-
-  static const routeName = "parameter";
-
-  static Widget builder(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => InverterProvider(),
-      child: const ParameterScreen(),
-    );
-  }
+class ParameterCollectorWidget extends StatelessWidget {
+  const ParameterCollectorWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<InverterProvider>(
+    return Consumer<CollectorProvider>(
       builder: (context, provider, child) {
-        return Scaffold(body: _buildInverterList(provider));
-      },
-    );
-  }
+        return CustomListView(
+          itemCount: provider.collectorParameterTitle.length,
 
-  Widget _buildInverterList(InverterProvider provider) {
-    return CustomListView(
-      itemCount: provider.parameterTitles.length,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      separatorBuilder:
-          (context, index) => Container(
+          physics: const NeverScrollableScrollPhysics(),
+          separatorBuilder:
+              (context, index) => Container(
             width: double.infinity,
             height: 1,
             color: ColorRes.black.withValues(alpha: 0.1),
           ),
-      itemBuilder: (context, index) => _buildExpansionTile(provider, index),
+          itemBuilder: (context, index) => _buildExpansionTile(provider, index),
+        );
+      },
     );
   }
-
-  Widget _buildExpansionTile(InverterProvider provider, int index) {
+  Widget _buildExpansionTile(CollectorProvider provider, int index) {
     final isExpanded = provider.expandedIndex == index;
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         /// Divider
         isExpanded
             ? SizedBox()
             : Divider(
-              color: ColorRes.black.withValues(alpha: 0.05),
-              height: 0.5,
-              thickness: 0.5,
-            ),
+          color: ColorRes.black.withValues(alpha: 0.05),
+          height: 0.5,
+          thickness: 0.5,
+        ),
 
         InkWell(
           onTap: () => provider.toggleExpanded(index),
           child: Container(
             decoration: BoxDecoration(
               color:
-                  isExpanded
-                      ? ColorRes.black.withValues(alpha: 0.05)
-                      : ColorRes.white,
+              isExpanded
+                  ? ColorRes.black.withValues(alpha: 0.05)
+                  : ColorRes.white,
             ),
             padding: EdgeInsets.symmetric(
               vertical: 14.0,
@@ -69,7 +58,7 @@ class ParameterScreen extends StatelessWidget {
                     children: [
                       /// Icon
                       Text(
-                        provider.parameterTitles[index],
+                        provider.collectorParameterTitle[index],
                         style: styleW500S16,
                       ),
                     ],
@@ -91,7 +80,7 @@ class ParameterScreen extends StatelessWidget {
           duration: const Duration(milliseconds: 300),
           child: SizedBox(
             height: isExpanded ? null : 0,
-            child: isExpanded ? provider.parameterContent[index] : null,
+            child: isExpanded ? provider.collectorParameterContent[index] : null,
           ),
         ),
       ],

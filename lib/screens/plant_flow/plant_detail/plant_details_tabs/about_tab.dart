@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/plant_flow/plant_info/plant_info_screen.dart';
 
 class AboutTab extends StatelessWidget {
   const AboutTab({super.key});

@@ -137,3 +137,27 @@ export 'package:qbits/screens/inverter/widget/inverter_parameter_widget.dart';
 export 'package:qbits/screens/inverter/inverter_tabs_screens/alarm_screen.dart';
 export 'package:qbits/screens/inverter/inverter_tabs_screens/parameter_screen.dart';
 export 'package:qbits/screens/inverter/inverter_tabs_screens/statistics_screen.dart';
+export 'package:qbits/screens/collector/add_collector/add_collector_screen.dart';
+export 'package:qbits/screens/plant_flow/plant_detail/widgets/device_collector_widget.dart';
+export 'package:qbits/screens/plant_flow/plant_detail/widgets/device_inverter_widget.dart';
+export 'package:qbits/screens/collector/collector/collector_screen.dart';
+export 'package:qbits/screens/inverter/inverter_screen.dart';
+export 'package:qbits/screens/plant_flow/plant_info/plant_info_screen.dart';
+export 'package:qbits/screens/plant_flow/plant_info/plant_info_provider.dart';
+export 'package:qbits/screens/inverter/model/hybrid_inverter_model.dart';
+export 'package:qbits/screens/inverter/widget/data_table_row.dart';
+export 'package:qbits/screens/inverter/inverter_tabs_screens/basic_screen.dart';
+export 'package:qbits/screens/inverter/model/basic_info_model.dart';
+export 'package:qbits/screens/inverter/widget/hybrid_parameter_widgets/back_up_widget.dart';
+export 'package:qbits/screens/inverter/widget/hybrid_parameter_widgets/solar_table_widget.dart';
+export 'package:qbits/screens/inverter/inverter_tabs_screens/hybrid_parameter_screen.dart';
+export 'package:qbits/screens/inverter/widget/hybrid_parameter_widgets/battery_widget.dart';
+export 'package:qbits/screens/inverter/widget/hybrid_parameter_widgets/hybrid_inverter_widget.dart';
+export 'package:qbits/screens/inverter/widget/hybrid_parameter_widgets/grid_widget.dart';
+export 'package:qbits/screens/inverter/widget/hybrid_parameter_widgets/meter_widget.dart';
+export 'package:qbits/screens/inverter/widget/hybrid_parameter_widgets/system_widget.dart';
+export 'package:qbits/screens/remote_control/remote_control_screen.dart';
+export 'package:qbits/screens/inverter/widget/colum_key_value_widget.dart';
+export 'package:qbits/screens/remote_control/remote_control_provider.dart';
+
+

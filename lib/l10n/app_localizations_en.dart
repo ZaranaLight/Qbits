@@ -702,6 +702,48 @@ class AppLocalizationsEn extends AppLocalizations {
   String get parameter => 'Parameter';
 
   @override
+  String get architecture => 'Architecture';
+
+  @override
+  String get collectorModel => 'Collector Model';
+
+  @override
+  String get runningStatus => 'Running Status';
+
+  @override
+  String get collectorSN => 'Collector SN';
+
+  @override
+  String get dataEnergy => 'Data Energy';
+
+  @override
+  String get voltage => 'Voltage';
+
+  @override
+  String get batteryCapacity => 'Battery Capacity';
+
+  @override
+  String get workingStatus => 'Working Status';
+
+  @override
+  String get testStatus => 'Test Status';
+
+  @override
+  String get current => 'Current';
+
+  @override
+  String get bmsComStatus => 'BMS COM Status';
+
+  @override
+  String get bmsTemperature => 'BMS Temperature';
+
+  @override
+  String get bmsMaxChargingCurrent => 'BMS Max. Charging\nCurrent';
+
+  @override
+  String get bmsMaxDischargingCurrent => 'BMS Max. Discharging\nCurrent';
+
+  @override
   String get statistics => 'Statistics';
 
   @override
@@ -709,6 +751,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get basic => 'Basic';
+
+  @override
+  String get solar => 'Solar';
+
+  @override
+  String get acInfo => 'Ac Info';
+
+  @override
+  String get frequency => 'Frequency';
+
+  @override
+  String get remoteControl => 'Remote control';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get totalProduct => 'Total Product';
+
+  @override
+  String get totalPower => 'Total Power';
 
   @override
   String get collector => 'Collector';

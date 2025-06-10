@@ -1,9 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/collector/collector/collector_screen.dart';
-import 'package:qbits/screens/inverter/inverter_screen.dart';
-import 'package:qbits/screens/inverter/inverter_tabs_screens/parameter_screen.dart';
-import 'package:qbits/screens/plant_flow/plant_info/plant_info_screen.dart';
-import 'package:qbits/screens/collector/add_collector/add_collector_screen.dart';
 
 class RouteManager {
   static String get initialRoute => SplashScreen.routeName;
@@ -185,6 +180,12 @@ class RouteManager {
           settings: settings,
         );
 
+      ///  Remote Control Screen
+      case RemoteControlScreen.routeName:
+        return MaterialPageRoute(
+          builder: RemoteControlScreen.builder,
+          settings: settings,
+        );
 
       // ///  Parameter Screen
       // case ParameterScreen.routeName:

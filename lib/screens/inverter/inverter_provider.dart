@@ -1,17 +1,15 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/inverter/inverter_tabs_screens/basic_screen.dart';
-import 'package:qbits/screens/inverter/model/basic_info_model.dart';
 
 class InverterProvider extends ChangeNotifier {
   bool _isInitialized = false;
+  final String? inverterType;
 
-  InverterProvider() {
+  InverterProvider({this.inverterType}) {
     init();
   }
 
   void init() {
     if (!_isInitialized) {
-      // Load initial data or perform setup
       _loadInitialData();
       _isInitialized = true;
     }
@@ -27,7 +25,6 @@ class InverterProvider extends ChangeNotifier {
   final List<String> parameterTitles = ["Inverter", "AC Info", "DC Info"];
   final List<Widget> parameterContent = [
     InverterParameterWidget(),
-
     ExpandableInfoSection(
       items: [
         InfoRowModel(text: "A", voltage: "234.8", current: "4.73"),
@@ -42,6 +39,84 @@ class InverterProvider extends ChangeNotifier {
       ],
     ),
   ];
+  final List<String> hybridParameterTitles = [
+    "Electricity Generation",
+    "Back-Up",
+    "Inverter",
+    "Battery",
+    "Grid",
+    "Meter",
+    "System",
+    "Alerts",
+    "Warning Code",
+    "Energy",
+    "Generator",
+  ];
+
+  final List<Widget> hybridParameterContent = [
+    SolarDataTable(),
+    BackUpWidget(),
+    HybridInverterWidget(),
+    BatteryWidget(),
+    GridWidget(),
+    MeterWidget(),
+    SystemWidget(),
+    SystemWidget(),
+    SystemWidget(),
+    MeterWidget(),
+    BackUpWidget(),
+  ];
+
+  ///
+  //Hybrid data
+  InverterData _inverterData = InverterData.empty();
+
+  InverterData get inverterData => _inverterData;
+
+  Future<void> fetchData() async {
+    // Simulate API call
+    await Future.delayed(Duration(seconds: 2));
+
+    // Update with mock data (replace with actual API call)
+    _inverterData = InverterData(
+      pvArrays: [
+        PvData(voltage: 230.5, current: 5.2, power: 1198.6),
+        PvData(voltage: 228.7, current: 4.9, power: 1120.6),
+        PvData(voltage: 231.2, current: 5.1, power: 1179.1),
+        PvData(voltage: 229.8, current: 5.0, power: 1149.0),
+      ],
+    );
+
+    notifyListeners();
+  }
+
+  void updatePvData(int index, PvData newData) {
+    _inverterData.pvArrays[index] = newData;
+
+    notifyListeners();
+  }
+
+  // For Electricity Generation
+  int? _selectedPvIndex;
+
+  int? get selectedPvIndex => _selectedPvIndex;
+
+  void selectPv(int index) {
+    _selectedPvIndex = index;
+    notifyListeners();
+  }
+
+  ///
+
+  double pv1Voltage = 0;
+  double pv1Current = 0;
+  double pv1Power = 0;
+
+  double batteryVoltage = 0;
+  double batteryCurrent = 0;
+  String batteryStatus = "Normal";
+
+
   int? _expandedIndex;
 
   int? get expandedIndex => _expandedIndex;

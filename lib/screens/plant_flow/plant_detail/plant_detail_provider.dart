@@ -2,6 +2,7 @@ import 'package:qbits/qbits.dart';
 
 class PlantDetailProvider extends ChangeNotifier {
   bool loader = false;
+  TabController? tabController;
 
   PlantDetailProvider() {
     init();
@@ -118,6 +119,7 @@ class PlantDetailProvider extends ChangeNotifier {
   String _pad(int value) => value.toString().padLeft(2, '0');
 
   final List<String> _tabs = ['Day', 'Month', 'Year', 'Total'];
+  final List<String> _deviceTabs = ['Inverter', 'Collector'];
 
   int _selectedIndex = 0;
 
@@ -138,6 +140,8 @@ class PlantDetailProvider extends ChangeNotifier {
   String get currentTab => _tabs[_selectedIndex];
 
   List<String> get tabs => _tabs;
+
+  List<String> get deviceTabs => _deviceTabs;
 
   bool _isInitialized = false;
 
@@ -254,9 +258,8 @@ class PlantDetailProvider extends ChangeNotifier {
 
   int get deviceTabIndex => _deviceTabIndex;
 
-  changeDeviceTabTo(int index) {
+  void changeDeviceTabTo(int index) {
     _deviceTabIndex = index;
     notifyListeners();
-    print("Device Tab Index: $_deviceTabIndex");
   }
 }

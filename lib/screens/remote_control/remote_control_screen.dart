@@ -1,29 +1,33 @@
 import 'package:qbits/qbits.dart';
 
-class ParameterScreen extends StatelessWidget {
-  const ParameterScreen({super.key});
+class RemoteControlScreen extends StatelessWidget {
+  const RemoteControlScreen({super.key});
 
-  static const routeName = "parameter";
+  static const routeName = "remote_control";
 
   static Widget builder(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => InverterProvider(),
-      child: const ParameterScreen(),
+    return ChangeNotifierProvider<RemoteControlProvider>(
+      create: (c) => RemoteControlProvider(),
+      child: RemoteControlScreen(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<InverterProvider>(
+    return Consumer<RemoteControlProvider>(
       builder: (context, provider, child) {
-        return Scaffold(body: _buildInverterList(provider));
+        return Scaffold(
+          appBar: CustomAppBar(title: context.l10n?.remoteControl),
+
+          body: _buildInverterList(provider),
+        );
       },
     );
   }
 
-  Widget _buildInverterList(InverterProvider provider) {
+  Widget _buildInverterList(RemoteControlProvider provider) {
     return CustomListView(
-      itemCount: provider.parameterTitles.length,
+      itemCount: provider.remoteControlTitle.length,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       separatorBuilder:
@@ -36,7 +40,7 @@ class ParameterScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildExpansionTile(InverterProvider provider, int index) {
+  Widget _buildExpansionTile(RemoteControlProvider provider, int index) {
     final isExpanded = provider.expandedIndex == index;
     return Column(
       children: [
@@ -69,8 +73,8 @@ class ParameterScreen extends StatelessWidget {
                     children: [
                       /// Icon
                       Text(
-                        provider.parameterTitles[index],
-                        style: styleW500S16,
+                        provider.remoteControlTitle[index],
+                        style: styleW600S16,
                       ),
                     ],
                   ),
@@ -91,7 +95,7 @@ class ParameterScreen extends StatelessWidget {
           duration: const Duration(milliseconds: 300),
           child: SizedBox(
             height: isExpanded ? null : 0,
-            child: isExpanded ? provider.parameterContent[index] : null,
+            child: isExpanded ? provider.remoteControlContent[index] : null,
           ),
         ),
       ],
