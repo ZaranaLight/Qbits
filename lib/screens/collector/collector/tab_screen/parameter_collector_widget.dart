@@ -14,15 +14,16 @@ class ParameterCollectorWidget extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           separatorBuilder:
               (context, index) => Container(
-            width: double.infinity,
-            height: 1,
-            color: ColorRes.black.withValues(alpha: 0.1),
-          ),
+                width: double.infinity,
+                height: 1,
+                color: ColorRes.black.withValues(alpha: 0.1),
+              ),
           itemBuilder: (context, index) => _buildExpansionTile(provider, index),
         );
       },
     );
   }
+
   Widget _buildExpansionTile(CollectorProvider provider, int index) {
     final isExpanded = provider.expandedIndex == index;
     return Column(
@@ -33,19 +34,19 @@ class ParameterCollectorWidget extends StatelessWidget {
         isExpanded
             ? SizedBox()
             : Divider(
-          color: ColorRes.black.withValues(alpha: 0.05),
-          height: 0.5,
-          thickness: 0.5,
-        ),
+              color: ColorRes.black.withValues(alpha: 0.05),
+              height: 0.5,
+              thickness: 0.5,
+            ),
 
         InkWell(
           onTap: () => provider.toggleExpanded(index),
           child: Container(
             decoration: BoxDecoration(
               color:
-              isExpanded
-                  ? ColorRes.black.withValues(alpha: 0.05)
-                  : ColorRes.white,
+                  isExpanded
+                      ? ColorRes.black.withValues(alpha: 0.05)
+                      : ColorRes.white,
             ),
             padding: EdgeInsets.symmetric(
               vertical: 14.0,
@@ -66,7 +67,7 @@ class ParameterCollectorWidget extends StatelessWidget {
                 ),
                 AnimatedRotation(
                   duration: const Duration(milliseconds: 300),
-                  turns: isExpanded ? 0.5 : 0,
+                  turns: isExpanded ? 0.5 : 0.5,
                   child: Icon(
                     Icons.keyboard_arrow_down,
                     color: ColorRes.black.withValues(alpha: 0.5),
@@ -76,11 +77,20 @@ class ParameterCollectorWidget extends StatelessWidget {
             ),
           ),
         ),
-        AnimatedSize(
-          duration: const Duration(milliseconds: 300),
-          child: SizedBox(
-            height: isExpanded ? null : 0,
-            child: isExpanded ? provider.collectorParameterContent[index] : null,
+        AnimatedSwitcher(
+          duration: 200.milliseconds,
+          switchInCurve: Curves.easeIn,
+          switchOutCurve: Curves.easeInOut,
+          child: Builder(
+            key: ValueKey(isExpanded),
+            builder: (context) {
+              return SizedBox(
+                child:
+                    isExpanded
+                        ? provider.collectorParameterContent[index]
+                        : null,
+              );
+            },
           ),
         ),
       ],
