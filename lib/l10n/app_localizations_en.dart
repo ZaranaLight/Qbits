@@ -774,5 +774,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get totalPower => 'Total Power';
 
   @override
+  String get setUp => 'Set Up';
+
+  @override
   String get collector => 'Collector';
 }

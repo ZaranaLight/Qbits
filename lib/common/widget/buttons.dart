@@ -81,13 +81,17 @@ class EmptyButton extends StatelessWidget {
     super.key,
     this.title,
     this.onTap,
+    this.style,
     this.enable = true,
     this.loading = false,
+    this.isBordered = false,
   });
 
   final String? title;
   final VoidCallback? onTap;
   final bool enable;
+  final bool isBordered;
+  final TextStyle? style;
   final bool loading;
 
   @override
@@ -95,7 +99,12 @@ class EmptyButton extends StatelessWidget {
     return Container(
       width: 100.w,
       height: 48,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(4)),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(4),
+        border: Border.all(
+          color: isBordered ? ColorRes.primaryColor : ColorRes.transparent,
+        ),
+      ),
       child: AnimatedSwitcher(
         duration: 300.milliseconds,
         transitionBuilder: (Widget child, Animation<double> animation) {
@@ -121,7 +130,7 @@ class EmptyButton extends StatelessWidget {
                 child: Center(
                   child: Text(
                     title ?? '',
-                    style: styleW700S17.copyWith(
+                    style:style?? styleW700S17.copyWith(
                       color: enable ? null : ColorRes.black,
                       fontSize: 16,
                     ),

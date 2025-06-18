@@ -159,8 +159,6 @@ class _ValueTitleCell extends StatelessWidget {
     required this.title,
     required this.value,
     this.isHeader = false,
-
-    super.key,
     this.isFirst = false,
     this.width,
     this.titleStyle,

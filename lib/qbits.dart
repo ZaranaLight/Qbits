@@ -159,5 +159,9 @@ export 'package:qbits/screens/inverter/widget/hybrid_parameter_widgets/system_wi
 export 'package:qbits/screens/remote_control/remote_control_screen.dart';
 export 'package:qbits/screens/inverter/widget/colum_key_value_widget.dart';
 export 'package:qbits/screens/remote_control/remote_control_provider.dart';
-
-
+export 'package:qbits/screens/remote_control/remote_tab_widget/advanced_set_widget.dart';
+export 'package:qbits/screens/remote_control/remote_tab_widget/battery_set_widget.dart';
+export 'package:qbits/screens/remote_control/remote_tab_widget/grid_set_widget.dart';
+export 'package:qbits/screens/remote_control/remote_tab_widget/mode_widget.dart';
+export 'package:qbits/screens/remote_control/remote_tab_widget/system_set_widget.dart';
+export 'package:qbits/screens/remote_control/widget/app_text_dialog.dart';

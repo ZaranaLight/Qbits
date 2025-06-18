@@ -254,5 +254,6 @@
   "status": "Status",
   "totalProduct": "Total Product",
   "totalPower": "Total Power",
+  "setUp": "Set Up",
   "collector": "Collector"
 }

@@ -1623,6 +1623,12 @@ abstract class AppLocalizations {
   /// **'Total Power'**
   String get totalPower;
 
+  /// No description provided for @setUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Up'**
+  String get setUp;
+
   /// No description provided for @collector.
   ///
   /// In en, this message translates to:

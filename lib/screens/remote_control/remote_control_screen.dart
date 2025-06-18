@@ -18,7 +18,6 @@ class RemoteControlScreen extends StatelessWidget {
       builder: (context, provider, child) {
         return Scaffold(
           appBar: CustomAppBar(title: context.l10n?.remoteControl),
-
           body: _buildInverterList(provider),
         );
       },
@@ -29,12 +28,14 @@ class RemoteControlScreen extends StatelessWidget {
     return CustomListView(
       itemCount: provider.remoteControlTitle.length,
       shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
       separatorBuilder:
           (context, index) => Container(
             width: double.infinity,
             height: 1,
-            color: ColorRes.black.withValues(alpha: 0.1),
+            color:
+                provider.expandedIndex == index
+                    ? Colors.transparent
+                    : ColorRes.black.withValues(alpha: 0.1),
           ),
       itemBuilder: (context, index) => _buildExpansionTile(provider, index),
     );
@@ -58,7 +59,7 @@ class RemoteControlScreen extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               color:
-                  isExpanded
+                  (isExpanded) && index == 1
                       ? ColorRes.black.withValues(alpha: 0.05)
                       : ColorRes.white,
             ),
@@ -93,7 +94,9 @@ class RemoteControlScreen extends StatelessWidget {
         ),
         AnimatedSize(
           duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
           child: SizedBox(
+            width: 100.h,
             height: isExpanded ? null : 0,
             child: isExpanded ? provider.remoteControlContent[index] : null,
           ),
