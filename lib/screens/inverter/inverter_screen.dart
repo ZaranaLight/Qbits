@@ -1,3 +1,4 @@
+import 'package:qbits/common/widget/app_alert_dialog.dart';
 import 'package:qbits/qbits.dart';
 
 class InverterScreen extends StatelessWidget {
@@ -28,13 +29,150 @@ class InverterScreen extends StatelessWidget {
               title: context.l10n?.inverter ?? "",
               actions: [
                 if (provider.inverterType == "Hybrid")
-                  InkWell(
-                    onTap: () {
-                      context.navigator.pushNamed(
-                        RemoteControlScreen.routeName,
-                      );
+                  PopupMenuButton(
+                    constraints: BoxConstraints(maxWidth: 100.w),
+                    offset: Offset(0, 30.ph),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      side: BorderSide(color: ColorRes.white),
+                    ),
+                    padding: EdgeInsets.all(12.pw),
+                    color: ColorRes.white,
+                    itemBuilder: (con) {
+                      return [
+                        PopupMenuItem(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              /// Remote Control
+                              InkWell(
+                                onTap: () {
+                                  context.navigator.pop();
+                                  context.navigator.pushNamed(
+                                    RemoteControlScreen.routeName,
+                                  );
+                                },
+                                borderRadius: BorderRadius.circular(5.pw),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 10.pw,
+                                    horizontal: 8.pw,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      ///Remote Control Icon
+                                      SvgAsset(
+                                        imagePath: AssetRes.plantIcon,
+                                        color: ColorRes.primaryColor,
+                                        width: 15.ph,
+                                      ),
+
+                                      /// Remote Control Text
+                                      Text(
+                                        context.l10n?.remoteControl ??
+                                            "Remote Control",
+                                        style: styleW500S14.copyWith(
+                                          color: ColorRes.black,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+
+                              /// Divider
+                              Divider(height: 0, color: ColorRes.lightGrey),
+
+                              /// Edit
+                              InkWell(
+                                onTap: () {
+                                  context.navigator.pop();
+                                  context.navigator.pushNamed(
+                                    EditInverterScreen.routeName,
+                                  );
+                                },
+                                borderRadius: BorderRadius.circular(5.pw),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 10.pw,
+                                    horizontal: 8.pw,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      /// Svg Icon
+                                      SvgAsset(
+                                        imagePath: AssetRes.editIcon,
+                                        color: ColorRes.primaryColor,
+                                        width: 15.ph,
+                                      ),
+
+                                      ///Edit Text
+                                      Text(
+                                        context.l10n?.edit ?? "Edit",
+                                        style: styleW500S14.copyWith(
+                                          color: ColorRes.black,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+
+                              /// Divider
+                              Divider(height: 0, color: ColorRes.lightGrey),
+
+                              /// Delete
+                              InkWell(
+                                onTap: () {
+                                  context.navigator.pop();
+                                  openAppAlertDialog(
+                                    context,
+                                    title: 'Alert',
+                                    onYesTap: () {
+                                      context.navigator.pop();
+                                    },
+                                    subTitle:
+                                        'Are you sure you want to delete this inverter?',
+                                  );
+                                },
+                                borderRadius: BorderRadius.circular(5.pw),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 10.pw,
+                                    horizontal: 8.pw,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+
+                                      /// Svg Icon
+                                      SvgAsset(
+                                        imagePath: AssetRes.deleteIcon,
+                                        color: ColorRes.red,
+                                        width: 15.ph,
+                                      ),
+
+                                      ///Edit Text
+                                      Text(
+                                        context.l10n?.delete ?? "Delete",
+                                        style: styleW500S14.copyWith(
+                                          color: ColorRes.black,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ];
                     },
-                    borderRadius: BorderRadius.circular(5.pw),
                     child: Padding(
                       padding: EdgeInsets.all(16.pw),
                       child: SvgAsset(

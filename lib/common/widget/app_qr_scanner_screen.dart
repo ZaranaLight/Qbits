@@ -79,6 +79,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
           );
         },
       ),
+
       bottomNavigationBar: SafeArea(
         top: false,
         child: Padding(

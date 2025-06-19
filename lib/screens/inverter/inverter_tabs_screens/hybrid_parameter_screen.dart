@@ -16,9 +16,14 @@ class HybridParameterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InverterProvider>(
       builder: (context, provider, child) {
-        return Scaffold(body: CustomSingleChildScroll(
-            padding: EdgeInsets.only(bottom: Constants.safeAreaPadding.bottom+20.pw),
-            child: _buildInverterList(provider)));
+        return Scaffold(
+          body: CustomSingleChildScroll(
+            padding: EdgeInsets.only(
+              bottom: Constants.safeAreaPadding.bottom + 20.pw,
+            ),
+            child: _buildInverterList(provider),
+          ),
+        );
       },
     );
   }
@@ -45,7 +50,7 @@ Widget _buildExpansionTile(InverterProvider provider, int index) {
   return Column(
     children: [
       ///Space before the tile
-    16.pw.spaceVertical,
+      16.pw.spaceVertical,
 
       Container(
         margin: EdgeInsets.symmetric(horizontal: 14.pw),
@@ -80,12 +85,21 @@ Widget _buildExpansionTile(InverterProvider provider, int index) {
         ),
       ),
 
-      AnimatedSize(
+      AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
-        child: SizedBox(
-          height: isExpanded ? null : 0,
-          child: isExpanded ? provider.hybridParameterContent[index] : null,
-        ),
+        switchInCurve: Curves.easeIn,
+        switchOutCurve: Curves.easeOut,
+        transitionBuilder: (Widget child, Animation<double> animation) {
+          return SizeTransition(sizeFactor: animation, child: child);
+        },
+        child:
+            isExpanded
+                ? SizedBox(
+                  key: const ValueKey('expanded'),
+                  width: 100.h,
+                  child: provider.hybridParameterContent[index],
+                )
+                : const SizedBox(key: ValueKey('collapsed'), height: 0),
       ),
     ],
   );

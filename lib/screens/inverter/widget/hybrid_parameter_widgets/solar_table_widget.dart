@@ -22,23 +22,23 @@ class SolarDataTable extends StatelessWidget {
             DataTableRow(
               isHeader: true,
               cells: [
-                _ValueTitleCell(
+                ValueTitleCell(
                   title: context.l10n?.solar ?? "",
                   value: '',
                   isHeader: true,
                   isFirst: true,
                 ),
-                _ValueTitleCell(
+                ValueTitleCell(
                   title: context.l10n?.voltage ?? "",
                   value: '',
                   isHeader: true,
                 ),
-                _ValueTitleCell(
+                ValueTitleCell(
                   title: context.l10n?.current ?? "",
                   value: '',
                   isHeader: true,
                 ),
-                _ValueTitleCell(
+                ValueTitleCell(
                   title: context.l10n?.power ?? "",
                   value: '',
                   isHeader: true,
@@ -52,19 +52,19 @@ class SolarDataTable extends StatelessWidget {
               final pv = entry.value;
               return DataTableRow(
                 cells: [
-                  _ValueTitleCell(
+                  ValueTitleCell(
                     title: 'PV${index + 1}',
                     value: 'PV${index + 1}',
                   ),
-                  _ValueTitleCell(
+                  ValueTitleCell(
                     title: 'Voltage',
                     value: '${pv.voltage.toStringAsFixed(1)} V',
                   ),
-                  _ValueTitleCell(
+                  ValueTitleCell(
                     title: 'Current',
                     value: '${pv.current.toStringAsFixed(1)} A',
                   ),
-                  _ValueTitleCell(
+                  ValueTitleCell(
                     title: 'Power',
                     value: '${pv.power.toStringAsFixed(1)} W',
                   ),
@@ -98,7 +98,7 @@ class SolarDataTable extends StatelessWidget {
   }
 }
 
-class _ValueTitleCell extends StatelessWidget {
+class  ValueTitleCell extends StatelessWidget {
   final String title;
   final String value;
   final bool isHeader;
@@ -107,12 +107,10 @@ class _ValueTitleCell extends StatelessWidget {
   final TextStyle? titleStyle;
   final TextStyle? valueStyle;
 
-  const _ValueTitleCell({
+  const  ValueTitleCell({super.key,
     required this.title,
     required this.value,
     this.isHeader = false,
-
-    super.key,
     this.isFirst = false,
     this.width,
     this.titleStyle,

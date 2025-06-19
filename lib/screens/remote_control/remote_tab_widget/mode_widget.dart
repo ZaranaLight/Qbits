@@ -145,9 +145,18 @@ class ModeWidget extends StatelessWidget {
           Expanded(child: Text(title, style: styleW600S14)),
           DropdownButton<String>(
             value: value,
+            alignment: Alignment(1, 1),
             items:
                 options
-                    .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                    .map(
+                      (e) => DropdownMenuItem(
+                        value: e,
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Text(e),
+                        ),
+                      ),
+                    )
                     .toList(),
             onChanged: onChanged,
             underline: SizedBox(),
@@ -189,7 +198,6 @@ class ModeWidget extends StatelessWidget {
                 border: Border.all(
                   color: ColorRes.black.withValues(alpha: 0.1),
                 ),
-
                 borderRadius: BorderRadius.circular(4.pw),
               ),
               padding: EdgeInsets.symmetric(horizontal: 10.pw, vertical: 10.ph),

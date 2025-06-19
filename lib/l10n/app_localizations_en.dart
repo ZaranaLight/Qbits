@@ -765,6 +765,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get remoteControl => 'Remote control';
 
   @override
+  String get edit => 'Edit';
+
+  @override
+  String get panel => 'Panel';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
   String get status => 'Status';
 
   @override

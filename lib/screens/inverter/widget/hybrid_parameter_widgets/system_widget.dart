@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/inverter/widget/colum_key_value_widget.dart';
 
 class SystemWidget extends StatelessWidget {
   const SystemWidget({super.key});

@@ -24,6 +24,7 @@ class AboutTab extends StatelessWidget {
                     onTap: () {
                       context.navigator.pushNamed(PlantInfoScreen.routeName);
                     },
+
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: Constants.horizontalPadding,

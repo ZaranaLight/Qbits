@@ -43,9 +43,7 @@ class DeviceTab extends StatelessWidget {
                               : CollectorWidget(
                                 key: ValueKey(context.l10n?.collector ?? ""),
                               ),
-                      // transitionBuilder: (child, animation) {
-                      //   return FadeTransition(opacity: animation, child: child);
-                      // },
+
                     ),
                   ),
 
@@ -97,43 +95,49 @@ class DeviceTab extends StatelessWidget {
     String label,
   ) {
     final selected = provider.deviceTabIndex == idx;
-    return Padding(
-      padding: EdgeInsets.only(
-        left: 16.pw,
-        right: 16.pw,
-        top: 15.pw,
-        bottom: 14.pw,
-      ),
+    return Material(
+      color: ColorRes.transparent,
       child: InkWell(
+        borderRadius: BorderRadius.circular(5.pw),
         onTap: () => provider.changeDeviceTabTo(idx),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AnimatedDefaultTextStyle(
-              duration: const Duration(milliseconds: 300),
-              style:
-                  selected
-                      ? styleW500S16.copyWith(color: ColorRes.primaryColor)
-                      : styleW500S16.copyWith(
-                        color: ColorRes.black.withValues(alpha: 0.5),
-                      ),
-              child: Text(label),
-            ),
-
-            /// Space between text and underline
-            4.pw.spaceVertical,
-
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-              height: 2,
-              width: selected ? 60.pw : 0,
-              decoration: BoxDecoration(
-                color: ColorRes.primaryColor,
-                borderRadius: BorderRadius.circular(1),
+        child: Padding(
+          padding: EdgeInsets.only(
+            left: 16.pw,
+            right: 16.pw,
+            top: 15.pw,
+            bottom: 14.pw,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              /// Text
+              AnimatedDefaultTextStyle(
+                duration: const Duration(milliseconds: 300),
+                style:
+                    selected
+                        ? styleW500S16.copyWith(color: ColorRes.primaryColor)
+                        : styleW500S16.copyWith(
+                          color: ColorRes.black.withValues(alpha: 0.5),
+                        ),
+                child: Text(label),
               ),
-            ),
-          ],
+
+              /// Space between text and underline
+              4.pw.spaceVertical,
+
+              /// Underline
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+                height: 2,
+                width: selected ? 60.pw : 0,
+                decoration: BoxDecoration(
+                  color: ColorRes.primaryColor,
+                  borderRadius: BorderRadius.circular(1),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

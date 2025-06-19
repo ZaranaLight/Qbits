@@ -25,7 +25,6 @@ class BluetoothManuallyScreen extends StatelessWidget {
                 left: Constants.horizontalPadding,
                 right: Constants.horizontalPadding,
               ),
-
               child: SubmitButton(
                 title: context.l10n?.searchDevice ?? "",
                 onTap: /*state.isScanning ? state.stopScan :*/ state.startScan,

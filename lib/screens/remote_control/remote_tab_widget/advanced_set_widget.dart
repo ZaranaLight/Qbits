@@ -70,35 +70,44 @@ class AdvancedSetWidget extends StatelessWidget {
         return Column(
           spacing: 12.ph,
           children: [
-            _buildAdvancedSetTile(
+            /// TextFieldDialog for RTC Time
+            TextFieldDialog(
               title: 'Set RTC Time',
               value: provider.advancedSet.setRtcTime,
               onTap: () {
                 provider.onSetRTCTimeTap(context);
               },
             ),
-            _buildAdvancedSetTile(
+
+            /// TextFieldDialog for Meter COM Address
+            TextFieldDialog(
               title: 'Set Meter COM Address',
               value: provider.advancedSet.setMeterComAddress,
               onTap: () {
                 provider.onSetMeterCOMAddressTap(context);
               },
             ),
-            _buildAdvancedSetTile(
+
+            /// TextFieldDialog for CT Ratio Setting
+            TextFieldDialog(
               title: 'CT Ratio Setting',
               value: provider.advancedSet.ctRatioSetting,
               onTap: () {
                 provider.onCTRatioSettingTap(context);
               },
             ),
-            _buildAdvancedSetTile(
+
+            /// TextFieldDialog for Parallel Address Setting
+            TextFieldDialog(
               title: 'Parallel Address Setting',
               value: provider.advancedSet.parallelAddressSetting,
               onTap: () {
                 provider.onParallelAddressSettingTap(context);
               },
             ),
-            _buildAdvancedSetTile(
+
+            /// TextFieldDialog for Total Parallel Setting
+            TextFieldDialog(
               title: 'Total number in parallel Setting',
               value: provider.advancedSet.totalParallelSetting,
               onTap: () {
@@ -106,28 +115,35 @@ class AdvancedSetWidget extends StatelessWidget {
               },
             ),
 
-            _buildDropdownTile(
-              context,
-              'PV_start-offline',
-              provider.advancedSet.pvStartOffline,
-              ['Enable', 'Disable'],
-              (val) => provider.onPvStartOffline(val!),
+            /// Dropdown for PV Start Offline
+            DropdownWidget(
+              title: 'PV_start-offline',
+              context: context,
+              value: provider.advancedSet.pvStartOffline,
+              options: ['Enable', 'Disable'],
+              onChanged: (value) => provider.onPvStartOffline(value!),
             ),
-            _buildAdvancedSetTile(
+
+            /// TextFieldDialog for Active Power Regulation
+            TextFieldDialog(
               title: 'Active Power Regulation',
               value: provider.advancedSet.activePowerRegulation,
               onTap: () {
                 provider.onActivePowerRegulationTap(context);
               },
             ),
-            _buildAdvancedSetTile(
+
+            /// TextFieldDialog for Reactive Power Regulation
+            TextFieldDialog(
               title: 'Reactive Power Regulation',
               value: provider.advancedSet.reactivePowerRegulation,
               onTap: () {
                 provider.onReactivePowerRegulationTap(context);
               },
             ),
-            _buildAdvancedSetTile(
+
+            /// TextFieldDialog for Power Factor Regulation
+            TextFieldDialog(
               title: 'Power Factor Regulation',
               value: provider.advancedSet.powerFactorRegulation,
               onTap: () {
@@ -135,70 +151,89 @@ class AdvancedSetWidget extends StatelessWidget {
               },
             ),
 
-            _buildDropdownTile(
-              context,
-              'Shadow Scan enable',
-              provider.advancedSet.shadowScanEnable,
-              ['Enable', 'Disable'],
-              (val) => provider.onPvStartOffline(val!),
+            /// Dropdown for Shadow Scan Enable
+            DropdownWidget(
+              title: 'Shadow Scan enable',
+              context: context,
+              value: provider.advancedSet.shadowScanEnable,
+              options: ['Enable', 'Disable'],
+              onChanged: (value) => provider.onShadowScanEnable(value!),
             ),
-            _buildDropdownTile(
-              context,
-              'LVRT Enable',
-              provider.advancedSet.lvrtEnable,
-              ['Enable', 'Disable'],
-              (val) => provider.onLVRTEnable(val!),
+
+            /// Dropdown for LVRT Enable
+            DropdownWidget(
+              title: 'LVRT Enable',
+              context: context,
+              value: provider.advancedSet.lvrtEnable,
+              options: ['Enable', 'Disable'],
+              onChanged: (value) => provider.onLVRTEnable(value!),
             ),
-            _buildDropdownTile(
-              context,
-              'Island Protection enable',
-              provider.advancedSet.islandProtectionEnable,
-              ['Enable', 'Disable'],
-              (val) => provider.onIslandProtectionEnable(val!),
+
+            /// Dropdown for Island Protection Enable
+            DropdownWidget(
+              title: 'Island Protection enable',
+              context: context,
+              value: provider.advancedSet.islandProtectionEnable,
+              options: ['Enable', 'Disable'],
+              onChanged: (value) => provider.onIslandProtectionEnable(value!),
             ),
-            _buildDropdownTile(
-              context,
-              'Overload Reset',
-              provider.advancedSet.overloadReset,
-              ['Enable', 'Disable'],
-              (val) => provider.onOverloadReset(val!),
+
+            /// Dropdown for Overload Reset
+            DropdownWidget(
+              title: 'Overload Reset',
+              context: context,
+              value: provider.advancedSet.overloadReset,
+              options: ['Enable', 'Disable'],
+              onChanged: (value) => provider.onOverloadReset(value!),
             ),
-            _buildDropdownTile(
-              context,
-              'Gen Signal',
-              provider.advancedSet.genSignal,
-              ['Enable', 'Disable'],
-              (val) => provider.onGenSignal(val!),
+
+            /// Dropdown for Gen Signal
+            DropdownWidget(
+              title: 'Gen Signal',
+              context: context,
+              value: provider.advancedSet.genSignal,
+              options: ['Enable', 'Disable'],
+              onChanged: (value) => provider.onGenSignal(value!),
             ),
-            _buildDropdownTile(
-              context,
-              'Grid Signal',
-              provider.advancedSet.gridSignal,
-              ['Enable', 'Disable'],
-              (val) => provider.onGridSignal(val!),
+
+            /// Dropdown for Grid Signal
+            DropdownWidget(
+              title: 'Grid Signal',
+              context: context,
+              value: provider.advancedSet.gridSignal,
+              options: ['Enable', 'Disable'],
+              onChanged: (value) => provider.onGridSignal(value!),
             ),
-            _buildDropdownTile(
-              context,
-              'Small Load Set',
-              provider.advancedSet.smallLoadSet,
-              ['Generator Input', 'Disable', 'Enable'],
-              (val) => provider.onSmallLoadSet(val!),
+
+            /// Dropdown for Small Load Set
+            DropdownWidget(
+              title: 'Small Load Set',
+              context: context,
+              value: provider.advancedSet.smallLoadSet,
+              options: ['Generator Input', 'Disable', 'Enable'],
+              onChanged: (value) => provider.onSmallLoadSet(value!),
             ),
-            _buildDropdownTile(
-              context,
-              'GEN connect to Grid input',
-              provider.advancedSet.genConnectToGridInput,
-              ['Enable', 'Disable'],
-              (val) => provider.onGenConnectGridInput(val!),
+
+            /// Dropdown for GEN connect to Grid input
+            DropdownWidget(
+              title: 'GEN connect to Grid input',
+              context: context,
+              value: provider.advancedSet.genConnectToGridInput,
+              options: ['Enable', 'Disable'],
+              onChanged: (value) => provider.onGenConnectGridInput(value!),
             ),
-            _buildAdvancedSetTile(
+
+            /// TextFieldDialog for Gen Max Run Time
+            TextFieldDialog(
               title: 'Gen Max Run Time',
               value: provider.advancedSet.genMaxRunTime,
               onTap: () {
                 provider.onGenMaxRunTimeTap(context);
               },
             ),
-            _buildAdvancedSetTile(
+
+            /// TextFieldDialog for Gen Down Time
+            TextFieldDialog(
               title: 'Gen Down Time',
               value: provider.advancedSet.genDownTime,
               onTap: () {
@@ -206,21 +241,26 @@ class AdvancedSetWidget extends StatelessWidget {
               },
             ),
 
-            _buildDropdownTile(
-              context,
-              'BMS Stop',
-              provider.advancedSet.bmsStop,
-              ['Enable', 'Disable'],
-              (val) => provider.onBMSStop(val!),
+            /// Dropdown for BMS Stop
+            DropdownWidget(
+              title: 'BMS Stop',
+              context: context,
+              value: provider.advancedSet.bmsStop,
+              options: ['Enable', 'Disable'],
+              onChanged: (value) => provider.onBMSStop(value!),
             ),
-            _buildDropdownTile(
-              context,
-              'ARC Setup',
-              provider.advancedSet.arcSetup,
-              ['Enable', 'Disable'],
-              (val) => provider.onARCSetup(val!),
+
+            /// Dropdown for ARC Setup
+            DropdownWidget(
+              title: 'ARC Setup',
+              context: context,
+              value: provider.advancedSet.arcSetup,
+              options: ['Enable', 'Disable'],
+              onChanged: (value) => provider.onARCSetup(value!),
             ),
-            _buildAdvancedSetTile(
+
+            /// TextFieldDialog for Modbus Address
+            TextFieldDialog(
               title: 'Modbus Address',
               value: provider.advancedSet.modbusAddress,
               onTap: () {
@@ -228,115 +268,53 @@ class AdvancedSetWidget extends StatelessWidget {
               },
             ),
 
-            _buildDropdownTile(
-              context,
-              'GFD turn off',
-              provider.advancedSet.gfdTurnOff,
-              ['Enable', 'Disable'],
-              (val) => provider.onGFDTurnOff(val!),
+            /// Dropdown for GFD Turn Off
+            DropdownWidget(
+              title: 'GFD turn off',
+              context: context,
+              value: provider.advancedSet.gfdTurnOff,
+              options: ['Enable', 'Disable'],
+              onChanged: (value) => provider.onGFDTurnOff(value!),
             ),
-            _buildDropdownTile(
-              context,
-              'Leakage turn off',
-              provider.advancedSet.leakageTurnOff,
-              ['Enable', 'Disable'],
-              (val) => provider.onLeakageTurnOff(val!),
+
+            /// Dropdown for Leakage Turn Off
+            DropdownWidget(
+              title: 'Leakage turn off',
+              context: context,
+              value: provider.advancedSet.leakageTurnOff,
+              options: ['Enable', 'Disable'],
+              onChanged: (value) => provider.onLeakageTurnOff(value!),
             ),
-            _buildDropdownTile(
-              context,
-              'Beep',
-              provider.advancedSet.beep,
-              ['Enable', 'Disable'],
-              (val) => provider.onBeepTap(val!),
+
+            /// Dropdown for Beep
+            DropdownWidget(
+              title: 'Beep',
+              context: context,
+              value: provider.advancedSet.beep,
+              options: ['Enable', 'Disable'],
+              onChanged: (value) => provider.onBeepTap(value!),
             ),
-            _buildDropdownTile(
-              context,
-              'CT Disable',
-              provider.advancedSet.ctDisable,
-              ['Enable', 'Disable'],
-              (val) => provider.onCtDisable(val!),
+
+            /// Dropdown for CT Disable
+            DropdownWidget(
+              title: 'CT Disable',
+              context: context,
+              value: provider.advancedSet.ctDisable,
+              options: ['Enable', 'Disable'],
+              onChanged: (value) => provider.onCtDisable(value!),
             ),
-            _buildDropdownTile(context, 'DRM', provider.advancedSet.drm, [
-              'Enable',
-              'Disable',
-            ], (val) => provider.onDRM(val!)),
+
+            /// Dropdown for DRM
+            DropdownWidget(
+              title: 'DRM',
+              context: context,
+              value: provider.advancedSet.drm,
+              options: ['Enable', 'Disable'],
+              onChanged: (value) => provider.onDRM(value!),
+            ),
           ],
         );
       },
-    );
-  }
-
-  Widget _buildDropdownTile(
-    BuildContext context,
-    String title,
-    String value,
-    List<String> options,
-    Function(String?) onChanged,
-  ) {
-    return Container(
-      height: 42.ph,
-      decoration: BoxDecoration(color: ColorRes.black.withValues(alpha: 0.05)),
-
-      padding: EdgeInsets.symmetric(horizontal: 16.pw),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(child: Text(title, style: styleW600S14)),
-          DropdownButton<String>(
-            value: value,
-            items:
-                options.map((String option) {
-                  return DropdownMenuItem<String>(
-                    value: option,
-                    child: Text(option),
-                  );
-                }).toList(),
-            onChanged: onChanged,
-            underline: SizedBox(),
-            icon: Padding(
-              padding: EdgeInsets.only(left: 8.pw),
-              child: SvgAsset(
-                imagePath: AssetRes.downArrowIcon,
-                color: ColorRes.grey2,
-              ),
-            ),
-            style: styleW600S14.copyWith(
-              color: ColorRes.black.withValues(alpha: 0.6),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildAdvancedSetTile({
-    String? title,
-    String? value,
-    VoidCallback? onTap,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        height: 42.ph,
-        color: ColorRes.black.withValues(alpha: 0.05),
-        padding: EdgeInsets.symmetric(horizontal: 16.pw, vertical: 10.ph),
-        margin: const EdgeInsets.only(bottom: 1),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            /// Title
-            Text(title ?? "", style: styleW600S14.copyWith()),
-
-            /// Value
-            Text(
-              value ?? "",
-              style: styleW600S14.copyWith(
-                color: ColorRes.black.withValues(alpha: 0.6),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

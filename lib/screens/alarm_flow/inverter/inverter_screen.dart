@@ -75,7 +75,10 @@ class AlarmInverterScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFaultSection(BuildContext context, AlarmInverterProvider provider) {
+  Widget _buildFaultSection(
+    BuildContext context,
+    AlarmInverterProvider provider,
+  ) {
     return Container(
       decoration: const BoxDecoration(color: ColorRes.white),
       child: Column(
@@ -95,7 +98,7 @@ class AlarmInverterScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(height: 17, width: 5, color: ColorRes.primaryColor),
-         10.pw.spaceHorizontal,
+          10.pw.spaceHorizontal,
           Text(
             context.l10n?.fault ?? "",
             style: styleW600S14.copyWith(color: ColorRes.black2),
@@ -107,11 +110,7 @@ class AlarmInverterScreen extends StatelessWidget {
 
   Widget _buildFaultList(AlarmInverterProvider provider) {
     return CustomListView(
-
       itemCount: provider.titles.length,
-
-
-
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       separatorBuilder:
@@ -166,13 +165,19 @@ class AlarmInverterScreen extends StatelessWidget {
             ),
           ),
         ),
-        AnimatedSize(
+        AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
-          child: SizedBox(
-            height: isExpanded ? null : 0,
-            child:
-                isExpanded
-                    ? Padding(
+          switchInCurve: Curves.easeIn,
+          switchOutCurve: Curves.easeOut,
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            return SizeTransition(sizeFactor: animation, child: child);
+          },
+          child:
+              isExpanded
+                  ? SizedBox(
+                    key: const ValueKey('expanded'),
+                    width: 100.h,
+                    child: Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: 15.pw,
                         vertical: 5.pw,
@@ -181,9 +186,9 @@ class AlarmInverterScreen extends StatelessWidget {
                         provider.contents[index],
                         style: styleW400S14,
                       ),
-                    )
-                    : null,
-          ),
+                    ),
+                  )
+                  : const SizedBox(key: ValueKey('collapsed'), height: 0),
         ),
 
         /// Divider
@@ -404,7 +409,7 @@ class AlarmInverterScreen extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 15),
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: DropdownButton<String>(
-        elevation: 0,
+        elevation: 1,
         padding: EdgeInsets.zero,
         isDense: true,
         hint: Text("Preference", style: styleW500S14),

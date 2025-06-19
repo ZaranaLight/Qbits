@@ -1,4 +1,3 @@
-
 import 'package:qbits/qbits.dart';
 
 bool _splashInit = false;
@@ -20,8 +19,7 @@ class SplashScreen extends StatelessWidget {
 
       if (context.mounted) {
         // context.navigator.pushReplacementNamed(SignInScreen.routeName);
-        // context.navigator.pushReplacementNamed(DashboardScreen.routeName);
-        context.navigator.pushReplacementNamed(PlantDetailScreen.routeName);
+        context.navigator.pushReplacementNamed(DashboardScreen.routeName);
       }
     } catch (e) {
       debugPrint(e.toString());

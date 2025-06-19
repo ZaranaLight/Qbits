@@ -52,45 +52,56 @@ class AppAlertDialog extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              if (header != null) ...[
+              /// Header
+              10.ph.spaceVertical,
+
+              /// Header
+              if (header != null)
                 Text(
                   header!,
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
-                  textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 20),
-              ],
-              TextField(
+
+              /// Space
+              10.ph.spaceVertical,
+
+              /// Text Field
+              AppTextField(
                 controller: textEditingController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter text',
-                ),
-                autofocus: true,
+                hintText: 'Enter text',
+                borderRadius: 5,
               ),
-              const SizedBox(height: 24),
+
+              30.ph.spaceVertical,
+
+              /// Buttons
               Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Expanded(
-                    child: OutlinedButton(
-                      onPressed: () {
+                    child: EmptyButton(
+                      title: cancelBtnTitle,
+                      onTap: () {
                         onCancelTap?.call();
                         Navigator.pop(context);
                       },
-                      child: Text(cancelBtnTitle),
                     ),
                   ),
-                  const SizedBox(width: 12),
+
+                  /// Space
+                  16.pw.spaceHorizontal,
+
+                  /// Submit Button
                   Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {
+                    child: SubmitButton(
+                      title: yesBtnTitle,
+                      onTap: () {
                         final text = textEditingController.text.trim();
                         Navigator.pop(context, text); // Return the entered text
                       },
-                      child: Text(yesBtnTitle),
                     ),
                   ),
                 ],

@@ -1,4 +1,5 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/inverter/widget/hybrid_parameter_widgets/remote_control_grid_set_widget.dart';
 
 class InverterProvider extends ChangeNotifier {
   bool _isInitialized = false;
@@ -58,7 +59,7 @@ class InverterProvider extends ChangeNotifier {
     BackUpWidget(),
     HybridInverterWidget(),
     BatteryWidget(),
-    GridWidget(),
+    RemoteControlGridSetWidget(),
     MeterWidget(),
     SystemWidget(),
     SystemWidget(),
@@ -115,7 +116,6 @@ class InverterProvider extends ChangeNotifier {
   double batteryVoltage = 0;
   double batteryCurrent = 0;
   String batteryStatus = "Normal";
-
 
   int? _expandedIndex;
 

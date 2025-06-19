@@ -27,6 +27,10 @@ class RemoteControlScreen extends StatelessWidget {
   Widget _buildInverterList(RemoteControlProvider provider) {
     return CustomListView(
       itemCount: provider.remoteControlTitle.length,
+      padding: EdgeInsets.only(
+        bottom: Constants.safeAreaPadding.bottom + 20.ph,
+      ),
+
       shrinkWrap: true,
       separatorBuilder:
           (context, index) => Container(
@@ -43,6 +47,7 @@ class RemoteControlScreen extends StatelessWidget {
 
   Widget _buildExpansionTile(RemoteControlProvider provider, int index) {
     final isExpanded = provider.expandedIndex == index;
+
     return Column(
       children: [
         /// Divider
@@ -92,14 +97,21 @@ class RemoteControlScreen extends StatelessWidget {
             ),
           ),
         ),
-        AnimatedSize(
+        AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-          child: SizedBox(
-            width: 100.h,
-            height: isExpanded ? null : 0,
-            child: isExpanded ? provider.remoteControlContent[index] : null,
-          ),
+          switchInCurve: Curves.easeIn,
+          switchOutCurve: Curves.easeOut,
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            return SizeTransition(sizeFactor: animation, child: child);
+          },
+          child:
+              isExpanded
+                  ? SizedBox(
+                    key: const ValueKey('expanded'),
+                    width: 100.h,
+                    child: provider.remoteControlContent[index],
+                  )
+                  : const SizedBox(key: ValueKey('collapsed'), height: 0),
         ),
       ],
     );

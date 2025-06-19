@@ -1,3 +1,4 @@
+import 'package:qbits/common/widget/debouncer.dart';
 import 'package:qbits/qbits.dart';
 
 class PlantInfoScreen extends StatelessWidget {
@@ -43,6 +44,7 @@ class PlantInfoScreen extends StatelessWidget {
               bottom: Constants.safeAreaPadding.bottom + 20.pw,
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 PlantInfoPart1(),
                 16.pw.spaceVertical,
@@ -151,7 +153,7 @@ class PlantInfoPart2 extends StatelessWidget {
                     SizedBox(
                       height: 50.pw,
                       child: ListTile(
-                        title: Expanded(child: Text(label)),
+                        title: Text(label),
                         trailing:
                             provider.isEditing
                                 ? SizedBox(
@@ -168,7 +170,6 @@ class PlantInfoPart2 extends StatelessWidget {
                                       customPadding: EdgeInsets.zero,
                                       maxWidth: 10,
                                       textAlign: TextAlign.right,
-
                                       onChanged: (val) {
                                         provider.updateField2(label, val);
                                       },
@@ -226,7 +227,7 @@ class PlantInfoPart3 extends StatelessWidget {
                     SizedBox(
                       height: 50.pw,
                       child: ListTile(
-                        title: Expanded(child: Text(label)),
+                        title: Text(label),
                         trailing:
                             provider.isEditing
                                 ? SizedBox(

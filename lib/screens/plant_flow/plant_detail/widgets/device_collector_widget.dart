@@ -131,7 +131,7 @@ class CollectorWidget extends StatelessWidget {
 
   Widget _buildDeviceDropdown(PlantDetailProvider provider) {
     return DropdownButton<String>(
-      elevation: 0,
+      elevation: 1,
       padding: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding),
       isDense: true,
       hint: Text(provider.selectedDeviceOption, style: styleW500S14),

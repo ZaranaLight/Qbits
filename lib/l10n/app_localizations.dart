@@ -1605,6 +1605,24 @@ abstract class AppLocalizations {
   /// **'Remote control'**
   String get remoteControl;
 
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// No description provided for @panel.
+  ///
+  /// In en, this message translates to:
+  /// **'Panel'**
+  String get panel;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
   /// No description provided for @status.
   ///
   /// In en, this message translates to:

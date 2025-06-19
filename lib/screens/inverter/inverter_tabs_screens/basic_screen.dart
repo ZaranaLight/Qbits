@@ -75,12 +75,20 @@ class BasicScreen extends StatelessWidget {
             ),
           ),
         ),
-        AnimatedSize(
+        AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
-          child: SizedBox(
-            height: isExpanded ? null : 0,
-            child: isExpanded ? provider.basicContent[index] : null,
-          ),
+          switchInCurve: Curves.easeIn,
+          switchOutCurve: Curves.easeOut,
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            return SizeTransition(sizeFactor: animation, child: child);
+          },
+          child: isExpanded
+              ? SizedBox(
+                key: const ValueKey('expanded'),
+                width: 100.h,
+                child: provider.basicContent[index],
+              )
+              : const SizedBox(key: ValueKey('collapsed'), height: 0),
         ),
       ],
     );
@@ -89,7 +97,8 @@ class BasicScreen extends StatelessWidget {
 
 class BasicContentWidget extends StatelessWidget {
   final List<BasicInfoModel>? items;
-  const BasicContentWidget({super.key,   this.items});
+
+  const BasicContentWidget({super.key, this.items});
 
   @override
   Widget build(BuildContext context) {

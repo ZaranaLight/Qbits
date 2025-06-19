@@ -73,38 +73,42 @@ class PlantDetailScreen extends StatelessWidget {
                       12.ph.spaceVertical,
 
                       /// TabBar
-                      TabBar(
-                        padding: EdgeInsets.zero,
-                        physics: NeverScrollableScrollPhysics(),
-                        indicatorColor: ColorRes.primaryColor,
-                        labelColor: ColorRes.primaryColor,
-                        unselectedLabelColor: ColorRes.darkGrey,
-                        labelStyle: styleW600S14.copyWith(
-                          color: ColorRes.darkGrey,
-                        ),
-                        unselectedLabelStyle: styleW500S14.copyWith(
-                          color: ColorRes.darkGrey,
-                        ),
-                        dividerColor: ColorRes.white,
-                        indicator: UnderlineTabIndicator(
-                          borderSide: BorderSide(
-                            color:
-                                ColorRes
-                                    .primaryColor, // your desired underline color
-                            width: 2.0,
+                      Material(
+                        elevation: 1,
+                        borderRadius: BorderRadius.circular(5.pw),
+                        shadowColor: Colors.transparent,
+                        child: TabBar(
+                          padding: EdgeInsets.zero,
+                          physics: NeverScrollableScrollPhysics(),
+                          indicatorColor: ColorRes.primaryColor,
+                          labelColor: ColorRes.primaryColor,
+                          unselectedLabelColor: ColorRes.darkGrey,
+                          labelStyle: styleW600S14.copyWith(
+                            color: ColorRes.darkGrey,
                           ),
-                          insets: EdgeInsets.only(bottom: 10.ph),
+                          unselectedLabelStyle: styleW500S14.copyWith(
+                            color: ColorRes.darkGrey,
+                          ),
+                          dividerColor: ColorRes.white,
+                          indicator: UnderlineTabIndicator(
+                            borderSide: BorderSide(
+                              color:
+                                  ColorRes
+                                      .primaryColor, // your desired underline color
+                              width: 2.0,
+                            ),
+                            insets: EdgeInsets.only(bottom: 10.ph),
+                          ),
+                          tabs: [
+                            Tab(text: context.l10n?.dashboard),
+                            Tab(text: context.l10n?.device),
+                            Tab(text: context.l10n?.alarm),
+                            Tab(text: context.l10n?.about),
+                          ],
+                          labelPadding: EdgeInsets.symmetric(horizontal: 10.pw),
+                          isScrollable: false,
+                          // Set true if long labels
                         ),
-                        tabs: [
-                          Tab(text: context.l10n?.dashboard),
-                          Tab(text: context.l10n?.device),
-                          Tab(text: context.l10n?.alarm),
-                          Tab(text: context.l10n?.about),
-                        ],
-                        labelPadding: EdgeInsets.symmetric(horizontal: 10.pw),
-
-                        isScrollable: false,
-                        // Set true if long labels
                       ),
                     ],
                   ),

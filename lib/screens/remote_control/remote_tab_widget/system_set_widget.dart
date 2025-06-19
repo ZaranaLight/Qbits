@@ -1,4 +1,5 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/remote_control/widget/multiple_check_dialog_widget.dart';
 
 class SystemSettings {
   String switchOnOffEnable;
@@ -6,7 +7,7 @@ class SystemSettings {
   String workMode;
   String refluxUplinkPower;
   String solarSell;
-  String weekSell;
+  List<String> weekSell;
   String maxSellPower;
   String energyMode;
   String offlineMode;
@@ -19,7 +20,7 @@ class SystemSettings {
     this.workMode = 'Anti-reflux to grid',
     this.refluxUplinkPower = '0KW',
     this.solarSell = 'Disable',
-    this.weekSell = '[0]',
+    this.weekSell = const ['0'],
     this.maxSellPower = '0KW',
     this.energyMode = 'Battery First',
     this.offlineMode = 'Disable',
@@ -41,101 +42,99 @@ class SystemSetWidget extends StatelessWidget {
             spacing: 12.ph,
 
             children: [
-              // Run Mode
-              _buildDropdownTile(
-                context,
-                'Switch ON and OFF enable',
-                provider.settings.switchOnOffEnable,
-                ['ON', 'OFF'],
-                (value) => provider.updateOnOffEnable(value!),
+              ///Run Mode
+              DropdownWidget(
+                title: 'Switch ON and OFF enable',
+                context: context,
+                value: provider.settings.switchOnOffEnable,
+                options: ['ON', 'OFF','hjkhjkhjkhjkhjkhjhjhjhjhjhjhjhjhjhjhjkhkhjhjkhjkhjkhjkhjkhkjhkjhkhjkhjkh'],
+                onChanged: (value) => provider.updateOnOffEnable(value!),
               ),
 
-              // Run Mode
-              _buildDropdownTile(
-                context,
-                'Run Mode',
-                provider.settings.runMode,
-                ['Text', 'Auto', 'Manual'],
-                (value) => provider.updateRunMode(value!),
+              ///Run Mode
+              DropdownWidget(
+                title: 'Run Mode',
+                context: context,
+                value: provider.settings.runMode,
+                options: ['Text', 'Auto', 'Manual'],
+                onChanged: (value) => provider.updateRunMode(value!),
               ),
 
-              // Work Mode
-              _buildDropdownTile(
-                context,
-                'Work Mode',
-                provider.settings.workMode,
-                ['Anti-reflux to grid', 'Grid-tie', 'Off-grid'],
-                (value) => provider.updateWorkMode(value!),
+              ///Work Mode
+              DropdownWidget(
+                title: 'Work Mode',
+                context: context,
+                value: provider.settings.workMode,
+                options: ['Anti-reflux to grid', 'Grid-tie', 'Off-grid'],
+                onChanged: (value) => provider.updateWorkMode(value!),
               ),
 
-              // Reflux Uplink Power
-              _buildInfoTile(
-                'Reflux Uplink Power',
-                provider.settings.refluxUplinkPower,
-                () {
+              ///Reflux Uplink Power
+              TextFieldDialog(
+                title: 'Reflux Uplink Power',
+                value: provider.settings.refluxUplinkPower,
+                onTap: () {
                   provider.onRefluxUplinkPower(context);
                 },
               ),
 
-              // Solar Sell
-              _buildDropdownTile(
-                context,
-                'Solar Sell',
-                provider.settings.solarSell,
-                ['Disable', 'Enable'],
-                (value) => provider.updateSolarSell(value!),
+              ///Solar Sell
+              DropdownWidget(
+                title: 'Solar Sell',
+                context: context,
+                value: provider.settings.solarSell,
+                options: ['Disable', 'Enable'],
+                onChanged: (value) => provider.updateSolarSell(value!),
               ),
 
-              // Week Sell
-              _buildDropdownTile(
-                context,
-                'Week Sell',
-                provider.settings.weekSell,
-                ['[0]', '[1]', '[2]', '[3]', '[4]', '[5]', '[6]'],
-                (value) => provider.updateWeekSell(value!),
+              /// Week Sell
+              MultiSelectWeekSellWidget(
+                options: provider.weekDayMap.keys.toList(),
+                selected: provider.settings.weekSell,
+                onChanged: provider.updateWeekSell,
               ),
 
-              // Max Sell Power
-              _buildInfoTile(
-                'Max Sell Power',
-                provider.settings.maxSellPower,
-                () {
+              ///Max Sell Power
+              TextFieldDialog(
+                title: 'Max Sell Power',
+                value: provider.settings.maxSellPower,
+                onTap: () {
                   provider.onMaxSellPower(context);
                 },
               ),
 
-              // Energy Mode
-              _buildDropdownTile(
-                context,
-                'Energy Mode',
-                provider.settings.energyMode,
-                ['Load First', 'Battery First', 'Grid First'],
-                (value) => provider.updateEnergyMode(value!),
+              ///Energy Mode
+              DropdownWidget(
+                title: 'Energy Mode',
+                context: context,
+                value: provider.settings.energyMode,
+                options: ['Load First', 'Battery First', 'Grid First'],
+                onChanged: (value) => provider.updateEnergyMode(value!),
               ),
 
-              // Off-line Mode
-              _buildDropdownTile(
-                context,
-                'Off-line Mode',
-                provider.settings.offlineMode,
-                ['Disable', 'Enable'],
-                (value) => provider.updateOfflineMode(value!),
+              ///Off-line Mode
+              DropdownWidget(
+                title: 'Off-line Mode',
+                context: context,
+                value: provider.settings.offlineMode,
+                options: ['Disable', 'Enable'],
+                onChanged: (value) => provider.updateOfflineMode(value!),
               ),
 
-              // Grid Peak-shave
-              _buildDropdownTile(
-                context,
-                'Grid Peak-shave',
-                provider.settings.gridPeakShave,
-                ['Disable', 'Enable'],
-                (value) => provider.updateGridPeakShave(value!),
+              ///Grid Peak-shave
+              DropdownWidget(
+                title: 'Grid Peak-shave',
+                context: context,
+                value: provider.settings.gridPeakShave,
+                options: ['Disable', 'Enable'],
+                onChanged: (value) => provider.updateGridPeakShave(value!),
               ),
 
-              // Grid Peak-shave Power
-              _buildInfoTile(
-                'Grid Peak-shave Power',
-                provider.settings.gridPeakShavePower,
-                () {
+              ///Grid Peak-shave Power
+              TextFieldDialog(
+                title: 'Grid Peak-shave Power',
+                value: provider.settings.gridPeakShavePower,
+                onTap: () {
                   provider.onGridPeakShavePower(context);
                 },
               ),
@@ -143,74 +142,6 @@ class SystemSetWidget extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-
-  Widget _buildDropdownTile(
-    BuildContext context,
-    String title,
-    String value,
-    List<String> options,
-    Function(String?) onChanged,
-  ) {
-    return Container(
-      height: 42.ph,
-      decoration: BoxDecoration(color: ColorRes.black.withValues(alpha: 0.05)),
-
-      padding: EdgeInsets.symmetric(horizontal: 16.pw),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(child: Text(title, style: styleW600S14)),
-          DropdownButton<String>(
-            value: value,
-            items:
-                options.map((String option) {
-                  return DropdownMenuItem<String>(
-                    value: option,
-                    child: Text(option),
-                  );
-                }).toList(),
-            onChanged: onChanged,
-            underline: SizedBox(),
-            icon: Padding(
-              padding: EdgeInsets.only(left: 8.pw),
-              child: SvgAsset(
-                imagePath: AssetRes.downArrowIcon,
-                color: ColorRes.grey2,
-              ),
-            ),
-            style: styleW600S14.copyWith(
-              color: ColorRes.black.withValues(alpha: 0.6),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildInfoTile(String title, String value, VoidCallback onTap) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        height: 42.ph,
-        decoration: BoxDecoration(
-          color: ColorRes.black.withValues(alpha: 0.05),
-        ),
-        padding: EdgeInsets.symmetric(horizontal: 16.pw, vertical: 10.ph),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(title, style: styleW600S14),
-            Text(
-              value,
-              style: styleW600S14.copyWith(
-                color: ColorRes.black.withValues(alpha: 0.6),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

@@ -50,4 +50,13 @@ class CollectorProvider extends ChangeNotifier {
       notifyListeners(); // Notify listeners after data is loaded
     });
   }
+  int _deviceTabIndex = 0;
+
+  int get deviceTabIndex => _deviceTabIndex;
+
+  void changeDeviceTabTo(int index) {
+    _deviceTabIndex = index;
+    notifyListeners();
+  }
+
 }

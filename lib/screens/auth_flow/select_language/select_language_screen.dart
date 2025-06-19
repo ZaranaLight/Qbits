@@ -23,7 +23,7 @@ class SelectLanguageScreen extends StatelessWidget {
             top: false,
             child: Padding(
               padding: EdgeInsets.only(
-                bottom: 30.ph,
+                bottom: Constants.safeAreaPadding.bottom + 30.ph,
                 left: Constants.horizontalPadding,
                 right: Constants.horizontalPadding,
               ),
@@ -39,7 +39,9 @@ class SelectLanguageScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              bottom: Constants.safeAreaPadding.bottom + Constants.horizontalPadding,
+              bottom:
+                  Constants.safeAreaPadding.bottom +
+                  Constants.horizontalPadding,
             ),
             child: Column(
               children: [

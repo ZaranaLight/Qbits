@@ -67,7 +67,7 @@ class ParameterCollectorWidget extends StatelessWidget {
                 ),
                 AnimatedRotation(
                   duration: const Duration(milliseconds: 300),
-                  turns: isExpanded ? 0.5 : 0.5,
+                  turns: isExpanded ? 0.5 : 0,
                   child: Icon(
                     Icons.keyboard_arrow_down,
                     color: ColorRes.black.withValues(alpha: 0.5),
@@ -77,21 +77,22 @@ class ParameterCollectorWidget extends StatelessWidget {
             ),
           ),
         ),
+
         AnimatedSwitcher(
-          duration: 200.milliseconds,
+          duration: const Duration(milliseconds: 300),
           switchInCurve: Curves.easeIn,
-          switchOutCurve: Curves.easeInOut,
-          child: Builder(
-            key: ValueKey(isExpanded),
-            builder: (context) {
-              return SizedBox(
-                child:
-                    isExpanded
-                        ? provider.collectorParameterContent[index]
-                        : null,
-              );
-            },
-          ),
+          switchOutCurve: Curves.easeOut,
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            return SizeTransition(sizeFactor: animation, child: child);
+          },
+          child:
+              isExpanded
+                  ? SizedBox(
+                    key: const ValueKey('expanded'),
+                    width: 100.h,
+                    child: provider.collectorParameterContent[index],
+                  )
+                  : const SizedBox(key: ValueKey('collapsed'), height: 0),
         ),
       ],
     );

@@ -243,7 +243,7 @@ class StatisticsScreen extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 15),
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: DropdownButton<String>(
-        elevation: 0,
+        elevation:1,
         padding: EdgeInsets.zero,
         isDense: true,
         hint: Text("Preference", style: styleW500S14),

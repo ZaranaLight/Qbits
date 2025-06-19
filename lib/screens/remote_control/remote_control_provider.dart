@@ -22,7 +22,7 @@ class RemoteControlProvider extends ChangeNotifier {
     "Mode",
     "Battery Set",
     "Grid Set",
-    "Advanced Srt",
+    "Advanced Set",
   ];
 
   final List<Widget> remoteControlContent = [
@@ -60,6 +60,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Reflux Uplink  Power",
+      initialValue: _settings.refluxUplinkPower,
     );
     if (result != null && result.isNotEmpty) {
       _settings.refluxUplinkPower = result;
@@ -71,6 +72,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Max Sell Power",
+      initialValue: _settings.maxSellPower,
     );
     if (result != null && result.isNotEmpty) {
       _settings.maxSellPower = result;
@@ -82,6 +84,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Grid Peak-shave Power",
+      initialValue: _settings.gridPeakShavePower,
     );
     if (result != null && result.isNotEmpty) {
       _settings.gridPeakShavePower = result;
@@ -95,9 +98,32 @@ class RemoteControlProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  final Map<String, String> weekDayMap = {
+    '0': 'Sunday',
+    '1': 'Monday',
+    '2': 'Tuesday',
+    '3': 'Wednesday',
+    '4': 'Thursday',
+    '5': 'Friday',
+    '6': 'Saturday',
+  };
+
+  List<int> getSelectedDayIndexes(List<String> selectedValues) {
+    return selectedValues
+        .map((e) => int.tryParse(e) ?? -1)
+        .where((e) => e >= 0)
+        .toList();
+  }
+
+  String getWeekDaysDisplay(List<String> selectedIndexes) {
+    return selectedIndexes
+        .map((index) => weekDayMap[index] ?? index)
+        .join(', ');
+  }
+
   // Update week sell
-  void updateWeekSell(String value) {
-    _settings.weekSell = value;
+  void updateWeekSell(List<String> value) {
+    settings.weekSell = value;
     notifyListeners();
   }
 
@@ -167,6 +193,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter BMS_protocol Setting",
+      initialValue: _batterySetting.bmsProtocolSetting,
     );
     if (result != null && result.isNotEmpty) {
       _batterySetting.bmsProtocolSetting = result;
@@ -178,6 +205,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Battery Mode",
+      initialValue: _batterySetting.batteryMode,
     );
     if (result != null && result.isNotEmpty) {
       _batterySetting.batteryMode = result;
@@ -189,6 +217,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Battery Capacity",
+      initialValue: _batterySetting.batteryCapacity,
     );
     if (result != null && result.isNotEmpty) {
       _batterySetting.batteryCapacity = result;
@@ -199,10 +228,11 @@ class RemoteControlProvider extends ChangeNotifier {
   void onBatteryActivateMode(BuildContext context) async {
     final result = await openTextFieldDialog(
       context,
-      header: "Enter Battery Capacity",
+      header: "Enter Battery Activate",
+      initialValue: _batterySetting.batteryActivate,
     );
     if (result != null && result.isNotEmpty) {
-      _batterySetting.batteryCapacity = result;
+      _batterySetting.batteryActivate = result;
     }
     notifyListeners();
   }
@@ -211,6 +241,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Equalizing Charge Voltage",
+      initialValue: _batterySetting.equalizingChargeVoltage,
     );
     if (result != null && result.isNotEmpty) {
       _batterySetting.equalizingChargeVoltage = result;
@@ -222,6 +253,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Equalizing Charge Current",
+      initialValue: _batterySetting.equalizingChargeCurrent,
     );
     if (result != null && result.isNotEmpty) {
       _batterySetting.equalizingChargeCurrent = result;
@@ -233,6 +265,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Floating Charge Voltage",
+      initialValue: _batterySetting.floatingChargeVoltage,
     );
     if (result != null && result.isNotEmpty) {
       _batterySetting.floatingChargeVoltage = result;
@@ -244,6 +277,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Floating Charge Current",
+      initialValue: _batterySetting.floatingChargeCurrent,
     );
     if (result != null && result.isNotEmpty) {
       _batterySetting.floatingChargeCurrent = result;
@@ -255,6 +289,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Floating Charge Time",
+      initialValue: _batterySetting.floatingChargeTime,
     );
     if (result != null && result.isNotEmpty) {
       _batterySetting.floatingChargeTime = result;
@@ -266,6 +301,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Discharge Cut-off Voltage",
+      initialValue: _batterySetting.dischargeCutOffVoltage,
     );
     if (result != null && result.isNotEmpty) {
       _batterySetting.dischargeCutOffVoltage = result;
@@ -277,6 +313,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Discharge Max. Current",
+      initialValue: _batterySetting.dischargeMaxCurrent,
     );
     if (result != null && result.isNotEmpty) {
       _batterySetting.dischargeMaxCurrent = result;
@@ -288,6 +325,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Soc Protection Off-gride",
+      initialValue: _batterySetting.socProtectionOffGrid,
     );
     if (result != null && result.isNotEmpty) {
       _batterySetting.socProtectionOffGrid = result;
@@ -299,9 +337,10 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Soc Protection Smart Load",
+      initialValue: _batterySetting.socProtectionSmartLoad,
     );
     if (result != null && result.isNotEmpty) {
-      _batterySetting.socProtectionOffGrid = result;
+      _batterySetting.socProtectionSmartLoad = result;
     }
     notifyListeners();
   }
@@ -310,6 +349,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Voltage Protection Smart Load",
+      initialValue: _batterySetting.voltageProtectionSmartLoad,
     );
     if (result != null && result.isNotEmpty) {
       _batterySetting.voltageProtectionSmartLoad = result;
@@ -327,6 +367,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Grid Standard",
+      initialValue: _gridSet.gridStandard,
     );
     if (result != null && result.isNotEmpty) {
       _gridSet.gridStandard = result;
@@ -338,6 +379,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Grid Frequency Setting",
+      initialValue: _gridSet.gridFrequencySetting,
     );
     if (result != null && result.isNotEmpty) {
       _gridSet.gridFrequencySetting = result;
@@ -349,6 +391,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Grid Voltage Upper limit",
+      initialValue: _gridSet.gridVoltageUpperLimit,
     );
     if (result != null && result.isNotEmpty) {
       _gridSet.gridVoltageUpperLimit = result;
@@ -360,6 +403,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Grid Voltage Lower limit",
+      initialValue: _gridSet.gridVoltageLowerLimit,
     );
     if (result != null && result.isNotEmpty) {
       _gridSet.gridVoltageLowerLimit = result;
@@ -371,6 +415,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Grid Frequency Upper limit",
+      initialValue: _gridSet.gridFrequencyUpperLimit,
     );
     if (result != null && result.isNotEmpty) {
       _gridSet.gridFrequencyUpperLimit = result;
@@ -382,6 +427,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Grid Frequency Lower limit",
+      initialValue: _gridSet.gridFrequencyLowerLimit,
     );
     if (result != null && result.isNotEmpty) {
       _gridSet.gridFrequencyLowerLimit = result;
@@ -393,6 +439,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Reconnect Delay",
+      initialValue: _gridSet.reconnectDelay,
     );
     if (result != null && result.isNotEmpty) {
       _gridSet.reconnectDelay = result;
@@ -404,6 +451,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Grid Voltage",
+      initialValue: _gridSet.gridVoltage,
     );
     if (result != null && result.isNotEmpty) {
       _gridSet.gridVoltage = result;
@@ -516,6 +564,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Set RTC Time",
+      initialValue: _advancedSet.setRtcTime,
     );
     if (result != null && result.isNotEmpty) {
       _advancedSet.setRtcTime = result;
@@ -527,6 +576,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Set Meter COM Address",
+      initialValue: _advancedSet.setMeterComAddress,
     );
     if (result != null && result.isNotEmpty) {
       _advancedSet.setMeterComAddress = result;
@@ -538,6 +588,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter CT Ratio Setting",
+      initialValue: _advancedSet.ctRatioSetting,
     );
     if (result != null && result.isNotEmpty) {
       _advancedSet.ctRatioSetting = result;
@@ -549,6 +600,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Parallel Address Setting",
+      initialValue: _advancedSet.parallelAddressSetting,
     );
     if (result != null && result.isNotEmpty) {
       _advancedSet.parallelAddressSetting = result;
@@ -560,9 +612,10 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Parallel Address Setting",
+      initialValue: _advancedSet.totalParallelSetting,
     );
     if (result != null && result.isNotEmpty) {
-      _advancedSet.parallelAddressSetting = result;
+      _advancedSet.totalParallelSetting = result;
     }
     notifyListeners();
   }
@@ -571,6 +624,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Active Power Regulation",
+      initialValue: _advancedSet.activePowerRegulation,
     );
     if (result != null && result.isNotEmpty) {
       _advancedSet.activePowerRegulation = result;
@@ -582,6 +636,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Reactive Power Regulation",
+      initialValue: _advancedSet.reactivePowerRegulation,
     );
     if (result != null && result.isNotEmpty) {
       _advancedSet.reactivePowerRegulation = result;
@@ -593,6 +648,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Power Factor Regulation",
+      initialValue: _advancedSet.powerFactorRegulation,
     );
     if (result != null && result.isNotEmpty) {
       _advancedSet.powerFactorRegulation = result;
@@ -604,6 +660,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Gen Max Run Time",
+      initialValue: _advancedSet.genMaxRunTime,
     );
     if (result != null && result.isNotEmpty) {
       _advancedSet.genMaxRunTime = result;
@@ -615,6 +672,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Gen Down Time",
+      initialValue: _advancedSet.genDownTime,
     );
     if (result != null && result.isNotEmpty) {
       _advancedSet.genDownTime = result;
@@ -626,6 +684,7 @@ class RemoteControlProvider extends ChangeNotifier {
     final result = await openTextFieldDialog(
       context,
       header: "Enter Modbus Address",
+      initialValue: _advancedSet.modbusAddress,
     );
     if (result != null && result.isNotEmpty) {
       _advancedSet.modbusAddress = result;
