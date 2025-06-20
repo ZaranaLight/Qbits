@@ -14,17 +14,7 @@ class BluetoothManuallyProvider extends ChangeNotifier {
 
   bool get isScanning => _isScanning;
 
-  Future<void> blueToothRequestPermissions() async {
-    await [
-
-      Permission.bluetoothScan,
-      Permission.bluetoothConnect,
-
-    ].request();
-  }
-
   Future<void> startScan() async {
-
     _devices.clear();
     _isScanning = true;
     notifyListeners();
@@ -67,10 +57,6 @@ class BluetoothManuallyProvider extends ChangeNotifier {
       _isScanning = scanning;
       notifyListeners();
     });
-  }
-
-  void stopScan() {
-    FlutterBluePlus.stopScan();
   }
 
   void onTapSelectedBluetoothDeviceItem(
