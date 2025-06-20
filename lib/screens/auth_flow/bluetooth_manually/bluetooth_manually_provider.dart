@@ -22,11 +22,15 @@ class BluetoothManuallyProvider extends ChangeNotifier {
 
   Future<void> startScan() async {
     _devices.clear();
-    notifyListeners();
-
     _isScanning = true;
+
     notifyListeners();
 
+    final status = await Permission.bluetoothScan.status;
+    if (!status.isGranted) {
+      await requestPermissions();
+      return;
+    }
     await FlutterBluePlus.startScan(timeout: const Duration(seconds: 5));
 
     FlutterBluePlus.scanResults.listen((results) {
@@ -37,7 +41,6 @@ class BluetoothManuallyProvider extends ChangeNotifier {
         }
       }
     });
-
     FlutterBluePlus.isScanning.listen((scanning) {
       _isScanning = scanning;
       notifyListeners();
@@ -48,6 +51,10 @@ class BluetoothManuallyProvider extends ChangeNotifier {
     FlutterBluePlus.stopScan();
   }
 
+  final List<BluetoothDevice> _connectedDevices = [];
+
+  List<BluetoothDevice> get connectedDevices => _connectedDevices;
+
   void onTapSelectedBluetoothDeviceItem(
     BuildContext context,
     ScanResult device,
@@ -56,5 +63,12 @@ class BluetoothManuallyProvider extends ChangeNotifier {
       IdAuthenticationScreen.routeName,
       arguments: device,
     );
+  }
+
+  close() {
+    _devices.clear();
+    _connectedDevices.clear();
+    _isScanning = false;
+    notifyListeners();
   }
 }

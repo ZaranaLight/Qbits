@@ -168,5 +168,13 @@ export 'package:qbits/screens/inverter/edit_inverter/edit_inverter_screen.dart';
 export 'package:qbits/screens/inverter/edit_inverter/edit_inverter_provider.dart';
 export 'package:qbits/screens/remote_control/widget/text_field_dialog.dart';
 export 'package:qbits/screens/remote_control/widget/dropdown_widget.dart';
+export 'package:qbits/screens/collector/add_energy_manager/add_energy_manager_provider.dart';
+export 'package:qbits/screens/collector/add_energy_manager/add_energy_manager_screen.dart';
+export 'package:qbits/screens/collector/add_inverter/add_inverter_screen.dart';
+export 'package:qbits/screens/collector/edit_collector/edit_collector_screen.dart';
+export 'package:qbits/screens/collector/collector/collector_provider.dart';
+export 'package:qbits/screens/collector/collector/tab_screen/architecture_widget.dart';
+export 'package:qbits/screens/collector/collector/tab_screen/parameter_collector_widget.dart';
+
 
 

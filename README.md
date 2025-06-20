@@ -2,15 +2,31 @@
 
 A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+# Flutter SDK
 
-A few resources to get you started if this is your first Flutter project:
+3.32.0
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+--------------------------------------------------------------------------------
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Internationalization
+
+```Type this command in terminal to generate "app_localizations.dart" in "Project/lib/l10n".```
+"flutter gen-l10n"
+
+flutter config --explicit-package-dependencies
+--------------------------------------------------------------------------------
+
+# Native-Splash
+
+```Type this command in terminal to generate Native-Splash page```
+
+"dart run flutter_native_splash:create --path=flutter_native_splash.yaml"
+
+```xml
+<meta-data
+ android:name="io.flutter.embedding.android.SplashScreenDrawable"
+ android:resource="@drawable/launch_background"
+ />
+ 
+--------------------------------------------------------------------------------

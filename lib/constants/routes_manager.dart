@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/collector/edit_collector/edit_collector_screen.dart';
 
 class RouteManager {
   static String get initialRoute => SplashScreen.routeName;
@@ -192,6 +191,20 @@ class RouteManager {
       case EditInverterScreen.routeName:
         return MaterialPageRoute(
           builder: EditInverterScreen.builder,
+          settings: settings,
+        );
+
+      ///  Add Inverter Screen
+      case AddInverterScreen.routeName:
+        return MaterialPageRoute(
+          builder: AddInverterScreen.builder,
+          settings: settings,
+        );
+
+      ///  Add Energy Manager Screen
+      case AddEnergyManagerScreen.routeName:
+        return MaterialPageRoute(
+          builder: AddEnergyManagerScreen.builder,
           settings: settings,
         );
 

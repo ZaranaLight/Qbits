@@ -97,7 +97,7 @@ class AppTextField extends StatelessWidget {
           ),
 
         TextField(
-          style: styleW600S14,
+          style: styleW500S14,
           controller: controller,
           onTapOutside: (e) => hideKeyboard(context: context),
           keyboardType: textInputType,

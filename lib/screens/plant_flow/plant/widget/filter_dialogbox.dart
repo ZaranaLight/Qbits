@@ -163,26 +163,28 @@ class FilterDialogBox extends StatelessWidget {
     required bool isSelected,
     required VoidCallback onTap,
   }) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(4),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 12.pw, vertical: 10.ph),
-        decoration: BoxDecoration(
-          color: ColorRes.white,
-          border: Border.all(
-            color:
-                isSelected
-                    ? ColorRes.primaryColor
-                    : ColorRes.black.withValues(alpha: 0.2),
-            width: 1,
+    return Material(
+      color: ColorRes.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(4),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 12.pw, vertical: 10.ph),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color:
+                  isSelected
+                      ? ColorRes.primaryColor
+                      : ColorRes.black.withValues(alpha: 0.2),
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(4),
           ),
-          borderRadius: BorderRadius.circular(4),
-        ),
-        child: Text(
-          title,
-          style: styleW500S14.copyWith(
-            color: isSelected ? ColorRes.primaryColor : ColorRes.black,
+          child: Text(
+            title,
+            style: styleW500S14.copyWith(
+              color: isSelected ? ColorRes.primaryColor : ColorRes.black,
+            ),
           ),
         ),
       ),

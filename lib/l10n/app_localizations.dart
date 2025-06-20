@@ -1647,6 +1647,18 @@ abstract class AppLocalizations {
   /// **'Set Up'**
   String get setUp;
 
+  /// No description provided for @addInverter.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Inverter'**
+  String get addInverter;
+
+  /// No description provided for @addEnergyManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Energy Manager'**
+  String get addEnergyManager;
+
   /// No description provided for @collector.
   ///
   /// In en, this message translates to:

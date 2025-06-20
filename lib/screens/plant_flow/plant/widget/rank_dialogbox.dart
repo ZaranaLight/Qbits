@@ -48,7 +48,7 @@ class RankDialogBox extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Container(
-        padding: EdgeInsets.only(top: 14.ph, bottom: 14.ph),
+        padding: EdgeInsets.only(top: 14.ph, bottom: 14.ph,left: 5.pw,right: 5.pw),
         decoration: BoxDecoration(
           border: Border(
             top: BorderSide(color: ColorRes.black.withValues(alpha: 0.1)),

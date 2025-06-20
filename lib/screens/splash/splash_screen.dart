@@ -34,7 +34,13 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorRes.primaryColor,
       body: SafeArea(
-        child: Center(child: SvgAsset(imagePath: AssetRes.splashLogo)),
+        child: Center(
+          child: SvgAsset(
+            imagePath: AssetRes.splashLogo,
+            width: 214.pw,
+            height: 69.ph,
+          ),
+        ),
       ),
     );
   }

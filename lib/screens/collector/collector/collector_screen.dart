@@ -1,9 +1,5 @@
 import 'package:qbits/common/widget/app_alert_dialog.dart';
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/collector/collector/collector_provider.dart';
-import 'package:qbits/screens/collector/collector/tab_screen/architecture_widget.dart';
-import 'package:qbits/screens/collector/collector/tab_screen/parameter_collector_widget.dart';
-import 'package:qbits/screens/collector/edit_collector/edit_collector_screen.dart';
 
 class CollectorScreen extends StatelessWidget {
   const CollectorScreen({super.key});
@@ -197,10 +193,109 @@ class CollectorScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50.pw),
                         ),
-                        onPressed:
-                            () => context.navigator.pushNamed(
-                              AddCollectorScreen.routeName,
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(15),
+                              ),
                             ),
+                            builder: (BuildContext context) {
+                              return Padding(
+                                padding: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.of(context).viewInsets.bottom,
+                                ),
+                                child: Container(
+                                  width: 100.h,
+                                  padding: EdgeInsets.symmetric(
+                                    vertical:
+                                        Constants.safeAreaPadding.bottom +
+                                        Constants.horizontalPadding,
+                                    horizontal: Constants.horizontalPadding,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'Select Option',
+                                            style: styleW600S20,
+                                          ),
+
+                                          InkWell(
+                                            onTap: () {
+                                              context.navigator.pop();
+                                            },
+                                            child: SvgAsset(
+                                              imagePath: AssetRes.closeIcon,
+                                              width: 15.pw,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+
+                                      15.ph.spaceVertical,
+
+                                      Divider(color: ColorRes.primaryColor),
+
+                                      InkWell(
+                                        onTap: () {
+                                          context.navigator.pop();
+                                          context.navigator.pushNamed(
+                                            AddInverterScreen.routeName,
+                                          );
+                                        },
+                                        borderRadius: BorderRadius.circular(
+                                          5.pw,
+                                        ),
+                                        child: Container(
+                                          width: 100.h,
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            'Inverter',
+                                            style: styleW600S16,
+                                          ),
+                                        ),
+                                      ),
+                                      Divider(
+                                        color: ColorRes.grey2.withValues(
+                                          alpha: 0.1,
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          context.navigator.pop();
+                                          context.navigator.pushNamed(
+                                            AddEnergyManagerScreen.routeName,
+                                          );
+                                        },
+                                        borderRadius: BorderRadius.circular(
+                                          5.pw,
+                                        ),
+                                        child: Container(
+                                          width: 100.h,
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            'Energy Manager',
+                                            style: styleW600S16,
+                                          ),
+                                        ),
+                                      ),
+                                      15.ph.spaceVertical,
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
                         child: SvgAsset(imagePath: AssetRes.plusIcon),
                       ),
                     ),

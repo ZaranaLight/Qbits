@@ -15,6 +15,7 @@ class AssetRes {
   static const bulbIcon = "${_icons}bulb_icon.svg";
   static const bulbOnIcon = "${_icons}bulb_on_icon.svg";
   static const appLogo = "${_icons}app_logo.svg";
+  static const appNameIcon = "${_icons}app_name_icon.svg";
   static const infoIcon = "${_icons}info_icon.svg";
   static const backIcon = "${_icons}back_icon.svg";
   static const authBackgroundIcon = "${_icons}auth_bg_icon.svg";
@@ -77,6 +78,8 @@ class AssetRes {
 
   ///__________________________________ images __________________________________///
   static const blueToothMobileImg = "${_images}bluetooth_mobile_img.png";
+  static const appLogoImg = "${_images}app_logo.png";
+  static const splashLogoImg = "${_images}splash_logo.png";
 
   ///__________________________________ animations __________________________________///
   static const qrScanAnimation = "${_animations}qr_scan_animation.gif";

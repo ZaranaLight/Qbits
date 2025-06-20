@@ -55,7 +55,7 @@ class SubmitButton extends StatelessWidget {
               color: Colors.transparent,
               child: InkWell(
                 onTap: enable ? onTap : null,
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: BorderRadius.circular(8.pw),
                 child: Center(
                   child: Text(
                     title ?? '',
@@ -100,7 +100,7 @@ class EmptyButton extends StatelessWidget {
       width: 100.w,
       height: 48,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(8.pw),
         border: Border.all(
           color: isBordered ? ColorRes.primaryColor : ColorRes.transparent,
         ),
@@ -126,7 +126,7 @@ class EmptyButton extends StatelessWidget {
               color: Colors.transparent,
               child: InkWell(
                 onTap: enable ? onTap : null,
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: BorderRadius.circular(8.pw),
                 child: Center(
                   child: Text(
                     title ?? '',

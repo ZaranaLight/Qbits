@@ -34,7 +34,6 @@ class PreferenceDialogBox extends StatelessWidget {
             /// Divider
             Container(
               height: 1,
-              margin: EdgeInsets.symmetric(vertical: 14.ph),
               decoration: BoxDecoration(
                 color: ColorRes.black.withValues(alpha: 0.1),
               ),
@@ -45,7 +44,6 @@ class PreferenceDialogBox extends StatelessWidget {
             /// Divider
             Container(
               height: 1,
-              margin: EdgeInsets.symmetric(vertical: 14.ph),
               decoration: BoxDecoration(
                 color: ColorRes.black.withValues(alpha: 0.1),
               ),
@@ -65,30 +63,39 @@ class PreferenceDialogBox extends StatelessWidget {
 
         return InkWell(
           onTap: () => provider.select(title),
-          child: Row(
-            children: [
-              /// Title
-              Text(
-                title,
-                style:
-                    isSelected
-                        ? styleW600S14.copyWith(
-                          color: isSelected ? ColorRes.primaryColor : null,
-                        )
-                        : styleW500S14,
-              ),
+          child: Container(
+            padding: EdgeInsets.only(
+              top: 14.ph,
+              bottom: 14.ph,
+              left: 5.pw,
+              right: 5.pw,
+            ),
 
-              /// Space
-              9.pw.spaceHorizontal,
+            child: Row(
+              children: [
+                /// Title
+                Text(
+                  title,
+                  style:
+                      isSelected
+                          ? styleW600S14.copyWith(
+                            color: isSelected ? ColorRes.primaryColor : null,
+                          )
+                          : styleW500S14,
+                ),
 
-              /// SVG Icon
-              isSelected
-                  ? SvgAsset(
-                    imagePath: AssetRes.rightTickIcon,
-                    color: ColorRes.primaryColor,
-                  )
-                  : const SizedBox.shrink(),
-            ],
+                /// Space
+                9.pw.spaceHorizontal,
+
+                /// SVG Icon
+                isSelected
+                    ? SvgAsset(
+                      imagePath: AssetRes.rightTickIcon,
+                      color: ColorRes.primaryColor,
+                    )
+                    : const SizedBox.shrink(),
+              ],
+            ),
           ),
         );
       },

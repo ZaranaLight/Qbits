@@ -39,7 +39,9 @@ class SelectRegionScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              bottom: Constants.safeAreaPadding.bottom + Constants.horizontalPadding,
+              bottom:
+                  Constants.safeAreaPadding.bottom +
+                  Constants.horizontalPadding,
               top: Constants.horizontalPadding,
             ),
             child: Column(
@@ -50,7 +52,13 @@ class SelectRegionScreen extends StatelessWidget {
 
                   children: [
                     /// Icon
-                    SvgAsset(imagePath: AssetRes.infoIcon, width: 20.pw),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 2.0),
+                      child: SvgAsset(
+                        imagePath: AssetRes.infoIcon,
+                        width: 20.pw,
+                      ),
+                    ),
 
                     ///Space
                     6.pw.spaceHorizontal,
@@ -58,7 +66,8 @@ class SelectRegionScreen extends StatelessWidget {
                     /// Text
                     Expanded(
                       child: Text(
-                        context.l10n?.pleaseSelectTheRegionThatCorrespondsTo ?? "",
+                        context.l10n?.pleaseSelectTheRegionThatCorrespondsTo ??
+                            "",
                         style: styleW500S16,
                       ),
                     ),
@@ -66,7 +75,7 @@ class SelectRegionScreen extends StatelessWidget {
                 ),
 
                 ///Space
-                10.pw.spaceVertical,
+                10.ph.spaceVertical,
 
                 ///Divider
                 Divider(
@@ -99,7 +108,7 @@ class SelectRegionScreen extends StatelessWidget {
                 ),
 
                 ///Space
-                14.pw.spaceVertical,
+                14.ph.spaceVertical,
 
                 ///Divider
                 Column(
@@ -112,7 +121,7 @@ class SelectRegionScreen extends StatelessWidget {
                 ),
 
                 ///Space
-                30.pw.spaceVertical,
+                30.ph.spaceVertical,
 
                 ///Don't know how to choose
                 Align(

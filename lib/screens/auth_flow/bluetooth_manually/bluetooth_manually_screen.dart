@@ -12,6 +12,7 @@ class BluetoothManuallyScreen extends StatelessWidget {
     );
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Consumer<BluetoothManuallyProvider>(
@@ -99,10 +100,7 @@ class BluetoothManuallyScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final result = state.devices[index];
                       final device = result.device;
-                      final name =
-                          device.platformName.isNotEmpty
-                              ? device.platformName
-                              : 'Unknown Device';
+
                       return InkWell(
                         onTap: () {
                           state.onTapSelectedBluetoothDeviceItem(
@@ -136,7 +134,9 @@ class BluetoothManuallyScreen extends StatelessWidget {
 
                             ///Device Name
                             Text(
-                              name,
+                              device.platformName.isNotEmpty
+                                  ? device.platformName
+                                  : "Unknown Device",
                               style: styleW600S16.copyWith(fontSize: 18.pw),
                             ),
                           ],

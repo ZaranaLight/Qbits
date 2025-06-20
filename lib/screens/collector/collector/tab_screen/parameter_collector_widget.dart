@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/collector/collector/collector_provider.dart';
 
 class ParameterCollectorWidget extends StatelessWidget {
   const ParameterCollectorWidget({super.key});

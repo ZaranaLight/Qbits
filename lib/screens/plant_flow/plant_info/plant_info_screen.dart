@@ -1,5 +1,4 @@
-import 'package:qbits/common/widget/debouncer.dart';
-import 'package:qbits/qbits.dart';
+ import 'package:qbits/qbits.dart';
 
 class PlantInfoScreen extends StatelessWidget {
   const PlantInfoScreen({super.key});

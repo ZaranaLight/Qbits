@@ -786,5 +786,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get setUp => 'Set Up';
 
   @override
+  String get addInverter => 'Add Inverter';
+
+  @override
+  String get addEnergyManager => 'Add Energy Manager';
+
+  @override
   String get collector => 'Collector';
 }

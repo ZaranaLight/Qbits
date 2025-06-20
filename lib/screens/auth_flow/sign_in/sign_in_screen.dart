@@ -21,7 +21,25 @@ class SignInScreen extends StatelessWidget {
             children: [
               // Background image
               Positioned(
-                child: SvgAsset(imagePath: AssetRes.authBackgroundIcon),
+                child: Stack(
+                  children: [
+                    /// Background icon
+                    SvgAsset(imagePath: AssetRes.authBackgroundIcon),
+
+                    /// App name icon
+                    Positioned(
+                      top: 0,
+                      bottom: 80.pw,
+                      left: 80.pw,
+                      right: 80.pw,
+                      child: SvgAsset(
+                        imagePath: AssetRes.appNameIcon,
+                        width: 200.pw,
+                        height: 67.ph,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               SafeArea(
                 child: CustomSingleChildScroll(
@@ -90,7 +108,7 @@ class SignInScreen extends StatelessWidget {
                       ),
 
                       ///Space between the top and the logo
-                      230.pw.spaceVertical,
+                      230.ph.spaceVertical,
 
                       ///Login
                       Container(
@@ -127,7 +145,7 @@ class SignInScreen extends StatelessWidget {
                             ),
 
                             ///Space
-                            20.pw.spaceVertical,
+                            20.ph.spaceVertical,
 
                             ///Password
                             AppTextField(
@@ -160,7 +178,7 @@ class SignInScreen extends StatelessWidget {
                             ),
 
                             ///Space
-                            20.pw.spaceVertical,
+                            20.ph.spaceVertical,
 
                             ///Forgot password and Bluetooth
                             Row(
@@ -215,7 +233,7 @@ class SignInScreen extends StatelessWidget {
                       ),
 
                       ///Space
-                      58.pw.spaceVertical,
+                      58.ph.spaceVertical,
 
                       SubmitButton(
                         onTap: () => provider.onSignInTap(context),
@@ -223,7 +241,7 @@ class SignInScreen extends StatelessWidget {
                       ),
 
                       ///Space
-                      10.pw.spaceVertical,
+                      10.ph.spaceVertical,
 
                       EmptyButton(
                         onTap: () => provider.onSignUpTap(context),

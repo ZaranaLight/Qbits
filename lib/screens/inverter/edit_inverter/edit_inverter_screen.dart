@@ -181,7 +181,7 @@ class EditInverterScreen extends StatelessWidget {
               ),
               decoration: const InputDecoration(
                 isDense: true,
-                contentPadding: EdgeInsets.zero,
+                contentPadding: EdgeInsets.symmetric(vertical: 12), // 👈 increase vertical padding
               ),
               textAlign: TextAlign.center,
             ),

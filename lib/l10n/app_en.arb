@@ -258,5 +258,7 @@
   "totalProduct": "Total Product",
   "totalPower": "Total Power",
   "setUp": "Set Up",
+  "addInverter": "Add Inverter",
+  "addEnergyManager": "Add Energy Manager",
   "collector": "Collector"
 }

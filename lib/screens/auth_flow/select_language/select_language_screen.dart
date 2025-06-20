@@ -46,7 +46,7 @@ class SelectLanguageScreen extends StatelessWidget {
             child: Column(
               children: [
                 ///Space
-                15.pw.spaceVertical,
+                15.ph.spaceVertical,
 
                 /// CheckBox List
                 CustomListView(
@@ -73,7 +73,7 @@ class SelectLanguageScreen extends StatelessWidget {
                 ),
 
                 ///Space
-                14.pw.spaceVertical,
+                14.ph.spaceVertical,
 
                 ///Divider
                 Column(
@@ -86,7 +86,7 @@ class SelectLanguageScreen extends StatelessWidget {
                 ),
 
                 ///Space
-                30.pw.spaceVertical,
+                30.ph.spaceVertical,
               ],
             ),
           ),
