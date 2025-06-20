@@ -12,6 +12,7 @@ class CircularChartContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
+        spacing:40.pw  ,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           /// Left Side Column
@@ -53,35 +54,37 @@ class CircularChartContainer extends StatelessWidget {
           ),
 
           /// Right Side Column
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _columnText(
-                title: context.l10n?.totalProductionPower ?? "",
-                value: "0.00 KW",
-              ),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _columnText(
+                  title: context.l10n?.totalProductionPower ?? "",
+                  value: "0.00 KW",
+                ),
 
-              /// Space
-              20.ph.spaceVertical,
-              _columnText(
-                title: context.l10n?.installCapacity ?? "",
-                value: "857.65 KW",
-              ),
+                /// Space
+                20.ph.spaceVertical,
+                _columnText(
+                  title: context.l10n?.installCapacity ?? "",
+                  value: "857.65 KW",
+                ),
 
-              /// Space
-              20.ph.spaceVertical,
-              _columnText(
-                title: context.l10n?.monthlyProduction ?? "",
-                value: "26.02 MWh",
-              ),
+                /// Space
+                20.ph.spaceVertical,
+                _columnText(
+                  title: context.l10n?.monthlyProduction ?? "",
+                  value: "26.02 MWh",
+                ),
 
-              /// Space
-              20.ph.spaceVertical,
-              _columnText(
-                title: context.l10n?.totalProduction ?? "",
-                value: "1.66 GWh",
-              ),
-            ],
+                /// Space
+                20.ph.spaceVertical,
+                _columnText(
+                  title: context.l10n?.totalProduction ?? "",
+                  value: "1.66 GWh",
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -104,7 +107,8 @@ class CircularChartContainer extends StatelessWidget {
             children: [
               // Before the dot
               TextSpan(
-                text: value.contains('.') ? '${value.split('.')[0]}.' : value,
+                text:
+                    value.contains('.') ? '${value.split('.')[0]}.' : value,
                 style: styleW600S16,
               ),
 

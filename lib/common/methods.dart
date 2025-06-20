@@ -1,3 +1,4 @@
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -56,6 +57,38 @@ Future<bool> checkCameraPermission(BuildContext context) async {
     return false;
   }
   return false;
+}
+
+Future<void> requestBluetoothPermission() async {
+  print('test------------------------------------------1 ');
+  // if (await Permission.bluetoothConnect.isGranted) {
+  //   print("Bluetooth permission already granted.");
+  //   return;
+  // }
+
+  final status = await Permission.bluetoothConnect.request();
+  print('test------------------------------------------2 ');
+
+  if (status.isGranted) {
+    print('test------------------------------------------3 ');
+
+    print("Bluetooth permission granted!");
+  } else if (status.isPermanentlyDenied) {
+    print('test------------------------------------------4 ');
+
+    openAppSettings();
+  } else {
+    print("Bluetooth permission denied.");
+  }
+}
+
+Future<void> requestPermissions() async {
+  await [
+    Permission.location,
+    Permission.bluetoothScan,
+    Permission.bluetoothConnect,
+    Permission.locationWhenInUse,
+  ].request();
 }
 
 Future<File?> compressImage(File? file, {double? requestedSize}) async {

@@ -12,7 +12,6 @@ class BluetoothManuallyScreen extends StatelessWidget {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Consumer<BluetoothManuallyProvider>(
@@ -28,7 +27,7 @@ class BluetoothManuallyScreen extends StatelessWidget {
               ),
               child: SubmitButton(
                 title: context.l10n?.searchDevice ?? "",
-                onTap: /*state.isScanning ? state.stopScan :*/ state.startScan,
+                onTap: state.startScan,
               ),
             ),
           ),
@@ -92,7 +91,6 @@ class BluetoothManuallyScreen extends StatelessWidget {
                     separatorBuilder: (context, index) {
                       return Container(
                         height: 1,
-
                         width: double.infinity,
                         color: ColorRes.black.withValues(alpha: 0.1),
                       );
@@ -134,9 +132,11 @@ class BluetoothManuallyScreen extends StatelessWidget {
 
                             ///Device Name
                             Text(
-                              device.platformName.isNotEmpty
-                                  ? device.platformName
-                                  : "Unknown Device",
+                              result.advertisementData.advName.isNotEmpty
+                                  ? result.advertisementData.advName
+                                  : (device.platformName.isNotEmpty
+                                      ? device.platformName
+                                      : "Unknown Device"),
                               style: styleW600S16.copyWith(fontSize: 18.pw),
                             ),
                           ],
@@ -168,7 +168,7 @@ class BluetoothManuallyScreen extends StatelessWidget {
                         ),
                         TextSpan(
                           text:
-                              "Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers",
+                              "If Bluetooth devices cannot be found, please turn off the system Bluetooth and then turn it back on",
                           style: styleW400S14.copyWith(color: ColorRes.black),
                         ),
                       ],

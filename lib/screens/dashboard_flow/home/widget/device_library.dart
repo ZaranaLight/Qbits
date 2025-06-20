@@ -25,8 +25,10 @@ class DeviceLiberyContainer extends StatelessWidget {
                 ),
 
                 /// Forward Icon
-                SvgAsset(imagePath: AssetRes.forwardIcon,color: ColorRes.black.withValues(alpha: 0.3),),
-
+                SvgAsset(
+                  imagePath: AssetRes.forwardIcon,
+                  color: ColorRes.black.withValues(alpha: 0.3),
+                ),
               ],
             ),
           ),
@@ -115,22 +117,26 @@ class DeviceLiberyContainer extends StatelessWidget {
               color: ColorRes.primaryColor.withValues(alpha: 0.06),
               borderRadius: BorderRadius.circular(4),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _activityWidget(
-                  title: context.l10n?.dailyActivity ?? "",
-                  value: "0",
-                ),
-                _activityWidget(
-                  title: context.l10n?.monthlyActivity ?? "",
-                  value: "0",
-                ),
-                _activityWidget(
-                  title: context.l10n?.yearlyActivity ?? "",
-                  value: "0",
-                ),
-              ],
+            child: Expanded(
+              child: Row(
+                spacing: 10.pw,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _activityWidget(
+                    title: context.l10n?.dailyActivity ?? "",
+                    value: "0",
+                  ),
+                  _activityWidget(
+                    title: context.l10n?.monthlyActivity ?? "",
+                    value: "0",
+                  ),
+                  _activityWidget(
+                    title: context.l10n?.yearlyActivity ?? "",
+                    value: "0",
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -182,14 +188,22 @@ class DeviceLiberyContainer extends StatelessWidget {
 
   Widget _activityWidget({required String title, required String value}) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         /// Activity Title Text
-        Text(
-          title,
-          style: styleW500S14.copyWith(
-            color: ColorRes.black.withValues(alpha: 0.5),
+        Center(
+          child: Text(
+            title,
+            style: styleW500S12.copyWith(
+              color: ColorRes.black.withValues(alpha: 0.5),
+            ),
           ),
         ),
+
+
+
+
 
         /// Space
         4.ph.spaceVertical,

@@ -1,3 +1,5 @@
+import 'package:geolocator/geolocator.dart';
+import 'package:oktoast/oktoast.dart' as AppUtils;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qbits/qbits.dart';
 
@@ -12,35 +14,55 @@ class BluetoothManuallyProvider extends ChangeNotifier {
 
   bool get isScanning => _isScanning;
 
-  Future<void> requestPermissions() async {
+  Future<void> blueToothRequestPermissions() async {
     await [
-      Permission.location,
+
       Permission.bluetoothScan,
       Permission.bluetoothConnect,
+
     ].request();
   }
 
   Future<void> startScan() async {
+
     _devices.clear();
     _isScanning = true;
-
     notifyListeners();
 
-    final status = await Permission.bluetoothScan.status;
-    if (!status.isGranted) {
-      await requestPermissions();
+    // Request permissions
+    await requestPermissions();
+    if (Platform.isAndroid &&
+        Platform.operatingSystemVersion.contains("Android 11")) {
+      if (!await Geolocator.isLocationServiceEnabled()) {
+        AppUtils.showToast("Please enable Location (GPS) from device settings");
+        _isScanning = false;
+        notifyListeners();
+        return;
+      }
+    }
+    // Check if Bluetooth is ON
+    final state = await FlutterBluePlus.adapterState.first;
+    if (state != BluetoothAdapterState.on) {
+      _isScanning = false;
+      notifyListeners();
+      debugPrint("Bluetooth is off. Ask user to turn it on.");
       return;
     }
+
+    // Start scanning
     await FlutterBluePlus.startScan(timeout: const Duration(seconds: 5));
 
     FlutterBluePlus.scanResults.listen((results) {
       for (var result in results) {
-        if (!_devices.any((r) => r.device.remoteId == result.device.remoteId)) {
+        if (!_devices.any(
+          (r) => r.device.platformName == result.device.platformName,
+        )) {
           _devices.add(result);
           notifyListeners();
         }
       }
     });
+
     FlutterBluePlus.isScanning.listen((scanning) {
       _isScanning = scanning;
       notifyListeners();
@@ -50,10 +72,6 @@ class BluetoothManuallyProvider extends ChangeNotifier {
   void stopScan() {
     FlutterBluePlus.stopScan();
   }
-
-  final List<BluetoothDevice> _connectedDevices = [];
-
-  List<BluetoothDevice> get connectedDevices => _connectedDevices;
 
   void onTapSelectedBluetoothDeviceItem(
     BuildContext context,
@@ -66,8 +84,8 @@ class BluetoothManuallyProvider extends ChangeNotifier {
   }
 
   close() {
+    FlutterBluePlus.stopScan();
     _devices.clear();
-    _connectedDevices.clear();
     _isScanning = false;
     notifyListeners();
   }
