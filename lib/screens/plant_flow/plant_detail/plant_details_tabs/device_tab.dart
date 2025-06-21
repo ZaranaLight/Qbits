@@ -123,7 +123,7 @@ class DeviceTab extends StatelessWidget {
               ),
 
               /// Space between text and underline
-              4.pw.spaceVertical,
+              4.ph.spaceVertical,
 
               /// Underline
               AnimatedContainer(

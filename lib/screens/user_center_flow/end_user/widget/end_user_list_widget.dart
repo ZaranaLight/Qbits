@@ -47,7 +47,7 @@ class EndUserListWidget extends StatelessWidget {
                     ),
 
                     ///Space
-                    4.pw.spaceVertical,
+                    4.ph.spaceVertical,
 
                     ///Password
                     Text(
@@ -60,7 +60,7 @@ class EndUserListWidget extends StatelessWidget {
                     ),
 
                     ///Space
-                    4.pw.spaceVertical,
+                    4.ph.spaceVertical,
 
                     ///Phone
                     Text(
@@ -73,7 +73,7 @@ class EndUserListWidget extends StatelessWidget {
                     ),
 
                     ///Space
-                    4.pw.spaceVertical,
+                    4.ph.spaceVertical,
 
                     ///Mail
                     Text(

@@ -90,7 +90,7 @@ class RemoteControlGridSetWidget extends StatelessWidget {
           child: Column(
             children: [
               ///Space
-              20.pw.spaceVertical,
+              20.ph.spaceVertical,
 
               /// Title
               Row(
@@ -101,7 +101,7 @@ class RemoteControlGridSetWidget extends StatelessWidget {
               ),
 
               ///Space
-              20.pw.spaceVertical,
+              20.ph.spaceVertical,
               Row(
                 children: [
                   ColumKeyValueWidget(label: "Reactive PowerC:", value: '0Var'),
@@ -110,7 +110,7 @@ class RemoteControlGridSetWidget extends StatelessWidget {
               ),
 
               ///Space
-              20.pw.spaceVertical,
+              20.ph.spaceVertical,
               Row(
                 children: [
                   ColumKeyValueWidget(label: "Power FectorB:", value: '0Var'),
@@ -119,7 +119,7 @@ class RemoteControlGridSetWidget extends StatelessWidget {
               ),
 
               ///Space
-              20.pw.spaceVertical,
+              20.ph.spaceVertical,
               Row(
                 children: [
                   ColumKeyValueWidget(label: "Total Power", value: '0Var'),
@@ -128,7 +128,7 @@ class RemoteControlGridSetWidget extends StatelessWidget {
               ),
 
               ///Space
-              20.pw.spaceVertical,
+              20.ph.spaceVertical,
               Row(
                 children: [
                   ColumKeyValueWidget(label: "Total Product:", value: '0Var'),
@@ -137,7 +137,7 @@ class RemoteControlGridSetWidget extends StatelessWidget {
               ),
 
               ///Space
-              20.pw.spaceVertical,
+              20.ph.spaceVertical,
             ],
           ),
         ),

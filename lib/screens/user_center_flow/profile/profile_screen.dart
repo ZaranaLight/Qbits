@@ -108,7 +108,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
 
                     /// Space
-                    2.pw.spaceVertical,
+                    2.ph.spaceVertical,
 
                     ///Company Code
                     Text(

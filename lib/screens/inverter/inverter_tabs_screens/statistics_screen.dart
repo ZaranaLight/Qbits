@@ -20,7 +20,7 @@ class StatisticsScreen extends StatelessWidget {
           body: Column(
             children: [
               ///Space
-              16.pw.spaceVertical,
+              16.ph.spaceVertical,
 
               ///Chart Section
               _buildChartSection(provider),
@@ -44,13 +44,13 @@ class StatisticsScreen extends StatelessWidget {
               _buildChartTabs(provider),
 
               ///Space
-              8.pw.spaceVertical,
+              8.ph.spaceVertical,
 
               ///Date Picker
               _buildDatePicker(provider),
 
               ///Space
-              10.pw.spaceVertical,
+              10.ph.spaceVertical,
 
               ///Energy Usage and Preference Dropdown
               _buildEnergyUsage(),
@@ -59,31 +59,31 @@ class StatisticsScreen extends StatelessWidget {
               Divider(color: ColorRes.black.withValues(alpha: 0.1)),
 
               ///Space
-              6.pw.spaceVertical,
+              6.ph.spaceVertical,
 
               ///Preference Dropdown
               _buildPreferenceDropdown(provider),
 
               ///Space
-              10.pw.spaceVertical,
+              10.ph.spaceVertical,
 
               ///kWh Label
               _buildKWhLabel(),
 
               ///Space
-              6.pw.spaceVertical,
+              6.ph.spaceVertical,
 
               /// Chart
               _buildChart(provider),
 
               /// Space
-              15.pw.spaceVertical,
+              15.ph.spaceVertical,
 
               /// Chart Legend
               _buildChartLegend(provider),
 
               /// Space
-              15.pw.spaceVertical,
+              15.ph.spaceVertical,
             ],
           ),
         );

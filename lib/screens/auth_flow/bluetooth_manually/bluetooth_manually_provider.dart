@@ -1,6 +1,5 @@
 import 'package:geolocator/geolocator.dart';
-import 'package:oktoast/oktoast.dart' as AppUtils;
-import 'package:permission_handler/permission_handler.dart';
+
 import 'package:qbits/qbits.dart';
 
 class BluetoothManuallyProvider extends ChangeNotifier {
@@ -20,22 +19,32 @@ class BluetoothManuallyProvider extends ChangeNotifier {
     notifyListeners();
 
     // Request permissions
-    await requestPermissions();
-    if (Platform.isAndroid &&
-        Platform.operatingSystemVersion.contains("Android 11")) {
-      if (!await Geolocator.isLocationServiceEnabled()) {
-        AppUtils.showToast("Please enable Location (GPS) from device settings");
-        _isScanning = false;
-        notifyListeners();
-        return;
-      }
-    }
+    // await requestPermissions();
+    // if (Platform.isAndroid &&
+    //     Platform.operatingSystemVersion.contains("Android 11")) {
+    //   if (!await Geolocator.isLocationServiceEnabled()) {
+    //     showErrorMsg(
+    //       navigatorKey
+    //               .currentState
+    //               ?.context
+    //               .l10n!
+    //               .pleaseEnableLocationFromDeviceSetting ??
+    //           "",
+    //     );
+    //
+    //     _isScanning = false;
+    //     notifyListeners();
+    //     return;
+    //   }
+    // }
     // Check if Bluetooth is ON
     final state = await FlutterBluePlus.adapterState.first;
     if (state != BluetoothAdapterState.on) {
       _isScanning = false;
       notifyListeners();
-      debugPrint("Bluetooth is off. Ask user to turn it on.");
+      showCustomToast(
+        navigatorKey.currentState?.context.l10n?.bluetoothIsOff ?? "",
+      );
       return;
     }
 

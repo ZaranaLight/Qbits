@@ -60,12 +60,12 @@ class AboutTab extends StatelessWidget {
                   child: Column(
                     children: [
                       /// Space
-                      16.pw.spaceVertical,
+                      16.ph.spaceVertical,
 
                       RowWidget(title: context.l10n?.address, value: "text"),
 
                       /// Space
-                      16.pw.spaceVertical,
+                      16.ph.spaceVertical,
 
                       RowWidget(
                         title: context.l10n?.capacity,
@@ -73,7 +73,7 @@ class AboutTab extends StatelessWidget {
                       ),
 
                       /// Space
-                      16.pw.spaceVertical,
+                      16.ph.spaceVertical,
 
                       RowWidget(
                         title: context.l10n?.stationType,
@@ -81,17 +81,17 @@ class AboutTab extends StatelessWidget {
                       ),
 
                       /// Space
-                      16.pw.spaceVertical,
+                      16.ph.spaceVertical,
 
                       RowWidget(title: context.l10n?.longitude, value: "0"),
 
                       /// Space
-                      16.pw.spaceVertical,
+                      16.ph.spaceVertical,
 
                       RowWidget(title: context.l10n?.latitude, value: "0"),
 
                       /// Space
-                      16.pw.spaceVertical,
+                      16.ph.spaceVertical,
 
                       /// Owner Details
                       RowWidget(
@@ -106,7 +106,7 @@ class AboutTab extends StatelessWidget {
                       ),
 
                       /// Space
-                      16.pw.spaceVertical,
+                      16.ph.spaceVertical,
                     ],
                   ),
                 ),

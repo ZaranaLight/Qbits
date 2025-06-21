@@ -10,55 +10,73 @@ class TotalPlantsContainer extends StatelessWidget {
         color: ColorRes.white,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.pw, vertical: 16.ph),
-            child: Row(
-              children: [
-                Text(
-                  context.l10n?.totalPlants ?? "",
-                  style: styleW500S16.copyWith(
-                    color: ColorRes.black.withValues(alpha: 60),
-                  ),
+      child: Material(
+        color: ColorRes.transparent,
+        child: InkWell(
+          onTap: () {
+            context.read<DashboardProvider>().onPageChanged(1);
+          },
+          borderRadius: BorderRadius.circular(5.pw),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 20.pw,
+                  vertical: 16.ph,
                 ),
+                child: Row(
+                  children: [
+                    Text(
+                      context.l10n?.totalPlants ?? "",
+                      style: styleW500S16.copyWith(
+                        color: ColorRes.black.withValues(alpha: 60),
+                      ),
+                    ),
 
-                /// Space
-                6.pw.spaceHorizontal,
+                    /// Space
+                    6.pw.spaceHorizontal,
 
-                Text("7", style: styleW600S16),
+                    Text("7", style: styleW600S16),
 
-                Spacer(),
+                    Spacer(),
 
-                /// Forward Icon
-                SvgAsset(imagePath: AssetRes.forwardIcon,color: ColorRes.black.withValues(alpha: 0.3),),
-              ],
-            ),
+                    /// Forward Icon
+                    SvgAsset(
+                      imagePath: AssetRes.forwardIcon,
+                      color: ColorRes.black.withValues(alpha: 0.3),
+                    ),
+                  ],
+                ),
+              ),
+
+              Container(
+                height: 1,
+                color: ColorRes.black.withValues(alpha: 0.10),
+              ),
+
+              _totalPlant(
+                title: context.l10n?.normal ?? "",
+                svg: AssetRes.doneIcon,
+                value: "0",
+              ),
+
+              _totalPlant(
+                title: context.l10n?.offline ?? "",
+                svg: AssetRes.offlineIcon,
+                value: "6",
+              ),
+
+              _totalPlant(
+                title: context.l10n?.alarm ?? "",
+                svg: AssetRes.exclamationIcon,
+                value: "1",
+              ),
+
+              /// Space
+              8.ph.spaceVertical,
+            ],
           ),
-
-          Container(height: 1, color: ColorRes.black.withValues(alpha: 0.10)),
-
-          _totalPlant(
-            title: context.l10n?.normal ?? "",
-            svg: AssetRes.doneIcon,
-            value: "0",
-          ),
-
-          _totalPlant(
-            title: context.l10n?.offline ?? "",
-            svg: AssetRes.offlineIcon,
-            value: "6",
-          ),
-
-          _totalPlant(
-            title: context.l10n?.alarm ?? "",
-            svg: AssetRes.exclamationIcon,
-            value: "1",
-          ),
-
-          /// Space
-          8.ph.spaceVertical,
-        ],
+        ),
       ),
     );
   }
@@ -84,8 +102,10 @@ class TotalPlantsContainer extends StatelessWidget {
 
           8.pw.spaceHorizontal,
 
-          SvgAsset(imagePath: AssetRes.forwardIcon,color: ColorRes.black.withValues(alpha: 0.3),),
-
+          SvgAsset(
+            imagePath: AssetRes.forwardIcon,
+            color: ColorRes.black.withValues(alpha: 0.3),
+          ),
         ],
       ),
     );

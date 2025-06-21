@@ -60,11 +60,7 @@ class SubmitButton extends StatelessWidget {
                   child: Text(
                     title ?? '',
                     style:
-                        style ??
-                        styleW700S17.copyWith(
-                          color: ColorRes.white,
-                          fontSize: Constants.horizontalPadding,
-                        ),
+                        style ?? styleW700S16.copyWith(color: ColorRes.white),
                   ),
                 ),
               ),
@@ -130,10 +126,11 @@ class EmptyButton extends StatelessWidget {
                 child: Center(
                   child: Text(
                     title ?? '',
-                    style:style?? styleW700S17.copyWith(
-                      color: enable ? null : ColorRes.black,
-                      fontSize: 16,
-                    ),
+                    style:
+                        style ??
+                        styleW700S16.copyWith(
+                          color: enable ? null : ColorRes.black,
+                        ),
                   ),
                 ),
               ),

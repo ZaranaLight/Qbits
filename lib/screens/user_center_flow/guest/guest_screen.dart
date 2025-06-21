@@ -122,7 +122,7 @@ class _TopImgWidget extends StatelessWidget {
         ),
 
         ///Space
-        14.pw.spaceVertical,
+        14.ph.spaceVertical,
 
         /// Text
         Text(

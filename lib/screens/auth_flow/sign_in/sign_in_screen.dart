@@ -24,7 +24,10 @@ class SignInScreen extends StatelessWidget {
                 child: Stack(
                   children: [
                     /// Background icon
-                    SvgAsset(imagePath: AssetRes.authBackgroundIcon),
+                    SvgAsset(
+                      imagePath: AssetRes.authBackgroundIcon,
+                      height: 52.h,
+                    ),
 
                     /// App name icon
                     Positioned(
@@ -172,6 +175,7 @@ class SignInScreen extends StatelessWidget {
                                       provider.isPwdVisible
                                           ? AssetRes.eyeIcon
                                           : AssetRes.invisibleIcon,
+                                  color: ColorRes.black.withValues(alpha: 0.3),
                                 ),
                               ),
                               onSuffixTap: provider.onPwdVisibilityChanged,

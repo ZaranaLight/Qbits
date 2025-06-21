@@ -1659,6 +1659,24 @@ abstract class AppLocalizations {
   /// **'Add Energy Manager'**
   String get addEnergyManager;
 
+  /// No description provided for @bluetoothIsOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Bluetooth is off.'**
+  String get bluetoothIsOff;
+
+  /// No description provided for @energy.
+  ///
+  /// In en, this message translates to:
+  /// **'Energy'**
+  String get energy;
+
+  /// No description provided for @pleaseEnableLocationFromDeviceSetting.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enable Location (GPS) from device settings'**
+  String get pleaseEnableLocationFromDeviceSetting;
+
   /// No description provided for @collector.
   ///
   /// In en, this message translates to:

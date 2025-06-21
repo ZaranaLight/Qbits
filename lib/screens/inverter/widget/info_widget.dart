@@ -44,7 +44,7 @@ class ExpandableInfoSection extends StatelessWidget {
                 ),
 
                 /// Space
-                5.pw.spaceVertical,
+                5.ph.spaceVertical,
 
                 /// List of items
                 ...?items?.map(

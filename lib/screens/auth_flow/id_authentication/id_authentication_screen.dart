@@ -78,7 +78,7 @@ class IdAuthenticationScreen extends StatelessWidget {
                 ),
 
                 ///Space
-                20.pw.spaceVertical,
+                20.ph.spaceVertical,
 
                 ///Account Number
                 AppTextField(
@@ -89,7 +89,7 @@ class IdAuthenticationScreen extends StatelessWidget {
                 ),
 
                 ///Space
-                20.pw.spaceVertical,
+                20.ph.spaceVertical,
 
                 ///Password
                 AppTextField(

@@ -792,5 +792,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addEnergyManager => 'Add Energy Manager';
 
   @override
+  String get bluetoothIsOff => 'Bluetooth is off.';
+
+  @override
+  String get energy => 'Energy';
+
+  @override
+  String get pleaseEnableLocationFromDeviceSetting => 'Please enable Location (GPS) from device settings';
+
+  @override
   String get collector => 'Collector';
 }

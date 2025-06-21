@@ -46,9 +46,9 @@ class PlantInfoScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 PlantInfoPart1(),
-                16.pw.spaceVertical,
+                16.ph.spaceVertical,
                 PlantInfoPart2(),
-                16.pw.spaceVertical,
+                16.ph.spaceVertical,
                 PlantInfoPart3(),
               ],
             ),

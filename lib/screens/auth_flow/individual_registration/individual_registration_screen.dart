@@ -60,7 +60,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
                   ),
 
                   ///Space
-                  20.pw.spaceVertical,
+                  20.ph.spaceVertical,
 
                   /// Model
                   AppTextField(
@@ -73,13 +73,13 @@ class IndividualRegistrationScreen extends StatelessWidget {
                       onTap: () => provider.scanQRCode(context, 'model'),
                       child: SvgAsset(
                         imagePath: AssetRes.scannerIcon,
-                        color: ColorRes.black.withValues(alpha: 0.5),
+                        // color: ColorRes.black.withValues(alpha: 0.5),
                       ),
                     ),
                   ),
 
                   ///Space
-                  20.pw.spaceVertical,
+                  20.ph.spaceVertical,
 
                   /// Account
                   AppTextField(
@@ -91,7 +91,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
                   ),
 
                   ///Space
-                  20.pw.spaceVertical,
+                  20.ph.spaceVertical,
 
                   /// Password
                   AppTextField(
@@ -113,7 +113,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
                       child: SvgAsset(
                         key: ValueKey<bool>(provider.isPasswordVisible),
                         imagePath:
-                            !provider.isPasswordVisible
+                            provider.isPasswordVisible
                                 ? AssetRes.eyeIcon
                                 : AssetRes.invisibleIcon,
                         color: ColorRes.black.withValues(alpha: 0.3),
@@ -122,7 +122,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
                   ),
 
                   ///Space
-                  10.pw.spaceVertical,
+                  16.ph.spaceVertical,
 
                   /// Confirm Password
                   AppTextField(
@@ -142,7 +142,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
                       child: SvgAsset(
                         key: ValueKey<bool>(provider.isConfirmPasswordVisible),
                         imagePath:
-                            !provider.isConfirmPasswordVisible
+                            provider.isConfirmPasswordVisible
                                 ? AssetRes.eyeIcon
                                 : AssetRes.invisibleIcon,
                         color: ColorRes.black.withValues(alpha: 0.3),
@@ -151,7 +151,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
                   ),
 
                   ///Space
-                  20.pw.spaceVertical,
+                  20.ph.spaceVertical,
 
                   /// Your City
                   AppTextField(
@@ -163,7 +163,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
                   ),
 
                   ///Space
-                  20.pw.spaceVertical,
+                  20.ph.spaceVertical,
 
                   /// Collector Address
                   AppTextField(
@@ -178,13 +178,13 @@ class IndividualRegistrationScreen extends StatelessWidget {
                               provider.scanQRCode(context, 'collector_address'),
                       child: SvgAsset(
                         imagePath: AssetRes.scannerIcon,
-                        color: ColorRes.black.withValues(alpha: 0.5),
+                        // color: ColorRes.black.withValues(alpha: 0.5),
                       ),
                     ),
                   ),
 
                   ///Space
-                  20.pw.spaceVertical,
+                  20.ph.spaceVertical,
 
                   /// Timezone
                   AppDropDown<String>(
@@ -210,7 +210,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
                   ),
 
                   ///Space
-                  20.pw.spaceVertical,
+                  20.ph.spaceVertical,
 
                   /// Station Type
                   AppDropDown<String>(
@@ -226,7 +226,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
                   ),
 
                   ///Space
-                  20.pw.spaceVertical,
+                  20.ph.spaceVertical,
 
                   /// Phone Number
                   AppTextField(
@@ -239,7 +239,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
                   ),
 
                   ///Space
-                  10.pw.spaceVertical,
+                  10.ph.spaceVertical,
                 ],
               ),
             ),

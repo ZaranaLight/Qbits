@@ -23,7 +23,7 @@ class AlarmTab extends StatelessWidget {
               _buildTabContent(provider, context),
 
               /// Vertical space
-              20.pw.spaceVertical,
+              20.ph.spaceVertical,
             ],
           );
         },

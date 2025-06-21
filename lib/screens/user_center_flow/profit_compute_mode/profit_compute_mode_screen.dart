@@ -56,25 +56,25 @@ class ProfitComputeModeScreen extends StatelessWidget {
                 _buildTotalEnergyRow(context),
 
                 ///Space
-                10.pw.spaceVertical,
+                10.ph.spaceVertical,
 
                 ///Average Price Row
                 _buildAveragePriceRow(context),
 
                 ///Space
-                10.pw.spaceVertical,
+                10.ph.spaceVertical,
 
                 ///Lorem Ipsum Text
                 _buildLoremIpsumText(),
 
                 ///Space
-                20.pw.spaceVertical,
+                20.ph.spaceVertical,
 
                 ///Parameter Set Header
                 _buildParameterSetHeader(context),
 
                 ///Space
-                10.pw.spaceVertical,
+                10.ph.spaceVertical,
 
                 ///Parameter Inputs
                 _buildParameterInputs(provider),
@@ -203,7 +203,7 @@ class ProfitComputeModeScreen extends StatelessWidget {
         ),
 
         ///Space
-        10.pw.spaceVertical,
+        10.ph.spaceVertical,
 
         _buildParameterInput(
           title: "Lorem Ipsum is Simply:",
@@ -213,7 +213,7 @@ class ProfitComputeModeScreen extends StatelessWidget {
         ),
 
         ///Space
-        10.pw.spaceVertical,
+        10.ph.spaceVertical,
 
         _buildParameterInput(
           title: "Lorem Ipsum is Simply:",
@@ -223,7 +223,7 @@ class ProfitComputeModeScreen extends StatelessWidget {
         ),
 
         ///Space
-        10.pw.spaceVertical,
+        10.ph.spaceVertical,
 
         _buildParameterInput(
           title: "Lorem Ipsum is Simply:",
@@ -233,7 +233,7 @@ class ProfitComputeModeScreen extends StatelessWidget {
         ),
 
         ///Space
-        10.pw.spaceVertical,
+        10.ph.spaceVertical,
 
         _buildParameterInput(
           title: "Lorem Ipsum is Simply:",

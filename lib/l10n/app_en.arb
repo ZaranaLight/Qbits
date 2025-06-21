@@ -260,5 +260,8 @@
   "setUp": "Set Up",
   "addInverter": "Add Inverter",
   "addEnergyManager": "Add Energy Manager",
+  "bluetoothIsOff": "Bluetooth is off.",
+  "energy": "Energy",
+  "pleaseEnableLocationFromDeviceSetting": "Please enable Location (GPS) from device settings",
   "collector": "Collector"
 }

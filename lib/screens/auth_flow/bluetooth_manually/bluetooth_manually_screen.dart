@@ -176,7 +176,7 @@ class BluetoothManuallyScreen extends StatelessWidget {
                   ),
 
                   /// Space
-                  60.pw.spaceVertical,
+                  60.ph.spaceVertical,
 
                   AssetsImg(imagePath: AssetRes.blueToothMobileImg),
                 ],

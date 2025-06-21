@@ -23,7 +23,9 @@ class CompanyRegistrationScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              bottom: Constants.safeAreaPadding.bottom + Constants.horizontalPadding,
+              bottom:
+                  Constants.safeAreaPadding.bottom +
+                  Constants.horizontalPadding,
               top: 20.pw,
             ),
             child: Column(
@@ -48,14 +50,11 @@ class CompanyRegistrationScreen extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(bottom: 10.ph),
                         child: Text(
-                          "Lorem Ipsum is simply dummy text of the printing and type "
-                          "setting industry. Lorem Ipsum has been the industry's "
-                          "standard dummy text ever since the 1500s, when an "
-                          "unknown printer took a galley of type and scrambled it to "
-                          "make a type specimen book.",
+                          "If your company has already registered a company account in Management System, you do not need to register again.\nPlease contact the administrator of your company (organization) to add you as a subordinate organization or organization member in the system.",
                           style: styleW400S12.copyWith(
                             color: ColorRes.black2.withValues(alpha: 0.6),
                           ),
+                          textAlign: TextAlign.justify,
                         ),
                       ),
                     ],
@@ -63,7 +62,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                 ),
 
                 ///Space
-                20.pw.spaceVertical,
+                20.ph.spaceVertical,
 
                 Container(
                   decoration: BoxDecoration(
@@ -86,7 +85,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                             ),
 
                             ///Space
-                            20.pw.spaceVertical,
+                            20.ph.spaceVertical,
 
                             /// Password
                             AppTextField(
@@ -113,7 +112,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                                     provider.isPasswordVisible,
                                   ),
                                   imagePath:
-                                      !provider.isPasswordVisible
+                                       provider.isPasswordVisible
                                           ? AssetRes.eyeIcon
                                           : AssetRes.invisibleIcon,
                                   color: ColorRes.black.withValues(alpha: 0.3),
@@ -122,7 +121,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                             ),
 
                             ///Space
-                            10.pw.spaceVertical,
+                            16.ph.spaceVertical,
 
                             /// Confirm Password
                             AppTextField(
@@ -147,7 +146,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                                     provider.isConfirmPasswordVisible,
                                   ),
                                   imagePath:
-                                      !provider.isConfirmPasswordVisible
+                                       provider.isConfirmPasswordVisible
                                           ? AssetRes.eyeIcon
                                           : AssetRes.invisibleIcon,
                                   color: ColorRes.black.withValues(alpha: 0.3),
@@ -156,7 +155,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                             ),
 
                             ///Space
-                            20.pw.spaceVertical,
+                            20.ph.spaceVertical,
 
                             /// Company Code
                             AppTextField(
@@ -176,7 +175,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                       ),
 
                       ///Space
-                      10.pw.spaceVertical,
+                      10.ph.spaceVertical,
 
                       /// Send
                       Row(
@@ -201,7 +200,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                       ),
 
                       ///Space
-                      10.pw.spaceVertical,
+                      10.ph.spaceVertical,
 
                       /// Mail
                       Padding(
@@ -218,7 +217,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                       ),
 
                       ///Space
-                      10.pw.spaceVertical,
+                      10.ph.spaceVertical,
 
                       /// Please use phone number or email ti obtain the verification code
                       Row(
@@ -249,7 +248,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                       ),
 
                       ///Space
-                      10.pw.spaceVertical,
+                      10.ph.spaceVertical,
 
                       /// Verification Code
                       Padding(
@@ -265,7 +264,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                       ),
 
                       ///Space
-                      20.pw.spaceVertical,
+                      20.ph.spaceVertical,
 
                       /// Register Button
                       Padding(

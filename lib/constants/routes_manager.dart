@@ -1,4 +1,5 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/dashboard_flow/energy/energy_screen.dart';
 
 class RouteManager {
   static String get initialRoute => SplashScreen.routeName;
@@ -37,6 +38,13 @@ class RouteManager {
       case HomeScreen.routeName:
         return MaterialPageRoute(
           builder: HomeScreen.builder,
+          settings: settings,
+        );
+
+      /// Energy Screen
+      case EnergyScreen.routeName:
+        return MaterialPageRoute(
+          builder: EnergyScreen.builder,
           settings: settings,
         );
 

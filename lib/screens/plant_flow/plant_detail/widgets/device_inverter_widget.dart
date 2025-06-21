@@ -123,7 +123,7 @@ class InverterWidget extends StatelessWidget {
                                       Text(context.l10n?.production ?? ""),
 
                                       ///Space
-                                      2.pw.spaceVertical,
+                                      2.ph.spaceVertical,
                                       Text("0 kW", style: styleW600S16),
                                     ],
                                   ),
@@ -136,7 +136,7 @@ class InverterWidget extends StatelessWidget {
                                       Text(context.l10n?.dayEnergy ?? ""),
 
                                       ///Space
-                                      2.pw.spaceVertical,
+                                      2.ph.spaceVertical,
                                       Text("0 kW", style: styleW600S16),
                                     ],
                                   ),

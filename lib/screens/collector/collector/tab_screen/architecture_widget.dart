@@ -24,7 +24,7 @@ class ArchitectureWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  16.pw.spaceVertical,
+                  16.ph.spaceVertical,
                   Text(
                     context.l10n?.device ?? "",
                     style: styleW500S16.copyWith(
@@ -33,7 +33,7 @@ class ArchitectureWidget extends StatelessWidget {
                   ),
 
                   /// Space
-                  14.pw.spaceVertical,
+                  14.ph.spaceVertical,
 
                   /// First Row
                   Divider(
@@ -61,13 +61,13 @@ class ArchitectureWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           /// Space
-          14.pw.spaceVertical,
+          14.ph.spaceVertical,
 
           /// Device Name
           Text(context.l10n?.inverter ?? "", style: styleW600S16),
 
           /// Space
-          14.pw.spaceVertical,
+          14.ph.spaceVertical,
 
           Row(
             children: [
@@ -83,7 +83,7 @@ class ArchitectureWidget extends StatelessWidget {
                     ),
 
                     /// Space
-                    8.pw.spaceVertical,
+                    8.ph.spaceVertical,
 
                     /// Production Value
                     Text("0kW", style: styleW700S14),
@@ -102,7 +102,7 @@ class ArchitectureWidget extends StatelessWidget {
                     ),
 
                     /// Space
-                    8.pw.spaceVertical,
+                    8.ph.spaceVertical,
 
                     /// Production Value
                     Text("0kWh", style: styleW700S14),
@@ -113,7 +113,7 @@ class ArchitectureWidget extends StatelessWidget {
           ),
 
           /// Space
-          14.pw.spaceVertical,
+          14.ph.spaceVertical,
         ],
       ),
     );

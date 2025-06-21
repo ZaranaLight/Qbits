@@ -24,7 +24,7 @@ class MeterWidget extends StatelessWidget {
           ),
 
           ///Space
-          20.pw.spaceVertical,
+          20.ph.spaceVertical,
 
           /// Data Row
           Row(

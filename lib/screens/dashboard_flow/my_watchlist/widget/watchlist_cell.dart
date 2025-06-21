@@ -41,7 +41,9 @@ class MyWatchlistCell extends StatelessWidget {
           context.navigator.pushNamed(PlantDetailScreen.routeName);
         },
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding),
+          padding: EdgeInsets.symmetric(
+            horizontal: Constants.horizontalPadding,
+          ),
           margin: EdgeInsets.symmetric(vertical: 20.ph),
           width: 100.w,
           child: Row(
@@ -58,20 +60,35 @@ class MyWatchlistCell extends StatelessWidget {
 
               Expanded(
                 child: Column(
+                  spacing: 14,
                   children: [
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("What is Lorem Ipsum?", style: styleW600S14),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Text(
+                              "What is Lorem Ipsum?",
+                              style: styleW600S14,
+                            ),
+                          ),
+                        ),
 
-                        SvgAsset(imagePath: AssetRes.starIcon),
+                        InkWell(
+                          onTap: () {},
+                          borderRadius: BorderRadius.circular(5.pw),
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: SvgAsset(imagePath: AssetRes.starIcon),
+                          ),
+                        ),
                       ],
                     ),
 
-                    /// Space
-                    20.ph.spaceVertical,
-
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         _buildData(
@@ -99,17 +116,25 @@ class MyWatchlistCell extends StatelessWidget {
   }
 
   Widget _buildData({required String title, required String value}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: styleW500S12.copyWith(
-            color: ColorRes.black.withValues(alpha: 50),
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          /// Title
+          Text(
+            title,
+            style: styleW500S12.copyWith(
+              color: ColorRes.black.withValues(alpha: 50),
+            ),
           ),
-        ),
-        Text(value, style: styleW600S14),
-      ],
+
+          /// Space
+          4.ph.spaceVertical,
+
+          /// Value
+          Text(value, style: styleW600S14),
+        ],
+      ),
     );
   }
 }

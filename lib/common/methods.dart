@@ -1,8 +1,3 @@
-import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:qbits/common/widget/app_bottom_sheet.dart';
 import 'package:qbits/qbits.dart';
 
 dynamic normalizeFalseToNull(dynamic input) {
@@ -58,7 +53,6 @@ Future<bool> checkCameraPermission(BuildContext context) async {
   }
   return false;
 }
-
 
 Future<void> requestPermissions() async {
   await [

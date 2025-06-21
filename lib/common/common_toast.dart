@@ -60,7 +60,7 @@ void showCustomToast(String msg, {bool? error}) {
                                 error == true
                                     ? AssetRes.closeIcon
                                     : AssetRes.rightTickIcon,
-                            color: ColorRes.black2,
+                            color: ColorRes.white,
                             height: 12.pw,
                           ),
                         ),

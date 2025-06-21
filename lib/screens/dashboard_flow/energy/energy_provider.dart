@@ -1,40 +1,20 @@
 import 'package:qbits/qbits.dart';
 
-class PlantDetailProvider extends ChangeNotifier {
-  bool loader = false;
-  TabController? tabController;
-
-  PlantDetailProvider() {
-    init();
+class EnergyProvider extends ChangeNotifier {
+  EnergyProvider() {
+    initialize();
   }
 
-  void init() {
+  bool _isInitialized = false;
+
+  void initialize() {
     if (!_isInitialized) {
       _loadChartData();
       _isInitialized = true;
     }
   }
 
-  bool _isFollow = false;
-
-  bool get  isFollow => _isFollow;
-
-  setFollow(bool value) {
-    _isFollow = value;
-    showCustomToast(_isFollow? "Following the plant" : "Unfollowed the plant",);
-    notifyListeners();
-  }
-
-  int _current = 0;
-
-  int get current => _current;
-
-  void setCurrent(int index) {
-    _current = index;
-    notifyListeners();
-  }
-
-  ///
+  bool loader = false;
 
   ChartViewType _viewType = ChartViewType.day;
 
@@ -128,7 +108,7 @@ class PlantDetailProvider extends ChangeNotifier {
 
   String _pad(int value) => value.toString().padLeft(2, '0');
 
-  final List<String> _tabs = ['Day', 'Month', 'Year', 'Total'];
+  final List<String> _tabs = ['Month', 'Year', 'Total'];
   final List<String> _deviceTabs = ['Inverter', 'Collector'];
 
   int _selectedIndex = 0;
@@ -153,8 +133,6 @@ class PlantDetailProvider extends ChangeNotifier {
 
   List<String> get deviceTabs => _deviceTabs;
 
-  bool _isInitialized = false;
-
   void nextTab() {
     _selectedIndex = (_selectedIndex + 1) % _tabs.length;
     selectTab(_selectedIndex);
@@ -177,17 +155,50 @@ class PlantDetailProvider extends ChangeNotifier {
 
   void _loadChartData() {
     switch (currentTab) {
-      case 'Day':
-        updateChart([FlSpot(0, 1), FlSpot(2, 4), FlSpot(6, 7), FlSpot(8, 10)]);
-        break;
       case 'Month':
-        updateChart([FlSpot(0, 3), FlSpot(2, 6), FlSpot(4, 9), FlSpot(8, 8)]);
+        updateChart([
+          FlSpot(0, 300),
+          FlSpot(2, 600),
+          FlSpot(4, 900),
+          FlSpot(8, 800),
+          FlSpot(4, 100),
+          FlSpot(4, 900),
+          FlSpot(7, 800),
+          FlSpot(8, 900),
+          FlSpot(4, 100),
+          FlSpot(4, 500),
+          FlSpot(8, 900),
+        ]);
         break;
       case 'Year':
-        updateChart([FlSpot(0, 5), FlSpot(2, 9), FlSpot(4, 13), FlSpot(6, 10)]);
+        updateChart([
+          FlSpot(0, 500),
+          FlSpot(2, 900),
+          FlSpot(4, 130),
+          FlSpot(2, 900),
+          FlSpot(6, 100),
+          FlSpot(5, 100),
+          FlSpot(6, 100),
+          FlSpot(3, 700),
+          FlSpot(6, 500),
+          FlSpot(6, 400),
+          FlSpot(6, 500),
+        ]);
         break;
       case 'Total':
-        updateChart([FlSpot(0, 8), FlSpot(4, 12), FlSpot(5, 10), FlSpot(6, 5)]);
+        updateChart([
+          FlSpot(0, 800),
+          FlSpot(4, 120),
+          FlSpot(5, 1000),
+          FlSpot(5, 1000),
+          FlSpot(6, 500),
+          FlSpot(8, 700),
+          FlSpot(8, 700),
+          FlSpot(2, 800),
+          FlSpot(2, 800),
+          FlSpot(6, 900),
+          FlSpot(7, 100),
+        ]);
         break;
     }
   }
@@ -228,48 +239,5 @@ class PlantDetailProvider extends ChangeNotifier {
         voltageV2 = 235.5;
         break;
     }
-  }
-
-  //============Device  ---provider -----------
-
-  final List<String> deviceOption = ['All', 'Normal', 'Fault', 'Offline'];
-
-  // Currently selected preference
-  String _selectedDeviceOption = 'All';
-
-  String get selectedDeviceOption => _selectedDeviceOption;
-
-  //  Device data
-  String? all;
-  String? normal;
-  String? fault;
-  String? offline;
-
-  // Handle dropdown selection
-  void updateSelectedDevice(String value) {
-    _selectedDeviceOption = value;
-
-    notifyListeners();
-  }
-
-  //============Alarm   ----------- -----------
-
-  int _selectedAlarmIndex = 0;
-
-  int get selectedAlarmIndex => _selectedAlarmIndex;
-
-  void changeAlarmTab(int index) {
-    _selectedAlarmIndex = index;
-    notifyListeners();
-  }
-
-  // -------------change inverter and collector tab
-  int _deviceTabIndex = 0;
-
-  int get deviceTabIndex => _deviceTabIndex;
-
-  void changeDeviceTabTo(int index) {
-    _deviceTabIndex = index;
-    notifyListeners();
   }
 }

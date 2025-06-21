@@ -54,7 +54,7 @@ class AppAlertDialog<bool> extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           /// Header
-          16.pw.spaceVertical,
+          16.ph.spaceVertical,
 
           /// Title
           Center(child: Text(title, style: styleW600S20)),

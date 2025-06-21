@@ -65,7 +65,7 @@ class AlarmListWidget extends StatelessWidget {
                     Text('ASP-15KTLC', style: styleW600S14),
 
                     ///Space
-                    4.pw.spaceVertical,
+                    4.ph.spaceVertical,
 
                     ///Alarm Description
                     Text(

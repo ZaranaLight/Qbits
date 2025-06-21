@@ -47,7 +47,7 @@ class RoleChoiceScreen extends StatelessWidget {
                 ),
 
                 /// Space
-                20.pw.spaceVertical,
+                20.ph.spaceVertical,
 
                 /// Role Choice Buttons For Company
                 RoleChoiceButtons(
@@ -61,29 +61,39 @@ class RoleChoiceScreen extends StatelessWidget {
                 ),
 
                 /// Space
-                40.pw.spaceVertical,
+                40.ph.spaceVertical,
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    ///Guidance Button
-                    Container(
-                      decoration: BoxDecoration(
+                Align(
+                  alignment: Alignment(1, 1),
+                  child: Container(
+                    height: 34.ph,
+                    width: 90.pw,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(31.pw),
+                      color: ColorRes.primaryColor,
+                    ),
+                    child: Material(
+                      color: ColorRes.transparent,
+                      child: InkWell(
+                        onTap: () {},
                         borderRadius: BorderRadius.circular(31.pw),
-                        color: ColorRes.primaryColor,
-                      ),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 14.pw,
-                        vertical: 6.pw,
-                      ),
-                      child: Center(
-                        child: Text(
-                          context.l10n?.guidance ?? "",
-                          style: styleW500S14.copyWith(color: ColorRes.white),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 14.pw,
+                            vertical: 6.pw,
+                          ),
+                          child: Center(
+                            child: Text(
+                              context.l10n?.guidance ?? "",
+                              style: styleW500S14.copyWith(
+                                color: ColorRes.white,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ],
+                  ),
                 ),
               ],
             ),
@@ -141,7 +151,7 @@ class RoleChoiceButtons extends StatelessWidget {
                   Text(title, style: styleW500S16),
 
                   ///Space
-                  6.pw.spaceVertical,
+                  6.ph.spaceVertical,
 
                   /// Role Text
                   Text(

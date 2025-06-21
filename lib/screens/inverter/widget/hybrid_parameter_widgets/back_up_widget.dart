@@ -49,7 +49,7 @@ class BackUpWidget extends StatelessWidget {
           ),
 
           ///Space
-          30.pw.spaceVertical,
+          30.ph.spaceVertical,
 
           /// Data Row
           Row(
@@ -66,7 +66,7 @@ class BackUpWidget extends StatelessWidget {
                     ),
 
                     /// Space
-                    8.pw.spaceVertical,
+                    8.ph.spaceVertical,
                     Text('0kW', style: styleW700S14),
                   ],
                 ),
@@ -83,7 +83,7 @@ class BackUpWidget extends StatelessWidget {
                     ),
 
                     /// Space
-                    8.pw.spaceVertical,
+                    8.ph.spaceVertical,
                     Text('0kWh', style: styleW700S14),
                   ],
                 ),

@@ -24,11 +24,21 @@ class PlantDetailScreen extends StatelessWidget {
                 CustomAppBar(
                   title: context.l10n?.confirm ?? "",
                   actions: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        right: Constants.horizontalPadding,
+                    InkWell(
+                      onTap: () {
+                        state.setFollow(!state.isFollow);
+                      },
+                      borderRadius: BorderRadius.circular(5.pw),
+                      child: Padding(
+                        padding: EdgeInsets.all(Constants.horizontalPadding),
+                        child: SvgAsset(
+                          imagePath: AssetRes.starIcon,
+                          color:
+                              state.isFollow
+                                  ? ColorRes.orange2
+                                  : ColorRes.grey3,
+                        ),
                       ),
-                      child: SvgAsset(imagePath: AssetRes.starIcon),
                     ),
                   ],
                 ),

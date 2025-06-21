@@ -34,6 +34,7 @@ class HomeScreen extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                         horizontal: Constants.horizontalPadding,
                       ),
+                      key: UniqueKey(),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -114,7 +115,7 @@ class HomeScreen extends StatelessWidget {
                           16.ph.spaceVertical,
 
                           /// Device Library Container
-                          DeviceLiberyContainer(),
+                          DeviceLibraryWidget(),
 
                           /// Space
                           16.ph.spaceVertical,

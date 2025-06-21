@@ -23,7 +23,7 @@ class SystemWidget extends StatelessWidget {
           ),
 
           ///Space
-          8.pw.spaceVertical,
+          8.ph.spaceVertical,
 
           /// Date Time Value
           Text(
@@ -32,14 +32,14 @@ class SystemWidget extends StatelessWidget {
           ),
 
           ///Space
-          20.pw.spaceVertical,
+          20.ph.spaceVertical,
 
           Row(
             children: [ColumKeyValueWidget(label: "Rated Power", value: "0W")],
           ),
 
           ///Space
-          20.pw.spaceVertical,
+          20.ph.spaceVertical,
 
           Row(
             children: [
@@ -49,7 +49,7 @@ class SystemWidget extends StatelessWidget {
           ),
 
           ///Space
-          20.pw.spaceVertical,
+          20.ph.spaceVertical,
 
           Row(
             children: [
@@ -59,7 +59,7 @@ class SystemWidget extends StatelessWidget {
           ),
 
           ///Space
-          20.pw.spaceVertical,
+          20.ph.spaceVertical,
 
           Row(
             children: [

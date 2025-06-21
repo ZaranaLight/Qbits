@@ -175,6 +175,10 @@ export 'package:qbits/screens/collector/edit_collector/edit_collector_screen.dar
 export 'package:qbits/screens/collector/collector/collector_provider.dart';
 export 'package:qbits/screens/collector/collector/tab_screen/architecture_widget.dart';
 export 'package:qbits/screens/collector/collector/tab_screen/parameter_collector_widget.dart';
-
+export 'package:flutter_image_compress/flutter_image_compress.dart';
+export 'package:path_provider/path_provider.dart';
+export 'package:permission_handler/permission_handler.dart';
+export 'package:qbits/common/widget/app_bottom_sheet.dart';
+export 'package:qbits/screens/dashboard_flow/energy/energy_provider.dart';
 
 

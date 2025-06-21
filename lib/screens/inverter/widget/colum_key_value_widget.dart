@@ -20,7 +20,7 @@ class ColumKeyValueWidget extends StatelessWidget {
           ),
 
           /// Space
-          8.pw.spaceVertical,
+          8.ph.spaceVertical,
           Text(value ?? "", style: styleW700S14),
         ],
       ),

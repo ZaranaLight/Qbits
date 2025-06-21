@@ -50,7 +50,7 @@ class HybridInverterWidget extends StatelessWidget {
           ),
 
           ///Space
-          30.pw.spaceVertical,
+          30.ph.spaceVertical,
 
           /// Data Row
           Row(
@@ -67,7 +67,7 @@ class HybridInverterWidget extends StatelessWidget {
                     ),
 
                     /// Space
-                    8.pw.spaceVertical,
+                    8.ph.spaceVertical,
                     Text('0kW', style: styleW700S14),
                   ],
                 ),
@@ -84,7 +84,7 @@ class HybridInverterWidget extends StatelessWidget {
                     ),
 
                     /// Space
-                    8.pw.spaceVertical,
+                    8.ph.spaceVertical,
                     Text('0kWh', style: styleW700S14),
                   ],
                 ),
@@ -93,7 +93,7 @@ class HybridInverterWidget extends StatelessWidget {
           ),
 
           ///Space
-          20.pw.spaceVertical,
+          20.ph.spaceVertical,
 
           /// Data Row
           Row(
@@ -110,7 +110,7 @@ class HybridInverterWidget extends StatelessWidget {
                     ),
 
                     /// Space
-                    8.pw.spaceVertical,
+                    8.ph.spaceVertical,
                     Text('Text', style: styleW700S14),
                   ],
                 ),
@@ -127,7 +127,7 @@ class HybridInverterWidget extends StatelessWidget {
                     ),
 
                     /// Space
-                    8.pw.spaceVertical,
+                    8.ph.spaceVertical,
                     Text('0V', style: styleW700S14),
                   ],
                 ),
@@ -136,7 +136,7 @@ class HybridInverterWidget extends StatelessWidget {
           ),
 
           ///Space
-          20.pw.spaceVertical,
+          20.ph.spaceVertical,
 
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,7 +149,7 @@ class HybridInverterWidget extends StatelessWidget {
               ),
 
               /// Space
-              8.pw.spaceVertical,
+              8.ph.spaceVertical,
               Text('Text', style: styleW700S14),
             ],
           ),

@@ -50,7 +50,7 @@ Widget _buildExpansionTile(InverterProvider provider, int index) {
   return Column(
     children: [
       ///Space before the tile
-      16.pw.spaceVertical,
+      16.ph.spaceVertical,
 
       Container(
         margin: EdgeInsets.symmetric(horizontal: 14.pw),
