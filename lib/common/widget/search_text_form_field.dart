@@ -71,6 +71,7 @@ class SearchTextField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
 
+
         isDense: true,
         fillColor: fillColor ?? ColorRes.white.withValues(alpha: 0.14),
         filled: true,
@@ -92,7 +93,7 @@ class SearchTextField extends StatelessWidget {
         focusedErrorBorder: inputBorder(),
         enabledBorder: inputBorder(),
         prefixIcon: Padding(
-          padding: EdgeInsets.only(bottom: 12.ph, top: 13.ph),
+          padding: EdgeInsets.only(bottom: 15.ph, top: 15.ph),
           child: prefixIcon,
         ),
         suffixIconConstraints: BoxConstraints(maxWidth: 44, maxHeight: 40),

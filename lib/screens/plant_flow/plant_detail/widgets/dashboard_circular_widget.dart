@@ -111,7 +111,12 @@ class DashboardCircularChartContainer extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         /// Title Text
-        Text(title, style: styleW500S16),
+        Text(
+          title,
+          style: styleW500S16.copyWith(
+            color: ColorRes.black.withValues(alpha: 0.6),
+          ),
+        ),
 
         /// Space
         4.ph.spaceVertical,
@@ -130,7 +135,9 @@ class DashboardCircularChartContainer extends StatelessWidget {
               if (value.contains('.'))
                 TextSpan(
                   text: value.substring(value.indexOf('.') + 1),
-                  style: styleW400S16,
+                  style: styleW400S16.copyWith(
+                    color: ColorRes.black.withValues(alpha: 0.7),
+                  ),
                 ),
             ],
           ),
@@ -150,10 +157,10 @@ class DashboardCircularChartContainer extends StatelessWidget {
               ),
 
               /// Space
-              6.ph.spaceHorizontal,
+              6.pw.spaceHorizontal,
 
               /// Coin Icon
-              SvgAsset(imagePath: AssetRes.coinIcon),
+              SvgAsset(imagePath: AssetRes.coinIcon, height: 20.ph),
             ],
           ),
       ],

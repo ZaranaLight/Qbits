@@ -55,7 +55,10 @@ class PlantDetailScreen extends StatelessWidget {
                       /// First Row
                       Row(
                         children: [
-                          SvgAsset(imagePath: AssetRes.offlineIcon),
+                          SvgAsset(
+                            imagePath: AssetRes.offlineIcon,
+                            height: 18.ph,
+                          ),
 
                           /// Space
                           6.ph.spaceHorizontal,
@@ -71,9 +74,9 @@ class PlantDetailScreen extends StatelessWidget {
                           Spacer(),
 
                           Text(
-                            "text",
+                            "Text",
                             style: styleW400S14.copyWith(
-                              color: ColorRes.darkGrey,
+                              color: ColorRes.black.withValues(alpha: 0.5),
                             ),
                           ),
                         ],
@@ -92,12 +95,12 @@ class PlantDetailScreen extends StatelessWidget {
                           physics: NeverScrollableScrollPhysics(),
                           indicatorColor: ColorRes.primaryColor,
                           labelColor: ColorRes.primaryColor,
-                          unselectedLabelColor: ColorRes.darkGrey,
-                          labelStyle: styleW600S14.copyWith(
-                            color: ColorRes.darkGrey,
+                          unselectedLabelColor: ColorRes.black.withValues(alpha: 0.5),
+                          labelStyle: styleW600S16.copyWith(
+                            color: ColorRes.black.withValues(alpha: 0.5),
                           ),
-                          unselectedLabelStyle: styleW500S14.copyWith(
-                            color: ColorRes.darkGrey,
+                          unselectedLabelStyle: styleW500S16.copyWith(
+                            color: ColorRes.black.withValues(alpha: 0.5),
                           ),
                           dividerColor: ColorRes.white,
                           indicator: UnderlineTabIndicator(
@@ -115,8 +118,9 @@ class PlantDetailScreen extends StatelessWidget {
                             Tab(text: context.l10n?.alarm),
                             Tab(text: context.l10n?.about),
                           ],
-                          labelPadding: EdgeInsets.symmetric(horizontal: 10.pw),
-                          isScrollable: false,
+                          labelPadding: EdgeInsets.symmetric(horizontal: 0.pw),
+
+                          tabAlignment: TabAlignment.fill,
                           // Set true if long labels
                         ),
                       ),

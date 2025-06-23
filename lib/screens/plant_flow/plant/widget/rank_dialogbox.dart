@@ -18,21 +18,20 @@ class RankDialogBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      insetPadding: EdgeInsets.symmetric(
+      insetPadding: EdgeInsets.zero,
+      contentPadding: EdgeInsets.symmetric(
         horizontal: Constants.horizontalPadding,
       ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       title: Text(
         context.l10n?.rank ?? "",
         style: styleW500S14.copyWith(color: ColorRes.primaryColor),
       ),
-      // contentPadding: EdgeInsets.symmetric(horizontal:  15.ph),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            /// Space
-            15.ph.spaceVertical,
+            10.ph.spaceVertical,
             _buildRow(title: context.l10n?.day ?? ""),
             _buildRow(title: context.l10n?.month ?? ""),
             _buildRow(title: context.l10n?.total ?? ""),
@@ -45,37 +44,40 @@ class RankDialogBox extends StatelessWidget {
   }
 
   Widget _buildRow({required String title}) {
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        padding: EdgeInsets.only(top: 14.ph, bottom: 14.ph,left: 5.pw,right: 5.pw),
-        decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(color: ColorRes.black.withValues(alpha: 0.1)),
-          ),
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(color: ColorRes.black.withValues(alpha: 0.1)),
         ),
-        child: Row(
-          children: [
-            Text(title, style: styleW500S14),
+      ),
+      child: InkWell(
+        onTap: () {},
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 14.ph, horizontal: 0),
 
-            /// Horizontal Space
-            2.pw.spaceHorizontal,
+          child: Row(
+            children: [
+              Text(title, style: styleW500S14),
 
-            SvgAsset(imagePath: AssetRes.longUpArrowIcon),
+              /// Horizontal Space
+              2.pw.spaceHorizontal,
 
-            Spacer(),
+              SvgAsset(imagePath: AssetRes.longUpArrowIcon),
 
-            Text("-", style: styleW500S14),
+              Spacer(),
 
-            Spacer(),
+              Text("-", style: styleW500S14),
 
-            Text(title, style: styleW500S14),
+              Spacer(),
 
-            /// Horizontal Space
-            2.pw.spaceHorizontal,
+              Text(title, style: styleW500S14),
 
-            SvgAsset(imagePath: AssetRes.longDownArrowIcon),
-          ],
+              /// Horizontal Space
+              2.pw.spaceHorizontal,
+
+              SvgAsset(imagePath: AssetRes.longDownArrowIcon),
+            ],
+          ),
         ),
       ),
     );

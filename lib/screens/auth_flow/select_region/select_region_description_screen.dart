@@ -31,6 +31,7 @@ class SelectRegionDescriptionScreen extends StatelessWidget {
               top: 20.pw,
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "Lorem Ipsum is simply dummy text of the printing and "
@@ -41,7 +42,9 @@ class SelectRegionDescriptionScreen extends StatelessWidget {
                 ),
 
                 /// Space
-                32.ph.spaceVertical,
+                15.ph.spaceVertical,
+                Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+                15.ph.spaceVertical,
 
                 Text(
                   "What is Lorem Ipsum?",

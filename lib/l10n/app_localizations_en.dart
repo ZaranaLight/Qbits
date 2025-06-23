@@ -234,6 +234,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileInformation => 'Profile Information';
 
   @override
+  String get contentInformation => 'Content Information';
+
+  @override
   String get accountCancellation => 'Account Cancellation';
 
   @override
@@ -796,6 +799,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get energy => 'Energy';
+
+  @override
+  String get addPlant => 'Add Plant';
 
   @override
   String get pleaseEnableLocationFromDeviceSetting => 'Please enable Location (GPS) from device settings';

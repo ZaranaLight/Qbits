@@ -99,7 +99,9 @@ class _AppBar extends StatelessWidget {
 
                   /// Right Icon (e.g. Plus)
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      context.navigator.pushNamed(AddPlantScreen.routeName);
+                    },
                     child: SvgAsset(imagePath: AssetRes.roundedPlusIcon),
                   ),
                 ],

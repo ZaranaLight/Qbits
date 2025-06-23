@@ -68,10 +68,12 @@ class AlarmScreen extends StatelessWidget {
               isScrollable: false,
               indicatorColor: ColorRes.primaryColor,
               labelColor: ColorRes.primaryColor,
-              unselectedLabelColor: ColorRes.darkGrey,
-              labelStyle: styleW600S14.copyWith(color: ColorRes.darkGrey),
-              unselectedLabelStyle: styleW500S14.copyWith(
-                color: ColorRes.darkGrey,
+              unselectedLabelColor: ColorRes.black.withValues(alpha: 0.5),
+              labelStyle: styleW600S16.copyWith(
+                color: ColorRes.black.withValues(alpha: 0.5),
+              ),
+              unselectedLabelStyle: styleW500S16.copyWith(
+                color: ColorRes.black.withValues(alpha: 0.5),
               ),
               dividerColor: ColorRes.white,
               indicator: UnderlineTabIndicator(

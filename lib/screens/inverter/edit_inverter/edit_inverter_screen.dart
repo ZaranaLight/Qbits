@@ -34,58 +34,56 @@ class EditInverterScreen extends StatelessWidget {
       appBar: CustomAppBar(title: 'Edit 1'),
       body: Consumer<EditInverterProvider>(
         builder: (context, provider, _) {
-          return Column(
-            children: [
-              _buildTextFormFieldTile(
-                'Inverter No.',
-                provider.editInverterModel.inverterNo,
-                provider.updateInverterNo,
-                keyboardType: TextInputType.number,
-              ),
-              Divider(color: ColorRes.grey2),
-              _buildTextFormFieldTile(
-                'RS485 ID',
-                provider.editInverterModel.rs485Id,
-                provider.updateRS485Id,
-                keyboardType: TextInputType.number,
-              ),
-              Divider(color: ColorRes.grey2),
-
-              _buildDropdownField(
-                title: "Model",
-                value: provider.selectedModel,
-                options: provider.modelOptions,
-                onChanged: (value) {
-                  if (value != null) provider.setModel(value);
-                },
-                trailingIcon: AssetRes.scannerIcon,
-                onScanTap: () {
-                  provider.onTapScanner(context, provider.selectedModel);
-                  // QR scan logic here
-                },
-              ),
-              Divider(color: ColorRes.grey2),
-              _buildDropdownField(
-                title: "GMT Selection",
-                value: provider.selectedGMT,
-                options: provider.gmtOptions,
-                onChanged: (value) {
-                  if (value != null) provider.setGMT(value);
-                },
-              ),
-              Divider(color: ColorRes.grey2),
-              _buildTextFormFieldTile(
-                'SN',
-                provider.editInverterModel.serialNumber,
-                provider.updateSerialNumber,
-              ),
-              Divider(color: ColorRes.grey2),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: Constants.horizontalPadding,
+          return Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.pw),
+            child: Column(
+              children: [
+                5.ph.spaceVertical,
+                _buildTextFormFieldTile(
+                  'Inverter No.',
+                  provider.editInverterModel.inverterNo,
+                  provider.updateInverterNo,
+                  keyboardType: TextInputType.number,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+                _buildTextFormFieldTile(
+                  'RS485 ID',
+                  provider.editInverterModel.rs485Id,
+                  provider.updateRS485Id,
+                  keyboardType: TextInputType.number,
+                ),
+                Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+                _buildDropdownField(
+                  title: "Model",
+                  value: provider.selectedModel,
+                  options: provider.modelOptions,
+                  onChanged: (value) {
+                    if (value != null) provider.setModel(value);
+                  },
+                  trailingIcon: AssetRes.scannerIcon,
+                  onScanTap: () {
+                    provider.onTapScanner(context, provider.selectedModel);
+                    // QR scan logic here
+                  },
+                ),
+                Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+                _buildDropdownField(
+                  title: "GMT Selection",
+                  value: provider.selectedGMT,
+                  options: provider.gmtOptions,
+                  onChanged: (value) {
+                    if (value != null) provider.setGMT(value);
+                  },
+                ),
+                Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+                _buildTextFormFieldTile(
+                  'SN',
+                  provider.editInverterModel.serialNumber,
+                  provider.updateSerialNumber,
+                ),
+                Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       context.l10n?.panel ?? "",
@@ -93,13 +91,14 @@ class EditInverterScreen extends StatelessWidget {
                         color: ColorRes.black.withValues(alpha: 0.6),
                       ),
                     ),
-                    15.pw.spaceHorizontal,
+                    30.pw.spaceHorizontal,
                     _buildPanelTextFormFieldTile(
                       '(W)',
                       provider.editInverterModel.panelWatt,
                       provider.updatePanelWatt,
                       keyboardType: TextInputType.number,
                     ),
+                    30.pw.spaceHorizontal,
                     _buildPanelTextFormFieldTile(
                       '(pcs)',
                       provider.editInverterModel.panelCount,
@@ -108,10 +107,10 @@ class EditInverterScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
 
-              // _buildPanelField(),
-            ],
+                // _buildPanelField(),
+              ],
+            ),
           );
         },
       ),
@@ -124,9 +123,9 @@ class EditInverterScreen extends StatelessWidget {
     ValueChanged<String> onChanged, {
     TextInputType keyboardType = TextInputType.text,
   }) {
-    return Container(
+    return SizedBox(
       height: 42.ph,
-      padding: EdgeInsets.symmetric(horizontal: 16.pw),
+
       child: Row(
         children: [
           Expanded(
@@ -164,9 +163,9 @@ class EditInverterScreen extends StatelessWidget {
     ValueChanged<String> onChanged, {
     TextInputType keyboardType = TextInputType.text,
   }) {
-    return Container(
+    return SizedBox(
       height: 42.ph,
-      padding: EdgeInsets.symmetric(horizontal: 0.pw),
+
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -190,7 +189,7 @@ class EditInverterScreen extends StatelessWidget {
           Text(
             title,
             style: styleW500S14.copyWith(
-              color: ColorRes.black.withValues(alpha: 0.6),
+
             ),
           ),
         ],
@@ -207,10 +206,8 @@ class EditInverterScreen extends StatelessWidget {
     void Function()? onScanTap,
   }) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10.ph),
-      decoration: const BoxDecoration(
-        // border: Border(bottom: BorderSide(color: Colors.grey)),
-      ),
+      padding: EdgeInsets.symmetric( vertical: 10.ph),
+
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

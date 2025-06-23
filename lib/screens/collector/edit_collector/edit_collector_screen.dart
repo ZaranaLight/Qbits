@@ -18,6 +18,7 @@ class EditCollectorScreen extends StatelessWidget {
     return Consumer<AddCollectorProvider>(
       builder: (context, provider, child) {
         return Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.surface,
           bottomNavigationBar: SafeArea(
             top: false,
             child: Padding(

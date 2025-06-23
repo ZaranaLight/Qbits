@@ -543,6 +543,12 @@ abstract class AppLocalizations {
   /// **'Profile Information'**
   String get profileInformation;
 
+  /// No description provided for @contentInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Content Information'**
+  String get contentInformation;
+
   /// No description provided for @accountCancellation.
   ///
   /// In en, this message translates to:
@@ -1670,6 +1676,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Energy'**
   String get energy;
+
+  /// No description provided for @addPlant.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Plant'**
+  String get addPlant;
 
   /// No description provided for @pleaseEnableLocationFromDeviceSetting.
   ///

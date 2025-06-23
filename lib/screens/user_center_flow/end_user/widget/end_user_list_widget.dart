@@ -5,7 +5,7 @@ class EndUserListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.pw),
         color: ColorRes.white,
@@ -14,9 +14,7 @@ class EndUserListWidget extends StatelessWidget {
         color: ColorRes.transparent,
         child: InkWell(
           onTap: () {
-            context.navigator.pushNamed(
-              GuestScreen.routeName,
-            );
+            context.navigator.pushNamed(GuestScreen.routeName);
           },
           borderRadius: BorderRadius.circular(8.pw),
           child: Padding(
@@ -35,16 +33,10 @@ class EndUserListWidget extends StatelessWidget {
 
                 /// User Details
                 Column(
-                  crossAxisAlignment:
-                  CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     /// User Name
-                    Text(
-                      'Guest',
-                      style: styleW700S17.copyWith(
-                        fontSize: 16,
-                      ),
-                    ),
+                    Text('Guest', style: styleW700S16),
 
                     ///Space
                     4.ph.spaceVertical,
@@ -53,9 +45,7 @@ class EndUserListWidget extends StatelessWidget {
                     Text(
                       'Password: 1234',
                       style: styleW500S12.copyWith(
-                        color: ColorRes.black.withValues(
-                          alpha: 0.6,
-                        ),
+                        color: ColorRes.black.withValues(alpha: 0.6),
                       ),
                     ),
 
@@ -66,9 +56,7 @@ class EndUserListWidget extends StatelessWidget {
                     Text(
                       'Phone:',
                       style: styleW500S12.copyWith(
-                        color: ColorRes.black.withValues(
-                          alpha: 0.6,
-                        ),
+                        color: ColorRes.black.withValues(alpha: 0.6),
                       ),
                     ),
 
@@ -79,9 +67,7 @@ class EndUserListWidget extends StatelessWidget {
                     Text(
                       'Mail:',
                       style: styleW500S12.copyWith(
-                        color: ColorRes.black.withValues(
-                          alpha: 0.6,
-                        ),
+                        color: ColorRes.black.withValues(alpha: 0.6),
                       ),
                     ),
                   ],

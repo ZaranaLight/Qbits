@@ -148,7 +148,7 @@ class AlarmInverterScreen extends StatelessWidget {
                       ///Description
                       Text(
                         "Phase C voltage is too low",
-                        style: styleW500S14.copyWith(color: ColorRes.orange2),
+                        style: styleW600S14.copyWith(color: ColorRes.orange2),
                       ),
                     ],
                   ),
@@ -158,6 +158,7 @@ class AlarmInverterScreen extends StatelessWidget {
                   turns: isExpanded ? 0.5 : 0,
                   child: Icon(
                     Icons.keyboard_arrow_down,
+                    size: 20.ph,
                     color: ColorRes.black.withValues(alpha: 0.6),
                   ),
                 ),
@@ -356,7 +357,7 @@ class AlarmInverterScreen extends StatelessWidget {
         break;
       case ChartViewType.total:
         // TODO: Handle this case.
-        throw UnimplementedError();
+        throw SizedBox();
     }
 
     if (picked != null) {

@@ -26,7 +26,6 @@ class UserCenterScreen extends StatelessWidget {
               bottom:
                   Constants.safeAreaPadding.bottom +
                   Constants.horizontalPadding,
-              top: 20.pw,
             ),
             child: Column(
               children: [

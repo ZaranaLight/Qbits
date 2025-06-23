@@ -24,12 +24,17 @@ class TabWidget extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(5.pw),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 15.ph, horizontal: 5.pw),
+          padding: EdgeInsets.symmetric(vertical: 16.ph, horizontal: 5.pw),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ///Svg Icon
-              SvgAsset(width: 20.pw, imagePath: imagePath,color: ColorRes.black2,),
+              SvgAsset(
+                width: 20.pw,
+                height: 20.ph,
+                imagePath: imagePath,
+                color: ColorRes.black2,
+              ),
 
               /// Space
               10.pw.spaceHorizontal,
@@ -48,7 +53,9 @@ class TabWidget extends StatelessWidget {
               trailingWidget ??
                   SvgAsset(
                     imagePath: AssetRes.forwardIcon,
-                    color: ColorRes.black,
+                    color: ColorRes.black.withValues(alpha: 0.6),
+                    height: 13.ph,
+                    width: 9.pw,
                   ),
             ],
           ),

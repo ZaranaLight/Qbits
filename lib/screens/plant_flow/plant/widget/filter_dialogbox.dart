@@ -24,7 +24,7 @@ class FilterDialogBox extends StatelessWidget {
       insetPadding: EdgeInsets.symmetric(
         horizontal: Constants.horizontalPadding,
       ),
-      contentPadding: const EdgeInsets.fromLTRB(24, 20, 24, 10),
+      contentPadding: const EdgeInsets.fromLTRB(16, 20, 16, 10),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,

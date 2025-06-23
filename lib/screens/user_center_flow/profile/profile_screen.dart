@@ -104,7 +104,7 @@ class ProfileScreen extends StatelessWidget {
                     /// Name
                     Text(
                       "Guest",
-                      style: styleW600S16.copyWith(color: ColorRes.black2),
+                      style: styleW600S16.copyWith(color: ColorRes.black),
                     ),
 
                     /// Space
@@ -113,7 +113,9 @@ class ProfileScreen extends StatelessWidget {
                     ///Company Code
                     Text(
                       context.l10n?.companyCode ?? "",
-                      style: styleW400S12.copyWith(color: ColorRes.black2),
+                      style: styleW400S12.copyWith(
+                        color: ColorRes.black.withValues(alpha: 0.6),
+                      ),
                     ),
 
                     /// Space
@@ -122,7 +124,9 @@ class ProfileScreen extends StatelessWidget {
                     ///Date
                     Text(
                       DateTime.now().toYyyyMmDd.toString(),
-                      style: styleW400S12.copyWith(color: ColorRes.black2),
+                      style: styleW400S12.copyWith(
+                        color: ColorRes.black.withValues(alpha: 0.6),
+                      ),
                     ),
 
                     /// Space
@@ -141,7 +145,9 @@ class ProfileScreen extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: SvgAsset(
                                 imagePath: AssetRes.phoneIcon,
-                                width: 19.pw,
+                                width: 20.pw,
+                                height: 20.ph,
+                                color: ColorRes.black.withValues(alpha: 0.6),
                               ),
                             ),
                           ),
@@ -157,7 +163,9 @@ class ProfileScreen extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: SvgAsset(
                                 imagePath: AssetRes.emailIcon,
-                                width: 19.pw,
+                                width: 20.pw,
+                                height: 20.ph,
+                                color: ColorRes.black.withValues(alpha: 0.6),
                               ),
                             ),
                           ),
@@ -173,7 +181,9 @@ class ProfileScreen extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: SvgAsset(
                                 imagePath: AssetRes.chatIcon,
-                                width: 19.pw,
+                                width: 20.pw,
+                                height: 20.ph,
+                                color: ColorRes.black.withValues(alpha: 0.6),
                               ),
                             ),
                           ),
@@ -192,14 +202,13 @@ class ProfileScreen extends StatelessWidget {
 
   Widget _buildOptions(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(horizontal: 15.pw),
       decoration: BoxDecoration(
         color: ColorRes.white,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
         children: [
-          ///Space
           5.ph.spaceVertical,
 
           ///Account Information
@@ -258,7 +267,7 @@ class ProfileScreen extends StatelessWidget {
             child: Text(
               context.l10n?.clickToImproveContentInformation ?? "",
               style: styleW400S14.copyWith(
-                color: ColorRes.black2,
+                color: ColorRes.black.withValues(alpha: 0.6),
                 decoration: TextDecoration.underline,
               ),
             ),

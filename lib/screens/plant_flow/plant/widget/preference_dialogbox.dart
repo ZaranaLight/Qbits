@@ -22,6 +22,10 @@ class PreferenceDialogBox extends StatelessWidget {
       insetPadding: EdgeInsets.symmetric(
         horizontal: Constants.horizontalPadding,
       ),
+
+      contentPadding: EdgeInsets.symmetric(
+        horizontal: Constants.horizontalPadding,
+      ),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,

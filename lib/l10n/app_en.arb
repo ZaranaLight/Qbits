@@ -74,6 +74,7 @@
   "fault": "Fault",
   "mail": "Mail",
   "profileInformation": "Profile Information",
+  "contentInformation": "Content Information",
   "accountCancellation": "Account Cancellation",
   "nameISRequired": "Name is Required",
   "contactInformationISRequired": "Contact information is Required",
@@ -262,6 +263,7 @@
   "addEnergyManager": "Add Energy Manager",
   "bluetoothIsOff": "Bluetooth is off.",
   "energy": "Energy",
+  "addPlant": "Add Plant",
   "pleaseEnableLocationFromDeviceSetting": "Please enable Location (GPS) from device settings",
   "collector": "Collector"
 }

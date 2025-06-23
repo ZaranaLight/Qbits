@@ -11,11 +11,11 @@ class EditInverterModel {
 
   EditInverterModel({
     // Existing default values...
-    this.inverterNo = '1',
-    this.rs485Id = '1',
+    this.inverterNo = '',
+    this.rs485Id = '',
     this.serialNumber = '123456789',
-    this.panelWatt = '0',
-    this.panelCount = '0',
+    this.panelWatt = '',
+    this.panelCount = '',
   });
 }
 

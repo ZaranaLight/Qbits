@@ -27,6 +27,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             title ?? "",
             style: styleW600S20.copyWith(color: ColorRes.white),
           ),
+
       centerTitle: centerTitle,
       backgroundColor: backgroundColor,
       leading:

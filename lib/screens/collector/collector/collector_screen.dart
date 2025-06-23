@@ -265,7 +265,7 @@ class CollectorScreen extends StatelessWidget {
                                         ),
                                       ),
                                       Divider(
-                                        color: ColorRes.grey2.withValues(
+                                        color: ColorRes.black.withValues(
                                           alpha: 0.1,
                                         ),
                                       ),

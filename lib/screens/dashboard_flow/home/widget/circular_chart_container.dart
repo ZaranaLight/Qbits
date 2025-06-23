@@ -12,7 +12,7 @@ class CircularChartContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
-        spacing:40.pw  ,
+        spacing: 40.pw,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           /// Left Side Column
@@ -96,7 +96,7 @@ class CircularChartContainer extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         /// Title Text
-        Text(title, style: styleW500S16),
+        Text(title, style: styleW500S16.copyWith(color: ColorRes.black.withValues(alpha: 0.6))),
 
         /// Space
         4.ph.spaceVertical,
@@ -107,8 +107,7 @@ class CircularChartContainer extends StatelessWidget {
             children: [
               // Before the dot
               TextSpan(
-                text:
-                    value.contains('.') ? '${value.split('.')[0]}.' : value,
+                text: value.contains('.') ? '${value.split('.')[0]}.' : value,
                 style: styleW600S16,
               ),
 
@@ -116,7 +115,9 @@ class CircularChartContainer extends StatelessWidget {
               if (value.contains('.'))
                 TextSpan(
                   text: value.substring(value.indexOf('.') + 1),
-                  style: styleW400S16,
+                  style: styleW400S16.copyWith(
+                    color: ColorRes.black.withValues(alpha: 0.7),
+                  ),
                 ),
             ],
           ),

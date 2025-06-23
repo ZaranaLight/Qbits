@@ -26,7 +26,7 @@ class AccountSecurityScreen extends StatelessWidget {
               bottom:
                   Constants.safeAreaPadding.bottom +
                   Constants.horizontalPadding,
-              top: 20.pw,
+
             ),
             child: Column(
               children: [
@@ -48,7 +48,7 @@ class AccountSecurityScreen extends StatelessWidget {
 
                 ///Set Password
                 TabWidget(
-                  title: context.l10n?.setPassword ?? "",
+                  title: ' ${context.l10n?.setPassword ?? ""}',
                   imagePath: AssetRes.lockIcon,
                   onTap: () {
                     context.navigator.pushNamed(UserCenterScreen.routeName);

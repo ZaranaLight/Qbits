@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/dashboard_flow/energy/energy_screen.dart';
 
 class BarChartContainer extends StatelessWidget {
   const BarChartContainer({super.key});
@@ -30,8 +29,8 @@ class BarChartContainer extends StatelessWidget {
                     /// Title Text
                     Text(
                       "Month : 26.0K (kwh)",
-                      style: styleW600S20.copyWith(
-                        color: ColorRes.black.withValues(alpha: 70),
+                      style: styleW500S16.copyWith(
+                        color: ColorRes.black.withValues(alpha: 0.7),
                       ),
                     ),
 

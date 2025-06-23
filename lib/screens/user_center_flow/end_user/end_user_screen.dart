@@ -53,8 +53,8 @@ class EndUserScreen extends StatelessWidget {
                   ),
                   child: SearchTextField(
                     hintText: context.l10n?.search,
-
                     controller: provider.searchController,
+                    fillColor: ColorRes.white,
                     prefixIcon: SvgAsset(
                       imagePath: AssetRes.searchIcon,
                       color: ColorRes.black,

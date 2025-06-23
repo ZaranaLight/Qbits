@@ -11,7 +11,7 @@ class DashBoardTab extends StatelessWidget {
       ///Solar Diagram
       SizedBox(
         width: double.infinity,
-        child: Image.asset(AssetRes.tempSolarDiagramImg),
+        child: Image.asset(AssetRes.tempSolarDiagramImg, height: 350.ph),
       ),
 
       /// Info Containers
@@ -62,7 +62,7 @@ class DashBoardTab extends StatelessWidget {
                     items: customWidgets,
                     carouselController: _controller,
                     options: CarouselOptions(
-                      height: 286.ph,
+                      height: 320.ph,
                       enlargeCenterPage: false,
                       onPageChanged: (index, reason) {
                         provider.setCurrent(index);
@@ -75,7 +75,7 @@ class DashBoardTab extends StatelessWidget {
 
                   /// Dots Indicator
                   Positioned(
-                    bottom: 20,
+                    bottom: 20.ph,
                     left: 0,
                     right: 0,
                     child: Row(
@@ -219,6 +219,7 @@ class DashBoardTab extends StatelessWidget {
                     ),
                   ],
                 ),
+
                 SvgAsset(imagePath: iconPath),
               ],
             ),

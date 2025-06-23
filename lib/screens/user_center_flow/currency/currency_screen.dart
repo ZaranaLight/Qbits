@@ -15,6 +15,7 @@ class CurrencyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: CustomAppBar(title: context.l10n?.currency ?? ""),
       body: CustomSingleChildScroll(
         padding: EdgeInsets.only(
@@ -102,7 +103,10 @@ class _CurrencyTabWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: Constants.horizontalPadding),
+        padding: EdgeInsets.symmetric(
+          vertical: Constants.horizontalPadding,
+          horizontal: 5.pw,
+        ),
         child: Column(
           children: [
             Row(
@@ -110,12 +114,16 @@ class _CurrencyTabWidget extends StatelessWidget {
                 SvgAsset(
                   imagePath: imagePath,
                   width: 20.pw,
+                  height: 20.ph,
                   color: ColorRes.black,
                 ),
                 10.ph.spaceHorizontal,
                 Text(title, style: styleW600S16),
                 Spacer(),
-                SvgAsset(imagePath: AssetRes.rightArrowIcon),
+                SvgAsset(
+                  imagePath: AssetRes.rightArrowIcon,
+                  color: ColorRes.black.withValues(alpha: 0.6),
+                ),
               ],
             ),
           ],

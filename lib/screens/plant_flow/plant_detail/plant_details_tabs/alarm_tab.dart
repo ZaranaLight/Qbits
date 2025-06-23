@@ -128,14 +128,140 @@ class AlarmTab extends StatelessWidget {
       child: TabBarView(
         children: [
           // All alarms
-          AlarmListViewWrapper(itemCount: 10, alarmTypeKey: 'all'),
+          WatchLstAlarmTabList(itemCount: 10, alarmTypeKey: 'Recovered'),
 
           // Going alarms
-          AlarmListViewWrapper(itemCount: 2, alarmTypeKey: 'going'),
+          WatchLstAlarmTabList(itemCount: 2, alarmTypeKey: 'Going'),
 
           // Recovered alarms
-          AlarmListViewWrapper(itemCount: 5, alarmTypeKey: 'recovered'),
+          WatchLstAlarmTabList(itemCount: 5, alarmTypeKey: 'Recovered'),
         ],
+      ),
+    );
+  }
+}
+
+class WatchLstAlarmTabList extends StatelessWidget {
+  final int itemCount;
+  final String alarmTypeKey;
+
+  const WatchLstAlarmTabList({
+    super.key,
+    required this.itemCount,
+    required this.alarmTypeKey,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomListView(
+      itemCount: itemCount,
+      separatorBuilder:
+          (context, index) => Container(
+        margin: EdgeInsets.symmetric(horizontal: 20.pw),
+        width: double.infinity,
+      ),
+      itemBuilder: (context, index) => AlarmWidget(alarmType: alarmTypeKey),
+    );
+  }
+}
+class AlarmWidget extends StatelessWidget {
+  final String? alarmType;
+
+  const AlarmWidget({super.key, this.alarmType});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.pw),
+        color: ColorRes.white,
+      ),
+      margin: EdgeInsets.symmetric(
+        horizontal: Constants.horizontalPadding,
+        vertical: 8.pw,
+      ),
+      child: Material(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8.pw),
+        child: InkWell(
+          onTap: () => {context.navigator.pushNamed(AlarmInverterScreen.routeName)},
+          borderRadius: BorderRadius.circular(8.pw),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.all(12.pw),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+
+                    ///Alarm Status
+                    Text(
+                      alarmType ?? "",
+                      style: styleW600S14.copyWith(
+                        color: ColorRes.primaryColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              ///Divider
+              Divider(
+                height: 1.pw,
+                color: ColorRes.black.withValues(alpha: 0.1),
+              ),
+
+              Padding(
+                padding: EdgeInsets.all(12.pw),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+
+                    ///Alarm Description
+                    Text(
+                      'Low DC voltage',
+                      style: styleW400S14.copyWith(color: ColorRes.orange2),
+                    ),
+                  ],
+                ),
+              ),
+
+              ///Divider
+              Divider(
+                height: 1.pw,
+                color: ColorRes.black.withValues(alpha: 0.1),
+              ),
+
+              ///Date and Time
+              Padding(
+                padding: EdgeInsets.all(12.pw),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ///Alarm Date and Time
+                    Text(
+                      getFormattedDateTime(),
+                      style: styleW400S12.copyWith(
+                        color: ColorRes.black.withValues(alpha: 0.7),
+                      ),
+                    ),
+
+
+                    ///Alarm Date and Time
+                    Text(
+                      getFormattedDateTime(),
+                      style: styleW400S12.copyWith(
+                        color: ColorRes.black.withValues(alpha: 0.7),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

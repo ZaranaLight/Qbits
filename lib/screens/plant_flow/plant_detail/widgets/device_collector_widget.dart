@@ -14,6 +14,9 @@ class CollectorWidget extends StatelessWidget {
               children: [
                 /// Divider
                 Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+
+                /// Space between dropdown and content
+                5.ph.spaceVertical,
                 // /// Device Dropdown
                 _buildDeviceDropdown(provider),
 
@@ -53,7 +56,7 @@ class CollectorWidget extends StatelessWidget {
                               Spacer(),
                               Container(
                                 width: 18.pw,
-                                height: 18.pw,
+                                height: 18.ph,
                                 decoration: BoxDecoration(
                                   color: ColorRes.lightRed,
                                   borderRadius: BorderRadius.circular(18.pw),
@@ -74,7 +77,7 @@ class CollectorWidget extends StatelessWidget {
                               Text(
                                 context.l10n?.offline ?? "",
                                 style: styleW500S14.copyWith(
-                                  color: ColorRes.darkGrey,
+                                  color: ColorRes.black.withValues(alpha: 0.5),
                                 ),
                               ),
                             ],
@@ -92,7 +95,12 @@ class CollectorWidget extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(context.l10n?.production ?? ""),
+                              Text(
+                                context.l10n?.production ?? "",
+                                style: styleW500S14.copyWith(
+                                  color: ColorRes.black.withValues(alpha: 0.6),
+                                ),
+                              ),
 
                               ///Space
                               2.ph.spaceVertical,

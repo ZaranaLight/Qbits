@@ -25,8 +25,12 @@ class SearchScreen extends StatelessWidget {
                 title: SearchTextField(
                   hintText: context.l10n?.search,
                   controller: state.searchController,
-                  prefixIcon: SvgAsset(imagePath: AssetRes.searchIcon),
-                  fillColor: ColorRes.white.withValues(alpha: 0.1),
+                  prefixIcon: SvgAsset(
+                    imagePath: AssetRes.searchIcon,
+                    width: 14.pw,
+                    height: 14.ph,
+                    color: ColorRes.white.withValues(alpha: 0.8),
+                  ),
                 ),
                 // leadingWidth: ,
                 centerTitle: true,
@@ -94,11 +98,13 @@ class SearchScreen extends StatelessWidget {
                               onTap: () {
                                 context.read<SearchProvider>().clearHistory();
                               },
-                              borderRadius: BorderRadius.circular(8.pw),
-
+                              borderRadius: BorderRadius.circular(5.pw),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: SvgAsset(imagePath: AssetRes.deleteIcon),
+                                child: SvgAsset(
+                                  imagePath: AssetRes.deleteIcon,
+                                  width: 20.ph,
+                                ),
                               ),
                             ),
                           ],

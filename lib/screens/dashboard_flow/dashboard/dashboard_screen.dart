@@ -106,16 +106,15 @@ class _BottomBar extends StatelessWidget {
                       firstChild: SvgAsset(
                         imagePath: image,
 
-                        height:
-                        Constants.isTablet ? 15.pw : 24.pw,
-                        width: Constants.isTablet? 15.pw : 24.pw,
+                        height: Constants.isTablet ? 15.pw : 24.pw,
+                        width: Constants.isTablet ? 15.pw : 24.pw,
                         color: ColorRes.lightGreen,
                       ),
                       secondChild: SvgAsset(
                         imagePath: image,
-                        height:
-                        Constants.isTablet ? 15.pw : 24.pw,
-                        width:Constants.isTablet ? 15.pw : 24.pw,
+                        height: Constants.isTablet ? 15.pw : 24.pw,
+                        width: Constants.isTablet ? 15.pw : 24.pw,
+                        color:   ColorRes.black.withValues(alpha: 0.6),
                       ),
 
                       crossFadeState:
@@ -126,15 +125,17 @@ class _BottomBar extends StatelessWidget {
                     ),
 
                     /// Space
-                    6.ph.spaceVertical,
+                    8.ph.spaceVertical,
 
                     AnimatedDefaultTextStyle(
                       style:
                           isSelected
-                              ? styleW700S10.copyWith(
+                              ? styleW400S12.copyWith(
                                 color: ColorRes.primaryColor,
                               )
-                              : styleW700S10,
+                              : styleW400S12.copyWith(
+                                color: ColorRes.black.withValues(alpha: 0.6),
+                              ),
                       duration: 300.milliseconds,
                       child: Text(text ?? ""),
                     ),

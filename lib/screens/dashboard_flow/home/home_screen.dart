@@ -47,14 +47,7 @@ class HomeScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               color: ColorRes.white,
                               borderRadius: BorderRadius.circular(8),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withValues(alpha: 0.1),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 10,
-                                  spreadRadius: 1,
-                                ),
-                              ],
+
                             ),
                             child: Material(
                               color: Colors.transparent,
@@ -75,13 +68,21 @@ class HomeScreen extends StatelessWidget {
                                       /// Bookmark Image
                                       SvgAsset(
                                         imagePath: AssetRes.bookmarkIcon,
+                                        height: 24.ph,
                                       ),
 
                                       /// Space
                                       13.pw.spaceHorizontal,
 
                                       /// Text
-                                      Text(context.l10n?.myWatchlist ?? ""),
+                                      Text(
+                                        context.l10n?.myWatchlist ?? "",
+                                        style: styleW500S16.copyWith(
+                                          color: ColorRes.black.withValues(
+                                            alpha: 0.6,
+                                          ),
+                                        ),
+                                      ),
 
                                       Spacer(),
 
@@ -164,7 +165,47 @@ class _AppBar extends StatelessWidget {
                 ),
 
                 /// Plus Icon
-                SvgAsset(imagePath: AssetRes.plusIcon),
+                PopupMenuButton(
+                  constraints: BoxConstraints(maxWidth: 90.w),
+                  offset: Offset(0, 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    side: BorderSide(color: ColorRes.primaryColor),
+                  ),
+                  padding: EdgeInsets.all(12.pw),
+                  color: ColorRes.white,
+                  borderRadius: BorderRadius.circular(5.pw),
+                  itemBuilder: (con) {
+                    return [
+                      PopupMenuItem(
+                        onTap: () {
+                          context.navigator.pushNamed(AddPlantScreen.routeName);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SvgAsset(
+                                imagePath: AssetRes.roundedPlusIcon,
+                                color: ColorRes.primaryColor,
+                                height: 16.ph,
+                              ),
+                              Text(
+                                context.l10n?.addPlant ?? "",
+                                style: styleW500S14.copyWith(
+                                  color: ColorRes.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ];
+                  },
+
+                  child: SvgAsset(imagePath: AssetRes.plusIcon),
+                ),
               ],
             ),
 
@@ -181,6 +222,7 @@ class _AppBar extends StatelessWidget {
                 child: SvgAsset(imagePath: AssetRes.searchIcon),
               ),
               readOnly: true,
+
               onTap: () {
                 context.navigator.pushNamed(SearchScreen.routeName);
               },

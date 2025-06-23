@@ -16,7 +16,12 @@ class ColumnWithRichText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         /// Title Text
-        Text(title, style: styleW500S14),
+        Text(
+          title,
+          style: styleW500S14.copyWith(
+            color: ColorRes.black.withValues(alpha: 0.6),
+          ),
+        ),
 
         /// Space
         4.ph.spaceVertical,
@@ -25,7 +30,7 @@ class ColumnWithRichText extends StatelessWidget {
         RichText(
           text: TextSpan(
             children: _getStyledTextSpans(value),
-            style: styleW400S16, // default style for normal text
+            style: styleW600S16, // default style for normal text
           ),
         ),
       ],
@@ -46,7 +51,9 @@ class ColumnWithRichText extends StatelessWidget {
         spans.add(
           TextSpan(
             text: text.substring(start, match.start),
-            style: styleW400S16, // normal style
+            style: styleW400S16.copyWith(
+              color: ColorRes.black.withValues(alpha: 0.7),
+            ), // normal style
           ),
         );
       }

@@ -29,7 +29,7 @@ class TotalPlantsContainer extends StatelessWidget {
                     Text(
                       context.l10n?.totalPlants ?? "",
                       style: styleW500S16.copyWith(
-                        color: ColorRes.black.withValues(alpha: 60),
+                        color: ColorRes.black.withValues(alpha: 0.6),
                       ),
                     ),
 
@@ -94,11 +94,16 @@ class TotalPlantsContainer extends StatelessWidget {
 
           10.pw.spaceHorizontal,
 
-          Text(title, style: styleW500S16),
+          Text(
+            title,
+            style: styleW500S14.copyWith(
+              color: ColorRes.black.withValues(alpha: 0.7),
+            ),
+          ),
 
           Spacer(),
 
-          Text(value, style: styleW500S16),
+          Text(value, style: styleW600S16),
 
           8.pw.spaceHorizontal,
 

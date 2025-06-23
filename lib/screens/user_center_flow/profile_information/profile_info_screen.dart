@@ -18,7 +18,7 @@ class ProfileInformationScreen extends StatelessWidget {
       builder: (context, provider, child) {
         return Scaffold(
           backgroundColor: ColorRes.white,
-          appBar: CustomAppBar(title: context.l10n?.profileInformation ?? ""),
+          appBar: CustomAppBar(title: context.l10n?.contentInformation ?? ""),
           bottomNavigationBar: SafeArea(
             top: false,
             child: Padding(

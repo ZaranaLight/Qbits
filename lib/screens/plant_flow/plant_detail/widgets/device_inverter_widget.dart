@@ -77,7 +77,7 @@ class InverterWidget extends StatelessWidget {
                                 Spacer(),
                                 Container(
                                   width: 18.pw,
-                                  height: 18.pw,
+                                  height: 18.ph,
                                   decoration: BoxDecoration(
                                     color: ColorRes.lightRed,
                                     borderRadius: BorderRadius.circular(18.pw),
@@ -98,7 +98,9 @@ class InverterWidget extends StatelessWidget {
                                 Text(
                                   context.l10n?.offline ?? "",
                                   style: styleW500S14.copyWith(
-                                    color: ColorRes.darkGrey,
+                                    color: ColorRes.black.withValues(
+                                      alpha: 0.5,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -120,7 +122,14 @@ class InverterWidget extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(context.l10n?.production ?? ""),
+                                      Text(
+                                        context.l10n?.production ?? "",
+                                        style: styleW500S14.copyWith(
+                                          color: ColorRes.black.withValues(
+                                            alpha: 0.6,
+                                          ),
+                                        ),
+                                      ),
 
                                       ///Space
                                       2.ph.spaceVertical,
@@ -133,7 +142,14 @@ class InverterWidget extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(context.l10n?.dayEnergy ?? ""),
+                                      Text(
+                                        context.l10n?.dayEnergy ?? "",
+                                        style: styleW500S14.copyWith(
+                                          color: ColorRes.black.withValues(
+                                            alpha: 0.6,
+                                          ),
+                                        ),
+                                      ),
 
                                       ///Space
                                       2.ph.spaceVertical,
@@ -165,12 +181,23 @@ class InverterWidget extends StatelessWidget {
       elevation: 1,
       padding: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding),
       isDense: true,
+      style: styleW400S14.copyWith(
+        color: ColorRes.black.withValues(alpha: 0.6),
+      ),
       hint: Text(provider.selectedDeviceOption, style: styleW500S14),
       isExpanded: false,
       underline: const SizedBox(),
       items:
           provider.deviceOption.map((value) {
-            return DropdownMenuItem<String>(value: value, child: Text(value));
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(
+                value,
+                style: styleW400S14.copyWith(
+                  color: ColorRes.black.withValues(alpha: 0.6),
+                ),
+              ),
+            );
           }).toList(),
       onChanged: (newValue) {
         if (newValue != null) provider.updateSelectedDevice(newValue);

@@ -21,12 +21,14 @@ class SignInScreen extends StatelessWidget {
             children: [
               // Background image
               Positioned(
+                top: -20,
                 child: Stack(
                   children: [
                     /// Background icon
                     SvgAsset(
                       imagePath: AssetRes.authBackgroundIcon,
-                      height: 52.h,
+                      height: 55.h,
+                      width: double.infinity,
                     ),
 
                     /// App name icon

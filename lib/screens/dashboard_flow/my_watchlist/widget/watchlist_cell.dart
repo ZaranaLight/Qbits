@@ -11,7 +11,7 @@ class MyWatchlistCellListView extends StatelessWidget {
           loading: state.loader,
           child: CustomListView(
             itemCount: 10,
-
+            padding: EdgeInsets.only(bottom: Constants.safeAreaPadding.bottom),
             separatorBuilder: (ctx, ind) {
               return Container(
                 height: 1.ph,
@@ -58,6 +58,7 @@ class MyWatchlistCell extends StatelessWidget {
               /// Space
               10.pw.spaceHorizontal,
 
+              /// Expanded Column
               Expanded(
                 child: Column(
                   spacing: 14,
@@ -81,7 +82,10 @@ class MyWatchlistCell extends StatelessWidget {
                           borderRadius: BorderRadius.circular(5.pw),
                           child: Padding(
                             padding: const EdgeInsets.all(5.0),
-                            child: SvgAsset(imagePath: AssetRes.starIcon),
+                            child: SvgAsset(
+                              imagePath: AssetRes.starIcon,
+                              width: 20.pw,
+                            ),
                           ),
                         ),
                       ],
@@ -124,7 +128,7 @@ class MyWatchlistCell extends StatelessWidget {
           Text(
             title,
             style: styleW500S12.copyWith(
-              color: ColorRes.black.withValues(alpha: 50),
+              color: ColorRes.black.withValues(alpha: 0.5),
             ),
           ),
 

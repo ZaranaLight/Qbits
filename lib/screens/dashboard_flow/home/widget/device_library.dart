@@ -28,7 +28,7 @@ class DeviceLibraryWidget extends StatelessWidget {
                     Text(
                       context.l10n?.deviceLibery ?? "",
                       style: styleW500S16.copyWith(
-                        color: ColorRes.black.withValues(alpha: 60),
+                        color: ColorRes.black.withValues(alpha: 0.6),
                       ),
                     ),
 
@@ -55,7 +55,9 @@ class DeviceLibraryWidget extends StatelessWidget {
                   children: [
                     Text(
                       "${context.l10n?.allQuantity ?? ""}: ",
-                      style: styleW500S16.copyWith(color: ColorRes.darkGrey),
+                      style: styleW500S16.copyWith(
+                        color: ColorRes.black.withValues(alpha: 0.5),
+                      ),
                     ),
                     Text(
                       "0",
@@ -75,6 +77,7 @@ class DeviceLibraryWidget extends StatelessWidget {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _dotWidget(
                       color: ColorRes.parrot,
@@ -121,21 +124,18 @@ class DeviceLibraryWidget extends StatelessWidget {
 
               Container(
                 margin: EdgeInsets.only(
-                  right: 20.pw,
-                  left: 20.pw,
+                  right: 6.pw,
+                  left: 6.pw,
                   bottom: 20.ph,
                   top: 11.ph,
                 ),
-                padding: EdgeInsets.symmetric(
-                  horizontal: 9.pw,
-                  vertical: 20.ph,
-                ),
+                padding: EdgeInsets.symmetric(vertical: 20.ph),
                 decoration: BoxDecoration(
                   color: ColorRes.primaryColor.withValues(alpha: 0.06),
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Row(
-                  spacing: 10.pw,
+                  spacing: 6.pw,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -169,10 +169,14 @@ class DeviceLibraryWidget extends StatelessWidget {
   }) {
     return Flexible(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment:
             isRightSide ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: [
           Wrap(
+            crossAxisAlignment: WrapCrossAlignment.start,
+            runAlignment: WrapAlignment.start,
+            alignment: WrapAlignment.start,
             textDirection: isRightSide ? TextDirection.rtl : TextDirection.ltr,
             children: [
               /// Dot
@@ -196,7 +200,12 @@ class DeviceLibraryWidget extends StatelessWidget {
               4.pw.spaceHorizontal,
 
               /// Title
-              Text(title, style: styleW500S14),
+              Text(
+                title,
+                style: styleW500S14.copyWith(
+                  color: ColorRes.black.withValues(alpha: 0.5),height: 1
+                ),
+              ),
             ],
           ),
 
@@ -206,7 +215,12 @@ class DeviceLibraryWidget extends StatelessWidget {
           /// Value
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.pw),
-            child: Text(value, style: styleW400S14),
+            child: Text(
+              value,
+              style: styleW400S14.copyWith(
+                color: ColorRes.black.withValues(alpha: 0.9),
+              ),
+            ),
           ),
         ],
       ),
@@ -223,7 +237,6 @@ class DeviceLibraryWidget extends StatelessWidget {
           Center(
             child: Text(
               title,
-              maxLines: 2,
               textAlign: TextAlign.center,
               style: styleW500S14.copyWith(
                 color: ColorRes.black.withValues(alpha: 0.5),
@@ -235,7 +248,12 @@ class DeviceLibraryWidget extends StatelessWidget {
           4.ph.spaceVertical,
 
           /// Activity Value Text
-          Text(value, style: styleW600S16),
+          Text(
+            value,
+            style: styleW500S18.copyWith(
+              color: ColorRes.black.withValues(alpha: 0.9),
+            ),
+          ),
         ],
       ),
     );
