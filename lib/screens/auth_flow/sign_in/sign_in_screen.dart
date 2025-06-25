@@ -20,31 +20,28 @@ class SignInScreen extends StatelessWidget {
           return Stack(
             children: [
               // Background image
-              Positioned(
-                top: -20,
-                child: Stack(
-                  children: [
-                    /// Background icon
-                    SvgAsset(
-                      imagePath: AssetRes.authBackgroundIcon,
-                      height: 55.h,
-                      width: double.infinity,
-                    ),
+              Stack(
+                children: [
+                  /// Background icon
+                  SvgAsset(
+                    imagePath: AssetRes.authBackgroundIcon,
+                    height: 55.h,
+                    width: double.infinity,
+                  ),
 
-                    /// App name icon
-                    Positioned(
-                      top: 0,
-                      bottom: 80.pw,
-                      left: 80.pw,
-                      right: 80.pw,
-                      child: SvgAsset(
-                        imagePath: AssetRes.appNameIcon,
-                        width: 200.pw,
-                        height: 67.ph,
-                      ),
+                  /// App name icon
+                  Positioned(
+                    top: 0,
+                    bottom: 80.pw,
+                    left: 80.pw,
+                    right: 80.pw,
+                    child: SvgAsset(
+                      imagePath: AssetRes.appNameIcon,
+                      width: 200.pw,
+                      height: 67.ph,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               SafeArea(
                 child: CustomSingleChildScroll(
