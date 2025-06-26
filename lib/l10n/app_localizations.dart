@@ -495,6 +495,12 @@ abstract class AppLocalizations {
   /// **'Phone Number'**
   String get phoneNumber;
 
+  /// No description provided for @otpCodeIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Otp Code Is Required'**
+  String get otpCodeIsRequired;
+
   /// No description provided for @tip.
   ///
   /// In en, this message translates to:

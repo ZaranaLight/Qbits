@@ -1,12 +1,20 @@
 import 'package:qbits/qbits.dart';
 
 class SignInProvider extends ChangeNotifier {
+  SignInProvider({this.initialRegion, this.initialLanguage}) {
+    selectedRegion = initialRegion ?? "";
+    selectedLanguage = initialLanguage ?? "";
+  }
+
   bool loader = false;
   TextEditingController accountController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
   String accountError = "";
   String pwdError = "";
+  final String? initialRegion;
+  final String? initialLanguage;
+  String selectedRegion = '';
+  String selectedLanguage = '';
   bool isPwdVisible = false;
 
   void onPwdVisibilityChanged() {
@@ -22,12 +30,46 @@ class SignInProvider extends ChangeNotifier {
     context.navigator.pushNamed(BluetoothScreen.routeName);
   }
 
+  void updateSelectedRegion(String region) {
+    selectedRegion = region;
+    notifyListeners();
+  }
+
+  void updateSelectedLanguage(String lang) {
+    selectedLanguage = lang;
+    notifyListeners();
+  }
+
   void onSelectRegionTap(BuildContext context) {
-    context.navigator.pushNamed(SelectRegionScreen.routeName);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder:
+            (_) => SelectRegionScreen.builder(
+              context,
+              initialRegion: selectedRegion,
+              onRegionSelected: (region) {
+                updateSelectedRegion(region); // <-- update on return
+              },
+            ),
+      ),
+    );
   }
 
   void onSelectLanguageTap(BuildContext context) {
-    context.navigator.pushNamed(SelectLanguageScreen.routeName);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder:
+            (_) => SelectLanguageScreen.builder(
+              context,
+              initialLanguage: selectedLanguage,
+              onLanguageSelected: (region) {
+                updateSelectedLanguage(region); // <-- update on return
+              },
+            ),
+      ),
+    );
   }
 
   Future<void> onSignInTap(BuildContext context) async {

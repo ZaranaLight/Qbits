@@ -132,6 +132,8 @@ class _MultiSelectDialogState extends State<_MultiSelectDialog> {
                 },
               ),
             ),
+
+            ///Space
             16.pw.spaceHorizontal,
 
             Expanded(

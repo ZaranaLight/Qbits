@@ -66,6 +66,7 @@
   "gMT0": "GMT 0",
   "stationType": "Station Type",
   "phoneNumber": "Phone Number",
+  "otpCodeIsRequired": "Otp Code Is Required",
   "tip": "Tip",
   "companyCode": "Company Code",
   "send": "Send",

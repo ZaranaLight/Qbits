@@ -17,7 +17,10 @@ class ErrorText extends StatelessWidget {
             /// Error Icon
             Padding(
               padding: EdgeInsets.only(top: 1),
-              child: SvgAsset(imagePath: AssetRes.errorIcon, height: Constants.horizontalPadding),
+              child: SvgAsset(
+                imagePath: AssetRes.errorIcon,
+                height: Constants.horizontalPadding,
+              ),
             ),
 
             /// Space
@@ -219,55 +222,45 @@ class RadioButtonCell extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(2),
         child: Padding(
-          padding: EdgeInsets.only(top: 5.ph, bottom: 5.ph),
+          padding: EdgeInsets.only(
+            top: 14.ph,
+            bottom: 14.ph,
+            left: 4.pw,
+            right: 4.pw,
+          ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              /// Radio Button
+              /// Radio Square Box
               Padding(
                 padding: EdgeInsets.only(top: 0),
                 child: AnimatedSwitcher(
                   duration: 300.milliseconds,
-                  transitionBuilder: (
-                    Widget child,
-                    Animation<double> animation,
-                  ) {
-                    return ScaleTransition(scale: animation, child: child);
-                  },
+                  transitionBuilder:
+                      (child, animation) =>
+                          ScaleTransition(scale: animation, child: child),
                   child: Container(
                     key: ValueKey<bool>(isSelected),
-                    height: 16,
-                    width: 16,
+                    height: 18,
+                    width: 18,
                     decoration: BoxDecoration(
-                      shape: BoxShape.circle,
+                      borderRadius: BorderRadius.circular(2),
                       border: Border.all(
                         color:
                             isSelected
                                 ? ColorRes.primaryColor
-                                : ColorRes.grey.withValues(alpha: 0.2),
+                                : ColorRes.black.withValues(alpha: 0.2),
+                        width: 1,
                       ),
+                      color: isSelected ? ColorRes.primaryColor : Colors.white,
                     ),
-                    child: Center(
-                      child: Builder(
-                        builder: (context) {
-                          if (isSelected) {
-                            return Container(
-                              height: 8.28,
-                              width: 8.28,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: ColorRes.primaryColor,
-                              ),
-                            );
-                          } else {
-                            return SizedBox();
-                          }
-                        },
-                      ),
-                    ),
+                    child:
+                        isSelected
+                            ? Icon(Icons.check, size: 14, color: Colors.white)
+                            : null,
                   ),
                 ),
               ),
@@ -276,7 +269,7 @@ class RadioButtonCell extends StatelessWidget {
               10.pw.spaceHorizontal,
 
               /// Title
-              Text(title, style: styleW400S14.copyWith(height: 0)),
+              Text(title, style: styleW500S16.copyWith(height: 0)),
             ],
           ),
         ),

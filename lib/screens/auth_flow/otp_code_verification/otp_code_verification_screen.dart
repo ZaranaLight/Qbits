@@ -1,3 +1,4 @@
+import 'package:qbits/common/widget/common_widgets.dart';
 import 'package:qbits/qbits.dart';
 
 class OtpCodeVerificationScreen extends StatelessWidget {
@@ -27,10 +28,12 @@ class OtpCodeVerificationScreen extends StatelessWidget {
                 left: Constants.horizontalPadding,
                 right: Constants.horizontalPadding,
               ),
-              child: SubmitButton(
+              child: SubmitButton(enable: provider.isOTPValidate,
                 title: context.l10n?.continueCap ?? "",
                 onTap: () {
-                  context.navigator.pop();
+                  context.read<OtpCodeVerificationProvider>().onVerifyTap(
+                    context,
+                  );
                 },
               ),
             ),
@@ -95,6 +98,9 @@ class OtpCodeVerificationScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                if (provider.otpError.isNotEmpty)
+                  ErrorText(error: provider.otpError, topPadding: 4.ph),
               ],
             ),
           ),

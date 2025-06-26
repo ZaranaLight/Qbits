@@ -33,10 +33,7 @@ class SignInScreen extends StatelessWidget {
                 top: 109.ph + Constants.safeAreaPadding.top,
                 left: 80.pw,
                 right: 80.pw,
-                child: SvgAsset(
-                  imagePath: AssetRes.appNameIcon,
-                  height: 67.ph,
-                ),
+                child: SvgAsset(imagePath: AssetRes.appNameIcon, height: 67.ph),
               ),
               SafeArea(
                 child: CustomSingleChildScroll(
@@ -59,7 +56,9 @@ class SignInScreen extends StatelessWidget {
                                 children: [
                                   ///icon
                                   Text(
-                                    context.l10n?.international ?? "",
+                                    provider.selectedRegion != ""
+                                        ? provider.selectedRegion
+                                        : context.l10n?.international ?? "",
                                     style: styleW500S14.copyWith(
                                       color: ColorRes.grey2,
                                     ),
@@ -89,7 +88,10 @@ class SignInScreen extends StatelessWidget {
 
                                   ///icon
                                   Text(
-                                    context.l10n?.languageSelection ?? "",
+                                    provider.selectedLanguage != ""
+                                        ? provider.selectedLanguage
+                                        : context.l10n?.languageSelection ?? "",
+
                                     style: styleW500S14.copyWith(
                                       color: ColorRes.grey2,
                                     ),

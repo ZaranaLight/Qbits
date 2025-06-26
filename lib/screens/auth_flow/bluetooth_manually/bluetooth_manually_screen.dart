@@ -21,7 +21,7 @@ class BluetoothManuallyScreen extends StatelessWidget {
             top: false,
             child: Padding(
               padding: EdgeInsets.only(
-                bottom: 30.ph,
+                bottom: Constants.safeAreaPadding.bottom + 30.ph,
                 left: Constants.horizontalPadding,
                 right: Constants.horizontalPadding,
               ),
@@ -36,10 +36,8 @@ class BluetoothManuallyScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              bottom:
-                  Constants.safeAreaPadding.bottom +
-                  Constants.horizontalPadding,
-              top: 20.pw,
+              bottom: 20.ph,
+              top: 20.ph,
             ),
             child: CustomSingleChildScroll(
               child: Column(
@@ -85,7 +83,7 @@ class BluetoothManuallyScreen extends StatelessWidget {
                   14.ph.spaceVertical,
 
                   CustomListView(
-                    itemCount: state.devices.length,
+                    itemCount: state.foundDevices.length,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     separatorBuilder: (context, index) {
@@ -96,14 +94,14 @@ class BluetoothManuallyScreen extends StatelessWidget {
                       );
                     },
                     itemBuilder: (context, index) {
-                      final result = state.devices[index];
-                      final device = result.device;
+                      final result = state.foundDevices[index];
+                      final device = result.platformName;
 
                       return InkWell(
                         onTap: () {
                           state.onTapSelectedBluetoothDeviceItem(
                             context,
-                            result,
+                            // result,
                           );
                         },
                         borderRadius: BorderRadius.circular(5.pw),
@@ -132,10 +130,10 @@ class BluetoothManuallyScreen extends StatelessWidget {
 
                             ///Device Name
                             Text(
-                              result.advertisementData.advName.isNotEmpty
-                                  ? result.advertisementData.advName
-                                  : (device.platformName.isNotEmpty
-                                      ? device.platformName
+                              result.advName.isNotEmpty
+                                  ? result.advName
+                                  : (device.isNotEmpty
+                                      ? device
                                       : "Unknown Device"),
                               style: styleW600S16.copyWith(fontSize: 18.pw),
                             ),

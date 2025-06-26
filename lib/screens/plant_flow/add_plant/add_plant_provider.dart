@@ -1,4 +1,3 @@
-import 'package:path/path.dart';
 import 'package:qbits/qbits.dart';
 
 class PlantModel {

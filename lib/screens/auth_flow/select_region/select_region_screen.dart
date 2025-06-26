@@ -2,14 +2,27 @@ import 'package:qbits/common/widget/common_widgets.dart';
 import 'package:qbits/qbits.dart';
 
 class SelectRegionScreen extends StatelessWidget {
-  const SelectRegionScreen({super.key});
+  const SelectRegionScreen({
+    super.key,
+    this.onRegionSelected,
+    this.initialRegion,
+  });
 
   static const routeName = "select_region";
+  final void Function(String selectedRegion)? onRegionSelected;
+  final String? initialRegion;
 
-  static Widget builder(BuildContext context) {
+  static Widget builder(
+    BuildContext context, {
+    void Function(String)? onRegionSelected,
+    String? initialRegion,
+  }) {
     return ChangeNotifierProvider<SelectRegionProvider>(
-      create: (c) => SelectRegionProvider(),
-      child: SelectRegionScreen(),
+      create: (c) => SelectRegionProvider(initialRegion: initialRegion),
+      child: SelectRegionScreen(
+        initialRegion: initialRegion,
+        onRegionSelected: onRegionSelected,
+      ),
     );
   }
 
@@ -29,7 +42,12 @@ class SelectRegionScreen extends StatelessWidget {
               ),
               child: SubmitButton(
                 title: context.l10n?.ok ?? "",
+                enable: provider.selectedRegion != "",
                 onTap: () {
+                  final selectedRegion = provider.selectedRegion;
+                  if (onRegionSelected != null) {
+                    onRegionSelected!(selectedRegion);
+                  }
                   context.navigator.pop();
                 },
               ),
@@ -87,6 +105,7 @@ class SelectRegionScreen extends StatelessWidget {
                 CustomListView(
                   itemCount: provider.regionCheckBoxNameList.length,
                   shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   separatorBuilder: (context, index) {
                     return Container(
                       height: 1,
@@ -97,18 +116,26 @@ class SelectRegionScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final name = provider.regionCheckBoxNameList[index];
                     final isChecked = provider.isChecked(name);
-                    return CheckBoxBtn(
+                    return RadioButtonCell(
+                      title: name,
+                      isSelected: isChecked,
+                      onTap: () => provider.selectOnly(name),
+                    );/*CheckBoxBtn(
                       value: isChecked,
                       onChange: (value) {
-                        provider.setChecked(name, value);
+                        if (value) {
+                          provider.selectOnly(name);
+                        } else {
+                          provider.selectOnly('');
+                        }
                       },
                       text: name,
-                    );
+                    )*/;
                   },
                 ),
 
                 ///Space
-                14.ph.spaceVertical,
+                1.ph.spaceVertical,
 
                 ///Divider
                 Column(

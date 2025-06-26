@@ -1,3 +1,4 @@
+import 'dart:async';
 
 import 'package:qbits/qbits.dart';
 
@@ -12,68 +13,67 @@ class BluetoothManuallyProvider extends ChangeNotifier {
 
   bool get isScanning => _isScanning;
 
-  Future<void> startScan() async {
-    _devices.clear();
-    _isScanning = true;
-    notifyListeners();
+  bool _isDisposed = false;
 
-    // Request permissions
-    // await requestPermissions();
-    // if (Platform.isAndroid &&
-    //     Platform.operatingSystemVersion.contains("Android 11")) {
-    //   if (!await Geolocator.isLocationServiceEnabled()) {
-    //     showErrorMsg(
-    //       navigatorKey
-    //               .currentState
-    //               ?.context
-    //               .l10n!
-    //               .pleaseEnableLocationFromDeviceSetting ??
-    //           "",
-    //     );
-    //
-    //     _isScanning = false;
-    //     notifyListeners();
-    //     return;
-    //   }
-    // }
-    // Check if Bluetooth is ON
-    final state = await FlutterBluePlus.adapterState.first;
-    if (state != BluetoothAdapterState.on) {
-      _isScanning = false;
-      notifyListeners();
-      showCustomToast(
-        navigatorKey.currentState?.context.l10n?.bluetoothIsOff ?? "",
-      );
-      return;
-    }
+  List<BluetoothDevice> foundDevices = [];
+  StreamSubscription<List<ScanResult>>? _scanSubscription;
 
-    // Start scanning
-    await FlutterBluePlus.startScan(timeout: const Duration(seconds: 5));
-
-    FlutterBluePlus.scanResults.listen((results) {
-      for (var result in results) {
-        if (!_devices.any(
-          (r) => r.device.platformName == result.device.platformName,
-        )) {
-          _devices.add(result);
-          notifyListeners();
-        }
-      }
-    });
-
-    FlutterBluePlus.isScanning.listen((scanning) {
-      _isScanning = scanning;
-      notifyListeners();
-    });
+  // Guarded notify
+  void safeNotify() {
+    if (!_isDisposed) notifyListeners();
   }
+
+  @override
+  void dispose() {
+    _isDisposed = true;
+    stopScan(); // Stop scan when provider is disposed
+    super.dispose();
+  }
+
+  /// Start Bluetooth scanning
+  Future<void> startScan() async {
+    try {
+      _isScanning = true;
+      foundDevices.clear();
+      safeNotify();
+
+      await FlutterBluePlus.startScan(timeout: const Duration(seconds: 15));
+
+      _scanSubscription = FlutterBluePlus.scanResults.listen((results) {
+        foundDevices = results.map((r) => r.device).toList();
+        safeNotify();
+      });
+
+      // Optional: auto-stop after 10 sec
+      // Future.delayed(Duration(seconds: 15), () {
+      //   print("stopScan");
+      //   stopScan();
+      // });
+    } catch (e) {
+      print("Scan error: $e");
+      stopScan(); // Ensure we don't leave scanning on
+    }
+  }
+
+  /// Stop Bluetooth scanning
+  void stopScan() {
+    if (isScanning) {
+      FlutterBluePlus.stopScan();
+      _scanSubscription?.cancel();
+      _isScanning = false;
+      safeNotify();
+    }
+  }
+
+
 
   void onTapSelectedBluetoothDeviceItem(
     BuildContext context,
-    ScanResult device,
+    // ScanResult device,
   ) {
     context.navigator.pushNamed(
       IdAuthenticationScreen.routeName,
-      arguments: device,
+      // arguments: device,
     );
   }
 

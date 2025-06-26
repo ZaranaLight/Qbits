@@ -210,6 +210,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get phoneNumber => 'Phone Number';
 
   @override
+  String get otpCodeIsRequired => 'Otp Code Is Required';
+
+  @override
   String get tip => 'Tip';
 
   @override
