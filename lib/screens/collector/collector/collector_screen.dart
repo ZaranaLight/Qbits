@@ -189,7 +189,7 @@ class CollectorScreen extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.bottomRight,
                       child: FloatingActionButton(
-                        backgroundColor: ColorRes.green2,
+                        backgroundColor: ColorRes.primaryColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50.pw),
                         ),

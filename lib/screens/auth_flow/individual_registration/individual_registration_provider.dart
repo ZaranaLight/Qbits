@@ -44,7 +44,10 @@ class IndividualRegistrationProvider extends ChangeNotifier {
 
   Future<void> onRegisterTap(BuildContext context) async {
     if (validation(context)) {
-      context.navigator.pushNamed(DashboardScreen.routeName);
+      context.navigator.pushNamedAndRemoveUntil(
+        DashboardScreen.routeName,
+        (route) => false,
+      );
     }
   }
 
@@ -64,11 +67,11 @@ class IndividualRegistrationProvider extends ChangeNotifier {
     );
 
     if (scannedResult != null && scannedResult.isNotEmpty) {
-      if(scannedQR == 'model') {
+      if (scannedQR == 'model') {
         modelController.text = scannedResult;
       }
 
-      if(scannedQR == 'collector_address') {
+      if (scannedQR == 'collector_address') {
         collectorAddressController.text = scannedResult;
       }
       notifyListeners(); // notify UI about the change

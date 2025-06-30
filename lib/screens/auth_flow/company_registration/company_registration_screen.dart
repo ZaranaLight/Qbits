@@ -19,6 +19,20 @@ class CompanyRegistrationScreen extends StatelessWidget {
         return Scaffold(
           backgroundColor: ColorRes.lightGrey2,
           appBar: CustomAppBar(title: context.l10n?.company ?? ""),
+          bottomNavigationBar: SafeArea(
+            top: false,
+            child: Padding(
+              padding: EdgeInsets.only(
+                bottom: 30.ph,
+                left: Constants.horizontalPadding,
+                right: Constants.horizontalPadding,
+              ),
+              child: SubmitButton(
+                title: context.l10n?.register ?? "",
+                onTap: () => provider.onRegisterTap(context),
+              ),
+            ),
+          ),
           body: CustomSingleChildScroll(
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
@@ -112,7 +126,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                                     provider.isPasswordVisible,
                                   ),
                                   imagePath:
-                                       provider.isPasswordVisible
+                                      provider.isPasswordVisible
                                           ? AssetRes.eyeIcon
                                           : AssetRes.invisibleIcon,
                                   color: ColorRes.black.withValues(alpha: 0.3),
@@ -146,7 +160,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                                     provider.isConfirmPasswordVisible,
                                   ),
                                   imagePath:
-                                       provider.isConfirmPasswordVisible
+                                      provider.isConfirmPasswordVisible
                                           ? AssetRes.eyeIcon
                                           : AssetRes.invisibleIcon,
                                   color: ColorRes.black.withValues(alpha: 0.3),
@@ -160,14 +174,21 @@ class CompanyRegistrationScreen extends StatelessWidget {
                             /// Company Code
                             AppTextField(
                               isMandatory: true,
-                              textCapitalization: TextCapitalization.characters,
+                              readOnly: true,
+                              textCapitalization: TextCapitalization.words,
+                              textInputType: TextInputType.text,
                               controller: provider.companyCodeController,
                               header: context.l10n?.companyCode ?? "",
                               hintText: context.l10n?.companyCode ?? "",
                               error: provider.companyCodeError,
-                              suffixIcon: SvgAsset(
-                                imagePath: AssetRes.resetIcon,
-                                color: ColorRes.black.withValues(alpha: 0.5),
+                              suffixIcon: InkWell(
+                                onTap: () {
+                                  provider.generateCompanyCode();
+                                },
+                                child: SvgAsset(
+                                  imagePath: AssetRes.resetIcon,
+                                  color: ColorRes.black.withValues(alpha: 0.5),
+                                ),
                               ),
                             ),
                           ],
@@ -210,74 +231,71 @@ class CompanyRegistrationScreen extends StatelessWidget {
                           textInputType: TextInputType.emailAddress,
                           controller: provider.mailController,
                           header: context.l10n?.mail ?? "",
-                          hintText: context.l10n?.mail ?? "",
+                          hintText: context.l10n?.enterMailBox ?? "",
                           error: provider.mailError,
-                          suffixIcon: SvgAsset(imagePath: AssetRes.sendIcon),
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              provider.sendCode();
+                            },
+                            child: SvgAsset(imagePath: AssetRes.sendIcon),
+                          ),
                         ),
                       ),
 
                       ///Space
                       10.ph.spaceVertical,
+                      if (provider.showCodeField)
+                        Column(
+                          children: [
+                            /// Please use phone number or email ti obtain the verification code
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: 17,
+                                  width: 5,
+                                  color: ColorRes.primaryColor,
+                                ),
 
-                      /// Please use phone number or email ti obtain the verification code
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 17,
-                            width: 5,
-                            color: ColorRes.primaryColor,
-                          ),
+                                ///Space
+                                10.pw.spaceHorizontal,
 
-                          ///Space
-                          10.pw.spaceHorizontal,
+                                Flexible(
+                                  child: Text(
+                                    context
+                                            .l10n
+                                            ?.pleaseUseYourPhoneNumberOrEmailToObtain ??
+                                        "",
+                                    style: styleW600S14.copyWith(
+                                      color: ColorRes.black2,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
 
-                          Flexible(
-                            child: Text(
-                              context
-                                      .l10n
-                                      ?.pleaseUseYourPhoneNumberOrEmailToObtain ??
-                                  "",
-                              style: styleW600S14.copyWith(
-                                color: ColorRes.black2,
+                            ///Space
+                            10.ph.spaceVertical,
+
+                            /// Verification Code
+                            Padding(
+                              padding: EdgeInsets.all(10),
+                              child: AppTextField(
+                                isMandatory: true,
+                                textInputType: TextInputType.number,
+                                controller: provider.verificationCodeController,
+                                header: context.l10n?.code ?? "",
+                                hintText:
+                                    context.l10n?.enterVerificationCode ?? "",
+                                error: provider.verificationCodeError,
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-
-                      ///Space
-                      10.ph.spaceVertical,
-
-                      /// Verification Code
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: AppTextField(
-                          isMandatory: true,
-                          textInputType: TextInputType.number,
-                          controller: provider.verificationCodeController,
-                          header: context.l10n?.code ?? "",
-                          hintText: context.l10n?.code ?? "",
-                          error: provider.verificationCodeError,
+                          ],
                         ),
-                      ),
 
                       ///Space
                       20.ph.spaceVertical,
-
-                      /// Register Button
-                      Padding(
-                        padding: EdgeInsets.only(
-                          bottom: 30.ph,
-                          left: Constants.horizontalPadding,
-                          right: Constants.horizontalPadding,
-                        ),
-                        child: SubmitButton(
-                          title: context.l10n?.register ?? "",
-                          onTap: () => provider.onRegisterTap(context),
-                        ),
-                      ),
                     ],
                   ),
                 ),

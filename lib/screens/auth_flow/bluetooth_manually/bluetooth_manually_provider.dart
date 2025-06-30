@@ -1,88 +1,45 @@
-import 'dart:async';
-
- import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:qbits/qbits.dart';
 
 class BluetoothManuallyProvider extends ChangeNotifier {
-  bool loader = false;
-
-  final List<ScanResult> _devices = [];
+  final List<BluetoothDevice> _devices = [];
 
   bool _isScanning = false;
 
-  List<ScanResult> get devices => _devices;
+  List<BluetoothDevice> get devices => _devices;
 
   bool get isScanning => _isScanning;
 
-  bool _isDisposed = false;
-
-  List<BluetoothDevice> foundDevices = [];
-  StreamSubscription<List<ScanResult>>? _scanSubscription;
-
-  // Guarded notify
-  void safeNotify() {
-    if (!_isDisposed) notifyListeners();
-  }
-
-  @override
-  void dispose() {
-    _isDisposed = true;
-    stopScan(); // Stop scan when provider is disposed
-    super.dispose();
-  }
-
-  /// Start Bluetooth scanning
   Future<void> startScan() async {
-    try {
-      _isScanning = true;
-      foundDevices.clear();
-      safeNotify();
+    _isScanning = true;
+    _devices.clear();
+    notifyListeners();
 
-      await FlutterBluePlus.startScan(timeout: const Duration(seconds: 15));
+    FlutterBluePlus.startScan(timeout: const Duration(seconds: 5));
 
-      _scanSubscription = FlutterBluePlus.scanResults.listen((results) {
-        foundDevices = results.map((r) => r.device).toList();
-        safeNotify();
-      });
+    FlutterBluePlus.scanResults.listen((results) {
+      for (var result in results) {
+        if (result.device.platformName.isNotEmpty &&
+            !_devices.contains(result.device)) {
+          _devices.add(result.device);
+          notifyListeners();
+        }
+      }
+    });
 
-      // Optional: auto-stop after 10 sec
-      // Future.delayed(Duration(seconds: 15), () {
-      //   print("stopScan");
-      //   stopScan();
-      // });
-    } catch (e) {
-      print("Scan error: $e");
-      stopScan(); // Ensure we don't leave scanning on
-    }
+    FlutterBluePlus.isScanning.listen((scanning) {
+      _isScanning = scanning;
+      notifyListeners();
+    });
   }
 
-  /// Stop Bluetooth scanning
-  void stopScan() {
-    if (isScanning) {
-      FlutterBluePlus.stopScan();
-      _scanSubscription?.cancel();
-      _isScanning = false;
-      safeNotify();
-    }
+  Future<void> stopScan() async {
+    await FlutterBluePlus.stopScan();
   }
 
-
-
-  void onTapSelectedBluetoothDeviceItem(
-    BuildContext context,
-    // ScanResult device,
-  ) {
+  void onDeviceTap(BuildContext context, String deviceName) {
     context.navigator.pushNamed(
       IdAuthenticationScreen.routeName,
-      // arguments: device,
+      arguments: deviceName,
     );
   }
-
-  close() {
-    FlutterBluePlus.stopScan();
-    _devices.clear();
-    _isScanning = false;
-    notifyListeners();
-  }
 }
-

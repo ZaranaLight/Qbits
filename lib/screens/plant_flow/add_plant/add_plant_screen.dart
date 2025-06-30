@@ -23,23 +23,7 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
   @override
   void initState() {
     super.initState();
-    _locateUser();
-  }
-
-  Future<void> _locateUser() async {
-    LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-    }
-
-    if (permission == LocationPermission.whileInUse ||
-        permission == LocationPermission.always) {
-      final pos = await Geolocator.getCurrentPosition();
-
-      mapController?.animateCamera(
-        CameraUpdate.newLatLng(LatLng(pos.latitude, pos.longitude)),
-      );
-    }
+    // _locateUser();
   }
 
   @override
@@ -132,15 +116,7 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
               10.ph.spaceVertical,
               SizedBox(
                 height: 200.ph,
-                child: GoogleMap(
-                  initialCameraPosition: CameraPosition(
-                    target: LatLng(37.42796133580664, -122.085749655962),
-                    zoom: 14.4746,
-                  ),
-                  onMapCreated: (controller) => mapController = controller,
-                  onCameraMove: (position) {},
-                  myLocationEnabled: true,
-                ),
+                child: AssetsImg(imagePath: AssetRes.mapImg),
               ),
             ],
           ),

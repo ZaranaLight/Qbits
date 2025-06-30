@@ -20,7 +20,7 @@ class RoleChoiceScreen extends StatelessWidget {
           appBar: CustomAppBar(title: context.l10n?.roleChoice ?? ""),
           body: CustomSingleChildScroll(
             padding: EdgeInsets.symmetric(
-              vertical: Constants.safeAreaPadding.bottom + 20.pw,
+              vertical: 18.pw,
               horizontal: Constants.horizontalPadding,
             ),
             child: Column(
@@ -29,7 +29,7 @@ class RoleChoiceScreen extends StatelessWidget {
                 /// Title
                 Text(
                   context.l10n?.pleaseSelectYourRole ?? "",
-                  style: styleW600S16,
+                  style: styleW600S16.copyWith(height: 0),
                 ),
 
                 /// Space
@@ -77,18 +77,10 @@ class RoleChoiceScreen extends StatelessWidget {
                       child: InkWell(
                         onTap: () {},
                         borderRadius: BorderRadius.circular(31.pw),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 14.pw,
-                            vertical: 6.pw,
-                          ),
-                          child: Center(
-                            child: Text(
-                              context.l10n?.guidance ?? "",
-                              style: styleW500S14.copyWith(
-                                color: ColorRes.white,
-                              ),
-                            ),
+                        child: Center(
+                          child: Text(
+                            context.l10n?.guidance ?? "",
+                            style: styleW500S14.copyWith(color: ColorRes.white),
                           ),
                         ),
                       ),
@@ -136,7 +128,7 @@ class RoleChoiceButtons extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             /// User Icon
-            SvgAsset(imagePath: imagePath, width: 54.pw),
+            SvgAsset(imagePath: imagePath, width: 54.pw, height: 47.ph),
 
             ///Space
             100.pw.spaceHorizontal,

@@ -8,8 +8,6 @@ class OtpCodeVerificationProvider extends ChangeNotifier {
 
   Future<void> onVerifyTap(BuildContext context) async {
     if (validation(context)) {
-
-
       context.navigator.pop();
       context.navigator.pop();
     }
@@ -21,14 +19,12 @@ class OtpCodeVerificationProvider extends ChangeNotifier {
   }
 
   bool validation(BuildContext context) {
-
     if (isOTPValidate) {
       otpError = "";
     } else {
       otpError = context.l10n?.otpCodeIsRequired ?? "";
     }
 
-    print(otpError);
     notifyListeners();
     return otpError.isEmpty;
   }

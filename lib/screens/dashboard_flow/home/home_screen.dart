@@ -47,7 +47,6 @@ class HomeScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               color: ColorRes.white,
                               borderRadius: BorderRadius.circular(8),
-
                             ),
                             child: Material(
                               color: Colors.transparent,
@@ -153,58 +152,62 @@ class _AppBar extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Stack(
               children: [
-                SizedBox(),
-
-                /// Title Text
-                Text(
-                  context.l10n?.dashboard ?? "",
-                  style: styleW600S20.copyWith(color: ColorRes.white),
+                Center(
+                  child: Text(
+                    context.l10n?.dashboard ?? "",
+                    style: styleW600S20.copyWith(color: ColorRes.white),
+                  ),
                 ),
 
                 /// Plus Icon
-                PopupMenuButton(
-                  constraints: BoxConstraints(maxWidth: 90.w),
-                  offset: Offset(0, 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    side: BorderSide(color: ColorRes.primaryColor),
-                  ),
-                  padding: EdgeInsets.all(12.pw),
-                  color: ColorRes.white,
-                  borderRadius: BorderRadius.circular(5.pw),
-                  itemBuilder: (con) {
-                    return [
-                      PopupMenuItem(
-                        onTap: () {
-                          context.navigator.pushNamed(AddPlantScreen.routeName);
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SvgAsset(
-                                imagePath: AssetRes.roundedPlusIcon,
-                                color: ColorRes.primaryColor,
-                                height: 16.ph,
-                              ),
-                              Text(
-                                context.l10n?.addPlant ?? "",
-                                style: styleW500S14.copyWith(
-                                  color: ColorRes.black,
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  child: PopupMenuButton(
+                    constraints: BoxConstraints(maxWidth: 90.w),
+                    offset: Offset(0, 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      side: BorderSide(color: ColorRes.primaryColor),
+                    ),
+                    padding: EdgeInsets.all(12.pw),
+                    color: ColorRes.white,
+                    borderRadius: BorderRadius.circular(5.pw),
+                    itemBuilder: (con) {
+                      return [
+                        PopupMenuItem(
+                          onTap: () {
+                            context.navigator.pushNamed(
+                              AddPlantScreen.routeName,
+                            );
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SvgAsset(
+                                  imagePath: AssetRes.roundedPlusIcon,
+                                  color: ColorRes.primaryColor,
+                                  height: 16.ph,
                                 ),
-                              ),
-                            ],
+                                Text(
+                                  context.l10n?.addPlant ?? "",
+                                  style: styleW500S14.copyWith(
+                                    color: ColorRes.black,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ];
-                  },
+                      ];
+                    },
 
-                  child: SvgAsset(imagePath: AssetRes.plusIcon),
+                    child: SvgAsset(imagePath: AssetRes.plusIcon),
+                  ),
                 ),
               ],
             ),

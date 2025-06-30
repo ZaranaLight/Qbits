@@ -26,7 +26,7 @@ class DeviceLibraryWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      context.l10n?.deviceLibery ?? "",
+                      context.l10n?.deviceLibrary ?? "",
                       style: styleW500S16.copyWith(
                         color: ColorRes.black.withValues(alpha: 0.6),
                       ),

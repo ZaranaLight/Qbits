@@ -84,6 +84,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get europe => 'Europe';
 
   @override
+  String get ifBluetoothDeviceConnectBeFound => 'If Bluetooth devices cannot be found, please turn off the system Bluetooth and then turn it back on';
+
+  @override
   String get ok => 'OK';
 
   @override
@@ -504,7 +507,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get online => 'Online';
 
   @override
-  String get deviceLibery => 'Device Libery';
+  String get deviceLibrary => 'Device Library';
 
   @override
   String get allQuantity => 'All Quantity';

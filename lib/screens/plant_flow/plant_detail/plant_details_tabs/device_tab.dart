@@ -43,7 +43,6 @@ class DeviceTab extends StatelessWidget {
                               : CollectorWidget(
                                 key: ValueKey(context.l10n?.collector ?? ""),
                               ),
-
                     ),
                   ),
 
@@ -55,10 +54,11 @@ class DeviceTab extends StatelessWidget {
                         right: 16,
                         bottom: Constants.safeAreaPadding.bottom + 16.pw,
                       ),
+
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: FloatingActionButton(
-                          backgroundColor: ColorRes.green2,
+                          backgroundColor: ColorRes.primaryColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.pw),
                           ),

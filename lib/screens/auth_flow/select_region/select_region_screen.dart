@@ -120,17 +120,7 @@ class SelectRegionScreen extends StatelessWidget {
                       title: name,
                       isSelected: isChecked,
                       onTap: () => provider.selectOnly(name),
-                    );/*CheckBoxBtn(
-                      value: isChecked,
-                      onChange: (value) {
-                        if (value) {
-                          provider.selectOnly(name);
-                        } else {
-                          provider.selectOnly('');
-                        }
-                      },
-                      text: name,
-                    )*/;
+                    );
                   },
                 ),
 

@@ -8,7 +8,6 @@ class ColorRes {
   static const Color dullWhite = Color(0xFFF7F7F7);
   static const Color offWhite = Color(0xFFFEFEFE);
   static const Color primaryColor = Color(0xFF149C68);
-  static const Color green2 = Color(0xFF149C68);
   static const Color lightGreen = Color(0xFF72c4a4);
   static const Color veryLightGreen = Color(0xFFeaf8f0);
   static const Color grey = Color(0xFF5C5F68);

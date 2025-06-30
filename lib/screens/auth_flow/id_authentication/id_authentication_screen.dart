@@ -5,17 +5,17 @@ class IdAuthenticationScreen extends StatelessWidget {
 
   static const routeName = "id_authentication_screen";
 
-  // static Widget builder(BuildContext context) {
-  //   ScanResult? scanResult;
-  //   // LeaveTypeModel? leaveTypeModel;
-  //   if (context.args is ScanResult) {
-  //     scanResult = context.args as ScanResult;
-  //   }
-  //   return ChangeNotifierProvider<IdAuthenticationProvider>(
-  //     create: (c) => IdAuthenticationProvider(scanResult: scanResult),
-  //     child: IdAuthenticationScreen(),
-  //   );
-  // }
+  static Widget builder(BuildContext context) {
+    String? scanResult;
+
+    if (context.args is String) {
+      scanResult = context.args.toString();
+    }
+    return ChangeNotifierProvider<IdAuthenticationProvider>(
+      create: (c) => IdAuthenticationProvider(scanResult: scanResult),
+      child: IdAuthenticationScreen(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +50,10 @@ class IdAuthenticationScreen extends StatelessWidget {
                 Row(
                   children: [
                     ///Title
-                    // Text(
-                    //   state.scanResult?.device.platformName ?? "Unknown Device",
-                    //   style: styleW600S16,
-                    // ),
+                    Text(
+                      state.scanResult ?? "Unknown Device",
+                      style: styleW600S16,
+                    ),
 
                     ///Space
                     8.pw.spaceHorizontal,

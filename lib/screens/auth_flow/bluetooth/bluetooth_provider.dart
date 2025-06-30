@@ -1,5 +1,4 @@
- import 'package:flutter_blue_plus/flutter_blue_plus.dart';
-import 'package:qbits/qbits.dart';
+ import 'package:qbits/qbits.dart';
 
 class BluetoothProvider extends ChangeNotifier {
   initializer() {

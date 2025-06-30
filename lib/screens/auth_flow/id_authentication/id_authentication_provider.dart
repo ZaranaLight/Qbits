@@ -1,9 +1,9 @@
 import 'package:qbits/qbits.dart';
 
 class IdAuthenticationProvider extends ChangeNotifier {
-  // final ScanResult? scanResult;
+  final String? scanResult;
 
-  // IdAuthenticationProvider({required this.scanResult});
+  IdAuthenticationProvider({required this.scanResult});
 
   bool loader = false;
   final TextEditingController accountNumberController = TextEditingController();
@@ -22,7 +22,7 @@ class IdAuthenticationProvider extends ChangeNotifier {
     if (validation(context)) {
       if (context.mounted) {
         showCustomToast('Authentication Successfully done');
-        context.navigator.pushNamed(RoleChoiceScreen.routeName);
+        context.navigator.pushNamed(SignInScreen.routeName);
       }
     }
   }

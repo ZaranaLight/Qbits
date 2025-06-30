@@ -1,7 +1,6 @@
 import 'package:qbits/qbits.dart';
 
 class CompanyRegistrationProvider extends ChangeNotifier {
-
   bool loader = false;
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
@@ -9,10 +8,14 @@ class CompanyRegistrationProvider extends ChangeNotifier {
 
   final TextEditingController accountController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
-  final TextEditingController companyCodeController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  final TextEditingController companyCodeController = TextEditingController(
+    text: "CMP-001",
+  );
   final TextEditingController mailController = TextEditingController();
-  final TextEditingController verificationCodeController = TextEditingController();
+  final TextEditingController verificationCodeController =
+      TextEditingController();
 
   String accountError = "";
   String passwordError = "";
@@ -20,6 +23,28 @@ class CompanyRegistrationProvider extends ChangeNotifier {
   String companyCodeError = "";
   String mailError = "";
   String verificationCodeError = "";
+  String? _companyCode;
+  int _companyCounter = 0;
+  bool showCodeField = false;
+
+  String? get companyCode => _companyCode;
+
+  void sendCode() {
+    final email = mailController.text.trim();
+
+    // Basic email validation
+    if (email.isEmpty ||
+        !RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$").hasMatch(email)) {
+      mailError = "Please enter a valid email";
+      showCodeField = false;
+    } else {
+      mailError = "";
+      showCodeField = true;
+      // TODO: Add API call here if needed
+    }
+
+    notifyListeners();
+  }
 
   void onPwdVisibilityChanged() {
     isPasswordVisible = !isPasswordVisible;
@@ -33,7 +58,10 @@ class CompanyRegistrationProvider extends ChangeNotifier {
 
   Future<void> onRegisterTap(BuildContext context) async {
     if (validation(context)) {
-      context.navigator.pushNamed(DashboardScreen.routeName);
+      context.navigator.pushNamedAndRemoveUntil(
+        DashboardScreen.routeName,
+        (route) => false,
+      );
     }
   }
 
@@ -78,8 +106,6 @@ class CompanyRegistrationProvider extends ChangeNotifier {
 
     if (verificationCodeController.text.trim().isEmpty) {
       verificationCodeError = context.l10n?.verificationCodeIsRequired ?? "";
-    } else if (verificationCodeController.text.trim() != generatedCode) {
-      verificationCodeError = context.l10n?.verificationCodeIsntMatching ?? "";
     } else {
       verificationCodeError = "";
     }
@@ -91,5 +117,19 @@ class CompanyRegistrationProvider extends ChangeNotifier {
         companyCodeError.isEmpty &&
         mailError.isEmpty &&
         verificationCodeError.isEmpty;
+  }
+
+  /// Generate auto code like CMP-001
+  void generateCompanyCode() {
+    _companyCounter++; // Simulate auto-increment
+    companyCodeController.text =
+        'CMP-${_companyCounter.toString().padLeft(3, '0')}';
+    notifyListeners();
+  }
+
+  /// Optional: Reset counter or load from DB
+  void setCounter(int value) {
+    _companyCounter = value;
+    notifyListeners();
   }
 }

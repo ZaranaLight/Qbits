@@ -243,6 +243,12 @@ abstract class AppLocalizations {
   /// **'Europe'**
   String get europe;
 
+  /// No description provided for @ifBluetoothDeviceConnectBeFound.
+  ///
+  /// In en, this message translates to:
+  /// **'If Bluetooth devices cannot be found, please turn off the system Bluetooth and then turn it back on'**
+  String get ifBluetoothDeviceConnectBeFound;
+
   /// No description provided for @ok.
   ///
   /// In en, this message translates to:
@@ -1083,11 +1089,11 @@ abstract class AppLocalizations {
   /// **'Online'**
   String get online;
 
-  /// No description provided for @deviceLibery.
+  /// No description provided for @deviceLibrary.
   ///
   /// In en, this message translates to:
-  /// **'Device Libery'**
-  String get deviceLibery;
+  /// **'Device Library'**
+  String get deviceLibrary;
 
   /// No description provided for @allQuantity.
   ///

@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
+	    <key>NSLocationWhenInUseUsageDescription</key>
+        <string>This app needs access to location when open.</string>
+        <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+        <string>This app needs constant location access.</string>
+        <key>NSLocationAlwaysUsageDescription</key>
+        <string>We need your location for plant mapping.</string>
 	    <key>GMSApiKey</key>
         <string>YOUR_GOOGLE_MAPS_API_KEY</string>
 		<key>NSCameraUsageDescription</key>

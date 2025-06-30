@@ -106,15 +106,15 @@ class _BottomBar extends StatelessWidget {
                       firstChild: SvgAsset(
                         imagePath: image,
 
-                        height: Constants.isTablet ? 15.pw : 24.pw,
+                        height: Constants.isTablet ? 15.pw : 24.ph,
                         width: Constants.isTablet ? 15.pw : 24.pw,
-                        color: ColorRes.lightGreen,
+                        color: ColorRes.primaryColor,
                       ),
                       secondChild: SvgAsset(
                         imagePath: image,
-                        height: Constants.isTablet ? 15.pw : 24.pw,
+                        height: Constants.isTablet ? 15.pw : 24.ph,
                         width: Constants.isTablet ? 15.pw : 24.pw,
-                        color:   ColorRes.black.withValues(alpha: 0.6),
+                        color: ColorRes.black.withValues(alpha: 0.6),
                       ),
 
                       crossFadeState:
@@ -137,7 +137,17 @@ class _BottomBar extends StatelessWidget {
                                 color: ColorRes.black.withValues(alpha: 0.6),
                               ),
                       duration: 300.milliseconds,
-                      child: Text(text ?? ""),
+                      child: Text(
+                        text ?? "",
+                        style:
+                            isSelected
+                                ? styleW400S12.copyWith(
+                                  color: ColorRes.primaryColor,
+                                )
+                                : styleW400S12.copyWith(
+                                  color: ColorRes.black.withValues(alpha: 0.6),
+                                ),
+                      ),
                     ),
 
                     /// Space

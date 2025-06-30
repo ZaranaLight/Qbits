@@ -80,69 +80,21 @@ class SearchScreen extends StatelessWidget {
               ),
 
               Expanded(
-                child: CustomSingleChildScroll(
-                  padding: EdgeInsets.all(Constants.horizontalPadding),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      /// Show only if search is empty
-                      if (state.searchController.text.isEmpty) ...[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              context.l10n?.searchHistory ?? "",
-                              style: styleW500S14,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                context.read<SearchProvider>().clearHistory();
-                              },
-                              borderRadius: BorderRadius.circular(5.pw),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: SvgAsset(
-                                  imagePath: AssetRes.deleteIcon,
-                                  width: 20.ph,
-                                ),
-                              ),
-                            ),
-                          ],
+                child: Container(
+                  decoration: BoxDecoration(color: ColorRes.white),
+                  child: CustomListView(
+                    itemCount: 2,
+                    padding: EdgeInsets.zero,
+                    separatorBuilder:
+                        (ctx, ind) => Container(
+                          height: 1.ph,
+                          width: 100.pw,
+                          margin: EdgeInsets.symmetric(
+                            horizontal: Constants.horizontalPadding,
+                          ),
+                          color: ColorRes.black.withValues(alpha: 0.1),
                         ),
-                        10.ph.spaceVertical,
-
-                        /// History List
-                        ...state.history.map((item) {
-                          return InkWell(
-                            onTap: () {
-                              state.searchController.text = item;
-                              context.read<SearchProvider>().addQuery(item);
-                              // You can navigate or show results here if needed
-                            },
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: 8.ph),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.history,
-                                    size: 20,
-                                    color: Colors.grey,
-                                  ),
-                                  10.pw.spaceHorizontal,
-                                  Expanded(
-                                    child: Text(
-                                      item,
-                                      style: styleW400S14,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        }),
-                      ],
-                    ],
+                    itemBuilder: (context, index) => MyWatchlistCell(),
                   ),
                 ),
               ),
