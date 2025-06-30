@@ -109,7 +109,7 @@ class BluetoothScreen extends StatelessWidget {
                   onDetect: (barcodeCapture) {
                     final code = barcodeCapture.barcodes.first.rawValue;
                     if (code != null && code.isNotEmpty) {
-                      context.read<BluetoothProvider>().connectToDevice(code);
+                      // context.read<BluetoothProvider>().connectToDevice(code);
                       Navigator.pop(context, code); // sen
                     }
                   },
@@ -133,4 +133,3 @@ class BluetoothScreen extends StatelessWidget {
     );
   }
 }
-

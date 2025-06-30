@@ -20,11 +20,11 @@ class RouteManager {
         );
 
       /// Id Authentication Screen
-      case IdAuthenticationScreen.routeName:
-        return MaterialPageRoute(
-          builder: IdAuthenticationScreen.builder,
-          settings: settings,
-        );
+      // case IdAuthenticationScreen.routeName:
+      //   return MaterialPageRoute(
+      //     builder: IdAuthenticationScreen.builder,
+      //     settings: settings,
+      //   );
 
       /// Dashboard Screen
       case DashboardScreen.routeName:

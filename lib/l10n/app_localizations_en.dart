@@ -135,9 +135,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nearByBluetoothTapToConnect => 'Nearby Bluetooth, tap to connect';
 
   @override
-  String get fireBolt146 => 'FireBoltt 146';
-
-  @override
   String get warmTips => 'Warm Tips';
 
   @override

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+ import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:qbits/qbits.dart';
 
 class BluetoothManuallyProvider extends ChangeNotifier {
@@ -84,3 +85,4 @@ class BluetoothManuallyProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
+

@@ -345,12 +345,6 @@ abstract class AppLocalizations {
   /// **'Nearby Bluetooth, tap to connect'**
   String get nearByBluetoothTapToConnect;
 
-  /// No description provided for @fireBolt146.
-  ///
-  /// In en, this message translates to:
-  /// **'FireBoltt 146'**
-  String get fireBolt146;
-
   /// No description provided for @warmTips.
   ///
   /// In en, this message translates to:

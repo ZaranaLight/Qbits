@@ -1,3 +1,4 @@
+ import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:qbits/qbits.dart';
 
 class BluetoothProvider extends ChangeNotifier {
@@ -43,33 +44,33 @@ class BluetoothProvider extends ChangeNotifier {
 
 
   /// Request camera permission
-  Future<void> connectToDevice(String deviceId) async {
-    try {
-      isConnecting = true;
-      notifyListeners();
-
-      // Start scanning
-      FlutterBluePlus.startScan(timeout: const Duration(seconds: 5));
-
-      // Listen for devices
-      FlutterBluePlus.scanResults.listen((results) async {
-        for (ScanResult r in results) {
-          if (r.device.remoteId.str == deviceId) {
-            await FlutterBluePlus.stopScan();
-            await r.device.connect();
-            connectedDevice = r.device;
-            isConnecting = false;
-            notifyListeners();
-            break;
-          }
-        }
-      });
-    } catch (e) {
-      isConnecting = false;
-      notifyListeners();
-      debugPrint("Connection error: $e");
-    }
-  }
+  // Future<void> connectToDevice(String deviceId) async {
+  //   try {
+  //     isConnecting = true;
+  //     notifyListeners();
+  //
+  //     // Start scanning
+  //     FlutterBluePlus.startScan(timeout: const Duration(seconds: 5));
+  //
+  //     // Listen for devices
+  //     FlutterBluePlus.scanResults.listen((results) async {
+  //       for (ScanResult r in results) {
+  //         if (r.device.remoteId.str == deviceId) {
+  //           await FlutterBluePlus.stopScan();
+  //           await r.device.connect();
+  //           connectedDevice = r.device;
+  //           isConnecting = false;
+  //           notifyListeners();
+  //           break;
+  //         }
+  //       }
+  //     });
+  //   } catch (e) {
+  //     isConnecting = false;
+  //     notifyListeners();
+  //     debugPrint("Connection error: $e");
+  //   }
+  // }
 
   /// Scanning QR Code from Gallery Image
   Future<void> pickImageAndScan(BuildContext context) async {
@@ -105,9 +106,9 @@ class BluetoothProvider extends ChangeNotifier {
     super.dispose();
   }
 
-  void disconnect() {
-    connectedDevice?.disconnect();
-    connectedDevice = null;
-    notifyListeners();
-  }
+  // void disconnect() {
+  //   connectedDevice?.disconnect();
+  //   connectedDevice = null;
+  //   notifyListeners();
+  // }
 }

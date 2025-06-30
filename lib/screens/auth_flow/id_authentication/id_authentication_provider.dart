@@ -1,9 +1,9 @@
 import 'package:qbits/qbits.dart';
 
 class IdAuthenticationProvider extends ChangeNotifier {
-  final ScanResult? scanResult;
+  // final ScanResult? scanResult;
 
-  IdAuthenticationProvider({required this.scanResult});
+  // IdAuthenticationProvider({required this.scanResult});
 
   bool loader = false;
   final TextEditingController accountNumberController = TextEditingController();

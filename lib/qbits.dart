@@ -87,7 +87,7 @@ export 'package:qbits/screens/auth_flow/role_choice/role_choice_screen.dart';
 export 'package:qbits/screens/auth_flow/bluetooth_manually/bluetooth_manually_screen.dart';
 export 'package:qbits/screens/auth_flow/id_authentication/id_authentication_screen.dart';
 export 'package:qbits/screens/auth_flow/individual_registration/individual_registration_screen.dart';
-export 'package:flutter_blue_plus/flutter_blue_plus.dart';
+
 export 'package:mobile_scanner/mobile_scanner.dart';
 export 'package:qr_code_tools/qr_code_tools.dart';
 export 'package:qbits/screens/auth_flow/id_authentication/id_authentication_provider.dart';
