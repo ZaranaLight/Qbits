@@ -33,7 +33,7 @@ class TabWidget extends StatelessWidget {
                 width: 20.pw,
                 height: 20.ph,
                 imagePath: imagePath,
-                color: ColorRes.black2,
+                color: isLogout ? ColorRes.darkRed : ColorRes.black,
               ),
 
               /// Space
@@ -51,12 +51,14 @@ class TabWidget extends StatelessWidget {
 
               /// Forward Icon
               trailingWidget ??
-                  SvgAsset(
-                    imagePath: AssetRes.forwardIcon,
-                    color: ColorRes.black.withValues(alpha: 0.6),
-                    height: 13.ph,
-                    width: 9.pw,
-                  ),
+                  (!isLogout
+                      ? SvgAsset(
+                        imagePath: AssetRes.forwardIcon,
+                        color: ColorRes.black.withValues(alpha: 0.6),
+                        height: 13.ph,
+                        width: 9.pw,
+                      )
+                      : SizedBox()),
             ],
           ),
         ),

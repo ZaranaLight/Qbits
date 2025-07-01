@@ -8,7 +8,7 @@ class GuestProvider extends ChangeNotifier {
   }
 
   void init() {
-    // Initialize any necessary data or state for the guest user flow
+    // Initialize any necessary data or state for the end_user_detail user flow
   }
 
   // Add any additional methods or properties needed for the Guest flow

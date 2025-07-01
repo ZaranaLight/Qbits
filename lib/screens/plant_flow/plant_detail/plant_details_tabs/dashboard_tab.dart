@@ -1,53 +1,26 @@
+import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/plant_flow/plant_detail/widgets/slider/diagram_3_widget.dart';
+import 'package:qbits/screens/plant_flow/plant_detail/widgets/slider/diagram_4_widget.dart';
+import 'package:qbits/screens/plant_flow/plant_detail/widgets/slider/widget/diagram_5_widget.dart';
 
 class DashBoardTab extends StatelessWidget {
-  DashBoardTab({super.key});
-
-  final CarouselSliderController _controller = CarouselSliderController();
+  const DashBoardTab({super.key});
 
   @override
   Widget build(BuildContext context) {
     final List<Widget> customWidgets = [
-      ///Solar Diagram
-      SizedBox(
-        width: double.infinity,
-        child: Image.asset(AssetRes.tempSolarDiagramImg, height: 350.ph),
-      ),
-
-      /// Info Containers
-      _buildInfoContainer(
-        context,
-        iconPath: AssetRes.greenSolarPlateIcon,
-        topLeftTitle: context.l10n?.dailyGeneration ?? "",
-        topRightTitle: context.l10n?.monthlyGeneration ?? "",
-        bottomLeftTitle: context.l10n?.dailyGeneration ?? "",
-        bottomRightTitle: context.l10n?.monthlyGeneration ?? "",
-      ),
-
-      /// Info Containers
-      _buildInfoContainer(
-        context,
-        iconPath: AssetRes.greenSolarPlateIcon,
-        topLeftTitle: context.l10n?.dailyGeneration ?? "",
-        topRightTitle: context.l10n?.monthlyGeneration ?? "",
-        bottomLeftTitle: context.l10n?.dailyGeneration ?? "",
-        bottomRightTitle: context.l10n?.monthlyGeneration ?? "",
-      ),
-
-      /// Info Containers
-      _buildInfoContainer(
-        context,
-        iconPath: AssetRes.greenSolarPlateIcon,
-        topLeftTitle: context.l10n?.dailyGeneration ?? "",
-        topRightTitle: context.l10n?.monthlyGeneration ?? "",
-        bottomLeftTitle: context.l10n?.dailyGeneration ?? "",
-        bottomRightTitle: context.l10n?.monthlyGeneration ?? "",
-      ),
+      Diagram1Widget(),
+      Diagram2Widget(),
+      Diagram3Widget(),
+      Diagram4Widget(),
+      Diagram5Widget(),
     ];
 
     return Consumer<PlantDetailProvider>(
       builder: (context, provider, child) {
         return CustomSingleChildScroll(
+          padding: EdgeInsets.only(bottom: Constants.safeAreaPadding.bottom),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -58,24 +31,15 @@ class DashBoardTab extends StatelessWidget {
               /// Carousel Slider
               Stack(
                 children: [
-                  CarouselSlider(
-                    items: customWidgets,
-                    carouselController: _controller,
-                    options: CarouselOptions(
-                      height: 320.ph,
-                      enlargeCenterPage: false,
-                      onPageChanged: (index, reason) {
-                        provider.setCurrent(index);
-                      },
-                      autoPlay: false,
-                      viewportFraction: 1.0,
-                      autoPlayInterval: const Duration(seconds: 3),
-                    ),
+                  ExpandablePageView(
+                    controller: provider.pageController,
+                    children: customWidgets,
+                    onPageChanged: (value) => provider.setCurrent(value),
                   ),
 
                   /// Dots Indicator
                   Positioned(
-                    bottom: 20.ph,
+                    bottom: 10,
                     left: 0,
                     right: 0,
                     child: Row(
@@ -119,113 +83,6 @@ class DashBoardTab extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-
-  Widget _buildInfoContainer(
-    BuildContext context, {
-    required String iconPath,
-    required String topLeftTitle,
-    required String topRightTitle,
-    required String bottomLeftTitle,
-    required String bottomRightTitle,
-  }) {
-    return Container(
-      width: double.infinity,
-      color: ColorRes.white,
-      padding: EdgeInsets.all(16.ph),
-
-      child: CustomSingleChildScroll(
-        child: Column(
-          children: [
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ColumnWithRichText(
-                          title: topLeftTitle,
-                          value: "0.0 kwh",
-                        ),
-                        ColumnWithRichText(
-                          title: topRightTitle,
-                          value: "0.0 kwh",
-                        ),
-                      ],
-                    ),
-                    24.ph.spaceVertical,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ColumnWithRichText(
-                          title: bottomLeftTitle,
-                          value: "0.0 kwh",
-                        ),
-                        ColumnWithRichText(
-                          title: bottomRightTitle,
-                          value: "0.0 kwh",
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SvgAsset(imagePath: iconPath),
-              ],
-            ),
-
-            /// Space
-            12.ph.spaceVertical,
-
-            /// Dash Icon
-            SvgAsset(imagePath: AssetRes.dashIcon),
-
-            /// Space
-            12.ph.spaceVertical,
-
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ColumnWithRichText(
-                          title: topLeftTitle,
-                          value: "0.0 kwh",
-                        ),
-                        ColumnWithRichText(
-                          title: topRightTitle,
-                          value: "0.0 kwh",
-                        ),
-                      ],
-                    ),
-                    24.ph.spaceVertical,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ColumnWithRichText(
-                          title: bottomLeftTitle,
-                          value: "0.0 kwh",
-                        ),
-                        ColumnWithRichText(
-                          title: bottomRightTitle,
-                          value: "0.0 kwh",
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-
-                SvgAsset(imagePath: iconPath),
-              ],
-            ),
-          ],
-        ),
-      ),
     );
   }
 
@@ -360,12 +217,54 @@ class DashBoardTab extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _buildNavigationArrow(
-                onTap: () => provider.previousTab(),
+                onTap: () {
+                  switch (provider.viewType) {
+                    case ChartViewType.day:
+                      provider.updateDate(provider.selectedDate.subtract(const Duration(days: 1)));
+                      break;
+                    case ChartViewType.month:
+                      provider.updateDate(DateTime(
+                        provider.selectedDate.year,
+                        provider.selectedDate.month - 1,
+                      ));
+                      break;
+                    case ChartViewType.year:
+                      provider.updateDate(DateTime(
+                        provider.selectedDate.year - 1,
+                        1,
+                      ));
+                      break;
+                    case ChartViewType.total:
+                    // No-op
+                      break;
+                  }
+                },
                 icon: AssetRes.leftArrowIcon,
               ),
               Text(provider.displayDate, style: styleW600S16),
               _buildNavigationArrow(
-                onTap: () => provider.nextTab(),
+                onTap: () {
+                  switch (provider.viewType) {
+                    case ChartViewType.day:
+                      provider.updateDate(provider.selectedDate.add(const Duration(days: 1)));
+                      break;
+                    case ChartViewType.month:
+                      provider.updateDate(DateTime(
+                        provider.selectedDate.year,
+                        provider.selectedDate.month + 1,
+                      ));
+                      break;
+                    case ChartViewType.year:
+                      provider.updateDate(DateTime(
+                        provider.selectedDate.year + 1,
+                        1,
+                      ));
+                      break;
+                    case ChartViewType.total:
+                    // You might choose to do nothing or refresh
+                      break;
+                  }
+                },
                 icon: AssetRes.rightArrowIcon,
               ),
             ],
@@ -526,7 +425,7 @@ class DashBoardTab extends StatelessWidget {
                       (value, _) => Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
-                          value.toStringAsFixed(0),
+                          provider.getXAxisLabel(value),
                           style: const TextStyle(fontSize: 10),
                         ),
                       ),

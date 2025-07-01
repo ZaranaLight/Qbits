@@ -306,10 +306,10 @@ class RouteManager {
           settings: settings,
         );
 
-      /// Guest Screen
-      case GuestScreen.routeName:
+      /// End User Detail Screen
+      case EndUserDetailScreen.routeName:
         return MaterialPageRoute(
-          builder: GuestScreen.builder,
+          builder: EndUserDetailScreen.builder,
           settings: settings,
         );
 

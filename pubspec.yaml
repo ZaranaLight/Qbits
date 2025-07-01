@@ -46,6 +46,7 @@ dependencies:
   carousel_slider: ^5.0.0
   flutter_image_compress: ^2.4.0
   device_info_plus: ^11.5.0
+  expandable_page_view: ^1.0.17
 
   # -------------------------- Bluetooth Scan QR Code -------------------------- #
   mobile_scanner: ^7.0.0

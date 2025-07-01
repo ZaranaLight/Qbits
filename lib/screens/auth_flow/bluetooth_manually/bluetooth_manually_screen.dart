@@ -61,6 +61,7 @@ class _BluetoothManuallyScreenState extends State<BluetoothManuallyScreen> {
               ),
               child: Column(
                 children: [
+                  /// Space
                   Padding(
                     padding: EdgeInsets.only(bottom: 16.ph, top: 20.ph),
                     child: Row(
@@ -98,6 +99,7 @@ class _BluetoothManuallyScreenState extends State<BluetoothManuallyScreen> {
                       color: ColorRes.black.withValues(alpha: 0.1),
                     ),
 
+                  /// Device List
                   CustomListView(
                     separatorBuilder: (context, index) {
                       return Container(

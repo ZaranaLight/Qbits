@@ -1,42 +1,40 @@
 import 'package:qbits/qbits.dart';
 
 class EndUserListWidget extends StatelessWidget {
-  const EndUserListWidget({super.key});
+  final double? height  ;
+  final double? width  ;
+  final VoidCallback? onTap;
+  const EndUserListWidget({super.key, this.height, this.width, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
+    return Material(
+      color: ColorRes.white,
+      borderRadius: BorderRadius.circular(8.pw),
+      child: InkWell(
+        onTap: onTap,
         borderRadius: BorderRadius.circular(8.pw),
-        color: ColorRes.white,
-      ),
-      child: Material(
-        color: ColorRes.transparent,
-        child: InkWell(
-          onTap: () {
-            context.navigator.pushNamed(GuestScreen.routeName);
-          },
-          borderRadius: BorderRadius.circular(8.pw),
-          child: Padding(
-            padding: EdgeInsets.all(12.pw),
-            child: Row(
-              children: [
-                /// User Image
-                AssetsImg(
-                  imagePath: AssetRes.profileImg,
-                  width: 96.pw,
-                  height: 96.pw,
-                ),
+        child: Padding(
+          padding: EdgeInsets.all(12.pw),
+          child: Row(
+            children: [
+              /// User Image
+              AssetsImg(
+                imagePath: AssetRes.profileImg,
+                width: width ??107.pw,
+                height: height??107.pw,
+              ),
 
-                /// Space
-                10.pw.spaceHorizontal,
+              /// Space
+              10.pw.spaceHorizontal,
 
-                /// User Details
-                Column(
+              /// User Details
+              Expanded(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     /// User Name
-                    Text('Guest', style: styleW700S16),
+                    Text("Guest", style: styleW700S16),
 
                     ///Space
                     4.ph.spaceVertical,
@@ -72,8 +70,8 @@ class EndUserListWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

@@ -14,217 +14,88 @@ class PlantScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 4,
-      child: Consumer<PlantProvider>(
-        builder: (context, state, child) {
-          return Column(
-            children: [
-              /// AppBar with Search and Tabs
-              const _AppBar(),
+    return Consumer<PlantProvider>(
+      builder: (context, provider, child) {
+        return SafeArea(
+          top: false,
+          child: DefaultTabController(
+            length: 4,
+            child: Column(
+              children: [
+                /// AppBar with Search and Tabs
+                const _AppBar(),
 
-              /// TabBarView for content
-              Expanded(
-                child: TabBarView(
-                  children: [
-                    ///All Tab Content
-                    _TabContent(),
+                /// Space
+                16.ph.spaceVertical,
 
-                    ///Normal Tab Content
-                    _TabContent(),
-
-                    ///Alarm Tab Content
-                    _TabContent(),
-
-                    ///Offline Tab Content
-                    _TabContent(),
-                  ],
-                ),
-              ),
-            ],
-          );
-        },
-      ),
-    );
-  }
-}
-
-/// AppBar with Search and Tabs
-class _AppBar extends StatelessWidget {
-  const _AppBar();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: ColorRes.primaryColor,
-      child: SafeArea(
-        child: Column(
-          children: [
-            /// First Row
-            Padding(
-              padding: EdgeInsets.only(
-                left: Constants.horizontalPadding,
-                right: Constants.horizontalPadding,
-                top: 10.ph,
-              ),
-              child: Row(
-                children: [
-                  /// Menu Icon (Leading)
-                  InkWell(
-                    onTap: () {},
-                    child: SvgAsset(
-                      imagePath: AssetRes.plantIcon,
-                      color: ColorRes.white,
-                    ),
+                /// Filter, Rank, and Preference Buttons
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Constants.horizontalPadding,
                   ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ///Rank,
+                      ///
+                      _ellipseButton(
+                        context: context,
+                        text: provider.selectedRank ?? context.l10n?.rank ?? "",
+                        imagePath: AssetRes.dropDownArrowIcon,
+                        onTap: () => RankDialogBox.show(context: context),
+                      ),
 
-                  /// Space
-                  10.pw.spaceHorizontal,
+                      ///Space
+                      Constants.horizontalPadding.spaceHorizontal,
 
-                  /// Expanded Search TextField
-                  Expanded(
-                    child: SearchTextField(
-                      hintText: context.l10n?.search,
-                      controller: TextEditingController(),
-                      prefixIcon: SvgAsset(imagePath: AssetRes.searchIcon),
-                      readOnly: true,
-                      onTap: () {
-                        context.navigator.pushNamed(SearchScreen.routeName);
-                      },
-                    ),
-                  ),
+                      /// Preference
+                      _ellipseButton(
+                        context: context,
+                        text: context.l10n?.preference ?? "",
+                        imagePath: AssetRes.dropDownArrowIcon,
+                        onTap: () => PreferenceDialogBox.show(context: context),
+                      ),
 
-                  /// Space
-                  10.pw.spaceHorizontal,
+                      ///Space
+                      Constants.horizontalPadding.spaceHorizontal,
 
-                  /// Right Icon (e.g. Plus)
-                  InkWell(
-                    onTap: () {
-                      context.navigator.pushNamed(AddPlantScreen.routeName);
-                    },
-                    child: SvgAsset(imagePath: AssetRes.roundedPlusIcon),
-                  ),
-                ],
-              ),
-            ),
-
-            /// Space between search row and tabs
-            12.ph.spaceVertical,
-
-            /// TabBar
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: Constants.horizontalPadding,
-              ),
-              child: TabBar(
-                indicatorColor: ColorRes.white,
-                labelColor: ColorRes.white,
-                unselectedLabelColor: Colors.white70,
-                labelStyle: styleW600S14.copyWith(color: ColorRes.black),
-                unselectedLabelStyle: styleW600S14.copyWith(
-                  color: ColorRes.black,
-                ),
-                dividerColor: ColorRes.primaryColor,
-                indicator: UnderlineTabIndicator(
-                  borderSide: BorderSide(
-                    color: ColorRes.white, // your desired underline color
-                    width: 2.0,
+                      /// Filter
+                      _ellipseButton(
+                        context: context,
+                        text: context.l10n?.filter ?? "",
+                        imagePath: AssetRes.filterIcon,
+                        onTap: () => FilterDialogBox.show(context: context),
+                      ),
+                    ],
                   ),
                 ),
-                tabs: [
-                  Tab(text: context.l10n?.all),
-                  Tab(text: context.l10n?.normal),
-                  Tab(text: context.l10n?.alarm),
-                  Tab(text: context.l10n?.offline),
-                ],
-                isScrollable: false, // Set true if long labels
-              ),
-            ),
 
-            /// Space between tabs and content
-            12.ph.spaceVertical,
-          ],
-        ),
-      ),
-    );
-  }
-}
+                ///Space
+                16.ph.spaceVertical,
 
-/// Tab content as reusable plant_details_tabs
-class _TabContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        /// Space
-        16.ph.spaceVertical,
+                /// TabBarView for content
+                Expanded(
+                  child: TabBarView(
+                    children: [
+                      ///All Tab Content
+                      _TabContent(),
 
-        /// Filter, Rank, and Preference Buttons
-        Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: Constants.horizontalPadding,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ///Rank,
-              _ellipseButton(
-                context: context,
-                text: context.l10n?.rank ?? "",
-                imagePath: AssetRes.dropDownArrowIcon,
-                onTap: () => RankDialogBox.show(context: context),
-              ),
+                      ///Normal Tab Content
+                      _TabContent(),
 
-              ///Space
-              Constants.horizontalPadding.spaceHorizontal,
+                      ///Alarm Tab Content
+                      _TabContent(),
 
-              /// Preference
-              _ellipseButton(
-                context: context,
-                text: context.l10n?.preference ?? "",
-                imagePath: AssetRes.dropDownArrowIcon,
-                onTap: () => PreferenceDialogBox.show(context: context),
-              ),
-
-              ///Space
-              Constants.horizontalPadding.spaceHorizontal,
-
-              /// Filter
-              _ellipseButton(
-                context: context,
-                text: context.l10n?.filter ?? "",
-                imagePath: AssetRes.filterIcon,
-                onTap: () => FilterDialogBox.show(context: context),
-              ),
-            ],
-          ),
-        ),
-
-        ///Space
-        16.ph.spaceVertical,
-
-        /// Watchlist Section
-        Expanded(
-          child: Container(
-            decoration: BoxDecoration(color: ColorRes.white),
-            child: CustomListView(
-              itemCount: 10,
-              separatorBuilder:
-                  (ctx, ind) => Container(
-                    height: 1.ph,
-                    width: 100.pw,
-                    color: ColorRes.black.withValues(alpha: 0.1),
+                      ///Offline Tab Content
+                      _TabContent(),
+                    ],
                   ),
-              itemBuilder: (context, index) => MyWatchlistCell(),
+                ),
+              ],
             ),
           ),
-        ),
-
-        /// Space at the bottom
-        20.ph.spaceVertical,
-      ],
+        );
+      },
     );
   }
 
@@ -265,6 +136,180 @@ class _TabContent extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// AppBar with Search and Tabs
+class _AppBar extends StatelessWidget {
+  const _AppBar();
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<PlantProvider>(
+      builder: (context, provider, child) {
+        return Container(
+          color: ColorRes.primaryColor,
+          child: SafeArea(
+            child: Column(
+              children: [
+                /// First Row
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: Constants.horizontalPadding,
+                    right: Constants.horizontalPadding,
+                    top: 10.ph,
+                  ),
+                  child: Row(
+                    children: [
+                      /// Menu Icon (Leading)
+                      InkWell(
+                        onTap: () {},
+                        child: SvgAsset(
+                          imagePath: AssetRes.plantIcon,
+                          color: ColorRes.white,
+                        ),
+                      ),
+
+                      /// Space
+                      10.pw.spaceHorizontal,
+
+                      /// Expanded Search TextField
+                      Expanded(
+                        child: SearchTextField(
+                          hintText: context.l10n?.search,
+                          controller: TextEditingController(),
+                          prefixIcon: SvgAsset(imagePath: AssetRes.searchIcon),
+                          readOnly: true,
+                          onTap: () {
+                            context.navigator.pushNamed(SearchScreen.routeName);
+                          },
+                        ),
+                      ),
+
+                      /// Space
+                      10.pw.spaceHorizontal,
+
+                      /// Right Icon (e.g. Plus)
+                      InkWell(
+                        onTap: () {
+                          context.navigator.pushNamed(AddPlantScreen.routeName);
+                        },
+                        child: SvgAsset(imagePath: AssetRes.roundedPlusIcon),
+                      ),
+                    ],
+                  ),
+                ),
+
+                /// Space between search row and tabs
+                12.ph.spaceVertical,
+
+                /// TabBar
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Constants.horizontalPadding,
+                  ),
+                  child: TabBar(
+                    indicatorColor: ColorRes.white,
+                    labelColor: ColorRes.white,
+                    unselectedLabelColor: Colors.white70,
+                    labelStyle: styleW600S14.copyWith(color: ColorRes.black),
+                    unselectedLabelStyle: styleW600S14.copyWith(
+                      color: ColorRes.black,
+                    ),
+                    dividerColor: ColorRes.primaryColor,
+                    indicator: UnderlineTabIndicator(
+                      borderSide: BorderSide(
+                        color: ColorRes.white, // your desired underline color
+                        width: 2.0,
+                      ),
+                    ),
+                    tabs: [
+                      Tab(
+                        child: Column(
+                          children: [
+                            Text("7"),
+
+                            6.ph.spaceVertical,
+                            Text(context.l10n?.all ?? ""),
+                          ],
+                        ),
+                      ),
+                      Tab(
+                        child: Column(
+                          children: [
+                            Text("0"),
+
+                            6.ph.spaceVertical,
+                            Text(context.l10n?.normal ?? ""),
+                          ],
+                        ),
+                      ),
+                      Tab(
+                        child: Column(
+                          children: [
+                            Text("1"),
+
+                            6.ph.spaceVertical,
+                            Text(context.l10n?.alarm ?? ""),
+                          ],
+                        ),
+                      ),
+                      Tab(
+                        child: Column(
+                          children: [
+                            Text("1"),
+
+                            6.ph.spaceVertical,
+                            Text(context.l10n?.offline ?? ""),
+                          ],
+                        ),
+                      ),
+                    ],
+                    isScrollable: false, // Set true if long labels
+                  ),
+                ),
+
+                /// Space between tabs and content
+                12.ph.spaceVertical,
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+/// Tab content as reusable plant_details_tabs
+class _TabContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<PlantProvider>(
+      builder: (context, provider, child) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            /// Watchlist Section
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(color: ColorRes.white),
+                child: CustomListView(
+                  itemCount: 10,
+                  separatorBuilder:
+                      (ctx, ind) => Container(
+                        height: 1.ph,
+                        width: 100.pw,
+                        color: ColorRes.black.withValues(alpha: 0.1),
+                      ),
+                  itemBuilder: (context, index) => MyWatchlistCell(),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

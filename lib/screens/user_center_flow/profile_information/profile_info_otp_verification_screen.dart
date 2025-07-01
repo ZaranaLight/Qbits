@@ -1,3 +1,4 @@
+import 'package:qbits/common/widget/common_widgets.dart';
 import 'package:qbits/qbits.dart';
 
 class ProfileInfoOTPVerificationScreen extends StatelessWidget {
@@ -18,7 +19,7 @@ class ProfileInfoOTPVerificationScreen extends StatelessWidget {
       builder: (context, provider, child) {
         return Scaffold(
           backgroundColor: ColorRes.white,
-          appBar: CustomAppBar(title: context.l10n?.profileInformation ?? ""),
+          appBar: CustomAppBar(title: context.l10n?.contactInformation ?? ""),
           bottomNavigationBar: SafeArea(
             top: false,
             child: Padding(
@@ -30,7 +31,7 @@ class ProfileInfoOTPVerificationScreen extends StatelessWidget {
               child: SubmitButton(
                 title: context.l10n?.continueCap ?? "",
                 onTap: () {
-                  context.navigator.pop();
+                  provider.onOTPVerify(context);
                 },
               ),
             ),
@@ -95,6 +96,9 @@ class ProfileInfoOTPVerificationScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                if (provider.otpError.isNotEmpty)
+                  ErrorText(error: provider.otpError, topPadding: 4.ph),
               ],
             ),
           ),

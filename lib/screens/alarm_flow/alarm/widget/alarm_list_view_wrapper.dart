@@ -14,6 +14,10 @@ class AlarmListViewWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomListView(
       itemCount: itemCount,
+      padding: EdgeInsets.only(
+        bottom: Constants.safeAreaPadding.bottom,
+        top: 10.ph,
+      ),
       separatorBuilder:
           (context, index) => Container(
             margin: EdgeInsets.symmetric(horizontal: 20.pw),

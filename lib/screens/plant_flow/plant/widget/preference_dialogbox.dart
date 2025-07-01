@@ -6,9 +6,9 @@ class PreferenceDialogBox extends StatelessWidget {
   static void show({required BuildContext context}) {
     showDialog(
       context: context,
-      builder: (context) {
-        return ChangeNotifierProvider(
-          create: (_) => PlantProvider(),
+      builder: (con) {
+        return ChangeNotifierProvider.value(
+          value: context.read<PlantProvider>(),
           child: const PreferenceDialogBox(),
         );
       },
@@ -64,41 +64,46 @@ class PreferenceDialogBox extends StatelessWidget {
     return Consumer<PlantProvider>(
       builder: (_, provider, __) {
         final isSelected = provider.isSelected(title);
+        return SizedBox(
+          width: 100.w,
+          child: InkWell(
+            onTap: () => provider.select(title),
+            child: Container(
+              padding: EdgeInsets.only(
+                top: 14.ph,
+                bottom: 14.ph,
+                left: 5.pw,
+                right: 5.pw,
+              ),
 
-        return InkWell(
-          onTap: () => provider.select(title),
-          child: Container(
-            padding: EdgeInsets.only(
-              top: 14.ph,
-              bottom: 14.ph,
-              left: 5.pw,
-              right: 5.pw,
-            ),
+              child: Row(
+                children: [
+                  /// Title
+                  Expanded(
+                    child: Text(
+                      title,
+                      style:
+                          isSelected
+                              ? styleW600S14.copyWith(
+                                color:
+                                    isSelected ? ColorRes.primaryColor : null,
+                              )
+                              : styleW500S14,
+                    ),
+                  ),
 
-            child: Row(
-              children: [
-                /// Title
-                Text(
-                  title,
-                  style:
-                      isSelected
-                          ? styleW600S14.copyWith(
-                            color: isSelected ? ColorRes.primaryColor : null,
-                          )
-                          : styleW500S14,
-                ),
+                  /// Space
+                  9.pw.spaceHorizontal,
 
-                /// Space
-                9.pw.spaceHorizontal,
-
-                /// SVG Icon
-                isSelected
-                    ? SvgAsset(
-                      imagePath: AssetRes.rightTickIcon,
-                      color: ColorRes.primaryColor,
-                    )
-                    : const SizedBox.shrink(),
-              ],
+                  /// SVG Icon
+                  isSelected
+                      ? SvgAsset(
+                        imagePath: AssetRes.rightTickIcon,
+                        color: ColorRes.primaryColor,
+                      )
+                      : const SizedBox.shrink(),
+                ],
+              ),
             ),
           ),
         );

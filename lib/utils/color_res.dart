@@ -24,6 +24,7 @@ class ColorRes {
   static const Color parrot = Color(0xFF45cf66);
   static const Color orange = Color(0xFFf8b35e);
   static const Color orange2 = Color(0xFFF69441);
+  static const Color orange3 = Color(0xFFE4B021);
   static const Color pinkish = Color(0xFFF16161);
   static const Color azureBlue = Color(0xFF368ffe);
   static const Color mintBlue = Color(0xFF555ee7);

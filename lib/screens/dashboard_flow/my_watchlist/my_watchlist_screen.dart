@@ -19,12 +19,13 @@ class MyWatchlistScreen extends StatelessWidget {
         return Scaffold(
           body: Column(
             children: [
+              /// Custom AppBar
               CustomAppBar(title: context.l10n?.myWatchlist ?? ""),
 
+              /// Space
               Expanded(child: MyWatchlistCellListView()),
 
-              /// Space
-              20.ph.spaceVertical,
+
             ],
           ),
         );

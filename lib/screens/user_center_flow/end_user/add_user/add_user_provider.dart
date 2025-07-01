@@ -6,7 +6,7 @@ class AddUserProvider extends ChangeNotifier {
   String passwordError = "";
   String phoneNumberError = "";
   String mailError = "";
-  bool isPasswordVisible = false;
+  bool isPasswordVisible = true;
   final TextEditingController accountController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();

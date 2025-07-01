@@ -71,6 +71,7 @@ class UserCenterScreen extends StatelessWidget {
                     TabWidget(
                       title: context.l10n?.autoSignIn ?? "",
                       imagePath: AssetRes.profileIcon,
+
                       trailingWidget: SizedBox(
                         height: 20.pw,
                         child: Switch(
@@ -92,7 +93,11 @@ class UserCenterScreen extends StatelessWidget {
                           },
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        provider.updateAutoSignInSetting(
+                          !provider.isAutoSignInOn,
+                        );
+                      },
                     ),
 
                     5.ph.spaceVertical,

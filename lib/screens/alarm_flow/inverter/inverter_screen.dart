@@ -127,42 +127,45 @@ class AlarmInverterScreen extends StatelessWidget {
     final isExpanded = provider.expandedIndex == index;
     return Column(
       children: [
-        InkWell(
-          onTap: () => provider.toggleExpanded(index),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 12.0,
-              horizontal: Constants.horizontalPadding,
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      /// Icon
-                      Text(provider.titles[index], style: styleW600S14),
+        Material(
+          color: ColorRes.transparent,
+          child: InkWell(
+            onTap: () => provider.toggleExpanded(index),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: 12.0,
+                horizontal: Constants.horizontalPadding,
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Row(
+                      children: [
+                        /// Icon
+                        Text(provider.titles[index], style: styleW600S14),
 
-                      ///Space
-                      8.pw.spaceHorizontal,
+                        ///Space
+                        8.pw.spaceHorizontal,
 
-                      ///Description
-                      Text(
-                        "Phase C voltage is too low",
-                        style: styleW600S14.copyWith(color: ColorRes.orange2),
-                      ),
-                    ],
+                        ///Description
+                        Text(
+                          "Phase C voltage is too low",
+                          style: styleW600S14.copyWith(color: ColorRes.orange2),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                AnimatedRotation(
-                  duration: const Duration(milliseconds: 300),
-                  turns: isExpanded ? 0.5 : 0,
-                  child: Icon(
-                    Icons.keyboard_arrow_down,
-                    size: 20.ph,
-                    color: ColorRes.black.withValues(alpha: 0.6),
+                  AnimatedRotation(
+                    duration: const Duration(milliseconds: 300),
+                    turns: isExpanded ? 0.5 : 0,
+                    child: Icon(
+                      Icons.keyboard_arrow_down,
+                      size: 20.ph,
+                      color: ColorRes.black.withValues(alpha: 0.6),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -198,6 +201,68 @@ class AlarmInverterScreen extends StatelessWidget {
     );
   }
 
+  // Widget _buildChartSection(AlarmInverterProvider provider) {
+  //   return Consumer<AlarmInverterProvider>(
+  //     builder: (context, provider, child) {
+  //       return SafeArea(
+  //         top: false,
+  //         child: Container(
+  //           padding: EdgeInsets.symmetric(vertical: 15.pw),
+  //           decoration: const BoxDecoration(color: ColorRes.white),
+  //           child: Column(
+  //             crossAxisAlignment: CrossAxisAlignment.start,
+  //             children: [
+  //               ///Chart Header
+  //               _buildChartTabs(provider),
+  //
+  //               ///Space
+  //               8.ph.spaceVertical,
+  //
+  //               ///Date Picker
+  //               _buildDatePicker(provider),
+  //
+  //               ///Space
+  //               10.ph.spaceVertical,
+  //
+  //               ///Energy Usage and Preference Dropdown
+  //               _buildEnergyUsage(),
+  //
+  //               ///divider
+  //               Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+  //
+  //               ///Space
+  //               6.ph.spaceVertical,
+  //
+  //               ///Preference Dropdown
+  //               _buildPreferenceDropdown(provider),
+  //
+  //               ///Space
+  //               10.ph.spaceVertical,
+  //
+  //               ///kWh Label
+  //               _buildKWhLabel(),
+  //
+  //               ///Space
+  //               6.ph.spaceVertical,
+  //
+  //               /// Chart
+  //               _buildChart(provider),
+  //
+  //               /// Space
+  //               15.ph.spaceVertical,
+  //
+  //               /// Chart Legend
+  //               _buildChartLegend(provider),
+  //
+  //               /// Space
+  //               15.ph.spaceVertical,
+  //             ],
+  //           ),
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
   Widget _buildChartSection(AlarmInverterProvider provider) {
     return Consumer<AlarmInverterProvider>(
       builder: (context, provider, child) {
@@ -259,36 +324,53 @@ class AlarmInverterScreen extends StatelessWidget {
   }
 
   Widget _buildChartTabs(AlarmInverterProvider provider) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children:
-            provider.tabs.asMap().entries.map((entry) {
-              final index = entry.key;
-              final tab = entry.value;
-              final isSelected = provider.selectedIndex == index;
+    return AnimatedSwitcher(
+      duration: 300.milliseconds,
+      transitionBuilder: (Widget child, Animation<double> animation) {
+        final isForward = provider.isForward;
+        final beginOffset =
+            isForward ? const Offset(1, 0) : const Offset(-1, 0);
 
-              return InkWell(
-                onTap: () => provider.selectTab(index),
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 0,
-                    vertical: 6,
-                  ),
-                  child: Text(
-                    tab,
-                    style: styleW600S16.copyWith(
-                      color:
-                          isSelected
-                              ? ColorRes.primaryColor
-                              : ColorRes.black.withValues(alpha: 0.5),
+        return SlideTransition(
+          position: Tween<Offset>(
+            begin: beginOffset,
+            end: Offset.zero,
+          ).animate(animation),
+          child: FadeTransition(opacity: animation, child: child),
+        );
+      },
+      child: Padding(
+        key: ValueKey(provider.selectedIndex),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children:
+              provider.tabs.asMap().entries.map((entry) {
+                final index = entry.key;
+                final tab = entry.value;
+                final isSelected = provider.selectedIndex == index;
+
+                return InkWell(
+                  onTap: () => provider.selectTab(index),
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 0,
+                      vertical: 6,
+                    ),
+                    child: Text(
+                      tab,
+                      style: styleW600S16.copyWith(
+                        color:
+                            isSelected
+                                ? ColorRes.primaryColor
+                                : ColorRes.black.withValues(alpha: 0.5),
+                      ),
                     ),
                   ),
-                ),
-              );
-            }).toList(),
+                );
+              }).toList(),
+        ),
       ),
     );
   }
@@ -305,12 +387,60 @@ class AlarmInverterScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _buildNavigationArrow(
-                onTap: () => provider.previousTab(),
+                onTap: () {
+                  switch (provider.viewType) {
+                    case ChartViewType.day:
+                      provider.updateDate(
+                        provider.selectedDate.subtract(const Duration(days: 1)),
+                      );
+                      break;
+                    case ChartViewType.month:
+                      provider.updateDate(
+                        DateTime(
+                          provider.selectedDate.year,
+                          provider.selectedDate.month - 1,
+                        ),
+                      );
+                      break;
+                    case ChartViewType.year:
+                      provider.updateDate(
+                        DateTime(provider.selectedDate.year - 1, 1),
+                      );
+                      break;
+                    case ChartViewType.total:
+                      // No-op
+                      break;
+                  }
+                },
                 icon: AssetRes.leftArrowIcon,
               ),
               Text(provider.displayDate, style: styleW600S16),
               _buildNavigationArrow(
-                onTap: () => provider.nextTab(),
+                onTap: () {
+                  switch (provider.viewType) {
+                    case ChartViewType.day:
+                      provider.updateDate(
+                        provider.selectedDate.add(const Duration(days: 1)),
+                      );
+                      break;
+                    case ChartViewType.month:
+                      provider.updateDate(
+                        DateTime(
+                          provider.selectedDate.year,
+                          provider.selectedDate.month + 1,
+                        ),
+                      );
+                      break;
+                    case ChartViewType.year:
+                      provider.updateDate(
+                        DateTime(provider.selectedDate.year + 1, 1),
+                      );
+                      break;
+                    case ChartViewType.total:
+                      // You might choose to do nothing or refresh
+                      break;
+                  }
+                },
                 icon: AssetRes.rightArrowIcon,
               ),
             ],

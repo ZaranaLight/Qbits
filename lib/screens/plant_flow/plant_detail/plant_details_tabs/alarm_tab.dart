@@ -5,28 +5,31 @@ class AlarmTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Consumer<PlantDetailProvider>(
-        builder: (context, provider, child) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              /// Space between tabs and content
-              10.ph.spaceVertical,
+    return SafeArea(
+      top: false,
+      child: DefaultTabController(
+        length: 3,
+        child: Consumer<PlantDetailProvider>(
+          builder: (context, provider, child) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                /// Space between tabs and content
+                10.ph.spaceVertical,
 
-              /// TabBar with Container
-              _buildTabBarContainer(context, provider),
+                /// TabBar with Container
+                _buildTabBarContainer(context, provider),
 
-              /// Tab content
-              _buildTabContent(provider, context),
+                /// Tab content
+                _buildTabContent(provider, context),
 
-              /// Vertical space
-              20.ph.spaceVertical,
-            ],
-          );
-        },
+                /// Vertical space
+                20.ph.spaceVertical,
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -157,13 +160,14 @@ class WatchLstAlarmTabList extends StatelessWidget {
       itemCount: itemCount,
       separatorBuilder:
           (context, index) => Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.pw),
-        width: double.infinity,
-      ),
+            margin: EdgeInsets.symmetric(horizontal: 20.pw),
+            width: double.infinity,
+          ),
       itemBuilder: (context, index) => AlarmWidget(alarmType: alarmTypeKey),
     );
   }
 }
+
 class AlarmWidget extends StatelessWidget {
   final String? alarmType;
 
@@ -184,7 +188,10 @@ class AlarmWidget extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(8.pw),
         child: InkWell(
-          onTap: () => {context.navigator.pushNamed(AlarmInverterScreen.routeName)},
+          onTap:
+              () => {
+                context.navigator.pushNamed(AlarmInverterScreen.routeName),
+              },
           borderRadius: BorderRadius.circular(8.pw),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -195,7 +202,6 @@ class AlarmWidget extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-
                     ///Alarm Status
                     Text(
                       alarmType ?? "",
@@ -218,7 +224,6 @@ class AlarmWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     ///Alarm Description
                     Text(
                       'Low DC voltage',
@@ -247,7 +252,6 @@ class AlarmWidget extends StatelessWidget {
                         color: ColorRes.black.withValues(alpha: 0.7),
                       ),
                     ),
-
 
                     ///Alarm Date and Time
                     Text(

@@ -1,15 +1,14 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/user_center_flow/guest/widget/guest_list_widget.dart';
 
-class GuestScreen extends StatelessWidget {
-  const GuestScreen({super.key});
+class EndUserDetailScreen extends StatelessWidget {
+  const EndUserDetailScreen({super.key});
 
-  static const routeName = "guest";
+  static const routeName = "end_user_detail_screen";
 
   static Widget builder(BuildContext context) {
     return ChangeNotifierProvider<EndUserProvider>(
       create: (c) => EndUserProvider(),
-      child: GuestScreen(),
+      child: EndUserDetailScreen(),
     );
   }
 
@@ -47,7 +46,7 @@ class GuestScreen extends StatelessWidget {
                         spacing: 42.pw,
                         children: [
                           _TopImgWidget(name: "Okw"),
-                          _TopImgWidget(name: "0kWh"),
+                          _TopImgWidget(name: "0kWh", isColorChange: true),
                           _TopImgWidget(name: "385233kWh"),
                         ],
                       ),
@@ -61,7 +60,7 @@ class GuestScreen extends StatelessWidget {
                         spacing: 42.pw,
                         children: [
                           _TopImgWidget(name: "5"),
-                          _TopImgWidget(name: "2927.77T"),
+                          _TopImgWidget(name: "2927.77T", isColorChange: true),
                           _TopImgWidget(name: "21052.94"),
                         ],
                       ),
@@ -75,21 +74,30 @@ class GuestScreen extends StatelessWidget {
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: ColorRes.white,
                       borderRadius: BorderRadius.circular(8.pw),
                     ),
-
                     child: CustomListView(
                       itemCount: 3,
                       separatorBuilder: (context, index) {
                         return Container(
-                          height: 1,
+                          padding: EdgeInsets.symmetric(horizontal: 14.pw),
                           width: double.infinity,
-                          color: ColorRes.black.withValues(alpha: 0.1),
+                          child: Divider(
+                            color: ColorRes.black.withValues(alpha: 0.1),
+                            height: 0,
+                          ),
                         );
                       },
+                      padding: EdgeInsets.only(
+                        bottom: Constants.safeAreaPadding.bottom + 15.ph,
+                        top: 5.ph,
+                      ),
                       itemBuilder: (context, index) {
-                        return GuestListWidget();
+                        return EndUserListWidget(
+                          onTap: () {
+                            context.navigator.pop();
+                          },
+                        );
                       },
                     ),
                   ),
@@ -105,8 +113,9 @@ class GuestScreen extends StatelessWidget {
 
 class _TopImgWidget extends StatelessWidget {
   final String? name;
+  final bool? isColorChange;
 
-  const _TopImgWidget({this.name});
+  const _TopImgWidget({this.name, this.isColorChange = false});
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +136,9 @@ class _TopImgWidget extends StatelessWidget {
         /// Text
         Text(
           name ?? "",
-          style: styleW500S14.copyWith(color: ColorRes.primaryColor),
+          style: styleW500S14.copyWith(
+            color: isColorChange! ? ColorRes.orange3 : ColorRes.primaryColor,
+          ),
         ),
       ],
     );

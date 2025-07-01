@@ -6,9 +6,9 @@ class RankDialogBox extends StatelessWidget {
   static void show({required BuildContext context}) {
     showDialog(
       context: context,
-      builder: (context) {
-        return ChangeNotifierProvider(
-          create: (_) => PlantProvider(),
+      builder: (con) {
+        return ChangeNotifierProvider.value(
+          value: context.read<PlantProvider>(),
           child: const RankDialogBox(),
         );
       },
@@ -18,7 +18,9 @@ class RankDialogBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      insetPadding: EdgeInsets.zero,
+      insetPadding: EdgeInsets.symmetric(
+        horizontal: Constants.horizontalPadding,
+      ),
       contentPadding: EdgeInsets.symmetric(
         horizontal: Constants.horizontalPadding,
       ),
@@ -44,42 +46,94 @@ class RankDialogBox extends StatelessWidget {
   }
 
   Widget _buildRow({required String title}) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(
-          top: BorderSide(color: ColorRes.black.withValues(alpha: 0.1)),
-        ),
-      ),
-      child: InkWell(
-        onTap: () {},
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 14.ph, horizontal: 0),
-
-          child: Row(
-            children: [
-              Text(title, style: styleW500S14),
-
-              /// Horizontal Space
-              2.pw.spaceHorizontal,
-
-              SvgAsset(imagePath: AssetRes.longUpArrowIcon),
-
-              Spacer(),
-
-              Text("-", style: styleW500S14),
-
-              Spacer(),
-
-              Text(title, style: styleW500S14),
-
-              /// Horizontal Space
-              2.pw.spaceHorizontal,
-
-              SvgAsset(imagePath: AssetRes.longDownArrowIcon),
-            ],
+    return Consumer<PlantProvider>(
+      builder: (_, provider, __) {
+        final isAscSelected = provider.isRankSelected(title, true);
+        final isDescSelected = provider.isRankSelected(title, false);
+        return Container(
+          width: 100.w,
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(color: ColorRes.black.withValues(alpha: 0.1)),
+            ),
           ),
-        ),
-      ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 10.ph),
+            child: Row(
+              children: [
+                InkWell(
+                  onTap: () {
+                    provider.selectRank(title, true);
+                  },
+                  borderRadius: BorderRadius.circular(5),
+
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Row(
+                      children: [
+                        Text(
+                          title,
+                          style:
+                              isAscSelected
+                                  ? styleW600S14.copyWith(
+                                    color: ColorRes.primaryColor,
+                                  )
+                                  : styleW500S14,
+                        ),
+
+                        /// Horizontal Space
+                        2.pw.spaceHorizontal,
+
+                        SvgAsset(
+                          imagePath: AssetRes.longUpArrowIcon,
+                          color: isAscSelected ? ColorRes.primaryColor : null,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                Spacer(),
+
+                Text("-", style: styleW500S14),
+
+                Spacer(),
+
+                InkWell(
+                  onTap: () {
+                    provider.selectRank(title, false);
+                  },
+                  borderRadius: BorderRadius.circular(5),
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Row(
+                      children: [
+                        Text(
+                          title,
+                          style:
+                              isDescSelected
+                                  ? styleW600S14.copyWith(
+                                    color: ColorRes.primaryColor,
+                                  )
+                                  : styleW500S14,
+                        ),
+
+                        /// Horizontal Space
+                        2.pw.spaceHorizontal,
+
+                        SvgAsset(
+                          imagePath: AssetRes.longDownArrowIcon,
+                          color: isDescSelected ? ColorRes.primaryColor : null,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

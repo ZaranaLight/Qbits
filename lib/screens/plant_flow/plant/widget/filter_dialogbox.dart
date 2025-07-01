@@ -6,9 +6,9 @@ class FilterDialogBox extends StatelessWidget {
   static void show({required BuildContext context}) {
     showDialog(
       context: context,
-      builder: (context) {
-        return ChangeNotifierProvider(
-          create: (_) => PlantProvider(),
+      builder: (con) {
+        return ChangeNotifierProvider.value(
+          value: context.read<PlantProvider>(),
           child: const FilterDialogBox(),
         );
       },

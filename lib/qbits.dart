@@ -99,8 +99,8 @@ export 'package:qbits/screens/user_center_flow/profile_information/profile_info_
 export 'package:qbits/screens/user_center_flow/profile_information/profile_info_provider.dart';
 export 'package:qbits/screens/user_center_flow/account_security/account_security_screen.dart';
 export 'package:qbits/screens/user_center_flow/user_center/user_center_screen.dart';
-export 'package:qbits/screens/user_center_flow/guest/guest_provider.dart';
-export 'package:qbits/screens/user_center_flow/guest/guest_screen.dart';
+export 'package:qbits/screens/user_center_flow/end_user_detail/end_user_provider.dart';
+export 'package:qbits/screens/user_center_flow/end_user_detail/end_user_screen.dart';
 export 'package:qbits/screens/auth_flow/company_registration/company_registration_screen.dart';
 export 'package:qbits/screens/alarm_flow/inverter/inverter_screen.dart';
 export 'package:qbits/screens/user_center_flow/profile_information/profile_info_screen.dart';
@@ -185,3 +185,6 @@ export 'package:qbits/screens/plant_flow/add_plant/add_plant_screen.dart';
 export 'dart:async';
 export 'package:flutter_blue_plus/flutter_blue_plus.dart';
 export 'package:qbits/screens/plant_flow/add_plant/add_plant_provider.dart';
+export 'package:qbits/screens/plant_flow/plant_detail/widgets/slider/diagram_1_widget.dart';
+export 'package:qbits/screens/plant_flow/plant_detail/widgets/slider/diagram_2_widget.dart';
+export 'package:qbits/screens/plant_flow/plant_detail/widgets/slider/widget/row_with_title_and_value_widget.dart';

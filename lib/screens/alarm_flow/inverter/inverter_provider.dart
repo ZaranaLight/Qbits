@@ -143,25 +143,12 @@ class AlarmInverterProvider extends ChangeNotifier {
 
   bool _isInitialized = false;
 
-  void nextTab() {
-    _selectedIndex = (_selectedIndex + 1) % _tabs.length;
-    selectTab(_selectedIndex);
-    _loadChartData();
-    notifyListeners();
-  }
-
-  void previousTab() {
-    _selectedIndex = (_selectedIndex - 1 + _tabs.length) % _tabs.length;
-    selectTab(_selectedIndex);
-
-    _loadChartData();
-    notifyListeners();
-  }
-
   void updateChart(List<FlSpot> newData) {
     _chartData = newData;
     notifyListeners();
   }
+
+  int previousIndex = 0;
 
   void _loadChartData() {
     switch (currentTab) {
@@ -180,6 +167,7 @@ class AlarmInverterProvider extends ChangeNotifier {
     }
   }
 
+  bool get isForward => selectedIndex > previousIndex;
   final List<String> preferenceOptions = [
     'AC Power',
     'Voltage V1',

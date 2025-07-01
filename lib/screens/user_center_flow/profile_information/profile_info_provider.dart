@@ -1,16 +1,34 @@
 import 'package:qbits/qbits.dart';
 
-
 class ProfileInformationProvider extends ChangeNotifier {
   bool loader = false;
   final TextEditingController emailController = TextEditingController();
   String emailError = "";
   bool isOTPValidate = false;
+  String otpError = "";
 
   Future<void> onContinueTap(BuildContext context) async {
     if (validation(context)) {
       context.navigator.pushNamed(ProfileInfoOTPVerificationScreen.routeName);
     }
+  }
+
+  Future<void> onOTPVerify(BuildContext context) async {
+    if (validationOTPVerify(context)) {
+      context.navigator.pop();
+      context.navigator.pop();
+    }
+  }
+
+  bool validationOTPVerify(BuildContext context) {
+    if (!isOTPValidate) {
+      otpError = context.l10n?.otpCodeIsRequired ?? "";
+    } else {
+      otpError = "";
+    }
+
+    notifyListeners();
+    return otpError.isEmpty;
   }
 
   bool validation(BuildContext context) {

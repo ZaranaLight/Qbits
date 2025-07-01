@@ -657,7 +657,7 @@ abstract class AppLocalizations {
   /// **'QA'**
   String get qa;
 
-  /// No description provided for @guest.
+  /// No description provided for @end_user_detail.
   ///
   /// In en, this message translates to:
   /// **'Guest'**

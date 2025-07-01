@@ -28,7 +28,7 @@ class ProfitComputeModeScreen extends StatelessWidget {
                 right: Constants.horizontalPadding,
               ),
               child: SubmitButton(
-                title: context.l10n?.continueCap ?? "",
+                title: context.l10n?.confirm ?? "",
                 onTap: () {
                   context.navigator.pop();
                   context.navigator.pop();

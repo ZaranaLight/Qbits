@@ -40,7 +40,6 @@ class EndUserScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              bottom: Constants.safeAreaPadding.bottom + 20.pw,
               top: 20.pw,
             ),
             child: Column(
@@ -63,11 +62,15 @@ class EndUserScreen extends StatelessWidget {
                 ),
 
                 /// Space
-                Constants.horizontalPadding.spaceVertical,
+                5.ph.spaceVertical,
 
                 Expanded(
                   child: CustomListView(
                     itemCount: 10,
+                    padding: EdgeInsets.only(
+                      bottom: Constants.safeAreaPadding.bottom + 15.ph,
+                      top: 12.ph,
+                    ),
                     separatorBuilder: (context, index) {
                       return Container(
                         margin: EdgeInsets.symmetric(
@@ -78,7 +81,15 @@ class EndUserScreen extends StatelessWidget {
                       );
                     },
                     itemBuilder: (context, index) {
-                      return EndUserListWidget();
+                      return EndUserListWidget(
+                        width: 96.pw,
+                        height: 96.ph,
+                        onTap: () {
+                          context.navigator.pushNamed(
+                            EndUserDetailScreen.routeName,
+                          );
+                        },
+                      );
                     },
                   ),
                 ),

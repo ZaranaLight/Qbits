@@ -69,6 +69,13 @@ class AssetRes {
   static const dashIcon = "${_icons}dash_line.svg";
   static const editIcon = "${_icons}edit_icon.svg";
   static const horizontalDots = "${_icons}horizontal_dots.svg";
+  static const diagram1Icon = "${_icons}diagram_1.svg";
+  static const diagram2Icon = "${_icons}diagram_2.svg";
+  static const greenSolar2Icon = "${_icons}green_solar_icon2.svg";
+  static const gridIcon = "${_icons}grid_icon.svg";
+  static const loadIcon = "${_icons}load_icon.svg";
+  static const batteryIcon = "${_icons}battery_icon.svg";
+  static const solarPlateIcon = "${_icons}solar_plate_icon.svg";
 
   ///________________________________ Temp images ______________________________///
 

@@ -4,6 +4,8 @@ class PlantDetailProvider extends ChangeNotifier {
   bool loader = false;
   TabController? tabController;
 
+  final PageController pageController = PageController();
+
   PlantDetailProvider() {
     init();
   }
@@ -168,6 +170,23 @@ class PlantDetailProvider extends ChangeNotifier {
 
     _loadChartData();
     notifyListeners();
+  }
+
+  String getXAxisLabel(double value) {
+    switch (_viewType) {
+      case ChartViewType.day:
+        return '${value.toInt()}:00'; // 1 AM, 2 AM, ...
+      case ChartViewType.month:
+        return '${value.toInt()}'; // 1 to 31
+      case ChartViewType.year:
+        const months = [
+          'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        ];
+        int index = value.toInt().clamp(0, 11); // Safe indexing
+        return months[index];
+      case ChartViewType.total:
+        return 'Y${value.toInt()}'; }
   }
 
   void updateChart(List<FlSpot> newData) {

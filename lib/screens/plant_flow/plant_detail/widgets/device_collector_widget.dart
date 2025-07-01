@@ -27,110 +27,121 @@ class CollectorWidget extends StatelessWidget {
                 Divider(color: ColorRes.black.withValues(alpha: 0.1)),
 
                 /// Space between divider and content
-                Material(
-                  color: ColorRes.transparent,
-                  child: InkWell(
-                    onTap: () {
-                      context.navigator.pushNamed(CollectorScreen.routeName);
-                    },
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-
-                      children: [
-                        /// Space between dropdown and content
-                        5.ph.spaceVertical,
-
-                        /// First Row
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: Constants.horizontalPadding,
-                          ),
-
-                          child: Row(
-                            children: [
-                              Text(
-                                "Online Collector",
-                                style: styleW600S16.copyWith(),
-                              ),
-
-                              Spacer(),
-                              Container(
-                                width: 18.pw,
-                                height: 18.ph,
-                                decoration: BoxDecoration(
-                                  color: ColorRes.lightRed,
-                                  borderRadius: BorderRadius.circular(18.pw),
-                                ),
-                                padding: EdgeInsets.all(5.pw),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: ColorRes.red,
-                                    borderRadius: BorderRadius.circular(8.pw),
-                                  ),
-                                ),
-                              ),
-
-                              /// Space
-                              6.ph.spaceHorizontal,
-
-                              /// Text
-                              Text(
-                                context.l10n?.offline ?? "",
-                                style: styleW500S14.copyWith(
-                                  color: ColorRes.black.withValues(alpha: 0.5),
-                                ),
-                              ),
-                            ],
-                          ),
+                Expanded(
+                  child: CustomListView(
+                    itemCount: 2,
+                    separatorBuilder:
+                        (context, index) => Container(
+                          width: double.infinity,
+                          height: 1,
+                          color: ColorRes.black.withValues(alpha: 0.1),
                         ),
-
-                        /// Space between buttons and content
-                        10.ph.spaceVertical,
-
-                        /// Second Row
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: Constants.horizontalPadding,
-                          ),
+                    itemBuilder: (context, index) {
+                      return Material(
+                        color: ColorRes.transparent,
+                        child: InkWell(
+                          onTap: () {
+                            context.navigator.pushNamed(
+                              CollectorScreen.routeName,
+                            );
+                          },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+
                             children: [
-                              Text(
-                                context.l10n?.production ?? "",
-                                style: styleW500S14.copyWith(
-                                  color: ColorRes.black.withValues(alpha: 0.6),
+                              /// Space between dropdown and content
+                              5.ph.spaceVertical,
+
+                              /// First Row
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: Constants.horizontalPadding,
+                                ),
+
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "Online Collector",
+                                      style: styleW600S16.copyWith(),
+                                    ),
+
+                                    Spacer(),
+                                    Container(
+                                      width: 18.pw,
+                                      height: 18.ph,
+                                      decoration: BoxDecoration(
+                                        color: ColorRes.lightRed,
+                                        borderRadius: BorderRadius.circular(
+                                          18.pw,
+                                        ),
+                                      ),
+                                      padding: EdgeInsets.all(5.pw),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: ColorRes.red,
+                                          borderRadius: BorderRadius.circular(
+                                            8.pw,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+
+                                    /// Space
+                                    6.ph.spaceHorizontal,
+
+                                    /// Text
+                                    Text(
+                                      context.l10n?.offline ?? "",
+                                      style: styleW500S14.copyWith(
+                                        color: ColorRes.black.withValues(
+                                          alpha: 0.5,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
 
-                              ///Space
-                              2.ph.spaceVertical,
-                              Text("0 kW", style: styleW600S16),
+                              /// Space between buttons and content
+                              10.ph.spaceVertical,
+
+                              /// Second Row
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: Constants.horizontalPadding,
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      context.l10n?.production ?? "",
+                                      style: styleW500S14.copyWith(
+                                        color: ColorRes.black.withValues(
+                                          alpha: 0.6,
+                                        ),
+                                      ),
+                                    ),
+
+                                    ///Space
+                                    2.ph.spaceVertical,
+                                    Text("0 kW", style: styleW600S16),
+                                  ],
+                                ),
+                              ),
+
+                              /// Space between buttons and content
+                              16.ph.spaceVertical,
+
+                              // Floating + Button
                             ],
                           ),
                         ),
-
-                        /// Space between buttons and content
-                        16.ph.spaceVertical,
-
-                        // Floating + Button
-                      ],
-                    ),
+                      );
+                    },
                   ),
                 ),
               ],
             ),
-            // Positioned(
-            //   bottom: 0,
-            //   right: 0,
-            //   child: FloatingActionButton(
-            //     backgroundColor: ColorRes.green2,
-            //     onPressed:
-            //         () => context.navigator.pushNamed(
-            //           AddCollectorScreen.routeName,
-            //         ),
-            //     child: SvgAsset(imagePath: AssetRes.plusIcon),
-            //   ),
-            // ),
           ],
         );
       },

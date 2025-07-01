@@ -11,7 +11,9 @@ class MyWatchlistCellListView extends StatelessWidget {
           loading: state.loader,
           child: CustomListView(
             itemCount: 10,
-            padding: EdgeInsets.only(bottom: Constants.safeAreaPadding.bottom),
+            padding: EdgeInsets.only(
+              bottom: Constants.safeAreaPadding.bottom + 15.ph,
+            ),
             separatorBuilder: (ctx, ind) {
               return Container(
                 height: 1.ph,
@@ -20,7 +22,29 @@ class MyWatchlistCellListView extends StatelessWidget {
               );
             },
             itemBuilder: (ctx, ind) {
-              return MyWatchlistCell();
+              return Column(
+                children: [
+                  MyWatchlistCell(),
+                  if (ind + 1 == 10)
+                    Column(
+                      children: [
+                        Container(
+                          height: 1.ph,
+                          color: ColorRes.black.withValues(alpha: 0.1),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            'No More Data',
+                            style: styleW400S14.copyWith(
+                              color: ColorRes.black.withValues(alpha: 0.6),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                ],
+              );
             },
           ),
         );
