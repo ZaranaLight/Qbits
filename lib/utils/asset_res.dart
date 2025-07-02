@@ -57,6 +57,8 @@ class AssetRes {
   static const groupUserIcon = "${_icons}group_user.svg";
   static const leftArrowIcon = "${_icons}left_arrow_icon.svg";
   static const rightArrowIcon = "${_icons}right_arrow_icon.svg";
+  static const leftArrowIcon2 = "${_icons}left_arrow_icon2.svg";
+  static const rightArrowIcon2 = "${_icons}right_arrow_icon2.svg";
   static const phoneIcon = "${_icons}phone_icon.svg";
   static const emailIcon = "${_icons}email_icon.svg";
   static const chatIcon = "${_icons}chat_icon.svg";
@@ -76,6 +78,7 @@ class AssetRes {
   static const loadIcon = "${_icons}load_icon.svg";
   static const batteryIcon = "${_icons}battery_icon.svg";
   static const solarPlateIcon = "${_icons}solar_plate_icon.svg";
+  static const calenderIcon = "${_icons}calender_icon.svg";
 
   ///________________________________ Temp images ______________________________///
 

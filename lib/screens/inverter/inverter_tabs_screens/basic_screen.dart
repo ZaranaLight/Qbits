@@ -82,13 +82,14 @@ class BasicScreen extends StatelessWidget {
           transitionBuilder: (Widget child, Animation<double> animation) {
             return SizeTransition(sizeFactor: animation, child: child);
           },
-          child: isExpanded
-              ? SizedBox(
-                key: const ValueKey('expanded'),
-                width: 100.h,
-                child: provider.basicContent[index],
-              )
-              : const SizedBox(key: ValueKey('collapsed'), height: 0),
+          child:
+              isExpanded
+                  ? SizedBox(
+                    key: const ValueKey('expanded'),
+                    width: 100.h,
+                    child: provider.basicContent[index],
+                  )
+                  : const SizedBox(key: ValueKey('collapsed'), height: 0),
         ),
       ],
     );
@@ -117,14 +118,27 @@ class BasicContentWidget extends StatelessWidget {
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      /// Key
                       Text(
                         item.key,
                         style: styleW600S14.copyWith(
                           color: ColorRes.black.withValues(alpha: 0.5),
                         ),
                       ),
-                      Text(item.value, style: styleW600S14),
+
+                      /// Space
+                      8.pw.spaceHorizontal,
+
+                      /// Value
+                      Expanded(
+                        child: Text(
+                          item.value,
+                          textAlign: TextAlign.right,
+                          style: styleW600S14,
+                        ),
+                      ),
                     ],
                   ),
                 );

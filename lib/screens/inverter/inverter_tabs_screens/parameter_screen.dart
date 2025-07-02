@@ -3,15 +3,6 @@ import 'package:qbits/qbits.dart';
 class ParameterScreen extends StatelessWidget {
   const ParameterScreen({super.key});
 
-  static const routeName = "parameter";
-
-  static Widget builder(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => InverterProvider(),
-      child: const ParameterScreen(),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Consumer<InverterProvider>(
@@ -37,6 +28,24 @@ class ParameterScreen extends StatelessWidget {
   }
 
   Widget _buildExpansionTile(InverterProvider provider, int index) {
+
+    final List<Widget> parameterContent = [
+      InverterParameterWidget(),
+      ExpandableInfoSection(
+        items: [
+          InfoRowModel(text: "A", voltage: "234.2", current: "4.73"),
+          InfoRowModel(text: "B", voltage: "234.8", current: "4.73"),
+          InfoRowModel(text: "C", voltage: "234.8", current: "4.73"),
+        ],
+      ),
+      ExpandableInfoSection(
+        items: [
+          InfoRowModel(text: "A", voltage: "234.8", current: "4.73"),
+          InfoRowModel(text: "E", voltage: "234.8", current: "4.73"),
+        ],
+      ),
+    ];
+
     final isExpanded = provider.expandedIndex == index;
     return Column(
       children: [
@@ -100,7 +109,7 @@ class ParameterScreen extends StatelessWidget {
                   ? SizedBox(
                     key: const ValueKey('expanded'),
                     width: 100.h,
-                    child: provider.parameterContent[index],
+                    child: parameterContent[index],
                   )
                   : const SizedBox(key: ValueKey('collapsed'), height: 0),
         ),

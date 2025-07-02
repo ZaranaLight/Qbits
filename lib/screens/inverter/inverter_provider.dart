@@ -24,22 +24,7 @@ class InverterProvider extends ChangeNotifier {
   }
 
   final List<String> parameterTitles = ["Inverter", "AC Info", "DC Info"];
-  final List<Widget> parameterContent = [
-    InverterParameterWidget(),
-    ExpandableInfoSection(
-      items: [
-        InfoRowModel(text: "A", voltage: "234.8", current: "4.73"),
-        InfoRowModel(text: "B", voltage: "234.8", current: "4.73"),
-        InfoRowModel(text: "C", voltage: "234.8", current: "4.73"),
-      ],
-    ),
-    ExpandableInfoSection(
-      items: [
-        InfoRowModel(text: "A", voltage: "234.8", current: "4.73"),
-        InfoRowModel(text: "E", voltage: "234.8", current: "4.73"),
-      ],
-    ),
-  ];
+
   final List<String> hybridParameterTitles = [
     "Electricity Generation",
     "Back-Up",
@@ -54,19 +39,7 @@ class InverterProvider extends ChangeNotifier {
     "Generator",
   ];
 
-  final List<Widget> hybridParameterContent = [
-    SolarDataTable(),
-    BackUpWidget(),
-    HybridInverterWidget(),
-    BatteryWidget(),
-    RemoteControlGridSetWidget(),
-    MeterWidget(),
-    SystemWidget(),
-    SystemWidget(),
-    SystemWidget(),
-    MeterWidget(),
-    BackUpWidget(),
-  ];
+
 
   ///
   //Hybrid data

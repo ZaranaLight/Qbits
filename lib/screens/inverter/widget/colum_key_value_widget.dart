@@ -12,8 +12,9 @@ class ColumKeyValueWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          /// Label
           Text(
-            '$label:',
+            '$label',
             style: styleW400S14.copyWith(
               color: ColorRes.black.withValues(alpha: 0.6),
             ),
@@ -21,6 +22,8 @@ class ColumKeyValueWidget extends StatelessWidget {
 
           /// Space
           8.ph.spaceVertical,
+
+          /// Value
           Text(value ?? "", style: styleW700S14),
         ],
       ),

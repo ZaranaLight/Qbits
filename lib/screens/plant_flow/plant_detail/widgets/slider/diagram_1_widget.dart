@@ -6,7 +6,12 @@ class Diagram1Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.pw, vertical: 30.ph),
+      padding: EdgeInsets.only(
+        left: 16.pw,
+        right: 16.pw,
+        top: 30.ph,
+        bottom: 50.ph,
+      ),
       decoration: BoxDecoration(color: ColorRes.white),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

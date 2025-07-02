@@ -134,7 +134,6 @@ export 'package:qbits/screens/inverter/model/info_model.dart';
 export 'package:qbits/screens/inverter/model/inverter_parameter_model.dart';
 export 'package:qbits/screens/inverter/widget/info_widget.dart';
 export 'package:qbits/screens/inverter/widget/inverter_parameter_widget.dart';
-export 'package:qbits/screens/inverter/inverter_tabs_screens/alarm_screen.dart';
 export 'package:qbits/screens/inverter/inverter_tabs_screens/parameter_screen.dart';
 export 'package:qbits/screens/inverter/inverter_tabs_screens/statistics_screen.dart';
 export 'package:qbits/screens/collector/add_collector/add_collector_screen.dart';
@@ -188,3 +187,8 @@ export 'package:qbits/screens/plant_flow/add_plant/add_plant_provider.dart';
 export 'package:qbits/screens/plant_flow/plant_detail/widgets/slider/diagram_1_widget.dart';
 export 'package:qbits/screens/plant_flow/plant_detail/widgets/slider/diagram_2_widget.dart';
 export 'package:qbits/screens/plant_flow/plant_detail/widgets/slider/widget/row_with_title_and_value_widget.dart';
+export 'package:qbits/screens/plant_flow/plant_info/widget/text_field_dialog_2.dart';
+export 'package:qbits/screens/plant_flow/plant_info/model/plant_info_part_1_model.dart';
+export 'package:qbits/screens/plant_flow/plant_info/model/plant_info_part_2_model.dart';
+export 'package:qbits/screens/plant_flow/plant_info/model/plant_info_part_3_model.dart';
+

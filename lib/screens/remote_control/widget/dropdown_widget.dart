@@ -5,6 +5,7 @@ class DropdownWidget extends StatelessWidget {
   final String? title;
   final String? value;
   final List<String>? options;
+  final Color? backgroundColor;
   final Function(String?) onChanged;
 
   const DropdownWidget({
@@ -14,69 +15,61 @@ class DropdownWidget extends StatelessWidget {
     this.value,
     this.options,
     required this.onChanged,
+    this.backgroundColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.pw, vertical: 8.ph),
-      decoration: BoxDecoration(color: ColorRes.black.withValues(alpha: 0.05)),
+      padding: EdgeInsets.only(left: 16.pw),
+      decoration: BoxDecoration(
+        color: backgroundColor ?? ColorRes.black.withValues(alpha: 0.05),
+      ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           /// Title
-          Expanded(
-            flex: 1,
-            child: Text(
-              title ?? "",
-              style: styleW600S14,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
+          Expanded(child: Text(title ?? "", style: styleW600S14)),
 
           /// Horizontal space
           12.pw.spaceHorizontal,
 
-          /// Dropdown
+          /// DropdownMenu
           Expanded(
-            flex: 1,
-            child: DropdownButtonHideUnderline(
-              child: DropdownButton<String>(
-                value: value,
-                isDense: true,
-                isExpanded: true,
-                alignment: Alignment.centerRight,
-                onChanged: onChanged,
-                icon: Padding(
-                  padding: EdgeInsets.only(left: 8.pw),
+            child: AnimatedSize(
+              duration: 200.milliseconds,
+              child: DropdownMenu<String>(
+                initialSelection: value,
+                trailingIcon: SvgAsset(
+                  imagePath: AssetRes.downArrowIcon,
+                  color: ColorRes.grey2,
+                ),
+                selectedTrailingIcon: Transform.rotate(
+                  angle: 2 * 3.14 / 2,
                   child: SvgAsset(
                     imagePath: AssetRes.downArrowIcon,
                     color: ColorRes.grey2,
                   ),
                 ),
-                selectedItemBuilder: (context) {
-                  return options?.map((option) {
-                        return Align(
-                          alignment: Alignment.centerRight,
-                          child: Text(
-                            option,
-                            style: styleW600S14.copyWith(
-                              color: ColorRes.black.withValues(alpha: 0.6),
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                            softWrap: true,
-                          ),
-                        );
-                      }).toList() ??
-                      [];
-                },
-                items:
+                expandedInsets: EdgeInsets.zero,
+                textAlign: TextAlign.end,
+                maxLines: null,
+                inputDecorationTheme: InputDecorationTheme(
+                  border: InputBorder.none,
+                  isDense: true,
+                  isCollapsed: true,
+                  contentPadding: EdgeInsets.symmetric(vertical: 8),
+                  suffixIconConstraints: BoxConstraints(maxHeight: 14),
+                ),
+                dropdownMenuEntries:
                     options?.map((String option) {
-                      return DropdownMenuItem<String>(
+                      return DropdownMenuEntry<String>(
                         value: option,
-                        child: Text(option),
+                        label: option,
                       );
-                    }).toList(),
+                    }).toList() ??
+                    [],
               ),
             ),
           ),

@@ -201,68 +201,6 @@ class AlarmInverterScreen extends StatelessWidget {
     );
   }
 
-  // Widget _buildChartSection(AlarmInverterProvider provider) {
-  //   return Consumer<AlarmInverterProvider>(
-  //     builder: (context, provider, child) {
-  //       return SafeArea(
-  //         top: false,
-  //         child: Container(
-  //           padding: EdgeInsets.symmetric(vertical: 15.pw),
-  //           decoration: const BoxDecoration(color: ColorRes.white),
-  //           child: Column(
-  //             crossAxisAlignment: CrossAxisAlignment.start,
-  //             children: [
-  //               ///Chart Header
-  //               _buildChartTabs(provider),
-  //
-  //               ///Space
-  //               8.ph.spaceVertical,
-  //
-  //               ///Date Picker
-  //               _buildDatePicker(provider),
-  //
-  //               ///Space
-  //               10.ph.spaceVertical,
-  //
-  //               ///Energy Usage and Preference Dropdown
-  //               _buildEnergyUsage(),
-  //
-  //               ///divider
-  //               Divider(color: ColorRes.black.withValues(alpha: 0.1)),
-  //
-  //               ///Space
-  //               6.ph.spaceVertical,
-  //
-  //               ///Preference Dropdown
-  //               _buildPreferenceDropdown(provider),
-  //
-  //               ///Space
-  //               10.ph.spaceVertical,
-  //
-  //               ///kWh Label
-  //               _buildKWhLabel(),
-  //
-  //               ///Space
-  //               6.ph.spaceVertical,
-  //
-  //               /// Chart
-  //               _buildChart(provider),
-  //
-  //               /// Space
-  //               15.ph.spaceVertical,
-  //
-  //               /// Chart Legend
-  //               _buildChartLegend(provider),
-  //
-  //               /// Space
-  //               15.ph.spaceVertical,
-  //             ],
-  //           ),
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
   Widget _buildChartSection(AlarmInverterProvider provider) {
     return Consumer<AlarmInverterProvider>(
       builder: (context, provider, child) {

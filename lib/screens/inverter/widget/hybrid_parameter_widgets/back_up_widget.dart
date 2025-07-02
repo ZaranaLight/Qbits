@@ -53,7 +53,9 @@ class BackUpWidget extends StatelessWidget {
 
           /// Data Row
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              /// Voltage
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,6 +73,11 @@ class BackUpWidget extends StatelessWidget {
                   ],
                 ),
               ),
+
+              /// Space
+              15.pw.spaceHorizontal,
+
+              /// Voltage
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -3,15 +3,6 @@ import 'package:qbits/qbits.dart';
 class StatisticsScreen extends StatelessWidget {
   const StatisticsScreen({super.key});
 
-  static const routeName = "statistics";
-
-  static Widget builder(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => InverterProvider(),
-      child: const StatisticsScreen(),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Consumer<InverterProvider>(
@@ -104,19 +95,34 @@ class StatisticsScreen extends StatelessWidget {
 
               return InkWell(
                 onTap: () => provider.selectTab(index),
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 0,
-                    vertical: 6,
-                  ),
-                  child: Text(
-                    tab,
-                    style: styleW700S16.copyWith(
-                      color:
-                          isSelected
-                              ? ColorRes.primaryColor
-                              : ColorRes.black.withValues(alpha: 0.8),
+                child: AnimatedSwitcher(
+                  duration: 250.milliseconds,
+                  transitionBuilder: (child, animation) {
+                    return ScaleTransition(
+                      scale: Tween<double>(begin: 0.8, end: 1.0).animate(
+                        CurvedAnimation(
+                          parent: animation,
+                          curve: Curves.bounceIn,
+                        ),
+                      ),
+                      child: child,
+                    );
+                  },
+                  child: Container(
+                    key: ValueKey(isSelected),
+                    margin: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 0,
+                      vertical: 6,
+                    ),
+                    child: Text(
+                      tab,
+                      style: styleW700S16.copyWith(
+                        color:
+                            isSelected
+                                ? ColorRes.primaryColor
+                                : ColorRes.black.withValues(alpha: 0.8),
+                      ),
                     ),
                   ),
                 ),
@@ -137,14 +143,73 @@ class StatisticsScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              /// Navigation Arrows
               _buildNavigationArrow(
-                onTap: () => provider.previousTab(),
-                icon: AssetRes.leftArrowIcon,
+                onTap: () {
+                  switch (provider.viewType) {
+                    case ChartViewType.day:
+                      provider.updateDate(
+                        provider.selectedDate.subtract(const Duration(days: 1)),
+                      );
+                      break;
+                    case ChartViewType.month:
+                      provider.updateDate(
+                        DateTime(
+                          provider.selectedDate.year,
+                          provider.selectedDate.month - 1,
+                        ),
+                      );
+                      break;
+                    case ChartViewType.year:
+                      provider.updateDate(
+                        DateTime(provider.selectedDate.year - 1, 1),
+                      );
+                      break;
+                    case ChartViewType.total:
+                      // No-op
+                      break;
+                  }
+                },
+                icon: AssetRes.leftArrowIcon2,
               ),
-              Text(provider.displayDate, style: styleW600S16),
+
+              /// Date Display
+              Row(
+                children: [
+                  Text(provider.displayDate, style: styleW600S16),
+                  4.pw.spaceHorizontal,
+                  SvgAsset(imagePath: AssetRes.calenderIcon, height: 16.ph),
+                ],
+              ),
+
+              /// Navigation Arrows
               _buildNavigationArrow(
-                onTap: () => provider.nextTab(),
-                icon: AssetRes.rightArrowIcon,
+                onTap: () {
+                  switch (provider.viewType) {
+                    case ChartViewType.day:
+                      provider.updateDate(
+                        provider.selectedDate.add(const Duration(days: 1)),
+                      );
+                      break;
+                    case ChartViewType.month:
+                      provider.updateDate(
+                        DateTime(
+                          provider.selectedDate.year,
+                          provider.selectedDate.month + 1,
+                        ),
+                      );
+                      break;
+                    case ChartViewType.year:
+                      provider.updateDate(
+                        DateTime(provider.selectedDate.year + 1, 1),
+                      );
+                      break;
+                    case ChartViewType.total:
+                      // You might choose to do nothing or refresh
+                      break;
+                  }
+                },
+                icon: AssetRes.rightArrowIcon2,
               ),
             ],
           ),
@@ -206,7 +271,7 @@ class StatisticsScreen extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: EdgeInsets.all(8.0),
-        child: SvgAsset(imagePath: icon, width: 8),
+        child: SvgAsset(imagePath: icon),
       ),
     );
   }
@@ -243,7 +308,7 @@ class StatisticsScreen extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 15),
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: DropdownButton<String>(
-        elevation:1,
+        elevation: 1,
         padding: EdgeInsets.zero,
         isDense: true,
         hint: Text("Preference", style: styleW500S14),

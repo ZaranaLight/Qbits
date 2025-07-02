@@ -1,16 +1,8 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/inverter/widget/hybrid_parameter_widgets/remote_control_grid_set_widget.dart';
 
 class HybridParameterScreen extends StatelessWidget {
   const HybridParameterScreen({super.key});
-
-  static const routeName = "hybrid_parameter";
-
-  static Widget builder(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => InverterProvider(),
-      child: const HybridParameterScreen(),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +26,6 @@ Widget _buildInverterList(InverterProvider provider) {
     itemCount: provider.hybridParameterTitles.length,
     shrinkWrap: true,
     physics: BouncingScrollPhysics(),
-
     separatorBuilder:
         (context, index) => Container(
           width: double.infinity,
@@ -46,15 +37,33 @@ Widget _buildInverterList(InverterProvider provider) {
 }
 
 Widget _buildExpansionTile(InverterProvider provider, int index) {
+  /// List of widgets to display for each hybrid parameter
+  final List<Widget> hybridParameterContent = [
+    SolarDataTable(),
+    BackUpWidget(),
+    HybridInverterWidget(),
+    BatteryWidget(),
+    RemoteControlGridSetWidget(),
+    MeterWidget(),
+    SystemWidget(),
+    SystemWidget(),
+    SystemWidget(),
+    MeterWidget(),
+    BackUpWidget(),
+  ];
+
+  /// Check if the index is within the bounds of the content list
   final isExpanded = provider.expandedIndex == index;
+
+  /// If the index is out of bounds, return an empty container
   return Column(
     children: [
       ///Space before the tile
       16.ph.spaceVertical,
 
+      /// Expansion Tile Header
       Container(
         margin: EdgeInsets.symmetric(horizontal: 14.pw),
-
         color: ColorRes.white,
         child: Material(
           color: ColorRes.transparent,
@@ -85,6 +94,7 @@ Widget _buildExpansionTile(InverterProvider provider, int index) {
         ),
       ),
 
+      /// Animated content for the expansion tile
       AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
         switchInCurve: Curves.easeIn,
@@ -97,7 +107,7 @@ Widget _buildExpansionTile(InverterProvider provider, int index) {
                 ? SizedBox(
                   key: const ValueKey('expanded'),
                   width: 100.h,
-                  child: provider.hybridParameterContent[index],
+                  child: hybridParameterContent[index],
                 )
                 : const SizedBox(key: ValueKey('collapsed'), height: 0),
       ),

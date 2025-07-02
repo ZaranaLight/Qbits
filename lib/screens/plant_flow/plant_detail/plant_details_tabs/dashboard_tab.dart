@@ -39,7 +39,7 @@ class DashBoardTab extends StatelessWidget {
 
                   /// Dots Indicator
                   Positioned(
-                    bottom: 10,
+                    bottom: 20.ph,
                     left: 0,
                     right: 0,
                     child: Row(
@@ -168,36 +168,53 @@ class DashBoardTab extends StatelessWidget {
   }
 
   Widget _buildChartTabs(PlantDetailProvider provider) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children:
-            provider.tabs.asMap().entries.map((entry) {
-              final index = entry.key;
-              final tab = entry.value;
-              final isSelected = provider.selectedIndex == index;
+    return AnimatedSwitcher(
+      duration: 300.milliseconds,
+      transitionBuilder: (Widget child, Animation<double> animation) {
+        final isForward = provider.isForward;
+        final beginOffset =
+            isForward ? const Offset(1, 0) : const Offset(-1, 0);
 
-              return InkWell(
-                onTap: () => provider.selectTab(index),
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 0,
-                    vertical: 6,
-                  ),
-                  child: Text(
-                    tab,
-                    style: styleW600S16.copyWith(
-                      color:
-                          isSelected
-                              ? ColorRes.primaryColor
-                              : ColorRes.black.withValues(alpha: 0.5),
+        return SlideTransition(
+          position: Tween<Offset>(
+            begin: beginOffset,
+            end: Offset.zero,
+          ).animate(animation),
+          child: FadeTransition(opacity: animation, child: child),
+        );
+      },
+      child: Padding(
+        key: ValueKey(provider.selectedIndex),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children:
+              provider.tabs.asMap().entries.map((entry) {
+                final index = entry.key;
+                final tab = entry.value;
+                final isSelected = provider.selectedIndex == index;
+
+                return InkWell(
+                  onTap: () => provider.selectTab(index),
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 0,
+                      vertical: 6,
+                    ),
+                    child: Text(
+                      tab,
+                      style: styleW600S16.copyWith(
+                        color:
+                            isSelected
+                                ? ColorRes.primaryColor
+                                : ColorRes.black.withValues(alpha: 0.5),
+                      ),
                     ),
                   ),
-                ),
-              );
-            }).toList(),
+                );
+              }).toList(),
+        ),
       ),
     );
   }
@@ -220,22 +237,25 @@ class DashBoardTab extends StatelessWidget {
                 onTap: () {
                   switch (provider.viewType) {
                     case ChartViewType.day:
-                      provider.updateDate(provider.selectedDate.subtract(const Duration(days: 1)));
+                      provider.updateDate(
+                        provider.selectedDate.subtract(const Duration(days: 1)),
+                      );
                       break;
                     case ChartViewType.month:
-                      provider.updateDate(DateTime(
-                        provider.selectedDate.year,
-                        provider.selectedDate.month - 1,
-                      ));
+                      provider.updateDate(
+                        DateTime(
+                          provider.selectedDate.year,
+                          provider.selectedDate.month - 1,
+                        ),
+                      );
                       break;
                     case ChartViewType.year:
-                      provider.updateDate(DateTime(
-                        provider.selectedDate.year - 1,
-                        1,
-                      ));
+                      provider.updateDate(
+                        DateTime(provider.selectedDate.year - 1, 1),
+                      );
                       break;
                     case ChartViewType.total:
-                    // No-op
+                      // No-op
                       break;
                   }
                 },
@@ -246,22 +266,25 @@ class DashBoardTab extends StatelessWidget {
                 onTap: () {
                   switch (provider.viewType) {
                     case ChartViewType.day:
-                      provider.updateDate(provider.selectedDate.add(const Duration(days: 1)));
+                      provider.updateDate(
+                        provider.selectedDate.add(const Duration(days: 1)),
+                      );
                       break;
                     case ChartViewType.month:
-                      provider.updateDate(DateTime(
-                        provider.selectedDate.year,
-                        provider.selectedDate.month + 1,
-                      ));
+                      provider.updateDate(
+                        DateTime(
+                          provider.selectedDate.year,
+                          provider.selectedDate.month + 1,
+                        ),
+                      );
                       break;
                     case ChartViewType.year:
-                      provider.updateDate(DateTime(
-                        provider.selectedDate.year + 1,
-                        1,
-                      ));
+                      provider.updateDate(
+                        DateTime(provider.selectedDate.year + 1, 1),
+                      );
                       break;
                     case ChartViewType.total:
-                    // You might choose to do nothing or refresh
+                      // You might choose to do nothing or refresh
                       break;
                   }
                 },

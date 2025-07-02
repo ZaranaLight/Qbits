@@ -20,6 +20,7 @@ class ExpandableInfoSection extends StatelessWidget {
               spacing: 4,
               children: [
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -30,6 +31,7 @@ class ExpandableInfoSection extends StatelessWidget {
                     ),
                     Text(
                       "Voltage(V)",
+                      textAlign: TextAlign.center,
                       style: styleW600S14.copyWith(
                         color: ColorRes.black.withValues(alpha: 0.5),
                       ),
@@ -55,18 +57,30 @@ class ExpandableInfoSection extends StatelessWidget {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          item.text,
-                          style: styleW500S14.copyWith(color: ColorRes.black),
+                        Expanded(
+                          child: Text(
+                            item.text,
+                            style: styleW500S14.copyWith(color: ColorRes.black),
+                          ),
                         ),
-                        Text(
-                          item.voltage,
-                          style: styleW500S14.copyWith(color: ColorRes.black),
+                        6.pw.spaceHorizontal,
+                        Expanded(
+                          child: Text(
+                            item.voltage,
+                            textAlign: TextAlign.justify,
+                            style: styleW500S14.copyWith(color: ColorRes.black),
+                          ),
                         ),
-                        Text(
-                          item.current,
-                          style: styleW500S14.copyWith(color: ColorRes.black),
+                        6.pw.spaceHorizontal,
+
+                        Expanded(
+                          child: Text(
+                            item.current,
+                            textAlign: TextAlign.right,
+                            style: styleW500S14.copyWith(color: ColorRes.black),
+                          ),
                         ),
                       ],
                     ),

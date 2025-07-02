@@ -157,12 +157,60 @@ class EnergyScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _buildNavigationArrow(
-                  onTap: () => provider.previousTab(),
+                  onTap: () {
+                    switch (provider.viewType) {
+                      case ChartViewType.day:
+                        provider.updateDate(
+                          provider.selectedDate.subtract(const Duration(days: 1)),
+                        );
+                        break;
+                      case ChartViewType.month:
+                        provider.updateDate(
+                          DateTime(
+                            provider.selectedDate.year,
+                            provider.selectedDate.month - 1,
+                          ),
+                        );
+                        break;
+                      case ChartViewType.year:
+                        provider.updateDate(
+                          DateTime(provider.selectedDate.year - 1, 1),
+                        );
+                        break;
+                      case ChartViewType.total:
+                      // No-op
+                        break;
+                    }
+                  },
                   icon: AssetRes.leftArrowIcon,
                 ),
                 Text(provider.displayDate, style: styleW600S16),
                 _buildNavigationArrow(
-                  onTap: () => provider.nextTab(),
+                  onTap: () {
+                    switch (provider.viewType) {
+                      case ChartViewType.day:
+                        provider.updateDate(
+                          provider.selectedDate.add(const Duration(days: 1)),
+                        );
+                        break;
+                      case ChartViewType.month:
+                        provider.updateDate(
+                          DateTime(
+                            provider.selectedDate.year,
+                            provider.selectedDate.month + 1,
+                          ),
+                        );
+                        break;
+                      case ChartViewType.year:
+                        provider.updateDate(
+                          DateTime(provider.selectedDate.year + 1, 1),
+                        );
+                        break;
+                      case ChartViewType.total:
+                      // You might choose to do nothing or refresh
+                        break;
+                    }
+                  },
                   icon: AssetRes.rightArrowIcon,
                 ),
               ],

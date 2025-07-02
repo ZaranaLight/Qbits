@@ -54,6 +54,7 @@ class HybridInverterWidget extends StatelessWidget {
 
           /// Data Row
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 child: Column(
@@ -68,10 +69,11 @@ class HybridInverterWidget extends StatelessWidget {
 
                     /// Space
                     8.ph.spaceVertical,
-                    Text('0kW', style: styleW700S14),
+                    Text('kwh', style: styleW700S14),
                   ],
                 ),
               ),
+              10.pw.spaceHorizontal,
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +87,7 @@ class HybridInverterWidget extends StatelessWidget {
 
                     /// Space
                     8.ph.spaceVertical,
-                    Text('0kWh', style: styleW700S14),
+                    Text('kwh', style: styleW700S14),
                   ],
                 ),
               ),
@@ -97,6 +99,7 @@ class HybridInverterWidget extends StatelessWidget {
 
           /// Data Row
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 child: Column(
@@ -115,6 +118,8 @@ class HybridInverterWidget extends StatelessWidget {
                   ],
                 ),
               ),
+              10.pw.spaceHorizontal,
+
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

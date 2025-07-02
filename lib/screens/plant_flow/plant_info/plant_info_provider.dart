@@ -1,11 +1,10 @@
- import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/plant_flow/plant_info/model/plant_info_model.dart';
+import 'package:intl/intl.dart';
+import 'package:qbits/qbits.dart';
 
 class PlantInfoProvider extends ChangeNotifier {
-  bool loader = false;
-  final PlantInfoModel _plantInfo = PlantInfoModel();
+  DateTime? selectedDate;
 
-  PlantInfoModel get plantInfo => _plantInfo;
+  bool loader = false;
 
   bool _isEditing = false;
 
@@ -16,102 +15,285 @@ class PlantInfoProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateField1(String key, dynamic value) {
-    switch (key) {
-      case 'Station Name':
-        _plantInfo.stationName = value;
-        break;
-      case 'Your City':
-        _plantInfo.city = value;
-        break;
-      case 'Capacity(kW)':
-        _plantInfo.capacity = double.tryParse(value) ?? 0;
-        break;
-      case 'Station Type':
-        _plantInfo.stationType = value;
-        break;
-      case 'Battery Capacity':
-        _plantInfo.batteryCapacity = value;
-        break;
-      case 'Longitude':
-        _plantInfo.longitude = value;
-        break;
-      case 'Latitude':
-        _plantInfo.latitude = value;
-        break;
-      case 'Owner’s Phone':
-        _plantInfo.ownerPhone = value;
-        break;
-      case 'Admin’s Phone':
-        _plantInfo.adminPhone = value;
-        break;
-      case 'Installer’s Phone':
-        _plantInfo.installerPhone = value;
-        break;
-      // Add other cases as needed...
+  /// Plant Info Part 1
+  final PlantInfoPart1Class _plantInfoPart1Class = PlantInfoPart1Class();
+
+  PlantInfoPart1Class get plantInfoPart1Class => _plantInfoPart1Class;
+
+  /// Plant Info Part 2
+  final PlantInfoPart2Class _plantInfoPart2Class = PlantInfoPart2Class();
+
+  PlantInfoPart2Class get plantInfoPart2Class => _plantInfoPart2Class;
+
+  /// Plant Info Part 3
+  final PlantInfoPart3Class _plantInfoPart3Class = PlantInfoPart3Class();
+
+  PlantInfoPart3Class get plantInfoPart3Class => _plantInfoPart3Class;
+
+  void onStationNameTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Station Name",
+      initialValue: _plantInfoPart1Class.stationName,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart1Class.stationName = result;
     }
     notifyListeners();
   }
 
-  void updateField2(String key, dynamic value) {
-    switch (key) {
-      case 'My Profit':
-        _plantInfo.stationName = value;
-        break;
-      case 'Total Energy:':
-        _plantInfo.city = value;
-        break;
-      case 'Average Electric Price:':
-        _plantInfo.capacity = double.tryParse(value) ?? 0;
-        break;
-      case 'Energy Subsidized Price:':
-        _plantInfo.stationType = value;
-        break;
-      case 'On- grid Electric Price:':
-        _plantInfo.batteryCapacity = value;
-        break;
-      case 'Self-use Electric Price:':
-        _plantInfo.longitude = value;
-        break;
-      case 'On-grid Electric Occupy:(%)':
-        _plantInfo.latitude = value;
-        break;
-      case 'Self-use Electric Occupy:(%)':
-        _plantInfo.ownerPhone = value;
-        break;
-
-      // Add other cases as needed...
+  void onYourCityTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Your City",
+      initialValue: _plantInfoPart1Class.yourCity,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart1Class.yourCity = result;
     }
     notifyListeners();
   }
 
-  final Map<String, dynamic Function(PlantInfoModel)> fieldAccessors1 = {
-    'Station Name': (m) => m.stationName,
-    'Your City': (m) => m.city,
-    'Capacity(kW)': (m) => m.capacity.toString(),
-    'Station Type': (m) => m.stationType,
-    'Battery Capacity': (m) => m.batteryCapacity,
-    'Longitude': (m) => m.longitude,
-    'Latitude': (m) => m.latitude,
-    'Owner’s Phone': (m) => m.ownerPhone,
-    'Admin’s Phone': (m) => m.adminPhone,
-    'Installer’s Phone': (m) => m.installerPhone,
-  };
+  void onCapacityTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Capacity(kW)",
+      initialValue: _plantInfoPart1Class.capacity,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart1Class.capacity = result;
+    }
+    notifyListeners();
+  }
 
-  final Map<String, dynamic Function(PlantInfoModel)> fieldAccessors2 = {
-    'My Profit': (m) => m.myProfit,
-    'Total Energy': (m) => m.totalEnergy,
-    'Average Electric Price:': (m) => m.averageElectricPrice.toString(),
-    'Energy Subsidized Price:': (m) => m.energySubsidizedPrice,
-    'On- grid Electric Price:': (m) => m.onGridElectricPrice,
-    'Self-use Electric Price:': (m) => m.selfUseElectricPrice,
-    'On-grid Electric Occupy:(%)': (m) => m.onGridElectricOccupy,
-    'Self-use Electric Occupy:(%)': (m) => m.selfUseElectricOccupy,
-  };
+  void updateStationType(String value) {
+    _plantInfoPart1Class.stationType = value;
+    notifyListeners();
+  }
 
-  final Map<String, dynamic Function(PlantInfoModel)> fieldAccessors3 = {
-    'Azimuth': (m) => m.azimuth,
-    'Title Angle': (m) => m.tiltAngle,
-    'On-grid Date': (m) => m.onGridDate.toString(),
-  };
+  void onStationTypeTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Station Type",
+      initialValue: _plantInfoPart1Class.stationType,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart1Class.stationType = result;
+    }
+    notifyListeners();
+  }
+
+  void onBatteryCapacityTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Battery Capacity",
+      initialValue: _plantInfoPart1Class.batteryCapacity,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart1Class.batteryCapacity = result;
+    }
+    notifyListeners();
+  }
+
+  void onLongitudeTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Longitude:",
+      initialValue: _plantInfoPart1Class.longitude,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart1Class.longitude = result;
+    }
+    notifyListeners();
+  }
+
+  void onLatitudeTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Longitude:",
+      initialValue: _plantInfoPart1Class.latitude,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart1Class.latitude = result;
+    }
+    notifyListeners();
+  }
+
+  void onOwnerPhoneTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Owner’s Phone:",
+      initialValue: _plantInfoPart1Class.ownerPhone,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart1Class.ownerPhone = result;
+    }
+    notifyListeners();
+  }
+
+  void onAdminPhoneTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Admin’s Phone:",
+      initialValue: _plantInfoPart1Class.adminPhone,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart1Class.adminPhone = result;
+    }
+    notifyListeners();
+  }
+
+  void onInstallerPhoneTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Admin’s Phone:",
+      initialValue: _plantInfoPart1Class.installerPhone,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart1Class.installerPhone = result;
+    }
+    notifyListeners();
+  }
+
+  /// Plant Info Part 2
+  void onMyProfitTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter My Profit",
+      initialValue: _plantInfoPart2Class.myProfit,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart2Class.myProfit = result;
+    }
+    notifyListeners();
+  }
+
+  void onTotalEnergyTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Total Energy",
+      initialValue: _plantInfoPart2Class.totalEnergy,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart2Class.totalEnergy = result;
+    }
+    notifyListeners();
+  }
+
+  void onAverageElectricPriceTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Average Electric Price",
+      initialValue: _plantInfoPart2Class.averageElectricityPrice,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart2Class.averageElectricityPrice = result;
+    }
+    notifyListeners();
+  }
+
+  void onEnergySubsidizedPriceTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Energy Subsidized Price:",
+      initialValue: _plantInfoPart2Class.energySubsidizedPrice,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart2Class.energySubsidizedPrice = result;
+    }
+    notifyListeners();
+  }
+
+  void onOnGridElectricPriceTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter On- grid Electric Price:",
+      initialValue: _plantInfoPart2Class.onGridElectricPrice,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart2Class.onGridElectricPrice = result;
+    }
+    notifyListeners();
+  }
+
+  void onSelfUseElectricPriceTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Self-use Electric Price:",
+      initialValue: _plantInfoPart2Class.selfUseElectricPrice,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart2Class.selfUseElectricPrice = result;
+    }
+    notifyListeners();
+  }
+
+  void onGridElectricOccupyTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter On-grid Electric Occupy:(%)",
+      initialValue: _plantInfoPart2Class.onGridElectricOccupy,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart2Class.onGridElectricOccupy = result;
+    }
+    notifyListeners();
+  }
+
+  void onSelfUseElectricOccupyTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Self-use Electric Occupy:(%)",
+      initialValue: _plantInfoPart2Class.selfUseElectricOccupy,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart2Class.selfUseElectricOccupy = result;
+    }
+    notifyListeners();
+  }
+
+  /// Plant Info Part 3
+  void onAzimuthTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Azimuth",
+      initialValue: _plantInfoPart3Class.azimuth,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart3Class.azimuth = result;
+    }
+    notifyListeners();
+  }
+
+  void onTitleAngleTap(BuildContext context) async {
+    final result = await openTextFieldDialog(
+      context,
+      header: "Enter Title Angle",
+      initialValue: _plantInfoPart3Class.titleAngle,
+    );
+    if (result != null && result.isNotEmpty) {
+      _plantInfoPart3Class.titleAngle = result;
+    }
+    notifyListeners();
+  }
+
+  Future<void> onOnGridDateTap(BuildContext context) async {
+    final now = DateTime.now();
+
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate ?? now,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+    if (picked != null) {
+      updateDate(picked);
+    }
+  }
+
+  void updateDate(DateTime date) {
+    _plantInfoPart3Class.onGridDate = DateFormat("dd MMMM yyyy").format(date);
+    notifyListeners();
+  }
 }

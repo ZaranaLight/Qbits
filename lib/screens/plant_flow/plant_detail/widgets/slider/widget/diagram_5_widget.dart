@@ -7,7 +7,12 @@ class Diagram5Widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(color: ColorRes.white),
-      padding: EdgeInsets.symmetric(horizontal: 16.pw, vertical: 24.ph),
+      padding: EdgeInsets.only(
+        left: 16.pw,
+        right: 16.pw,
+        top: 30.ph,
+        bottom: 50.ph,
+      ),
       child: Stack(
         children: [
           /// Title

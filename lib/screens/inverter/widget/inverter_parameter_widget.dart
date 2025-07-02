@@ -17,7 +17,10 @@ class InverterParameterWidget extends StatelessWidget {
             children: [
               ...params.map((param) {
                 return Padding(
-                  padding:   EdgeInsets.symmetric(horizontal: 16.0,vertical: 10.pw),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 10.pw,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -27,9 +30,13 @@ class InverterParameterWidget extends StatelessWidget {
                           color: ColorRes.black.withValues(alpha: 0.5),
                         ),
                       ),
-                      Text(
-                        param.value,
-                        style: styleW500S14.copyWith(color: ColorRes.black),
+                      8.pw.spaceHorizontal,
+                      Expanded(
+                        child: Text(
+                          param.value,
+                          textAlign: TextAlign.right,
+                          style: styleW500S14.copyWith(color: ColorRes.black),
+                        ),
                       ),
                     ],
                   ),

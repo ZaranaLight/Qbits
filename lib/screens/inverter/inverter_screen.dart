@@ -1,8 +1,9 @@
 import 'package:qbits/common/widget/app_alert_dialog.dart';
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/inverter/inverter_tabs_screens/alarm_screen.dart';
 
 class InverterScreen extends StatelessWidget {
-  const InverterScreen({super.key});
+    const InverterScreen({super.key});
 
   static const routeName = "inverter";
 
@@ -17,6 +18,7 @@ class InverterScreen extends StatelessWidget {
       child: InverterScreen(),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {

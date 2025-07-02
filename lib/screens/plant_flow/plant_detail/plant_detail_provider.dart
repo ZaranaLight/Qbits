@@ -4,6 +4,8 @@ class PlantDetailProvider extends ChangeNotifier {
   bool loader = false;
   TabController? tabController;
 
+  int previousIndex = 0;
+  bool get isForward => selectedIndex > previousIndex;
   final PageController pageController = PageController();
 
   PlantDetailProvider() {
