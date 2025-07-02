@@ -48,18 +48,28 @@ class BasicWidget extends StatelessWidget {
               ),
             ),
           ),
-          Row(
-            children: [
-              Text(value, style: styleW500S14),
-              if (isStatus)
-                Padding(
-                  padding: EdgeInsets.only(left: 4.pw),
-                  child: SvgAsset(
-                    imagePath: AssetRes.offlineIcon,
-                    width: 18.pw,
+          15.pw.spaceHorizontal,
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Text(
+                    value,
+                    textAlign: TextAlign.justify,
+                    style: styleW500S14,
                   ),
                 ),
-            ],
+                if (isStatus)
+                  Padding(
+                    padding: EdgeInsets.only(left: 4.pw),
+                    child: SvgAsset(
+                      imagePath: AssetRes.offlineIcon,
+                      width: 18.pw,
+                    ),
+                  ),
+              ],
+            ),
           ),
         ],
       ),

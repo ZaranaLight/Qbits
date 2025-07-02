@@ -24,7 +24,7 @@ class ArchitectureWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  16.ph.spaceVertical,
+                  
                   Text(
                     context.l10n?.device ?? "",
                     style: styleW500S16.copyWith(

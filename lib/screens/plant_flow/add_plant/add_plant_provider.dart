@@ -64,8 +64,66 @@ class AddPlantProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  String stationNameError = "";
+  String cityError = "";
+  String capacityError = "";
+  String stationTypeError = "";
+  String batteryError = "";
+  String longitudeError = "";
+  String latitudeError = "";
+
+  bool validation(BuildContext context) {
+    if (_plant.stationName.trim().isEmpty) {
+      stationNameError = "station name is required";
+    } else {
+      stationNameError = "";
+    }
+
+    if (_plant.city.trim().isEmpty) {
+      cityError = "city is required";
+    } else {
+      cityError = "";
+    }
+
+    if (_plant.capacity.trim().isEmpty) {
+      capacityError = "capacity is required";
+    } else {
+      capacityError = "";
+    }
+
+    if (_plant.battery.trim().isEmpty) {
+      batteryError = "battery is required";
+    } else {
+      batteryError = "";
+    }
+
+    if (_plant.longitude.trim().isEmpty) {
+      longitudeError = "longitude is required";
+    } else {
+      longitudeError = "";
+    }
+
+    if (_plant.latitude.trim().isEmpty) {
+      latitudeError = "latitude is required";
+    } else {
+      latitudeError = "";
+    }
+
+    notifyListeners();
+    return stationNameError.isEmpty &&
+        cityError.isEmpty &&
+        capacityError.isEmpty &&
+        longitudeError.isEmpty &&
+        latitudeError.isEmpty &&
+        batteryError.isEmpty;
+  }
+
   void submitPlant(BuildContext context) {
-    // Handle your submit logic here
-    context.navigator.pop(); // Close the screen after submission
+    if (validation(context)) {
+      if (context.mounted) {
+        // Handle your submit logic here
+        context.navigator.pop(); // Close the screen after submission
+      }
+    }
   }
 }

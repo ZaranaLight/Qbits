@@ -1,4 +1,5 @@
 import 'package:map_location_picker/map_location_picker.dart';
+import 'package:qbits/common/widget/common_widgets.dart';
 import 'package:qbits/qbits.dart';
 
 class AddPlantScreen extends StatefulWidget {
@@ -23,7 +24,6 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
   @override
   void initState() {
     super.initState();
-    // _locateUser();
   }
 
   @override
@@ -51,6 +51,7 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
           body: ListView(
             padding: const EdgeInsets.all(16),
             children: [
+              ///Station Name
               _buildTextFormFieldTile(
                 'Station Name',
                 provider.plant.stationName,
@@ -58,17 +59,29 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
                 keyboardType: TextInputType.text,
                 hintTitle: "Enter station name",
               ),
+
+              /// Divider
               Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+
+              /// Error Text
+              _AppErrorTextWidget(errorText: provider.stationNameError),
+
+              ///Your City
               _buildTextFormFieldTile(
                 'Your City',
                 provider.plant.city,
                 provider.updatePlantCityNameTap,
                 keyboardType: TextInputType.text,
-                hintTitle: "Enter station name",
+                hintTitle: "Enter your name",
               ),
 
+              /// Divider
               Divider(color: ColorRes.black.withValues(alpha: 0.1)),
 
+              /// Error Text
+              _AppErrorTextWidget(errorText: provider.cityError),
+
+              ///Capacity
               _buildTextFormFieldTile(
                 'Capacity(kW)',
                 provider.plant.capacity,
@@ -76,8 +89,14 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
                 keyboardType: TextInputType.text,
                 hintTitle: "Enter station name",
               ),
+
+              /// Divider
               Divider(color: ColorRes.black.withValues(alpha: 0.1)),
 
+              /// Error Text
+              _AppErrorTextWidget(errorText: provider.capacityError),
+
+              ///Station Type
               _buildDropdownField(
                 title: "Station Type",
                 value: provider.selectedStationType,
@@ -86,8 +105,14 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
                   if (value != null) provider.setStationType(value);
                 },
               ),
+
+              /// Divider
               Divider(color: ColorRes.black.withValues(alpha: 0.1)),
 
+              /// Error Text
+              _AppErrorTextWidget(errorText: provider.stationTypeError),
+
+              ///Battery
               _buildTextFormFieldTile(
                 'Battery',
                 provider.plant.battery,
@@ -95,8 +120,14 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
                 keyboardType: TextInputType.text,
                 hintTitle: "Kwh",
               ),
+
+              /// Divider
               Divider(color: ColorRes.black.withValues(alpha: 0.1)),
 
+              /// Error Text
+              _AppErrorTextWidget(errorText: provider.batteryError),
+
+              ///Longitude
               _buildTextFormFieldTile(
                 'Longitude',
                 provider.plant.latitude,
@@ -104,8 +135,14 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
                 keyboardType: TextInputType.text,
                 hintTitle: "Enter Longitude",
               ),
+
+              /// Divider
               Divider(color: ColorRes.black.withValues(alpha: 0.1)),
 
+              /// Error Text
+              _AppErrorTextWidget(errorText: provider.longitudeError),
+
+              ///Latitude
               _buildTextFormFieldTile(
                 'Latitude',
                 provider.plant.longitude,
@@ -113,7 +150,17 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
                 keyboardType: TextInputType.text,
                 hintTitle: "Enter Latitude",
               ),
+
+              /// Divider
+              Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+
+              /// Error Text
+              _AppErrorTextWidget(errorText: provider.latitudeError),
+
+              /// Space
               10.ph.spaceVertical,
+
+              /// Map Location Picker
               SizedBox(
                 height: 200.ph,
                 child: AssetsImg(imagePath: AssetRes.mapImg),
@@ -146,7 +193,9 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
               ),
             ),
           ),
+          10.pw.spaceHorizontal,
           Expanded(
+            flex: 2,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -206,7 +255,9 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
               ),
             ),
           ),
+          10.pw.spaceHorizontal,
           Expanded(
+            flex: 2,
             child: TextFormField(
               initialValue: value,
               onChanged: onChanged,
@@ -227,5 +278,16 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
         ],
       ),
     );
+  }
+}
+
+class _AppErrorTextWidget extends StatelessWidget {
+  final String? errorText;
+
+  const _AppErrorTextWidget({this.errorText});
+
+  @override
+  Widget build(BuildContext context) {
+    return ErrorText(error: errorText, bottomPadding: 9.ph, leftPadding: 0);
   }
 }

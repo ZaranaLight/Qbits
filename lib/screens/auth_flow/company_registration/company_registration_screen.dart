@@ -174,20 +174,27 @@ class CompanyRegistrationScreen extends StatelessWidget {
                             /// Company Code
                             AppTextField(
                               isMandatory: true,
-                              readOnly: true,
-                              textCapitalization: TextCapitalization.words,
-                              textInputType: TextInputType.text,
+
                               controller: provider.companyCodeController,
                               header: context.l10n?.companyCode ?? "",
                               hintText: context.l10n?.companyCode ?? "",
                               error: provider.companyCodeError,
-                              suffixIcon: InkWell(
-                                onTap: () {
-                                  provider.generateCompanyCode();
-                                },
-                                child: SvgAsset(
-                                  imagePath: AssetRes.resetIcon,
-                                  color: ColorRes.black.withValues(alpha: 0.5),
+                              suffixIcon: Material(
+                                color: ColorRes.transparent,
+                                child: InkWell(
+                                  onTap: () {
+                                    provider.generateCode();
+                                  },
+                                  borderRadius: BorderRadius.circular(5),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: SvgAsset(
+                                      imagePath: AssetRes.resetIcon,
+                                      color: ColorRes.black.withValues(
+                                        alpha: 0.5,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -228,16 +235,24 @@ class CompanyRegistrationScreen extends StatelessWidget {
                         padding: EdgeInsets.all(10),
                         child: AppTextField(
                           isMandatory: true,
+                          readOnly: true,
                           textInputType: TextInputType.emailAddress,
                           controller: provider.mailController,
                           header: context.l10n?.mail ?? "",
                           hintText: context.l10n?.enterMailBox ?? "",
                           error: provider.mailError,
-                          suffixIcon: InkWell(
-                            onTap: () {
-                              provider.sendCode();
-                            },
-                            child: SvgAsset(imagePath: AssetRes.sendIcon),
+                          suffixIcon: Material(
+                            color: ColorRes.transparent,
+                            child: InkWell(
+                              onTap: () {
+                                provider.sendCode();
+                              },
+                              borderRadius: BorderRadius.circular(8),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: SvgAsset(imagePath: AssetRes.sendIcon),
+                              ),
+                            ),
                           ),
                         ),
                       ),

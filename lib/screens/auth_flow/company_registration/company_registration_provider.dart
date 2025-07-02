@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:qbits/qbits.dart';
 
 class CompanyRegistrationProvider extends ChangeNotifier {
@@ -28,6 +30,59 @@ class CompanyRegistrationProvider extends ChangeNotifier {
   bool showCodeField = false;
 
   String? get companyCode => _companyCode;
+
+  String generateCode() {
+    List<String> arr = [];
+
+    // Add numbers 0–9 as strings
+    for (int i = 0; i < 10; i++) {
+      arr.add(i.toString());
+    }
+
+    // Add characters A–Z, skipping I and O (like your JS array)
+    List<String> number = [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "J",
+      "K",
+      "L",
+      "M",
+      "N",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "U",
+      "V",
+      "W",
+      "X",
+      "Y",
+      "Z",
+    ];
+    arr.addAll(number);
+
+    Random rand = Random();
+    List<String> result = ['A'];
+
+    for (int i = 0; i < 6; i++) {
+      int seed = rand.nextInt(arr.length);
+      result.add(arr[seed]);
+    }
+
+    final generated = result.join('');
+    companyCodeController.text = generated;
+
+    notifyListeners();
+
+    return result.join('');
+  }
 
   void sendCode() {
     final email = mailController.text.trim();

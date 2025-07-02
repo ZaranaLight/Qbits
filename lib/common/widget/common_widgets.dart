@@ -1,16 +1,28 @@
 import 'package:qbits/qbits.dart';
 
 class ErrorText extends StatelessWidget {
-  const ErrorText({super.key, this.error, this.topPadding = 0});
+  ErrorText({
+    super.key,
+    this.error,
+    this.topPadding = 0,
+    double? leftPadding,
+    this.bottomPadding = 0,
+  }) : leftPadding = leftPadding ?? 10.pw;
 
   final String? error;
   final double topPadding;
+  final double leftPadding;
+  final double bottomPadding;
 
   @override
   Widget build(BuildContext context) {
     return AnimatedCrossFade(
       firstChild: Padding(
-        padding: EdgeInsets.only(top: topPadding, left: 10.pw),
+        padding: EdgeInsets.only(
+          top: topPadding,
+          left: leftPadding,
+          bottom: bottomPadding,
+        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -232,7 +244,6 @@ class RadioButtonCell extends StatelessWidget {
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
             children: [
               /// Radio Square Box
               Padding(
@@ -269,7 +280,9 @@ class RadioButtonCell extends StatelessWidget {
               10.pw.spaceHorizontal,
 
               /// Title
-              Text(title, style: styleW500S16.copyWith(height: 0)),
+              Expanded(
+                child: Text(title, style: styleW500S16.copyWith(height: 0)),
+              ),
             ],
           ),
         ),

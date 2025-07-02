@@ -22,7 +22,10 @@ class IdAuthenticationProvider extends ChangeNotifier {
     if (validation(context)) {
       if (context.mounted) {
         showCustomToast('Authentication Successfully done');
-        context.navigator.pushNamed(SignInScreen.routeName);
+        context.navigator.pushNamedAndRemoveUntil(
+          SignInScreen.routeName,
+          (_) => false,
+        );
       }
     }
   }

@@ -7,7 +7,7 @@ class SignInScreen extends StatelessWidget {
 
   static Widget builder(BuildContext context) {
     return ChangeNotifierProvider<SignInProvider>(
-      create: (c) => SignInProvider(),
+      create: (c) => SignInProvider(initialRegion: 'International'),
       child: SignInScreen(),
     );
   }

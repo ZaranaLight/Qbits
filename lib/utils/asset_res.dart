@@ -79,6 +79,7 @@ class AssetRes {
   static const batteryIcon = "${_icons}battery_icon.svg";
   static const solarPlateIcon = "${_icons}solar_plate_icon.svg";
   static const calenderIcon = "${_icons}calender_icon.svg";
+  static const scannerIcon2Icon = "${_icons}scanner_icon_2.svg";
 
   ///________________________________ Temp images ______________________________///
 

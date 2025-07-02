@@ -16,20 +16,17 @@ class AddInverterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: SafeArea(
-        top: false,
-        child: Padding(
-          padding: EdgeInsets.only(
-            bottom: Constants.safeAreaPadding.bottom + 30.ph,
-            left: Constants.horizontalPadding,
-            right: Constants.horizontalPadding,
-          ),
-          child: SubmitButton(
-            title: context.l10n?.confirm ?? "",
-            onTap: () {
-              context.navigator.pop();
-            },
-          ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(
+          bottom: Constants.safeAreaPadding.bottom + 30.ph,
+          left: Constants.horizontalPadding,
+          right: Constants.horizontalPadding,
+        ),
+        child: SubmitButton(
+          title: context.l10n?.confirm ?? "",
+          onTap: () {
+            context.navigator.pop();
+          },
         ),
       ),
       appBar: CustomAppBar(title: context.l10n?.addInverter ?? ""),
@@ -41,9 +38,12 @@ class AddInverterScreen extends StatelessWidget {
             ),
             child: Column(
               children: [
+                /// Space
+                10.ph.spaceVertical,
+
                 /// Inverter No. and RS485 ID
                 _buildTextFormFieldTile(
-                  'Inverter No.',
+                  'Inverter No',
                   provider.addInverterModel.inverterNo,
                   provider.updateInverterNo,
                   keyboardType: TextInputType.number,
@@ -71,7 +71,7 @@ class AddInverterScreen extends StatelessWidget {
                   onChanged: (value) {
                     if (value != null) provider.setModel(value);
                   },
-                  trailingIcon: AssetRes.scannerIcon,
+                  trailingIcon: AssetRes.scannerIcon2Icon,
                   onScanTap: () {
                     provider.onTapScanner(context, provider.selectedModel);
                     // QR scan logic here
@@ -105,31 +105,50 @@ class AddInverterScreen extends StatelessWidget {
                 Divider(color: ColorRes.black.withValues(alpha: 0.1)),
 
                 /// Panel Watt and Count
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Stack(
                   children: [
-                    /// Panel Label
-                    Text(
-                      context.l10n?.panel ?? "",
-                      style: styleW500S14.copyWith(
-                        color: ColorRes.black.withValues(alpha: 0.6),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          /// Panel Label
+                          Text(
+                            context.l10n?.panel ?? "",
+                            style: styleW500S14.copyWith(
+                              color: ColorRes.black.withValues(alpha: 0.6),
+                            ),
+                          ),
+
+                          ///Space
+                          30.pw.spaceHorizontal,
+
+                          _buildPanelTextFormFieldTile(
+                            '(W)',
+                            provider.addInverterModel.panelWatt,
+                            provider.updatePanelWatt,
+                            keyboardType: TextInputType.number,
+                          ),
+
+                          ///Space
+                          15.pw.spaceHorizontal,
+                          _buildPanelTextFormFieldTile(
+                            '(pcs)',
+                            provider.addInverterModel.panelCount,
+                            provider.updatePanelCount,
+                            keyboardType: TextInputType.number,
+                          ),
+                          Spacer(),
+                        ],
                       ),
                     ),
-
-                    ///Space
-                    15.pw.spaceHorizontal,
-
-                    _buildPanelTextFormFieldTile(
-                      '(W)',
-                      provider.addInverterModel.panelWatt,
-                      provider.updatePanelWatt,
-                      keyboardType: TextInputType.number,
-                    ),
-                    _buildPanelTextFormFieldTile(
-                      '(pcs)',
-                      provider.addInverterModel.panelCount,
-                      provider.updatePanelCount,
-                      keyboardType: TextInputType.number,
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: Divider(
+                        color: ColorRes.black.withValues(alpha: 0.1),
+                      ),
                     ),
                   ],
                 ),
@@ -149,6 +168,7 @@ class AddInverterScreen extends StatelessWidget {
   }) {
     return Row(
       children: [
+        /// Title
         Expanded(
           child: Text(
             title,
@@ -157,11 +177,18 @@ class AddInverterScreen extends StatelessWidget {
             ),
           ),
         ),
+
+        /// Space
+        10.pw.spaceHorizontal,
+
+        /// TextFormField
         Expanded(
+          flex: 2,
           child: TextFormField(
             initialValue: value,
             onChanged: onChanged,
             keyboardType: keyboardType,
+
             style: styleW600S14.copyWith(
               color: ColorRes.black.withValues(alpha: 0.6),
             ),
@@ -184,25 +211,32 @@ class AddInverterScreen extends StatelessWidget {
     TextInputType keyboardType = TextInputType.text,
   }) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(
-          width: 80.pw,
+        Container(
+          decoration: BoxDecoration(
+            border: Border(bottom: BorderSide(color: ColorRes.primaryColor)),
+          ),
+          width: 66.pw,
+          padding: EdgeInsets.only(bottom: 8),
           child: TextFormField(
             initialValue: value,
             onChanged: onChanged,
             keyboardType: keyboardType,
+            textAlign: TextAlign.center,
             style: styleW600S14.copyWith(
               color: ColorRes.black.withValues(alpha: 0.6),
             ),
             decoration: InputDecoration(
               isDense: true,
-              contentPadding: EdgeInsets.symmetric(
-                vertical: 10.ph,
-              ), // 👈 increase vertical padding
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30),
+                borderSide: BorderSide.none,
+              ),
             ),
-            textAlign: TextAlign.center,
           ),
+          // textAlign: TextAlign.center,
+          // ),
         ),
         10.pw.spaceHorizontal,
         Text(
@@ -236,7 +270,11 @@ class AddInverterScreen extends StatelessWidget {
               ),
             ),
           ),
+
+          /// Space
+          10.pw.spaceHorizontal,
           Expanded(
+            flex: 2,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -267,7 +305,7 @@ class AddInverterScreen extends StatelessWidget {
                       child: SvgAsset(
                         imagePath: trailingIcon,
                         color: ColorRes.primaryColor,
-                        height: 15.ph,
+                        height: 24.ph,
                       ),
                     ),
                   ),

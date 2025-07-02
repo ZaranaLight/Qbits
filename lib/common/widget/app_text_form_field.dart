@@ -111,7 +111,7 @@ class AppTextField extends StatelessWidget {
           obscureText: obscureText,
           obscuringCharacter: "*",
           readOnly: readOnly,
-          textAlign: textAlign??TextAlign.left,
+          textAlign: textAlign ?? TextAlign.left,
           buildCounter: (
             BuildContext context, {
             required int currentLength,
@@ -153,7 +153,7 @@ class AppTextField extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 4.pw),
+                  padding: EdgeInsets.only(left: 0.pw),
                   child: suffixIcon,
                 ),
               ),

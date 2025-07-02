@@ -30,6 +30,7 @@ class _BluetoothManuallyScreenState extends State<BluetoothManuallyScreen> {
   @override
   dispose() {
     super.dispose();
+    FlutterBluePlus.stopScan();
     context.read<BluetoothManuallyProvider>().stopScan();
   }
 
@@ -39,18 +40,15 @@ class _BluetoothManuallyScreenState extends State<BluetoothManuallyScreen> {
       builder: (context, provider, child) {
         return Scaffold(
           appBar: CustomAppBar(title: context.l10n?.bluetoothManually ?? ""),
-          bottomNavigationBar: SafeArea(
-            top: false,
-            child: Padding(
-              padding: EdgeInsets.only(
-                bottom: Constants.safeAreaPadding.bottom + 30.ph,
-                left: Constants.horizontalPadding,
-                right: Constants.horizontalPadding,
-              ),
-              child: SubmitButton(
-                title: context.l10n?.searchDevice ?? "",
-                onTap: provider.startScan,
-              ),
+          bottomNavigationBar: Padding(
+            padding: EdgeInsets.only(
+              bottom: Constants.safeAreaPadding.bottom + 30.ph,
+              left: Constants.horizontalPadding,
+              right: Constants.horizontalPadding,
+            ),
+            child: SubmitButton(
+              title: context.l10n?.searchDevice ?? "",
+              onTap: provider.startScan,
             ),
           ),
           body: StackedLoader(
