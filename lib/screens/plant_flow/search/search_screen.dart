@@ -83,8 +83,10 @@ class SearchScreen extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(color: ColorRes.white),
                   child: CustomListView(
-                    itemCount: 2,
-                    padding: EdgeInsets.zero,
+                    itemCount: 20,
+                    padding: EdgeInsets.only(
+                      bottom: Constants.safeAreaPadding.bottom + 10.ph,
+                    ),
                     separatorBuilder:
                         (ctx, ind) => Container(
                           height: 1.ph,

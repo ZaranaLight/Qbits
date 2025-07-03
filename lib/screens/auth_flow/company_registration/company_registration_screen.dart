@@ -235,7 +235,6 @@ class CompanyRegistrationScreen extends StatelessWidget {
                         padding: EdgeInsets.all(10),
                         child: AppTextField(
                           isMandatory: true,
-                          readOnly: true,
                           textInputType: TextInputType.emailAddress,
                           controller: provider.mailController,
                           header: context.l10n?.mail ?? "",

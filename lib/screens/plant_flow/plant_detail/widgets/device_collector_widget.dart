@@ -29,7 +29,10 @@ class CollectorWidget extends StatelessWidget {
                 /// Space between divider and content
                 Expanded(
                   child: CustomListView(
-                    itemCount: 2,
+                    itemCount: 10,
+                    padding: EdgeInsets.only(
+                      bottom: Constants.safeAreaPadding.bottom + 15.ph,
+                    ),
                     separatorBuilder:
                         (context, index) => Container(
                           width: double.infinity,
