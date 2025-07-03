@@ -2,9 +2,9 @@ import 'package:qbits/qbits.dart';
 
 class PlantDetailProvider extends ChangeNotifier {
   bool loader = false;
-  TabController? tabController;
 
   int previousIndex = 0;
+
   bool get isForward => selectedIndex > previousIndex;
   final PageController pageController = PageController();
 
@@ -21,11 +21,11 @@ class PlantDetailProvider extends ChangeNotifier {
 
   bool _isFollow = false;
 
-  bool get  isFollow => _isFollow;
+  bool get isFollow => _isFollow;
 
   setFollow(bool value) {
     _isFollow = value;
-    showCustomToast(_isFollow? "Following the plant" : "Unfollowed the plant",);
+    showCustomToast(_isFollow ? "Following the plant" : "Unfollowed the plant");
     notifyListeners();
   }
 
@@ -37,8 +37,6 @@ class PlantDetailProvider extends ChangeNotifier {
     _current = index;
     notifyListeners();
   }
-
-  ///
 
   ChartViewType _viewType = ChartViewType.day;
 
@@ -54,34 +52,24 @@ class PlantDetailProvider extends ChangeNotifier {
   void setViewType(ChartViewType type) {
     _viewType = type;
 
-    // Adjust selectedDate based on viewType
     switch (_viewType) {
       case ChartViewType.day:
-        // Keep the selectedDate as is or set to today if needed
         selectedDate = DateTime.now();
         break;
 
       case ChartViewType.month:
-        // Reset to the first day of the selected month
         selectedDate = DateTime(selectedDate.year, selectedDate.month, 1);
         break;
 
-      case ChartViewType.year:
-        // Reset to Jan 1 of selected year
+      case ChartViewType.year: // Reset to Jan 1 of selected year
         selectedDate = DateTime(selectedDate.year, 1, 1);
         break;
 
       case ChartViewType.total:
-        // You might want to clear date or do nothing
-        // For example:
         selectedDate = DateTime.now(); // or keep as is
         break;
     }
 
-    // Optionally reset tab index if your tabs depend on this
-    // _selectedIndex = 0;
-
-    // Load data for the new view type
     _loadChartData();
 
     notifyListeners();
@@ -90,7 +78,6 @@ class PlantDetailProvider extends ChangeNotifier {
   void selectTab(int index) {
     _selectedIndex = index;
 
-    // Sync viewType with tab index
     switch (_tabs[_selectedIndex]) {
       case 'Day':
         _viewType = ChartViewType.day;
@@ -106,10 +93,7 @@ class PlantDetailProvider extends ChangeNotifier {
         break;
     }
 
-    // Adjust selectedDate on tab change
-    setViewType(_viewType); // this will load data & notify
-
-    // No need for notifyListeners here because setViewType calls it
+    setViewType(_viewType);
   }
 
   String get displayDate {
@@ -133,19 +117,10 @@ class PlantDetailProvider extends ChangeNotifier {
   String _pad(int value) => value.toString().padLeft(2, '0');
 
   final List<String> _tabs = ['Day', 'Month', 'Year', 'Total'];
-  final List<String> _deviceTabs = ['Inverter', 'Collector'];
 
   int _selectedIndex = 0;
 
   int get selectedIndex => _selectedIndex;
-  int _selectedTabIndex = 0;
-
-  int get selectedTabIndex => _selectedTabIndex;
-
-  void selectAlarmTab(int index) {
-    _selectedTabIndex = index;
-    notifyListeners();
-  }
 
   List<FlSpot> _chartData = [];
 
@@ -155,24 +130,7 @@ class PlantDetailProvider extends ChangeNotifier {
 
   List<String> get tabs => _tabs;
 
-  List<String> get deviceTabs => _deviceTabs;
-
   bool _isInitialized = false;
-
-  void nextTab() {
-    _selectedIndex = (_selectedIndex + 1) % _tabs.length;
-    selectTab(_selectedIndex);
-    _loadChartData();
-    notifyListeners();
-  }
-
-  void previousTab() {
-    _selectedIndex = (_selectedIndex - 1 + _tabs.length) % _tabs.length;
-    selectTab(_selectedIndex);
-
-    _loadChartData();
-    notifyListeners();
-  }
 
   String getXAxisLabel(double value) {
     switch (_viewType) {
@@ -182,13 +140,24 @@ class PlantDetailProvider extends ChangeNotifier {
         return '${value.toInt()}'; // 1 to 31
       case ChartViewType.year:
         const months = [
-          'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dec',
         ];
         int index = value.toInt().clamp(0, 11); // Safe indexing
         return months[index];
       case ChartViewType.total:
-        return 'Y${value.toInt()}'; }
+        return 'Y${value.toInt()}';
+    }
   }
 
   void updateChart(List<FlSpot> newData) {
@@ -219,28 +188,24 @@ class PlantDetailProvider extends ChangeNotifier {
     'Voltage V2',
   ];
 
-  // Currently selected preference
   String _selectedPreference = 'AC Power';
 
   String get selectedPreference => _selectedPreference;
 
-  // Data related to each preference
   double? acPower;
   double? voltageV1;
   double? voltageV2;
 
-  // Handle dropdown selection
   void updateSelectedPreference(String value) {
     _selectedPreference = value;
-    _loadFieldData(); // Optional: load data for selected field
+    _loadFieldData();
     notifyListeners();
   }
 
-  // Simulate loading or fetching data
   void _loadFieldData() {
     switch (_selectedPreference) {
       case 'AC Power':
-        acPower = 345.6; // Mock data or fetched from backend
+        acPower = 345.6;
         break;
       case 'Voltage V1':
         voltageV1 = 230.0;
@@ -255,18 +220,15 @@ class PlantDetailProvider extends ChangeNotifier {
 
   final List<String> deviceOption = ['All', 'Normal', 'Fault', 'Offline'];
 
-  // Currently selected preference
   String _selectedDeviceOption = 'All';
 
   String get selectedDeviceOption => _selectedDeviceOption;
 
-  //  Device data
   String? all;
   String? normal;
   String? fault;
   String? offline;
 
-  // Handle dropdown selection
   void updateSelectedDevice(String value) {
     _selectedDeviceOption = value;
 

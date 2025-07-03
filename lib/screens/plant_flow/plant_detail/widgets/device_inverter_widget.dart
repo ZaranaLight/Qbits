@@ -33,11 +33,7 @@ class InverterWidget extends StatelessWidget {
                   bottom: Constants.safeAreaPadding.bottom + 15.ph,
                 ),
                 separatorBuilder: (context, index) {
-                  return Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal: 20.pw,
-                      vertical: 8.pw,
-                    ),
+                  return SizedBox(
                     width: double.infinity,
                     child: Divider(
                       color: ColorRes.black.withValues(alpha: 0.1),
@@ -61,49 +57,63 @@ class InverterWidget extends StatelessWidget {
                       },
                       child: Column(
                         children: [
-                          /// Space between dropdown and content
-                          5.ph.spaceVertical,
-
                           /// First Row
                           Padding(
                             padding: EdgeInsets.symmetric(
                               horizontal: Constants.horizontalPadding,
+                              vertical: 7.ph,
                             ),
 
                             child: Row(
                               children: [
-                                Text(
-                                  "1# ASP-20KTLC",
-                                  style: styleW600S16.copyWith(),
-                                ),
-
-                                Spacer(),
-                                Container(
-                                  width: 18.pw,
-                                  height: 18.ph,
-                                  decoration: BoxDecoration(
-                                    color: ColorRes.lightRed,
-                                    borderRadius: BorderRadius.circular(18.pw),
-                                  ),
-                                  padding: EdgeInsets.all(5.pw),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: ColorRes.red,
-                                      borderRadius: BorderRadius.circular(8.pw),
-                                    ),
+                                Expanded(
+                                  flex: 4,
+                                  child: Text(
+                                    "1# ASP-20KTLC",
+                                    style: styleW600S16.copyWith(),
                                   ),
                                 ),
 
-                                /// Space
-                                6.ph.spaceHorizontal,
+                                ///Space
+                                15.pw.spaceHorizontal,
+                                Expanded(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      ///Red Circle
+                                      Container(
+                                        width: 18.pw,
+                                        height: 18.ph,
+                                        decoration: BoxDecoration(
+                                          color: ColorRes.lightRed,
+                                          borderRadius: BorderRadius.circular(
+                                            18.pw,
+                                          ),
+                                        ),
+                                        padding: EdgeInsets.all(5.pw),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: ColorRes.red,
+                                            borderRadius: BorderRadius.circular(
+                                              8.pw,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
 
-                                /// Text
-                                Text(
-                                  context.l10n?.offline ?? "",
-                                  style: styleW500S14.copyWith(
-                                    color: ColorRes.black.withValues(
-                                      alpha: 0.5,
-                                    ),
+                                      /// Space
+                                      6.ph.spaceHorizontal,
+
+                                      /// Offline
+                                      Text(
+                                        context.l10n?.offline ?? "",
+                                        style: styleW500S14.copyWith(
+                                          color: ColorRes.black.withValues(
+                                            alpha: 0.5,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -119,6 +129,7 @@ class InverterWidget extends StatelessWidget {
                               horizontal: Constants.horizontalPadding,
                             ),
                             child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Expanded(
                                   child: Column(
@@ -126,7 +137,7 @@ class InverterWidget extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        context.l10n?.production ?? "",
+                                        "Production",
                                         style: styleW500S14.copyWith(
                                           color: ColorRes.black.withValues(
                                             alpha: 0.6,
@@ -135,11 +146,12 @@ class InverterWidget extends StatelessWidget {
                                       ),
 
                                       ///Space
-                                      2.ph.spaceVertical,
+                                      5.ph.spaceVertical,
                                       Text("0 kW", style: styleW600S16),
                                     ],
                                   ),
                                 ),
+                                15.pw.spaceHorizontal,
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment:

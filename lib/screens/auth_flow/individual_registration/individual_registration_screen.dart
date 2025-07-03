@@ -40,7 +40,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
               bottom:
                   Constants.safeAreaPadding.bottom +
                   Constants.horizontalPadding,
-              top: 20.pw,
+              top: 20.ph,
             ),
             child: Container(
               padding: EdgeInsets.all(10),

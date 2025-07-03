@@ -6,10 +6,10 @@ class ArchitectureWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 16.pw),
+      margin: EdgeInsets.only(top: 16.ph),
       child: CustomSingleChildScroll(
         padding: EdgeInsets.only(
-          bottom: Constants.safeAreaPadding.bottom + 20.pw,
+          bottom: Constants.safeAreaPadding.bottom + 20.ph,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,7 +19,7 @@ class ArchitectureWidget extends StatelessWidget {
               padding: EdgeInsets.only(
                 left: Constants.horizontalPadding,
                 right: Constants.horizontalPadding,
-                top: Constants.horizontalPadding,
+                top: 16.ph,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

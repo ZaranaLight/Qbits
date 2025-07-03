@@ -188,7 +188,9 @@ class AddInverterScreen extends StatelessWidget {
             initialValue: value,
             onChanged: onChanged,
             keyboardType: keyboardType,
-
+            onTapOutside:
+                (e) =>
+                    hideKeyboard(context: navigatorKey.currentState?.context),
             style: styleW600S14.copyWith(
               color: ColorRes.black.withValues(alpha: 0.6),
             ),
@@ -227,6 +229,9 @@ class AddInverterScreen extends StatelessWidget {
             style: styleW600S14.copyWith(
               color: ColorRes.black.withValues(alpha: 0.6),
             ),
+            onTapOutside:
+                (e) =>
+                    hideKeyboard(context: navigatorKey.currentState?.context),
             decoration: InputDecoration(
               isDense: true,
               border: OutlineInputBorder(

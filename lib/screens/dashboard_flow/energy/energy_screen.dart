@@ -152,7 +152,7 @@ class EnergyScreen extends StatelessWidget {
             decoration: BoxDecoration(
               // color: ColorRes.black.withValues(alpha: 0.05),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 8.pw),
+            padding: EdgeInsets.symmetric(horizontal: 40),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -161,7 +161,9 @@ class EnergyScreen extends StatelessWidget {
                     switch (provider.viewType) {
                       case ChartViewType.day:
                         provider.updateDate(
-                          provider.selectedDate.subtract(const Duration(days: 1)),
+                          provider.selectedDate.subtract(
+                            const Duration(days: 1),
+                          ),
                         );
                         break;
                       case ChartViewType.month:
@@ -178,7 +180,7 @@ class EnergyScreen extends StatelessWidget {
                         );
                         break;
                       case ChartViewType.total:
-                      // No-op
+                        // No-op
                         break;
                     }
                   },
@@ -207,7 +209,7 @@ class EnergyScreen extends StatelessWidget {
                         );
                         break;
                       case ChartViewType.total:
-                      // You might choose to do nothing or refresh
+                        // You might choose to do nothing or refresh
                         break;
                     }
                   },
@@ -272,8 +274,9 @@ class EnergyScreen extends StatelessWidget {
   }) {
     return InkWell(
       onTap: onTap,
+      borderRadius: BorderRadius.circular(5),
       child: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(15.0),
         child: SvgAsset(imagePath: icon, width: 8),
       ),
     );
@@ -318,60 +321,69 @@ class EnergyScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: SizedBox(
-        height: 450.ph,
-        child: BarChart(
-          BarChartData(
-            maxY: 1500,
-            barGroups: convertToBarGroups(provider.chartData),
-            gridData: FlGridData(
-              show: true,
-              drawVerticalLine: false,
-              horizontalInterval: 500,
-              getDrawingHorizontalLine:
-                  (value) => FlLine(
-                    color: Colors.grey.withValues(alpha: 0.3),
-                    strokeWidth: 1,
+        height: 500.ph,
+        width: 100.w,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: SizedBox(
+            width: provider.chartData.length * 50.0, // 👈 dynamic width
+            child: BarChart(
+              BarChartData(
+                maxY: provider.getMaxY(),
+                // You can calculate this dynamically
+                barGroups: convertToBarGroups(provider.chartData),
+                gridData: FlGridData(
+                  show: true,
+                  drawVerticalLine: false,
+                  horizontalInterval: 100,
+                  getDrawingHorizontalLine:
+                      (value) => FlLine(
+                        color: Colors.grey.withValues(alpha: 0.3),
+                        strokeWidth: 1,
+                      ),
+                ),
+                borderData: FlBorderData(
+                  show: false,
+                  border: Border.all(
+                    color: ColorRes.black.withValues(alpha: 0.2),
                   ),
-            ),
-            borderData: FlBorderData(
-              show: true,
-              border: Border.all(color: ColorRes.black.withValues(alpha: 0.2)),
-            ),
-
-            titlesData: FlTitlesData(
-              leftTitles: AxisTitles(
-                sideTitles: SideTitles(
-                  showTitles: true,
-                  interval: 500,
-                  getTitlesWidget:
-                      (value, _) => Padding(
-                        padding: const EdgeInsets.only(right: 5, left: 0),
-                        child: Text(
-                          value.toInt().toString(),
-                          style: const TextStyle(fontSize: 10),
-                        ),
-                      ),
                 ),
-              ),
-              bottomTitles: AxisTitles(
-                sideTitles: SideTitles(
-                  showTitles: true,
-                  interval: 2,
-                  getTitlesWidget:
-                      (value, _) => Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text(
-                          value.toStringAsFixed(0),
-                          style: const TextStyle(fontSize: 10),
-                        ),
-                      ),
+                titlesData: FlTitlesData(
+                  leftTitles: AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: true,
+                      interval: 100,
+                      getTitlesWidget:
+                          (value, _) => Padding(
+                            padding: const EdgeInsets.only(right: 5),
+                            child: Text(
+                              value.toInt().toString(),
+                              style: const TextStyle(fontSize: 10),
+                            ),
+                          ),
+                    ),
+                  ),
+                  bottomTitles: AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: true,
+                      interval: 1,
+                      getTitlesWidget:
+                          (value, _) => Padding(
+                            padding: const EdgeInsets.only(top: 8),
+                            child: Text(
+                              provider.getXAxisLabel(value),
+                              style: const TextStyle(fontSize: 10),
+                            ),
+                          ),
+                    ),
+                  ),
+                  topTitles: const AxisTitles(
+                    sideTitles: SideTitles(showTitles: false),
+                  ),
+                  rightTitles: const AxisTitles(
+                    sideTitles: SideTitles(showTitles: false),
+                  ),
                 ),
-              ),
-              topTitles: const AxisTitles(
-                sideTitles: SideTitles(showTitles: false),
-              ),
-              rightTitles: const AxisTitles(
-                sideTitles: SideTitles(showTitles: false),
               ),
             ),
           ),

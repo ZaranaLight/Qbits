@@ -5,31 +5,25 @@ class AlarmTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      child: DefaultTabController(
-        length: 3,
-        child: Consumer<PlantDetailProvider>(
-          builder: (context, provider, child) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                /// Space between tabs and content
-                10.ph.spaceVertical,
+    return DefaultTabController(
+      length: 3,
+      child: Consumer<PlantDetailProvider>(
+        builder: (context, provider, child) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              /// Space between tabs and content
+              10.ph.spaceVertical,
 
-                /// TabBar with Container
-                _buildTabBarContainer(context, provider),
+              /// TabBar with Container
+              _buildTabBarContainer(context, provider),
 
-                /// Tab content
-                _buildTabContent(provider, context),
-
-                /// Vertical space
-                20.ph.spaceVertical,
-              ],
-            );
-          },
-        ),
+              /// Tab content
+              _buildTabContent(provider, context),
+            ],
+          );
+        },
       ),
     );
   }
@@ -158,6 +152,7 @@ class WatchLstAlarmTabList extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomListView(
       itemCount: itemCount,
+      padding: EdgeInsets.only(bottom: Constants.safeAreaPadding.bottom),
       separatorBuilder:
           (context, index) => Container(
             margin: EdgeInsets.symmetric(horizontal: 20.pw),
@@ -199,17 +194,9 @@ class AlarmWidget extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.all(12.pw),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ///Alarm Status
-                    Text(
-                      alarmType ?? "",
-                      style: styleW600S14.copyWith(
-                        color: ColorRes.primaryColor,
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  alarmType ?? "",
+                  style: styleW600S14.copyWith(color: ColorRes.primaryColor),
                 ),
               ),
 
@@ -244,20 +231,29 @@ class AlarmWidget extends StatelessWidget {
                 padding: EdgeInsets.all(12.pw),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ///Alarm Date and Time
-                    Text(
-                      getFormattedDateTime(),
-                      style: styleW400S12.copyWith(
-                        color: ColorRes.black.withValues(alpha: 0.7),
+                    Expanded(
+                      child: Text(
+                        getFormattedDateTime(),
+                        style: styleW400S12.copyWith(
+                          color: ColorRes.black.withValues(alpha: 0.7),
+                        ),
                       ),
                     ),
 
+                    /// Space
+                    15.pw.spaceHorizontal,
+
                     ///Alarm Date and Time
-                    Text(
-                      getFormattedDateTime(),
-                      style: styleW400S12.copyWith(
-                        color: ColorRes.black.withValues(alpha: 0.7),
+                    Expanded(
+                      child: Text(
+                        getFormattedDateTime(),
+                        textAlign: TextAlign.right,
+                        style: styleW400S12.copyWith(
+                          color: ColorRes.black.withValues(alpha: 0.7),
+                        ),
                       ),
                     ),
                   ],

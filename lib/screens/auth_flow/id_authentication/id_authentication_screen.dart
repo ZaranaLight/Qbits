@@ -43,7 +43,7 @@ class IdAuthenticationScreen extends StatelessWidget {
           body: CustomSingleChildScroll(
             padding: EdgeInsets.symmetric(
               horizontal: Constants.horizontalPadding,
-              vertical: Constants.safeAreaPadding.bottom + 20.pw,
+              vertical: Constants.safeAreaPadding.bottom + 20.ph,
             ),
             child: Column(
               children: [
@@ -66,7 +66,7 @@ class IdAuthenticationScreen extends StatelessWidget {
                       ),
                       padding: EdgeInsets.symmetric(
                         horizontal: 2.pw,
-                        vertical: 2.pw,
+                        vertical: 2.ph,
                       ),
                       child: Icon(
                         Icons.bluetooth_outlined,

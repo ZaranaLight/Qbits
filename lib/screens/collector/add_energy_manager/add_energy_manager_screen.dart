@@ -211,7 +211,7 @@ class AddEnergyManagerScreen extends StatelessWidget {
               onChanged: onChanged,
               decoration: const InputDecoration(
                 isDense: true,
-                contentPadding: EdgeInsets.symmetric(vertical: 0),
+                contentPadding: EdgeInsets.zero,
                 border: InputBorder.none,
               ),
             ),

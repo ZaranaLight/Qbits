@@ -36,7 +36,7 @@ class BluetoothScreen extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: 15.pw,
-                        vertical: 10.pw,
+                        vertical: 10.ph,
                       ),
                       child: Text(
                         context.l10n?.gallery ?? "",
@@ -56,7 +56,7 @@ class BluetoothScreen extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: 15.pw,
-                        vertical: 10.pw,
+                        vertical: 10.ph,
                       ),
                       child: Text(
                         context.l10n?.manually ?? "",
@@ -74,7 +74,7 @@ class BluetoothScreen extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: 15.pw,
-                        vertical: 10.pw,
+                        vertical: 10.ph,
                       ),
                       child: Text(
                         context.l10n?.cancel ?? "",

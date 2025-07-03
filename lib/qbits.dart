@@ -191,4 +191,7 @@ export 'package:qbits/screens/plant_flow/plant_info/widget/text_field_dialog_2.d
 export 'package:qbits/screens/plant_flow/plant_info/model/plant_info_part_1_model.dart';
 export 'package:qbits/screens/plant_flow/plant_info/model/plant_info_part_2_model.dart';
 export 'package:qbits/screens/plant_flow/plant_info/model/plant_info_part_3_model.dart';
-
+export 'package:qbits/screens/plant_flow/plant_info/widget/plant_info_part_1.dart';
+export 'package:qbits/screens/plant_flow/plant_info/widget/plant_info_part_2.dart';
+export 'package:qbits/screens/plant_flow/plant_info/widget/plant_info_part_3.dart';
+export 'package:qbits/screens/plant_flow/plant_info/widget/plant_info_view_widget.dart';

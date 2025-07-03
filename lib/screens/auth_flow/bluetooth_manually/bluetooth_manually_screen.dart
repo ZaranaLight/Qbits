@@ -127,9 +127,9 @@ class _BluetoothManuallyScreenState extends State<BluetoothManuallyScreen> {
                               ),
                               padding: EdgeInsets.symmetric(
                                 horizontal: 2.pw,
-                                vertical: 2.pw,
+                                vertical: 2.ph,
                               ),
-                              margin: EdgeInsets.symmetric(vertical: 14.pw),
+                              margin: EdgeInsets.symmetric(vertical: 14.ph),
                               child: Icon(
                                 Icons.bluetooth_outlined,
                                 color: ColorRes.white,

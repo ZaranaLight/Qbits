@@ -60,7 +60,7 @@ class SelectRegionScreen extends StatelessWidget {
               bottom:
                   Constants.safeAreaPadding.bottom +
                   Constants.horizontalPadding,
-              top: Constants.horizontalPadding,
+              top: 16.ph,
             ),
             child: Column(
               children: [

@@ -11,8 +11,8 @@ class InverterAlarmListScreen extends StatelessWidget {
         return CustomListView(
           itemCount: 10,
           padding: EdgeInsets.only(
-            top: 8.pw,
-            bottom: Constants.safeAreaPadding.bottom + 20.pw,
+            top: 8.ph,
+            bottom: Constants.safeAreaPadding.bottom + 20.ph,
           ),
           separatorBuilder:
               (context, index) => Container(

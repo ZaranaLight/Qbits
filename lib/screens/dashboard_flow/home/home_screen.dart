@@ -188,7 +188,7 @@ class _AppBar extends StatelessWidget {
                               },
                               borderRadius: BorderRadius.circular(5.pw),
                               child: Padding(
-                                padding: const EdgeInsets.all(15.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -211,8 +211,10 @@ class _AppBar extends StatelessWidget {
                           ),
                         ];
                       },
-
-                      child: SvgAsset(imagePath: AssetRes.plusIcon),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: SvgAsset(imagePath: AssetRes.plusIcon),
+                      ),
                     ),
                   ),
                 ),

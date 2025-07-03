@@ -66,20 +66,12 @@ class PlantInfoProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateStationType(String value) {
-    _plantInfoPart1Class.stationType = value;
-    notifyListeners();
-  }
 
-  void onStationTypeTap(BuildContext context) async {
-    final result = await openTextFieldDialog(
-      context,
-      header: "Enter Station Type",
-      initialValue: _plantInfoPart1Class.stationType,
-    );
-    if (result != null && result.isNotEmpty) {
-      _plantInfoPart1Class.stationType = result;
-    }
+
+  void updateStationType(String value) {
+
+    _plantInfoPart1Class.stationType = value;
+
     notifyListeners();
   }
 

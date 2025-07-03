@@ -20,7 +20,7 @@ class RoleChoiceScreen extends StatelessWidget {
           appBar: CustomAppBar(title: context.l10n?.roleChoice ?? ""),
           body: CustomSingleChildScroll(
             padding: EdgeInsets.symmetric(
-              vertical: 18.pw,
+              vertical: 18.ph,
               horizontal: Constants.horizontalPadding,
             ),
             child: Column(
@@ -123,7 +123,7 @@ class RoleChoiceButtons extends StatelessWidget {
           color: ColorRes.black.withValues(alpha: 0.04),
           border: Border.all(color: ColorRes.black.withValues(alpha: 0.1)),
         ),
-        padding: EdgeInsets.symmetric(horizontal: 24.pw, vertical: 30.pw),
+        padding: EdgeInsets.symmetric(horizontal: 24.pw, vertical: 30.ph),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

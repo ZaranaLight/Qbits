@@ -96,7 +96,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 15.pw,
-                    vertical: 10.pw,
+                    vertical: 10.ph,
                   ),
                   child: Text(
                     context.l10n?.gallery ?? "",
@@ -113,7 +113,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 15.pw,
-                    vertical: 10.pw,
+                    vertical: 10.ph,
                   ),
                   child: Text(
                     context.l10n?.cancel ?? "",

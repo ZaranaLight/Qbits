@@ -14,6 +14,7 @@ class Diagram5Widget extends StatelessWidget {
         bottom: 50.ph,
       ),
       child: Stack(
+        alignment: Alignment.center,
         children: [
           /// Title
           Column(
@@ -48,27 +49,16 @@ class Diagram5Widget extends StatelessWidget {
           ),
 
           /// Dash Icon
-          Positioned(
-            top: 15,
-            bottom: 0,
-            left: 0,
-            right: 0,
+          Align(
+            alignment: Alignment.center,
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                /// Solar Plate Icon
-                SvgAsset(imagePath: AssetRes.greenSolarPlateIcon),
-
-                /// Space
+                SvgAsset(imagePath: AssetRes.greenBatteryIcon2),
                 40.ph.spaceVertical,
-
-                /// Dash Icon
                 SvgAsset(imagePath: AssetRes.dashIcon),
-
-                /// Space
                 40.ph.spaceVertical,
-
-                /// Solar Plate Icon
-                SvgAsset(imagePath: AssetRes.solarPlateIcon),
+                SvgAsset(imagePath: AssetRes.redBatteryIcon2),
               ],
             ),
           ),

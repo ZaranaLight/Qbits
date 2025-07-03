@@ -47,7 +47,7 @@ class PlantDetailScreen extends StatelessWidget {
                   padding: EdgeInsets.only(
                     right: 14.pw,
                     top: 14.ph,
-                    left: 14.pw,
+                    left: 14.ph,
                   ),
                   color: ColorRes.white,
                   child: Column(
@@ -95,7 +95,9 @@ class PlantDetailScreen extends StatelessWidget {
                           physics: NeverScrollableScrollPhysics(),
                           indicatorColor: ColorRes.primaryColor,
                           labelColor: ColorRes.primaryColor,
-                          unselectedLabelColor: ColorRes.black.withValues(alpha: 0.5),
+                          unselectedLabelColor: ColorRes.black.withValues(
+                            alpha: 0.5,
+                          ),
                           labelStyle: styleW600S16.copyWith(
                             color: ColorRes.black.withValues(alpha: 0.5),
                           ),

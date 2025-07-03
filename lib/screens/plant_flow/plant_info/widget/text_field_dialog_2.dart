@@ -12,7 +12,7 @@ class TextFieldDialog2 extends StatelessWidget {
   final String title;
   final String value;
   final Color? backgroundColor;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {

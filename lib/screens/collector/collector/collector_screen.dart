@@ -1,5 +1,4 @@
-import 'package:qbits/common/widget/app_alert_dialog.dart';
-import 'package:qbits/qbits.dart';
+ import 'package:qbits/qbits.dart';
 import 'package:qbits/screens/collector/collector/widget/bottom_sheet_dialog_widget.dart';
 import 'package:qbits/screens/collector/collector/widget/more_option_widget.dart';
 

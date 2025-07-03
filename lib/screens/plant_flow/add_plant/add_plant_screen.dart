@@ -140,7 +140,7 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
               Divider(color: ColorRes.black.withValues(alpha: 0.1)),
 
               /// Error Text
-              _AppErrorTextWidget(errorText: provider.longitudeError),
+              _AppErrorTextWidget(errorText: provider.latitudeError),
 
               ///Latitude
               _buildTextFormFieldTile(
@@ -155,7 +155,7 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
               Divider(color: ColorRes.black.withValues(alpha: 0.1)),
 
               /// Error Text
-              _AppErrorTextWidget(errorText: provider.latitudeError),
+              _AppErrorTextWidget(errorText: provider.longitudeError),
 
               /// Space
               10.ph.spaceVertical,

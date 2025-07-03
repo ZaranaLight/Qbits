@@ -57,7 +57,7 @@ class InverterScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(5.pw),
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
-                                    vertical: 10.pw,
+                                    vertical: 10.ph,
                                     horizontal: 8.pw,
                                   ),
                                   child: Row(
@@ -98,7 +98,7 @@ class InverterScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(5.pw),
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
-                                    vertical: 10.pw,
+                                    vertical: 10.ph,
                                     horizontal: 8.pw,
                                   ),
                                   child: Row(

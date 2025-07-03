@@ -8,7 +8,7 @@ class BackUpWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(color: ColorRes.white),
       margin: EdgeInsets.symmetric(horizontal:Constants.horizontalPadding,),
-      padding: EdgeInsets.symmetric(horizontal: 14.pw, vertical: 12.ph),
+      padding: EdgeInsets.all(  12.ph),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

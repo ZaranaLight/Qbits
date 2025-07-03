@@ -34,34 +34,30 @@ class PlantScreen extends StatelessWidget {
                     horizontal: Constants.horizontalPadding,
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       ///Rank,
-                      ///
                       _ellipseButton(
+                        padding: 30,
                         context: context,
                         text: provider.selectedRank ?? context.l10n?.rank ?? "",
                         imagePath: AssetRes.dropDownArrowIcon,
                         onTap: () => RankDialogBox.show(context: context),
                       ),
 
-                      ///Space
-                      Constants.horizontalPadding.spaceHorizontal,
-
                       /// Preference
                       _ellipseButton(
                         context: context,
                         text: context.l10n?.preference ?? "",
+                        padding: 20,
                         imagePath: AssetRes.dropDownArrowIcon,
                         onTap: () => PreferenceDialogBox.show(context: context),
                       ),
 
-                      ///Space
-                      Constants.horizontalPadding.spaceHorizontal,
-
                       /// Filter
                       _ellipseButton(
                         context: context,
+                        padding: 30,
                         text: context.l10n?.filter ?? "",
                         imagePath: AssetRes.filterIcon,
                         onTap: () => FilterDialogBox.show(context: context),
@@ -105,32 +101,39 @@ class PlantScreen extends StatelessWidget {
     required String text,
     required String imagePath,
     required VoidCallback onTap,
+    double? padding = 0.0,
   }) {
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          color: ColorRes.white,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
+    return Flexible(
+      child: IntrinsicWidth(
+        stepWidth: 16.pw,
+        child: Container(
+          decoration: BoxDecoration(
+            color: ColorRes.white,
             borderRadius: BorderRadius.circular(20),
-            onTap: onTap,
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 7.ph, horizontal: 10.pw),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  /// Text and Icon
-                  Text(text, style: styleW500S14),
+          ),
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(20),
+              onTap: onTap,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: 7.ph,
+                  horizontal: padding ?? 15.pw,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    /// Text and Icon
+                    Flexible(child: Text(text, style: styleW500S14)),
 
-                  /// Space
-                  4.pw.spaceHorizontal,
+                    /// Space
+                    4.pw.spaceHorizontal,
 
-                  /// Icon
-                  SvgAsset(imagePath: imagePath),
-                ],
+                    /// Icon
+                    SvgAsset(imagePath: imagePath),
+                  ],
+                ),
               ),
             ),
           ),

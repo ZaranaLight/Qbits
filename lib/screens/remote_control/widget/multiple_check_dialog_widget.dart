@@ -33,7 +33,9 @@ class MultiSelectWeekSellWidget extends StatelessWidget {
           },
           child: Container(
             height: 42.ph,
-            padding: EdgeInsets.symmetric(horizontal: 16.pw),
+            padding: EdgeInsets.symmetric(
+              horizontal: Constants.horizontalPadding,
+            ),
             decoration: BoxDecoration(
               color: ColorRes.black.withValues(alpha: 0.05),
             ),

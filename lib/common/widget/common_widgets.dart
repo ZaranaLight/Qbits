@@ -188,7 +188,7 @@ class CheckBoxBtn extends StatelessWidget {
       },
       borderRadius: BorderRadius.circular(4.pw),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 14.pw),
+        padding: EdgeInsets.symmetric(vertical: 14.ph),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

@@ -7,7 +7,7 @@ class ParameterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InverterProvider>(
       builder: (context, provider, child) {
-        return Scaffold(body: _buildInverterList(provider));
+        return _buildInverterList(provider);
       },
     );
   }
@@ -15,8 +15,6 @@ class ParameterScreen extends StatelessWidget {
   Widget _buildInverterList(InverterProvider provider) {
     return CustomListView(
       itemCount: provider.parameterTitles.length,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
       separatorBuilder:
           (context, index) => Container(
             width: double.infinity,
@@ -28,7 +26,6 @@ class ParameterScreen extends StatelessWidget {
   }
 
   Widget _buildExpansionTile(InverterProvider provider, int index) {
-
     final List<Widget> parameterContent = [
       InverterParameterWidget(),
       ExpandableInfoSection(

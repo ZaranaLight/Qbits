@@ -22,8 +22,8 @@ class CurrencyScreen extends StatelessWidget {
           left: Constants.horizontalPadding,
           right: Constants.horizontalPadding,
           bottom:
-              Constants.safeAreaPadding.bottom + Constants.horizontalPadding,
-          top: 10.pw,
+              Constants.safeAreaPadding.bottom + 16.ph,
+          top: 10.ph,
         ),
         child: Column(
           children: [

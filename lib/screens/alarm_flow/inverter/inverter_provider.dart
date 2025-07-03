@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:qbits/qbits.dart';
 
 class AlarmInverterProvider extends ChangeNotifier {
@@ -9,6 +10,39 @@ class AlarmInverterProvider extends ChangeNotifier {
     if (!_isInitialized) {
       _loadChartData();
       _isInitialized = true;
+    }
+  }
+
+  String getXAxisLabel(double value) {
+    final index = value.toInt();
+
+    switch (viewType) {
+      case ChartViewType.day:
+        return "$index:00";
+
+      case ChartViewType.month:
+        return DateFormat(
+          'd',
+        ).format(DateTime(selectedDate.year, selectedDate.month, index + 1));
+
+      case ChartViewType.year:
+        return DateFormat('MMM').format(DateTime(selectedDate.year, index + 1));
+
+      case ChartViewType.total:
+        return "T$index";
+    }
+  }
+
+  double get interval {
+    switch (viewType) {
+      case ChartViewType.day:
+        return 2;
+      case ChartViewType.month:
+        return 5;
+      case ChartViewType.year:
+        return 1;
+      case ChartViewType.total:
+        return 1;
     }
   }
 
@@ -49,34 +83,24 @@ class AlarmInverterProvider extends ChangeNotifier {
   void setViewType(ChartViewType type) {
     _viewType = type;
 
-    // Adjust selectedDate based on viewType
     switch (_viewType) {
       case ChartViewType.day:
-        // Keep the selectedDate as is or set to today if needed
         selectedDate = DateTime.now();
         break;
 
       case ChartViewType.month:
-        // Reset to the first day of the selected month
         selectedDate = DateTime(selectedDate.year, selectedDate.month, 1);
         break;
 
       case ChartViewType.year:
-        // Reset to Jan 1 of selected year
         selectedDate = DateTime(selectedDate.year, 1, 1);
         break;
 
       case ChartViewType.total:
-        // You might want to clear date or do nothing
-        // For example:
         selectedDate = DateTime.now(); // or keep as is
         break;
     }
 
-    // Optionally reset tab index if your tabs depend on this
-    // _selectedIndex = 0;
-
-    // Load data for the new view type
     _loadChartData();
 
     notifyListeners();
@@ -85,7 +109,6 @@ class AlarmInverterProvider extends ChangeNotifier {
   void selectTab(int index) {
     _selectedIndex = index;
 
-    // Sync viewType with tab index
     switch (_tabs[_selectedIndex]) {
       case 'Day':
         _viewType = ChartViewType.day;
@@ -101,10 +124,7 @@ class AlarmInverterProvider extends ChangeNotifier {
         break;
     }
 
-    // Adjust selectedDate on tab change
-    setViewType(_viewType); // this will load data & notify
-
-    // No need for notifyListeners here because setViewType calls it
+    setViewType(_viewType);
   }
 
   String get displayDate {

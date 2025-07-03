@@ -7,7 +7,7 @@ class BasicScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InverterProvider>(
       builder: (context, provider, child) {
-        return Scaffold(body: _buildFaultList(provider));
+        return _buildFaultList(provider);
       },
     );
   }
@@ -15,8 +15,6 @@ class BasicScreen extends StatelessWidget {
   Widget _buildFaultList(InverterProvider provider) {
     return CustomListView(
       itemCount: provider.basicTitles.length,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
       separatorBuilder:
           (context, index) => Container(
             width: double.infinity,

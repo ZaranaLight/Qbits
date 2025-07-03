@@ -7,143 +7,152 @@ class CollectorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<PlantDetailProvider>(
       builder: (context, provider, child) {
-        return Stack(
+        return  Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                /// Divider
-                Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+            /// Divider
+            Divider(color: ColorRes.black.withValues(alpha: 0.1)),
 
-                /// Space between dropdown and content
-                5.ph.spaceVertical,
-                // /// Device Dropdown
-                _buildDeviceDropdown(provider),
+            /// Space between dropdown and content
+            5.ph.spaceVertical,
+            // /// Device Dropdown
+            _buildDeviceDropdown(provider),
 
-                /// Space between dropdown and content
-                5.ph.spaceVertical,
+            /// Space between dropdown and content
+            5.ph.spaceVertical,
 
-                /// Divider
-                Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+            /// Divider
+            Divider(color: ColorRes.black.withValues(alpha: 0.1)),
 
-                /// Space between divider and content
-                Expanded(
-                  child: CustomListView(
-                    itemCount: 10,
-                    padding: EdgeInsets.only(
-                      bottom: Constants.safeAreaPadding.bottom + 15.ph,
+            /// Space between divider and content
+            Expanded(
+              child: CustomListView(
+                itemCount: 10,
+                padding: EdgeInsets.only(
+                  bottom: Constants.safeAreaPadding.bottom + 50.ph,
+                ),
+                separatorBuilder:
+                    (context, index) => Container(
+                      width: double.infinity,
+                      height: 1,
+                      color: ColorRes.black.withValues(alpha: 0.1),
                     ),
-                    separatorBuilder:
-                        (context, index) => Container(
-                          width: double.infinity,
-                          height: 1,
-                          color: ColorRes.black.withValues(alpha: 0.1),
-                        ),
-                    itemBuilder: (context, index) {
-                      return Material(
-                        color: ColorRes.transparent,
-                        child: InkWell(
-                          onTap: () {
-                            context.navigator.pushNamed(
-                              CollectorScreen.routeName,
-                            );
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                itemBuilder: (context, index) {
+                  return Material(
+                    color: ColorRes.transparent,
+                    child: InkWell(
+                      onTap: () {
+                        context.navigator.pushNamed(CollectorScreen.routeName);
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          /// First Row
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: Constants.horizontalPadding,
+                              vertical: 7.ph,
+                            ),
 
-                            children: [
-                              /// Space between dropdown and content
-                              5.ph.spaceVertical,
-
-                              /// First Row
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: Constants.horizontalPadding,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                ///Text
+                                Expanded(
+                                  flex: 4,
+                                  child: Text(
+                                    "Online Collector",
+                                    style: styleW600S16.copyWith(),
+                                  ),
                                 ),
 
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      "Online Collector",
-                                      style: styleW600S16.copyWith(),
-                                    ),
+                                ///Space
+                                15.pw.spaceHorizontal,
 
-                                    Spacer(),
-                                    Container(
-                                      width: 18.pw,
-                                      height: 18.ph,
-                                      decoration: BoxDecoration(
-                                        color: ColorRes.lightRed,
-                                        borderRadius: BorderRadius.circular(
-                                          18.pw,
-                                        ),
-                                      ),
-                                      padding: EdgeInsets.all(5.pw),
-                                      child: Container(
+                                ///Offline
+                                Expanded(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      ///Red Circle
+                                      Container(
+                                        width: 18.pw,
+                                        height: 18.ph,
                                         decoration: BoxDecoration(
-                                          color: ColorRes.red,
+                                          color: ColorRes.lightRed,
                                           borderRadius: BorderRadius.circular(
-                                            8.pw,
+                                            18.pw,
+                                          ),
+                                        ),
+                                        padding: EdgeInsets.all(5.pw),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: ColorRes.red,
+                                            borderRadius: BorderRadius.circular(
+                                              8.pw,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
 
-                                    /// Space
-                                    6.ph.spaceHorizontal,
+                                      /// Space
+                                      6.ph.spaceHorizontal,
 
-                                    /// Text
-                                    Text(
-                                      context.l10n?.offline ?? "",
-                                      style: styleW500S14.copyWith(
-                                        color: ColorRes.black.withValues(
-                                          alpha: 0.5,
+                                      /// Text
+                                      Text(
+                                        context.l10n?.offline ?? "",
+                                        style: styleW500S14.copyWith(
+                                          color: ColorRes.black.withValues(
+                                            alpha: 0.5,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-
-                              /// Space between buttons and content
-                              10.ph.spaceVertical,
-
-                              /// Second Row
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: Constants.horizontalPadding,
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      context.l10n?.production ?? "",
-                                      style: styleW500S14.copyWith(
-                                        color: ColorRes.black.withValues(
-                                          alpha: 0.6,
-                                        ),
-                                      ),
-                                    ),
-
-                                    ///Space
-                                    2.ph.spaceVertical,
-                                    Text("0 kW", style: styleW600S16),
-                                  ],
-                                ),
-                              ),
-
-                              /// Space between buttons and content
-                              16.ph.spaceVertical,
-
-                              // Floating + Button
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ],
+
+                          /// Space between buttons and content
+                          20.ph.spaceVertical,
+
+                          /// Second Row
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: Constants.horizontalPadding,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ///Production
+                                Text(
+                                  context.l10n?.production ?? "",
+                                  style: styleW500S14.copyWith(
+                                    color: ColorRes.black.withValues(
+                                      alpha: 0.6,
+                                    ),
+                                  ),
+                                ),
+
+                                ///Space
+                                5.ph.spaceVertical,
+
+                                ///Value
+                                Text("0 kW", style: styleW600S16),
+                              ],
+                            ),
+                          ),
+
+                          /// Space between buttons and content
+                          16.ph.spaceVertical,
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         );

@@ -17,7 +17,7 @@ class RowWithTitleAndValueWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
@@ -60,7 +60,7 @@ class RowWithTitleAndValueWidget extends StatelessWidget {
         ),
 
         /// Space
-        8.pw.spaceHorizontal,
+        70.pw.spaceHorizontal,
         Expanded(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -69,6 +69,7 @@ class RowWithTitleAndValueWidget extends StatelessWidget {
               /// Title
               Text(
                 title2 ?? "",
+                textAlign: TextAlign.right,
                 style: styleW500S14.copyWith(
                   color: ColorRes.black.withValues(alpha: 0.6),
                 ),

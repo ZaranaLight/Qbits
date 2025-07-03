@@ -1,7 +1,5 @@
 import 'package:qbits/qbits.dart';
 
-
-
 class PlantInfoPart3 extends StatelessWidget {
   const PlantInfoPart3({super.key});
 
@@ -18,117 +16,28 @@ class PlantInfoPart3 extends StatelessWidget {
           child: Column(
             children: [
               ///Azimuth
-              provider.isEditing
-                  ? TextFieldDialog2(
-                    title: 'Azimuth',
-                    value: provider.plantInfoPart3Class.azimuth,
-                    onTap: () {
-                      provider.onAzimuthTap(context);
-                    },
-                  )
-                  : Padding(
-                    padding: EdgeInsets.symmetric(vertical: 14.ph),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Azimuth',
-                          textAlign: TextAlign.right,
-                          style: styleW500S14.copyWith(
-                            height: 2,
-                            color: ColorRes.black.withValues(alpha: 0.5),
-                          ),
-                        ),
-                        Text(
-                          provider.plantInfoPart3Class.azimuth.toString(),
-                          style: styleW600S14.copyWith(
-                            color: ColorRes.black,
-                            height: 2,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-              ///Divider
-              Divider(height: 0, color: ColorRes.black.withValues(alpha: 0.1)),
+              EditableInfoField(
+                title: 'Azimuth',
+                value: provider.plantInfoPart3Class.azimuth,
+                isEditing: provider.isEditing,
+                onTap: () => provider.onAzimuthTap(context),
+              ),
 
               ///Title Angle
-              provider.isEditing
-                  ? TextFieldDialog2(
-                    title: 'Title Angle',
-                    value: provider.plantInfoPart3Class.titleAngle,
-                    onTap: () {
-                      provider.onTitleAngleTap(context);
-                    },
-                  )
-                  : Padding(
-                    padding: EdgeInsets.symmetric(vertical: 14.ph),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Title Angle',
-                          textAlign: TextAlign.right,
-                          style: styleW500S14.copyWith(
-                            height: 2,
-                            color: ColorRes.black.withValues(alpha: 0.5),
-                          ),
-                        ),
-                        Text(
-                          provider.plantInfoPart3Class.titleAngle.toString(),
-                          style: styleW600S14.copyWith(
-                            color: ColorRes.black,
-                            height: 2,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-              ///Divider
-              Divider(height: 0, color: ColorRes.black.withValues(alpha: 0.1)),
+              EditableInfoField(
+                title: 'Title Angle',
+                value: provider.plantInfoPart3Class.titleAngle,
+                isEditing: provider.isEditing,
+                onTap: () => provider.onTitleAngleTap(context),
+              ),
 
               ///On-grid Date
-              provider.isEditing
-                  ? TextFieldDialog2(
-                    title: 'On-grid Date',
-                    value: provider.plantInfoPart3Class.onGridDate,
-                    onTap: () {
-                      provider.onOnGridDateTap(context);
-                    },
-                  )
-                  : Padding(
-                    padding: EdgeInsets.symmetric(vertical: 14.ph),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'On-grid Date',
-                          textAlign: TextAlign.right,
-                          style: styleW500S14.copyWith(
-                            height: 2,
-                            color: ColorRes.black.withValues(alpha: 0.5),
-                          ),
-                        ),
-                        Text(
-                          provider.plantInfoPart3Class.onGridDate,
-                          style: styleW600S14.copyWith(
-                            color: ColorRes.black,
-                            height: 2,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-              ///Divider
-              provider.isEditing
-                  ? Divider(
-                    height: 0,
-                    color: ColorRes.black.withValues(alpha: 0.1),
-                  )
-                  : SizedBox.shrink(),
+              EditableInfoField(
+                title: 'On-grid Date',
+                value: provider.plantInfoPart3Class.onGridDate,
+                isEditing: provider.isEditing,
+                onTap: () => provider.onOnGridDateTap(context),
+              ),
 
               provider.isEditing
                   ? Padding(

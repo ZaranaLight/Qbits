@@ -7,8 +7,8 @@ class MeterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(color: ColorRes.white),
-      margin: EdgeInsets.symmetric(horizontal: 14.pw),
-      padding: EdgeInsets.symmetric(horizontal: 14.pw, vertical: 12.ph),
+      margin: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding),
+      padding: EdgeInsets.all(12.ph),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -19,7 +19,6 @@ class MeterWidget extends StatelessWidget {
                 label: context.l10n?.power ?? "",
                 value: '0kW',
               ),
-
             ],
           ),
 
@@ -29,16 +28,13 @@ class MeterWidget extends StatelessWidget {
           /// Data Row
           Row(
             children: [
-              ColumKeyValueWidget(label: context.l10n?.totalPower, value: '0kW'),
               ColumKeyValueWidget(
-                label: context.l10n?.status,
+                label: context.l10n?.totalPower,
                 value: '0kW',
               ),
+              ColumKeyValueWidget(label: context.l10n?.status, value: '0kW'),
             ],
           ),
-
-        
-
         ],
       ),
     );

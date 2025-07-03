@@ -7,9 +7,9 @@ class SystemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 14.pw),
+      margin: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding),
       decoration: BoxDecoration(color: ColorRes.white),
-      padding: EdgeInsets.symmetric(horizontal: 12.pw, vertical: 10.pw),
+      padding: EdgeInsets.all(12.pw),
 
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

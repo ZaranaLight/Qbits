@@ -11,10 +11,9 @@ class DeviceTab extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(color: ColorRes.white),
-              margin: EdgeInsets.only(top: 16.pw),
+              margin: EdgeInsets.only(top: 16.ph),
               child: LayoutBuilder(
                 builder: (context, constraints) {
-                  final bool showBoth = constraints.maxWidth > 600;
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -49,7 +48,6 @@ class DeviceTab extends StatelessWidget {
                                   ),
                         ),
                       ),
-
                     ],
                   );
                 },
@@ -105,8 +103,8 @@ class DeviceTab extends StatelessWidget {
           padding: EdgeInsets.only(
             left: 16.pw,
             right: 16.pw,
-            top: 15.pw,
-            bottom: 14.pw,
+            top: 15.ph,
+            bottom: 14.ph,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,

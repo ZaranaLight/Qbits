@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/inverter/widget/hybrid_parameter_widgets/remote_control_grid_set_widget.dart';
 
 class InverterProvider extends ChangeNotifier {
   bool _isInitialized = false;
@@ -13,6 +12,34 @@ class InverterProvider extends ChangeNotifier {
     if (!_isInitialized) {
       _loadInitialData();
       _isInitialized = true;
+    }
+  }
+
+  String getXAxisLabel(double value) {
+    switch (_viewType) {
+      case ChartViewType.day:
+        return '${value.toInt()}:00'; // 1 AM, 2 AM, ...
+      case ChartViewType.month:
+        return '${value.toInt()}'; // 1 to 31
+      case ChartViewType.year:
+        const months = [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dec',
+        ];
+        int index = value.toInt().clamp(0, 11); // Safe indexing
+        return months[index];
+      case ChartViewType.total:
+        return 'T${value.toInt()}';
     }
   }
 
@@ -38,8 +65,6 @@ class InverterProvider extends ChangeNotifier {
     "Energy",
     "Generator",
   ];
-
-
 
   ///
   //Hybrid data
@@ -147,34 +172,24 @@ class InverterProvider extends ChangeNotifier {
   void setViewType(ChartViewType type) {
     _viewType = type;
 
-    // Adjust selectedDate based on viewType
     switch (_viewType) {
       case ChartViewType.day:
-        // Keep the selectedDate as is or set to today if needed
         selectedDate = DateTime.now();
         break;
 
       case ChartViewType.month:
-        // Reset to the first day of the selected month
         selectedDate = DateTime(selectedDate.year, selectedDate.month, 1);
         break;
 
       case ChartViewType.year:
-        // Reset to Jan 1 of selected year
         selectedDate = DateTime(selectedDate.year, 1, 1);
         break;
 
       case ChartViewType.total:
-        // You might want to clear date or do nothing
-        // For example:
         selectedDate = DateTime.now(); // or keep as is
         break;
     }
 
-    // Optionally reset tab index if your tabs depend on this
-    // _selectedIndex = 0;
-
-    // Load data for the new view type
     _loadChartData();
 
     notifyListeners();

@@ -25,14 +25,6 @@ class RemoteControlProvider extends ChangeNotifier {
     "Advanced Set",
   ];
 
-  final List<Widget> remoteControlContent = [
-    SystemSetWidget(),
-    ModeWidget(),
-    BatterySetWidget(),
-    GridSetWidget(),
-    AdvancedSetWidget(),
-  ];
-
   ///=========================System Set==========================
   final SystemSettings _settings = SystemSettings();
 

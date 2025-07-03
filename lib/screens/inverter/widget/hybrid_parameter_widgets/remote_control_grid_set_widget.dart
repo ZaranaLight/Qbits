@@ -10,18 +10,20 @@ class RemoteControlGridSetWidget extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final totalWidth = constraints.maxWidth;
-        const columnCount = 5.5;
+        const columnCount = 5.1;
         final columnWidth = totalWidth / columnCount;
 
         final defaultColumnWidths = {
           for (int i = 0; i < columnCount; i++)
-            i: FixedColumnWidth(columnWidth),
+            i: FixedColumnWidth(columnWidth - 5.pw),
         };
-        return Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 14.pw),
-              child: Table(
+        return Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: Constants.horizontalPadding,
+          ),
+          child: Column(
+            children: [
+              Table(
                 columnWidths: defaultColumnWidths,
                 children: [
                   // Header row
@@ -90,91 +92,93 @@ class RemoteControlGridSetWidget extends StatelessWidget {
                   }),
                 ],
               ),
-            ),
 
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 14.pw),
-              padding: EdgeInsets.symmetric(horizontal: 12.pw, vertical: 12.pw),
-              decoration: BoxDecoration(color: ColorRes.white),
-              child: Column(
-                children: [
-                  ///Space
-                  20.ph.spaceVertical,
+              Container(
+                padding: const EdgeInsets.all(12.0),
+                decoration: BoxDecoration(color: ColorRes.white),
+                child: Column(
+                  children: [
+                    ///Space
+                    20.ph.spaceVertical,
 
-                  /// Title
-                  Row(
-                    children: [
-                      ColumKeyValueWidget(
-                        label: "Reactive PowerA:",
-                        value: '0Var',
-                      ),
-                      ColumKeyValueWidget(
-                        label: "Reactive PowerB:",
-                        value: '0Var',
-                      ),
-                    ],
-                  ),
+                    /// Title
+                    Row(
+                      children: [
+                        ColumKeyValueWidget(
+                          label: "Reactive PowerA:",
+                          value: '0Var',
+                        ),
+                        ColumKeyValueWidget(
+                          label: "Reactive PowerB:",
+                          value: '0Var',
+                        ),
+                      ],
+                    ),
 
-                  ///Space
-                  20.ph.spaceVertical,
-                  Row(
-                    children: [
-                      ColumKeyValueWidget(
-                        label: "Reactive PowerC:",
-                        value: '0Var',
-                      ),
-                      ColumKeyValueWidget(
-                        label: "Power FectorA:",
-                        value: '0Var',
-                      ),
-                    ],
-                  ),
+                    ///Space
+                    20.ph.spaceVertical,
+                    Row(
+                      children: [
+                        ColumKeyValueWidget(
+                          label: "Reactive PowerC:",
+                          value: '0Var',
+                        ),
+                        ColumKeyValueWidget(
+                          label: "Power FectorA:",
+                          value: '0Var',
+                        ),
+                      ],
+                    ),
 
-                  ///Space
-                  20.ph.spaceVertical,
-                  Row(
-                    children: [
-                      ColumKeyValueWidget(
-                        label: "Power FectorB:",
-                        value: '0Var',
-                      ),
-                      ColumKeyValueWidget(
-                        label: "Power FectorC:",
-                        value: '0Var',
-                      ),
-                    ],
-                  ),
+                    ///Space
+                    20.ph.spaceVertical,
+                    Row(
+                      children: [
+                        ColumKeyValueWidget(
+                          label: "Power FectorB:",
+                          value: '0Var',
+                        ),
+                        ColumKeyValueWidget(
+                          label: "Power FectorC:",
+                          value: '0Var',
+                        ),
+                      ],
+                    ),
 
-                  ///Space
-                  20.ph.spaceVertical,
-                  Row(
-                    children: [
-                      ColumKeyValueWidget(label: "Total Power", value: '0Var'),
-                      ColumKeyValueWidget(label: "Status:", value: '0Var'),
-                    ],
-                  ),
+                    ///Space
+                    20.ph.spaceVertical,
+                    Row(
+                      children: [
+                        ColumKeyValueWidget(
+                          label: "Total Power",
+                          value: '0Var',
+                        ),
+                        ColumKeyValueWidget(label: "Status:", value: '0Var'),
+                      ],
+                    ),
 
-                  ///Space
-                  20.ph.spaceVertical,
-                  Row(
-                    children: [
-                      ColumKeyValueWidget(
-                        label: "Total Product:",
-                        value: '0Var',
-                      ),
-                      ColumKeyValueWidget(
-                        label: "Total Electric:",
-                        value: '0Var',
-                      ),
-                    ],
-                  ),
+                    ///Space
+                    20.ph.spaceVertical,
+                    Row(
+                      children: [
+                        ColumKeyValueWidget(
+                          label: "Total Product:",
+                          value: '0Var',
+                        ),
+                        ColumKeyValueWidget(
+                          label: "Total Electric:",
+                          value: '0Var',
+                        ),
+                      ],
+                    ),
 
-                  ///Space
-                  20.ph.spaceVertical,
-                ],
+                    ///Space
+                    20.ph.spaceVertical,
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       },
     );

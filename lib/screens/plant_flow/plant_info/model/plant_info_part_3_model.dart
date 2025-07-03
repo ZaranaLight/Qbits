@@ -1,5 +1,3 @@
-import 'package:qbits/qbits.dart';
-
 class PlantInfoPart3Class {
   String azimuth;
   String titleAngle;

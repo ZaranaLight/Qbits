@@ -1,7 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/plant_flow/plant_info/widget/plant_info_part_1.dart';
-import 'package:qbits/screens/plant_flow/plant_info/widget/plant_info_part_2.dart';
-import 'package:qbits/screens/plant_flow/plant_info/widget/plant_info_part_3.dart';
 
 class PlantInfoScreen extends StatelessWidget {
   const PlantInfoScreen({super.key});
@@ -46,7 +43,6 @@ class PlantInfoScreen extends StatelessWidget {
           body: CustomSingleChildScroll(
             padding: EdgeInsets.only(
               bottom: Constants.safeAreaPadding.bottom + 20.pw,
-
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

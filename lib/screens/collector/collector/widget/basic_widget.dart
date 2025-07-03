@@ -35,7 +35,7 @@ class BasicWidget extends StatelessWidget {
 
   Widget _infoRow(String label, String value, {bool isStatus = false}) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.pw),
+      padding: EdgeInsets.symmetric(vertical: 8.ph),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,

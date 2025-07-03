@@ -59,7 +59,7 @@ class AlarmInverterScreen extends StatelessWidget {
       decoration: const BoxDecoration(color: ColorRes.white),
       padding: EdgeInsets.symmetric(
         horizontal: Constants.horizontalPadding,
-        vertical: 20.pw,
+        vertical: 20.ph,
       ),
       child: Column(
         spacing: 13.pw,
@@ -184,7 +184,7 @@ class AlarmInverterScreen extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: 15.pw,
-                        vertical: 5.pw,
+                        vertical: 5.ph,
                       ),
                       child: Text(
                         provider.contents[index],
@@ -205,7 +205,10 @@ class AlarmInverterScreen extends StatelessWidget {
     return Consumer<AlarmInverterProvider>(
       builder: (context, provider, child) {
         return Container(
-          padding: EdgeInsets.symmetric(vertical: 15.pw),
+          padding: EdgeInsets.only(
+            top: 15.ph,
+            bottom: Constants.safeAreaPadding.bottom + 10.ph,
+          ),
           decoration: const BoxDecoration(color: ColorRes.white),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -262,53 +265,53 @@ class AlarmInverterScreen extends StatelessWidget {
   }
 
   Widget _buildChartTabs(AlarmInverterProvider provider) {
-    return AnimatedSwitcher(
-      duration: 300.milliseconds,
-      transitionBuilder: (Widget child, Animation<double> animation) {
-        final isForward = provider.isForward;
-        final beginOffset =
-            isForward ? const Offset(1, 0) : const Offset(-1, 0);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children:
+            provider.tabs.asMap().entries.map((entry) {
+              final index = entry.key;
+              final tab = entry.value;
+              final isSelected = provider.selectedIndex == index;
 
-        return SlideTransition(
-          position: Tween<Offset>(
-            begin: beginOffset,
-            end: Offset.zero,
-          ).animate(animation),
-          child: FadeTransition(opacity: animation, child: child),
-        );
-      },
-      child: Padding(
-        key: ValueKey(provider.selectedIndex),
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children:
-              provider.tabs.asMap().entries.map((entry) {
-                final index = entry.key;
-                final tab = entry.value;
-                final isSelected = provider.selectedIndex == index;
-
-                return InkWell(
-                  onTap: () => provider.selectTab(index),
+              return InkWell(
+                onTap: () => provider.selectTab(index),
+                child: AnimatedSwitcher(
+                  duration: 250.milliseconds,
+                  transitionBuilder: (child, animation) {
+                    return ScaleTransition(
+                      scale: Tween<double>(begin: 0.8, end: 1.0).animate(
+                        CurvedAnimation(
+                          parent: animation,
+                          curve: Curves.bounceIn,
+                        ),
+                      ),
+                      child: child,
+                    );
+                  },
                   child: Container(
+                    key: ValueKey(isSelected),
                     margin: const EdgeInsets.symmetric(horizontal: 8),
-                    padding: const EdgeInsets.symmetric(
+                    padding:   EdgeInsets.symmetric(
                       horizontal: 0,
-                      vertical: 6,
+                      vertical: 6.ph,
                     ),
                     child: Text(
                       tab,
-                      style: styleW600S16.copyWith(
-                        color:
-                            isSelected
-                                ? ColorRes.primaryColor
-                                : ColorRes.black.withValues(alpha: 0.5),
-                      ),
+                      style:
+                          isSelected
+                              ? styleW700S16.copyWith(
+                                color: ColorRes.primaryColor,
+                              )
+                              : styleW500S16.copyWith(
+                                color: ColorRes.black.withValues(alpha: 0.8),
+                              ),
                     ),
                   ),
-                );
-              }).toList(),
-        ),
+                ),
+              );
+            }).toList(),
       ),
     );
   }
@@ -316,72 +319,78 @@ class AlarmInverterScreen extends StatelessWidget {
   Widget _buildDatePicker(AlarmInverterProvider provider) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: InkWell(
-        onTap:
-            () => _showDatePicker(navigatorKey.currentState!.context, provider),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.pw),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildNavigationArrow(
-                onTap: () {
-                  switch (provider.viewType) {
-                    case ChartViewType.day:
-                      provider.updateDate(
-                        provider.selectedDate.subtract(const Duration(days: 1)),
-                      );
-                      break;
-                    case ChartViewType.month:
-                      provider.updateDate(
-                        DateTime(
-                          provider.selectedDate.year,
-                          provider.selectedDate.month - 1,
-                        ),
-                      );
-                      break;
-                    case ChartViewType.year:
-                      provider.updateDate(
-                        DateTime(provider.selectedDate.year - 1, 1),
-                      );
-                      break;
-                    case ChartViewType.total:
-                      // No-op
-                      break;
-                  }
-                },
-                icon: AssetRes.leftArrowIcon,
-              ),
-              Text(provider.displayDate, style: styleW600S16),
-              _buildNavigationArrow(
-                onTap: () {
-                  switch (provider.viewType) {
-                    case ChartViewType.day:
-                      provider.updateDate(
-                        provider.selectedDate.add(const Duration(days: 1)),
-                      );
-                      break;
-                    case ChartViewType.month:
-                      provider.updateDate(
-                        DateTime(
-                          provider.selectedDate.year,
-                          provider.selectedDate.month + 1,
-                        ),
-                      );
-                      break;
-                    case ChartViewType.year:
-                      provider.updateDate(
-                        DateTime(provider.selectedDate.year + 1, 1),
-                      );
-                      break;
-                    case ChartViewType.total:
-                      // You might choose to do nothing or refresh
-                      break;
-                  }
-                },
-                icon: AssetRes.rightArrowIcon,
-              ),
-            ],
+      child: Material(
+        color: ColorRes.transparent,
+        child: InkWell(
+          onTap:
+              () =>
+                  _showDatePicker(navigatorKey.currentState!.context, provider),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.pw),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _buildNavigationArrow(
+                  onTap: () {
+                    switch (provider.viewType) {
+                      case ChartViewType.day:
+                        provider.updateDate(
+                          provider.selectedDate.subtract(
+                            const Duration(days: 1),
+                          ),
+                        );
+                        break;
+                      case ChartViewType.month:
+                        provider.updateDate(
+                          DateTime(
+                            provider.selectedDate.year,
+                            provider.selectedDate.month - 1,
+                          ),
+                        );
+                        break;
+                      case ChartViewType.year:
+                        provider.updateDate(
+                          DateTime(provider.selectedDate.year - 1, 1),
+                        );
+                        break;
+                      case ChartViewType.total:
+                        // No-op
+                        break;
+                    }
+                  },
+                  icon: AssetRes.leftArrowIcon,
+                ),
+                Text(provider.displayDate, style: styleW600S16),
+                _buildNavigationArrow(
+                  onTap: () {
+                    switch (provider.viewType) {
+                      case ChartViewType.day:
+                        provider.updateDate(
+                          provider.selectedDate.add(const Duration(days: 1)),
+                        );
+                        break;
+                      case ChartViewType.month:
+                        provider.updateDate(
+                          DateTime(
+                            provider.selectedDate.year,
+                            provider.selectedDate.month + 1,
+                          ),
+                        );
+                        break;
+                      case ChartViewType.year:
+                        provider.updateDate(
+                          DateTime(provider.selectedDate.year + 1, 1),
+                        );
+                        break;
+                      case ChartViewType.total:
+                        // You might choose to do nothing or refresh
+                        break;
+                    }
+                  },
+                  icon: AssetRes.rightArrowIcon,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -437,11 +446,15 @@ class AlarmInverterScreen extends StatelessWidget {
     required VoidCallback onTap,
     required String icon,
   }) {
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: SvgAsset(imagePath: icon, width: 8),
+    return Material(
+      color: ColorRes.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(5),
+        child: Padding(
+          padding: EdgeInsets.all(15.0),
+          child: SvgAsset(imagePath: icon, width: 8),
+        ),
       ),
     );
   }
@@ -534,16 +547,17 @@ class AlarmInverterScreen extends StatelessWidget {
               rightTitles: const AxisTitles(
                 sideTitles: SideTitles(showTitles: false),
               ),
+
               bottomTitles: AxisTitles(
                 sideTitles: SideTitles(
                   showTitles: true,
-                  interval: 2,
+                  interval: provider.interval,
                   getTitlesWidget:
-                      (value, meta) => Padding(
+                      (value, _) => Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
-                          value.toStringAsFixed(0),
-                          style: TextStyle(fontSize: 10),
+                          provider.getXAxisLabel(value),
+                          style: const TextStyle(fontSize: 10),
                         ),
                       ),
                 ),

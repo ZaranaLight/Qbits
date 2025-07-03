@@ -24,10 +24,10 @@ class QaScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              top: 20.pw,
+              top: 20.ph,
               bottom:
                   Constants.safeAreaPadding.bottom +
-                  Constants.horizontalPadding,
+                 16.ph,
             ),
             child: Column(
               children: [

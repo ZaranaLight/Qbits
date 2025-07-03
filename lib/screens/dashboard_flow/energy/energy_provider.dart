@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:qbits/qbits.dart';
 
 class EnergyProvider extends ChangeNotifier {
@@ -98,6 +100,41 @@ class EnergyProvider extends ChangeNotifier {
         return "${selectedDate.year}";
       default:
         return "-";
+    }
+  }
+
+
+  double getMaxY() {
+    if (chartData.isEmpty) return 1000;
+    final maxVal = chartData.map((e) => e.y).reduce(max);
+    return (maxVal / 500).ceil() * 500; // Round to nearest 500
+  }
+
+  String getXAxisLabel(double value) {
+    switch (_viewType) {
+      case ChartViewType.day:
+        return '${value.toInt()}:00'; // 1 AM, 2 AM, ...
+      case ChartViewType.month:
+        return '${value.toInt()}'; // 1 to 31
+      case ChartViewType.year:
+        const months = [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dec',
+        ];
+        int index = value.toInt().clamp(0, 11); // Safe indexing
+        return months[index];
+      case ChartViewType.total:
+        return 'Y${value.toInt()}';
     }
   }
 

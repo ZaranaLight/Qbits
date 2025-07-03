@@ -1,5 +1,3 @@
-import 'package:qbits/qbits.dart';
-
 class PlantInfoPart2Class {
   String myProfit;
   String totalEnergy;

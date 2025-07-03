@@ -15,7 +15,7 @@ class DeviceTypeBottomSheet {
           child: Container(
             width: 100.h,
             padding: EdgeInsets.only(
-              top: Constants.horizontalPadding,
+              top: 16.ph,
               bottom: Constants.safeAreaPadding.bottom + 10.ph,
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
@@ -33,7 +33,7 @@ class DeviceTypeBottomSheet {
                       onTap: () => context.navigator.pop(),
                       borderRadius: BorderRadius.circular(5.pw),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(15.0),
                         child: SvgAsset(
                           imagePath: AssetRes.closeIcon,
                           width: 12.pw,
@@ -43,7 +43,7 @@ class DeviceTypeBottomSheet {
                   ],
                 ),
 
-                15.ph.spaceVertical,
+                8.ph.spaceVertical,
 
                 /// Divider
                 Divider(color: ColorRes.primaryColor),
@@ -62,7 +62,7 @@ class DeviceTypeBottomSheet {
                   ),
                 ),
 
-                Divider(color: ColorRes.black.withOpacity(0.1)),
+                Divider(color: ColorRes.black.withValues(alpha: 0.1)),
 
                 /// Energy Manager Option
                 InkWell(

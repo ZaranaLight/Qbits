@@ -4,24 +4,36 @@ class DropdownWidget extends StatelessWidget {
   final BuildContext? context;
   final String? title;
   final String? value;
+  final double? leftPadding;
+  final double? topPadding;
+  final double? bottomPadding;
   final List<String>? options;
   final Color? backgroundColor;
+  final Color? titleColor;
   final Function(String?) onChanged;
 
   const DropdownWidget({
     super.key,
     this.context,
     this.title,
+    this.leftPadding,
     this.value,
     this.options,
     required this.onChanged,
     this.backgroundColor,
+    this.titleColor,
+    this.topPadding,
+    this.bottomPadding,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 16.pw),
+      padding: EdgeInsets.only(
+        left: leftPadding ?? Constants.horizontalPadding,
+        top: 5.ph,
+        bottom: 5.ph,
+      ),
       decoration: BoxDecoration(
         color: backgroundColor ?? ColorRes.black.withValues(alpha: 0.05),
       ),
@@ -30,7 +42,12 @@ class DropdownWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           /// Title
-          Expanded(child: Text(title ?? "", style: styleW600S14)),
+          Expanded(
+            child: Text(
+              title ?? "",
+              style: styleW600S14.copyWith(color: titleColor),
+            ),
+          ),
 
           /// Horizontal space
           12.pw.spaceHorizontal,
@@ -41,6 +58,11 @@ class DropdownWidget extends StatelessWidget {
               duration: 200.milliseconds,
               child: DropdownMenu<String>(
                 initialSelection: value,
+                onSelected: (String? selectedValue) {
+                  if (selectedValue != null) {
+                    onChanged(selectedValue); // callback to your provider
+                  }
+                },
                 trailingIcon: SvgAsset(
                   imagePath: AssetRes.downArrowIcon,
                   color: ColorRes.grey2,
@@ -59,7 +81,10 @@ class DropdownWidget extends StatelessWidget {
                   border: InputBorder.none,
                   isDense: true,
                   isCollapsed: true,
-                  contentPadding: EdgeInsets.symmetric(vertical: 8),
+                  contentPadding: EdgeInsets.only(
+                    top: topPadding ?? 8,
+                    bottom: bottomPadding ?? 8,
+                  ),
                   suffixIconConstraints: BoxConstraints(maxHeight: 14),
                 ),
                 dropdownMenuEntries:

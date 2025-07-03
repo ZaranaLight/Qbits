@@ -7,16 +7,14 @@ class StatisticsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InverterProvider>(
       builder: (context, provider, child) {
-        return Scaffold(
-          body: Column(
-            children: [
-              ///Space
-              16.ph.spaceVertical,
+        return Column(
+          children: [
+            ///Space
+            16.ph.spaceVertical,
 
-              ///Chart Section
-              _buildChartSection(provider),
-            ],
-          ),
+            ///Chart Section
+            _buildChartSection(provider),
+          ],
         );
       },
     );
@@ -111,18 +109,20 @@ class StatisticsScreen extends StatelessWidget {
                   child: Container(
                     key: ValueKey(isSelected),
                     margin: const EdgeInsets.symmetric(horizontal: 8),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 0,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15.pw,
                       vertical: 6,
                     ),
                     child: Text(
                       tab,
-                      style: styleW700S16.copyWith(
-                        color:
-                            isSelected
-                                ? ColorRes.primaryColor
-                                : ColorRes.black.withValues(alpha: 0.8),
-                      ),
+                      style:
+                          isSelected
+                              ? styleW700S16.copyWith(
+                                color: ColorRes.primaryColor,
+                              )
+                              : styleW500S16.copyWith(
+                                color: ColorRes.black.withValues(alpha: 0.8),
+                              ),
                     ),
                   ),
                 ),
@@ -134,86 +134,96 @@ class StatisticsScreen extends StatelessWidget {
 
   Widget _buildDatePicker(InverterProvider provider) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: InkWell(
-        onTap:
-            () => _showDatePicker(navigatorKey.currentState!.context, provider),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.pw),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              /// Navigation Arrows
-              _buildNavigationArrow(
-                onTap: () {
-                  switch (provider.viewType) {
-                    case ChartViewType.day:
-                      provider.updateDate(
-                        provider.selectedDate.subtract(const Duration(days: 1)),
-                      );
-                      break;
-                    case ChartViewType.month:
-                      provider.updateDate(
-                        DateTime(
-                          provider.selectedDate.year,
-                          provider.selectedDate.month - 1,
-                        ),
-                      );
-                      break;
-                    case ChartViewType.year:
-                      provider.updateDate(
-                        DateTime(provider.selectedDate.year - 1, 1),
-                      );
-                      break;
-                    case ChartViewType.total:
-                      // No-op
-                      break;
-                  }
-                },
-                icon: AssetRes.leftArrowIcon2,
-              ),
-
-              /// Date Display
-              Row(
-                children: [
-                  Text(provider.displayDate, style: styleW600S16),
-                  4.pw.spaceHorizontal,
-                  SvgAsset(imagePath: AssetRes.calenderIcon, height: 16.ph),
-                ],
-              ),
-
-              /// Navigation Arrows
-              _buildNavigationArrow(
-                onTap: () {
-                  switch (provider.viewType) {
-                    case ChartViewType.day:
-                      provider.updateDate(
-                        provider.selectedDate.add(const Duration(days: 1)),
-                      );
-                      break;
-                    case ChartViewType.month:
-                      provider.updateDate(
-                        DateTime(
-                          provider.selectedDate.year,
-                          provider.selectedDate.month + 1,
-                        ),
-                      );
-                      break;
-                    case ChartViewType.year:
-                      provider.updateDate(
-                        DateTime(provider.selectedDate.year + 1, 1),
-                      );
-                      break;
-                    case ChartViewType.total:
-                      // You might choose to do nothing or refresh
-                      break;
-                  }
-                },
-                icon: AssetRes.rightArrowIcon2,
-              ),
-            ],
+      padding: EdgeInsets.symmetric(horizontal: 50.pw),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          /// Navigation Arrows
+          _buildNavigationArrow(
+            onTap: () {
+              switch (provider.viewType) {
+                case ChartViewType.day:
+                  provider.updateDate(
+                    provider.selectedDate.subtract(const Duration(days: 1)),
+                  );
+                  break;
+                case ChartViewType.month:
+                  provider.updateDate(
+                    DateTime(
+                      provider.selectedDate.year,
+                      provider.selectedDate.month - 1,
+                    ),
+                  );
+                  break;
+                case ChartViewType.year:
+                  provider.updateDate(
+                    DateTime(provider.selectedDate.year - 1, 1),
+                  );
+                  break;
+                case ChartViewType.total:
+                  // No-op
+                  break;
+              }
+            },
+            icon: AssetRes.leftArrowIcon2,
           ),
-        ),
+
+          /// Date Display
+          Material(
+            color: ColorRes.transparent,
+            child: InkWell(
+              onTap:
+                  () => _showDatePicker(
+                    navigatorKey.currentState!.context,
+                    provider,
+                  ),
+              borderRadius: BorderRadius.circular(5),
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Constants.horizontalPadding,
+                  vertical: 10.ph,
+                ),
+                child: Row(
+                  children: [
+                    Text(provider.displayDate, style: styleW600S16),
+                    4.pw.spaceHorizontal,
+                    SvgAsset(imagePath: AssetRes.calenderIcon, height: 16.ph),
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+          /// Navigation Arrows
+          _buildNavigationArrow(
+            onTap: () {
+              switch (provider.viewType) {
+                case ChartViewType.day:
+                  provider.updateDate(
+                    provider.selectedDate.add(const Duration(days: 1)),
+                  );
+                  break;
+                case ChartViewType.month:
+                  provider.updateDate(
+                    DateTime(
+                      provider.selectedDate.year,
+                      provider.selectedDate.month + 1,
+                    ),
+                  );
+                  break;
+                case ChartViewType.year:
+                  provider.updateDate(
+                    DateTime(provider.selectedDate.year + 1, 1),
+                  );
+                  break;
+                case ChartViewType.total:
+                  // You might choose to do nothing or refresh
+                  break;
+              }
+            },
+            icon: AssetRes.rightArrowIcon2,
+          ),
+        ],
       ),
     );
   }
@@ -267,11 +277,15 @@ class StatisticsScreen extends StatelessWidget {
     required VoidCallback onTap,
     required String icon,
   }) {
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: SvgAsset(imagePath: icon),
+    return Material(
+      color: ColorRes.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(5),
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: SvgAsset(imagePath: icon),
+        ),
       ),
     );
   }
@@ -372,7 +386,7 @@ class StatisticsScreen extends StatelessWidget {
                       (value, meta) => Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
-                          value.toStringAsFixed(0),
+                          provider.getXAxisLabel(value),
                           style: TextStyle(fontSize: 10),
                         ),
                       ),

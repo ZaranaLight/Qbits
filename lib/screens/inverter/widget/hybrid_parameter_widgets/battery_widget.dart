@@ -6,9 +6,8 @@ class BatteryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
-      decoration: BoxDecoration(color: ColorRes.white),
-      margin: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding,),
+      color: ColorRes.white,
+      margin: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding),
       padding: EdgeInsets.symmetric(horizontal: 14.pw, vertical: 12.ph),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

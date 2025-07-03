@@ -1,7 +1,7 @@
 import 'package:qbits/qbits.dart';
 
 class RemoteControlScreen extends StatelessWidget {
-  const RemoteControlScreen({super.key});
+  RemoteControlScreen({super.key});
 
   static const routeName = "remote_control";
 
@@ -11,6 +11,14 @@ class RemoteControlScreen extends StatelessWidget {
       child: RemoteControlScreen(),
     );
   }
+
+  final List<Widget> remoteControlContent = [
+    SystemSetWidget(),
+    ModeWidget(),
+    BatterySetWidget(),
+    GridSetWidget(),
+    AdvancedSetWidget(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +34,10 @@ class RemoteControlScreen extends StatelessWidget {
 
   Widget _buildInverterList(RemoteControlProvider provider) {
     return CustomListView(
-      itemCount: provider.remoteControlTitle.length,
+      itemCount: remoteControlContent.length,
       padding: EdgeInsets.only(
         bottom: Constants.safeAreaPadding.bottom + 20.ph,
       ),
-
       shrinkWrap: true,
       separatorBuilder:
           (context, index) => Container(
@@ -109,7 +116,7 @@ class RemoteControlScreen extends StatelessWidget {
                   ? SizedBox(
                     key: const ValueKey('expanded'),
                     width: 100.h,
-                    child: provider.remoteControlContent[index],
+                    child: remoteControlContent[index],
                   )
                   : const SizedBox(key: ValueKey('collapsed'), height: 0),
         ),

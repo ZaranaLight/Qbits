@@ -39,8 +39,8 @@ class ForgotPasswordScreen extends StatelessWidget {
               right: Constants.horizontalPadding,
               bottom:
                   Constants.safeAreaPadding.bottom +
-                  Constants.horizontalPadding,
-              top: 20.pw,
+                  16.ph,
+              top: 20.ph,
             ),
             child: Column(
               children: [

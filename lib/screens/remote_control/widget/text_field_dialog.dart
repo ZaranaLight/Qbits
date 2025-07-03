@@ -20,7 +20,10 @@ class TextFieldDialog extends StatelessWidget {
         decoration: BoxDecoration(
           color: ColorRes.black.withValues(alpha: 0.05),
         ),
-        padding: EdgeInsets.symmetric(horizontal: 16.pw, vertical: 10.ph),
+        padding: EdgeInsets.symmetric(
+          horizontal: Constants.horizontalPadding,
+          vertical: 10.ph,
+        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

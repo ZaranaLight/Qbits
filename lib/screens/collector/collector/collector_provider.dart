@@ -1,6 +1,5 @@
 import 'package:qbits/qbits.dart';
 import 'package:qbits/screens/collector/collector/model/collector_tabs_model.dart';
-import 'package:qbits/screens/collector/collector/widget/basic_widget.dart';
 
 class CollectorProvider extends ChangeNotifier {
   CollectorProvider() {
@@ -23,7 +22,7 @@ class CollectorProvider extends ChangeNotifier {
 
   final List<String> collectorParameterTitle = ["Basic"];
 
-  final List<Widget> collectorParameterContent = [BasicWidget()];
+  // final List<Widget> collectorParameterContent = [BasicWidget()];
 
   final CollectorModel _collector = CollectorModel(
     model: 'WIFI-USB-ESP32',
@@ -50,6 +49,7 @@ class CollectorProvider extends ChangeNotifier {
       notifyListeners(); // Notify listeners after data is loaded
     });
   }
+
   int _deviceTabIndex = 0;
 
   int get deviceTabIndex => _deviceTabIndex;
@@ -58,5 +58,4 @@ class CollectorProvider extends ChangeNotifier {
     _deviceTabIndex = index;
     notifyListeners();
   }
-
 }

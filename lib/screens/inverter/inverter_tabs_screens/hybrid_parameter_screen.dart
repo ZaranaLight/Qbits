@@ -11,7 +11,7 @@ class HybridParameterScreen extends StatelessWidget {
         return Scaffold(
           body: CustomSingleChildScroll(
             padding: EdgeInsets.only(
-              bottom: Constants.safeAreaPadding.bottom + 20.pw,
+              bottom: Constants.safeAreaPadding.bottom + 20.ph,
             ),
             child: _buildInverterList(provider),
           ),
@@ -63,14 +63,14 @@ Widget _buildExpansionTile(InverterProvider provider, int index) {
 
       /// Expansion Tile Header
       Container(
-        margin: EdgeInsets.symmetric(horizontal:Constants.horizontalPadding,),
+        margin: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding),
         color: ColorRes.white,
         child: Material(
           color: ColorRes.transparent,
           child: InkWell(
             onTap: () => provider.toggleExpanded(index),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 14.pw, vertical: 12.pw),
+              padding: EdgeInsets.all(12.pw),
               child: Row(
                 children: [
                   Expanded(

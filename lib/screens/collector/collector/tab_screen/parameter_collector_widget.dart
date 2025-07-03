@@ -1,4 +1,5 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/collector/collector/widget/basic_widget.dart';
 
 class ParameterCollectorWidget extends StatelessWidget {
   const ParameterCollectorWidget({super.key});
@@ -24,6 +25,7 @@ class ParameterCollectorWidget extends StatelessWidget {
   }
 
   Widget _buildExpansionTile(CollectorProvider provider, int index) {
+    List<Widget> collectorParameterContent = [BasicWidget()];
     final isExpanded = provider.expandedIndex == index;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +50,7 @@ class ParameterCollectorWidget extends StatelessWidget {
                       : ColorRes.white,
             ),
             padding: EdgeInsets.symmetric(
-              vertical: 14.0,
+              vertical: 14.0.ph,
               horizontal: Constants.horizontalPadding,
             ),
             child: Row(
@@ -89,7 +91,7 @@ class ParameterCollectorWidget extends StatelessWidget {
                   ? SizedBox(
                     key: const ValueKey('expanded'),
                     width: 100.h,
-                    child: provider.collectorParameterContent[index],
+                    child: collectorParameterContent[index],
                   )
                   : const SizedBox(key: ValueKey('collapsed'), height: 0),
         ),

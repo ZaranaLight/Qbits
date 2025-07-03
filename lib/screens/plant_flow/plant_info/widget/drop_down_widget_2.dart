@@ -6,7 +6,7 @@ class DropdownWidget2 extends StatelessWidget {
   final String? value;
   final List<String>? options;
   final Color? backgroundColor;
-  final Function(String?) onChanged;
+  final ValueChanged<String>? onChanged;
 
   const DropdownWidget2({
     super.key,
@@ -53,7 +53,11 @@ class DropdownWidget2 extends StatelessWidget {
                 isDense: true,
                 isExpanded: true,
                 alignment: Alignment.centerRight,
-                onChanged: onChanged,
+                onChanged: (newValue) {
+                  if (newValue != null) {
+                    onChanged!(newValue);
+                  }
+                },
                 icon: Padding(
                   padding: EdgeInsets.only(left: 8.pw),
                   child: SvgAsset(

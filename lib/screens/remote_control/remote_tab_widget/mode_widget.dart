@@ -104,7 +104,9 @@ class ModeWidget extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.pw),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Constants.horizontalPadding,
+                  ),
                   child: SizedBox(
                     width: 90.pw,
                     height: 38.ph,
@@ -138,7 +140,7 @@ class ModeWidget extends StatelessWidget {
     return Container(
       height: 42.ph,
       decoration: BoxDecoration(color: ColorRes.white),
-      padding: EdgeInsets.symmetric(horizontal: 16.pw),
+      padding: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -186,7 +188,7 @@ class ModeWidget extends StatelessWidget {
     return Container(
       height: 42.ph,
       decoration: BoxDecoration(color: ColorRes.white),
-      padding: EdgeInsets.symmetric(horizontal: 16.pw),
+      padding: EdgeInsets.symmetric(horizontal: Constants.horizontalPadding),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

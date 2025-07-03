@@ -14,13 +14,16 @@ class AlarmListWidget extends StatelessWidget {
       ),
       margin: EdgeInsets.symmetric(
         horizontal: Constants.horizontalPadding,
-        vertical: 8.pw,
+        vertical: 8.ph,
       ),
       child: Material(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8.pw),
         child: InkWell(
-          onTap: () => {context.navigator.pushNamed(AlarmInverterScreen.routeName)},
+          onTap:
+              () => {
+                context.navigator.pushNamed(AlarmInverterScreen.routeName),
+              },
           borderRadius: BorderRadius.circular(8.pw),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -30,6 +33,7 @@ class AlarmListWidget extends StatelessWidget {
                 padding: EdgeInsets.all(12.pw),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ///Alarm Name
                     Expanded(
@@ -39,11 +43,16 @@ class AlarmListWidget extends StatelessWidget {
                       ),
                     ),
 
+                    20.pw.spaceHorizontal,
+
                     ///Alarm Status
-                    Text(
-                      alarmType ?? "",
-                      style: styleW600S14.copyWith(
-                        color: ColorRes.primaryColor,
+                    Expanded(
+                      child: Text(
+                        alarmType.toString(),
+                        textAlign: TextAlign.right,
+                        style: styleW600S14.copyWith(
+                          color: ColorRes.primaryColor,
+                        ),
                       ),
                     ),
                   ],
@@ -62,7 +71,7 @@ class AlarmListWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ///Alarm Name
-                    Text('ASP-15KTLC', style: styleW600S14),
+                    Text('ASP-15KTLCASP-15KTLC', style: styleW600S14),
 
                     ///Space
                     4.ph.spaceVertical,
@@ -89,18 +98,26 @@ class AlarmListWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ///Alarm Date and Time
-                    Text(
-                      getFormattedDateTime(),
-                      style: styleW400S12.copyWith(
-                        color: ColorRes.black.withValues(alpha: 0.7),
+                    Expanded(
+                      child: Text(
+                        getFormattedDateTime(),
+                        style: styleW400S12.copyWith(
+                          color: ColorRes.black.withValues(alpha: 0.7),
+                        ),
                       ),
                     ),
 
+                    ///Horizontal space
+                    20.pw.spaceHorizontal,
+
                     ///Alarm Date and Time
-                    Text(
-                      getFormattedDateTime(),
-                      style: styleW400S12.copyWith(
-                        color: ColorRes.black.withValues(alpha: 0.7),
+                    Expanded(
+                      child: Text(
+                        getFormattedDateTime(),
+                        textAlign: TextAlign.right,
+                        style: styleW400S12.copyWith(
+                          color: ColorRes.black.withValues(alpha: 0.7),
+                        ),
                       ),
                     ),
                   ],
