@@ -3,17 +3,20 @@ import 'dart:math';
 import 'package:qbits/qbits.dart';
 
 class CompanyRegistrationProvider extends ChangeNotifier {
+  CompanyRegistrationProvider() {
+    generateCode();
+  }
+
   bool loader = false;
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
-  String generatedCode = "0123";
 
   final TextEditingController accountController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
   final TextEditingController companyCodeController = TextEditingController(
-    text: "CMP-001",
+    text: "",
   );
   final TextEditingController mailController = TextEditingController();
   final TextEditingController verificationCodeController =
@@ -26,7 +29,6 @@ class CompanyRegistrationProvider extends ChangeNotifier {
   String mailError = "";
   String verificationCodeError = "";
   String? _companyCode;
-  int _companyCounter = 0;
   bool showCodeField = false;
 
   String? get companyCode => _companyCode;
@@ -86,8 +88,6 @@ class CompanyRegistrationProvider extends ChangeNotifier {
 
   void sendCode() {
     final email = mailController.text.trim();
-
-    // Basic email validation
     if (email.isEmpty ||
         !RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$").hasMatch(email)) {
       mailError = "Please enter a valid email";
@@ -97,7 +97,6 @@ class CompanyRegistrationProvider extends ChangeNotifier {
       showCodeField = true;
       // TODO: Add API call here if needed
     }
-
     notifyListeners();
   }
 
@@ -112,6 +111,7 @@ class CompanyRegistrationProvider extends ChangeNotifier {
   }
 
   Future<void> onRegisterTap(BuildContext context) async {
+    sendCode();
     if (validation(context)) {
       context.navigator.pushNamedAndRemoveUntil(
         DashboardScreen.routeName,
@@ -172,19 +172,5 @@ class CompanyRegistrationProvider extends ChangeNotifier {
         companyCodeError.isEmpty &&
         mailError.isEmpty &&
         verificationCodeError.isEmpty;
-  }
-
-  /// Generate auto code like CMP-001
-  void generateCompanyCode() {
-    _companyCounter++; // Simulate auto-increment
-    companyCodeController.text =
-        'CMP-${_companyCounter.toString().padLeft(3, '0')}';
-    notifyListeners();
-  }
-
-  /// Optional: Reset counter or load from DB
-  void setCounter(int value) {
-    _companyCounter = value;
-    notifyListeners();
   }
 }

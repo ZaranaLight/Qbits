@@ -63,7 +63,7 @@ Widget _buildExpansionTile(InverterProvider provider, int index) {
 
       /// Expansion Tile Header
       Container(
-        margin: EdgeInsets.symmetric(horizontal: 14.pw),
+        margin: EdgeInsets.symmetric(horizontal:Constants.horizontalPadding,),
         color: ColorRes.white,
         child: Material(
           color: ColorRes.transparent,

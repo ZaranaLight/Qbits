@@ -15,94 +15,98 @@ class SolarDataTable extends StatelessWidget {
 
         final defaultColumnWidths = {
           for (int i = 0; i < columnCount; i++)
-            i: FixedColumnWidth(columnWidth),
+            i: FixedColumnWidth(columnWidth - 5.pw),
         };
-        return Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 14.pw),
-              child: Table(
-                columnWidths: defaultColumnWidths,
-                children: [
-                  // Header row
-                  DataTableRow(
-                    isHeader: true,
-                    cells: [
-                      ValueTitleCell(
-                        title: context.l10n?.solar ?? "",
-                        value: '',
-                        isHeader: true,
-                        isFirst: true,
-                      ),
-                      ValueTitleCell(
-                        title: context.l10n?.voltage ?? "",
-                        value: '',
-                        isHeader: true,
-                      ),
-                      ValueTitleCell(
-                        title: context.l10n?.current ?? "",
-                        value: '',
-                        isHeader: true,
-                      ),
-                      ValueTitleCell(
-                        title: context.l10n?.power ?? "",
-                        value: '',
-                        isHeader: true,
-                      ),
-                    ],
-                  ).build(context),
-
-                  // Data rows
-                  ...provider.inverterData.pvArrays.asMap().entries.map((
-                    entry,
-                  ) {
-                    final index = entry.key;
-                    final pv = entry.value;
-                    return DataTableRow(
+        return Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: Constants.horizontalPadding,
+          ),
+          child: ColoredBox(
+            color: ColorRes.white,
+            child: Column(
+              children: [
+                Table(
+                  columnWidths: defaultColumnWidths,
+                  children: [
+                    // Header row
+                    DataTableRow(
+                      isHeader: true,
                       cells: [
                         ValueTitleCell(
-                          title: 'PV${index + 1}',
-                          value: 'PV${index + 1}',
+                          title: context.l10n?.solar ?? "",
+                          value: '',
+                          isHeader: true,
+                          isFirst: true,
                         ),
                         ValueTitleCell(
-                          title: 'Voltage',
-                          value: '${pv.voltage.toStringAsFixed(1)} V',
+                          title: context.l10n?.voltage ?? "",
+                          value: '',
+                          isHeader: true,
                         ),
                         ValueTitleCell(
-                          title: 'Current',
-                          value: '${pv.current.toStringAsFixed(1)} A',
+                          title: context.l10n?.current ?? "",
+                          value: '',
+                          isHeader: true,
                         ),
                         ValueTitleCell(
-                          title: 'Power',
-                          value: '${pv.power.toStringAsFixed(1)} W',
+                          title: context.l10n?.power ?? "",
+                          value: '',
+                          isHeader: true,
                         ),
                       ],
-                    ).build(context);
-                  }),
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(12.0),
-              margin: EdgeInsets.symmetric(horizontal: 14.pw),
-              width: double.infinity,
-              decoration: BoxDecoration(color: ColorRes.white),
-              child: RichText(
-                text: TextSpan(
-                  text: 'Total Product: ',
-                  style: styleW400S14.copyWith(
-                    color: ColorRes.black.withValues(alpha: 0.6),
-                  ),
-                  children: [
-                    TextSpan(
-                      text: '0kWh',
-                      style: styleW600S14.copyWith(color: ColorRes.black2),
-                    ),
+                    ).build(context),
+
+                    // Data rows
+                    ...provider.inverterData.pvArrays.asMap().entries.map((
+                      entry,
+                    ) {
+                      final index = entry.key;
+                      final pv = entry.value;
+                      return DataTableRow(
+                        cells: [
+                          ValueTitleCell(
+                            title: 'PV${index + 1}',
+                            value: 'PV${index + 1}',
+                          ),
+                          ValueTitleCell(
+                            title: 'Voltage',
+                            value: '${pv.voltage.toStringAsFixed(1)} V',
+                          ),
+                          ValueTitleCell(
+                            title: 'Current',
+                            value: '${pv.current.toStringAsFixed(1)} A',
+                          ),
+                          ValueTitleCell(
+                            title: 'Power',
+                            value: '${pv.power.toStringAsFixed(1)} W',
+                          ),
+                        ],
+                      ).build(context);
+                    }),
                   ],
                 ),
-              ),
+                Container(
+                  padding: const EdgeInsets.all(12.0),
+                  margin: EdgeInsets.symmetric(horizontal: 14.pw),
+                  width: double.infinity,
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Total Product: ',
+                      style: styleW400S14.copyWith(
+                        color: ColorRes.black.withValues(alpha: 0.6),
+                      ),
+                      children: [
+                        TextSpan(
+                          text: '0kWh',
+                          style: styleW600S14.copyWith(color: ColorRes.black2),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         );
       },
     );
@@ -141,7 +145,7 @@ class ValueTitleCell extends StatelessWidget {
 
     return Container(
       width: width,
-      margin: EdgeInsets.symmetric(horizontal: 15.pw, vertical: 5.pw),
+      margin: EdgeInsets.symmetric(horizontal: 5.pw, vertical: 5.pw),
       child: Material(
         color: ColorRes.transparent,
         child: InkWell(
