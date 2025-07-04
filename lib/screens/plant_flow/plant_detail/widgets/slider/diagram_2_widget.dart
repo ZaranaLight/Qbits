@@ -128,6 +128,7 @@ class Diagram2Widget extends StatelessWidget {
                     ///Title
                     Text(
                       title,
+                      textAlign: isRtl ? TextAlign.end : TextAlign.start,
                       style: styleW400S12.copyWith(color: ColorRes.black),
                     ),
 
@@ -137,6 +138,7 @@ class Diagram2Widget extends StatelessWidget {
                     ///Value
                     Text(
                       value,
+                      textAlign: isRtl ? TextAlign.end : TextAlign.start,
                       style: styleW600S14.copyWith(color: ColorRes.black),
                     ),
                   ],

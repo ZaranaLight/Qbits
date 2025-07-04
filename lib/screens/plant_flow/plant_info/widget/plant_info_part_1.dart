@@ -51,7 +51,7 @@ class PlantInfoPart1 extends StatelessWidget {
                     context: context,
                     value: provider.plantInfoPart1Class.stationType,
                     options: [
-                      'Solar SystemSolar SystemSolar SystemSolar SystemSolar SystemSolar SystemSolar SystemSolar SystemSolar SystemSolar SystemSolar SystemSolar SystemSolar System',
+                      ' 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0',
                       'Battery storage system',
                       'Solar System with Battery',
                     ],

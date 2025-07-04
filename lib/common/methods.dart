@@ -1,3 +1,4 @@
+import 'package:crypto/crypto.dart';
 import 'package:qbits/qbits.dart';
 
 dynamic normalizeFalseToNull(dynamic input) {
@@ -52,6 +53,32 @@ Future<bool> checkCameraPermission(BuildContext context) async {
     return false;
   }
   return false;
+}
+
+String calculateMd5(String input) {
+  // Compute MD5 hash
+  var bytes = utf8.encode(input);
+  var digest = md5.convert(bytes);
+
+  // Encode MD5 hex digest to Base64
+  var base64Encoded = base64.encode(utf8.encode(digest.toString()));
+  return base64Encoded;
+}
+
+String generateCustomString(DateTime dateTime) {
+  // Get current timestamp in milliseconds
+  String timestamp = dateTime.millisecondsSinceEpoch.toString();
+
+  // Reverse timestamp
+  String timestampReversed = timestamp.split('').reversed.join();
+
+  // Create the original string
+  String str = '$timestamp&-api-&$timestampReversed';
+
+  // Compute the encoded MD5 + timestamp
+  String result = calculateMd5(str) + timestamp;
+
+  return result;
 }
 
 Future<void> requestPermissions() async {

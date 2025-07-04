@@ -233,7 +233,8 @@ class SignInScreen extends StatelessWidget {
                       58.ph.spaceVertical,
 
                       SubmitButton(
-                        onTap: () => provider.onSignInTap(context),
+                        loading: provider.loader,
+                        onTap: () => provider.callLoginApi(context),
                         title: context.l10n?.signIn ?? "",
                       ),
 

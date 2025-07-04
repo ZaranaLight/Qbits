@@ -13,54 +13,77 @@ class Diagram5Widget extends StatelessWidget {
         top: 30.ph,
         bottom: 50.ph,
       ),
-      child: Stack(
-        alignment: Alignment.center,
+      child: Column(
         children: [
-          /// Title
-          Column(
-            spacing: 24.ph,
-            children: [
-              RowWithTitleAndValueWidget(
-                value: '0.0',
-                title: 'Daily Energy Charged',
-                title2: 'Monthly Energy Charged',
-                value2: '0.0',
-              ),
-              RowWithTitleAndValueWidget(
-                value: '0.0',
-                title: 'Yearly Energy Charged',
-                title2: 'Total Energy Charged',
-                value2: '0.0',
-              ),
-
-              RowWithTitleAndValueWidget(
-                value: '0.0',
-                title: 'Daily Energy Discharged',
-                title2: 'Month Energy Discharge',
-                value2: '0.0',
-              ),
-              RowWithTitleAndValueWidget(
-                value: '0.0',
-                title: 'Yearly Energy Discharged',
-                title2: 'Total Energy Discharged',
-                value2: '0.0',
-              ),
-            ],
+          RowWithTitleAndValueWidget(
+            value: '0.0',
+            title: 'Daily Energy Charged',
+            title2: 'Monthly Energy Charged',
+            value2: '0.0',
           ),
-
-          /// Dash Icon
-          Align(
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+          SizedBox(
+            height: 24.ph,
+            child: Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.center,
               children: [
-                SvgAsset(imagePath: AssetRes.greenBatteryIcon2),
-                40.ph.spaceVertical,
-                SvgAsset(imagePath: AssetRes.dashIcon),
-                40.ph.spaceVertical,
-                SvgAsset(imagePath: AssetRes.redBatteryIcon2),
+                Positioned(
+                  height: 50.ph,
+                  width: 50.ph,
+                  child: SvgAsset(
+                    imagePath: AssetRes.greenBatteryIcon2,
+                    height: 50.ph,
+                    width: 50.ph,
+                  ),
+                ),
               ],
             ),
+          ),
+          RowWithTitleAndValueWidget(
+            value: '0.0',
+            title: 'Yearly Energy Charged',
+            title2: 'Total Energy Charged',
+            value2: '0.0',
+          ),
+
+          /// Space
+          12.ph.spaceVertical,
+
+          /// Image
+          SvgAsset(imagePath: AssetRes.dashIcon),
+
+          /// Space
+          12.ph.spaceVertical,
+
+          RowWithTitleAndValueWidget(
+            value: '0.0',
+            title: 'Daily Energy Discharged',
+            title2: 'Month Energy Discharge',
+            value2: '0.0',
+          ),
+          SizedBox(
+            height: 24.ph,
+            child: Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.center,
+              children: [
+                Positioned(
+                  height: 50.ph,
+                  width: 50.ph,
+                  child: SvgAsset(
+                    imagePath: AssetRes.redBatteryIcon2,
+                    height: 50.ph,
+                    width: 50.ph,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          RowWithTitleAndValueWidget(
+            value: '0.0',
+            title: 'Yearly Energy Discharged',
+            title2: 'Total Energy Discharged',
+            value2: '0.0',
           ),
         ],
       ),

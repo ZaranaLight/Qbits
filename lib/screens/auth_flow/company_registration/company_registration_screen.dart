@@ -174,6 +174,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                             /// Company Code
                             AppTextField(
                               isMandatory: true,
+                              readOnly: true,
                               controller: provider.companyCodeController,
                               header: context.l10n?.companyCode ?? "",
                               hintText: context.l10n?.companyCode ?? "",

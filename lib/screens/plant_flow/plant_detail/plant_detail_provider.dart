@@ -5,7 +5,6 @@ class PlantDetailProvider extends ChangeNotifier {
 
   int previousIndex = 0;
 
-  bool get isForward => selectedIndex > previousIndex;
   final PageController pageController = PageController();
 
   PlantDetailProvider() {
@@ -29,12 +28,12 @@ class PlantDetailProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  int _current = 0;
+  int _plantPageControllerIndex = 0;
 
-  int get current => _current;
+  int get  plantPageControllerIndex => _plantPageControllerIndex;
 
-  void setCurrent(int index) {
-    _current = index;
+  void setPlantPageController(int index) {
+    _plantPageControllerIndex = index;
     notifyListeners();
   }
 

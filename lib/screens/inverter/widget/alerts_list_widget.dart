@@ -89,21 +89,29 @@ class AlertListWidget extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(12.pw),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ///Alarm Date and Time
-                    Text(
-                      getFormattedDateTime(),
-                      style: styleW400S12.copyWith(
-                        color: ColorRes.black.withValues(alpha: 0.7),
+                    Expanded(
+                      child: Text(
+                        getFormattedDateTime(),
+                        style: styleW400S12.copyWith(
+                          color: ColorRes.black.withValues(alpha: 0.7),
+                        ),
                       ),
                     ),
 
+                    /// Space
+                    10.pw.spaceHorizontal,
+
                     ///Alarm Date and Time
-                    Text(
-                      getFormattedDateTime(),
-                      style: styleW400S12.copyWith(
-                        color: ColorRes.black.withValues(alpha: 0.7),
+                    Expanded(
+                      child: Text(
+                        getFormattedDateTime(),
+                        textAlign: TextAlign.end,
+                        style: styleW400S12.copyWith(
+                          color: ColorRes.black.withValues(alpha: 0.7),
+                        ),
                       ),
                     ),
                   ],

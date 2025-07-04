@@ -34,7 +34,8 @@ class DashBoardTab extends StatelessWidget {
                   ExpandablePageView(
                     controller: provider.pageController,
                     children: customWidgets,
-                    onPageChanged: (value) => provider.setCurrent(value),
+                    onPageChanged:
+                        (value) => provider.setPlantPageController(value),
                   ),
 
                   /// Dots Indicator
@@ -49,12 +50,15 @@ class DashBoardTab extends StatelessWidget {
                         (index) => AnimatedContainer(
                           duration: const Duration(milliseconds: 300),
                           margin: const EdgeInsets.symmetric(horizontal: 4),
-                          width: provider.current == index ? 12.0 : 8.0,
+                          width:
+                              provider.plantPageControllerIndex == index
+                                  ? 12.0
+                                  : 8.0,
                           height: 8.0,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color:
-                                provider.current == index
+                                provider.plantPageControllerIndex == index
                                     ? ColorRes.primaryColor
                                     : Colors.black.withValues(alpha: 0.1),
                           ),

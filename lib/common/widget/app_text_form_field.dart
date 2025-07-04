@@ -101,6 +101,9 @@ class AppTextField extends StatelessWidget {
           controller: controller,
           onTapOutside: (e) => hideKeyboard(context: context),
           keyboardType: textInputType,
+          contextMenuBuilder: (context, editableTextState) {
+            return const SizedBox.shrink(); // No context menu
+          },
           textInputAction: textInputAction ?? TextInputAction.next,
           onChanged: onChanged,
           onTap: onTap,

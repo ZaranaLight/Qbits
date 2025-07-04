@@ -16,10 +16,13 @@ class SplashScreen extends StatelessWidget {
       if (_splashInit) return;
       _splashInit = true;
       await Future.delayed(1000.milliseconds);
-
+      String token = PrefService.getString(PrefKeys.sessionToken);
       if (context.mounted) {
-        context.navigator.pushReplacementNamed(SignInScreen.routeName);
-        // context.navigator.pushReplacementNamed(DashboardScreen.routeName);
+        if (token.trim().isNotEmpty) {
+          context.navigator.pushReplacementNamed(DashboardScreen.routeName);
+        } else {
+          context.navigator.pushReplacementNamed(SignInScreen.routeName);
+        }
       }
     } catch (e) {
       debugPrint(e.toString());

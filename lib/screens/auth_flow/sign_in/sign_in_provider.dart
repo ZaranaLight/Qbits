@@ -1,3 +1,4 @@
+import 'package:qbits/apis/auth_apis.dart';
 import 'package:qbits/qbits.dart';
 
 class SignInProvider extends ChangeNotifier {
@@ -10,8 +11,12 @@ class SignInProvider extends ChangeNotifier {
   }
 
   bool loader = false;
-  TextEditingController accountController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController accountController = TextEditingController(
+    text: "test0001",
+  );
+  TextEditingController passwordController = TextEditingController(
+    text: "123456789",
+  );
   String accountError = "";
   String pwdError = "";
   final String? initialRegion;
@@ -75,15 +80,24 @@ class SignInProvider extends ChangeNotifier {
     );
   }
 
-  Future<void> onSignInTap(BuildContext context) async {
+  Future<void> callLoginApi(BuildContext context) async {
     if (validation(context)) {
-      if (context.mounted) {
-        context.navigator.pushNamedAndRemoveUntil(
-          DashboardScreen.routeName,
-          (route) => false,
-        );
-        showCustomToast('Sign In Success');
+      loader = true;
+      notifyListeners();
+      final result = await AuthApis.getLoginCredential(
+        email: accountController.text,
+        password: passwordController.text,
+      );
+      if (result) {
+        if (context.mounted) {
+          context.navigator.pushNamedAndRemoveUntil(
+            DashboardScreen.routeName,
+            (route) => false,
+          );
+        }
       }
+      loader = false;
+      notifyListeners();
     }
   }
 

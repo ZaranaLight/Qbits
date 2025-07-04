@@ -22,6 +22,7 @@ class InverterParameterWidget extends StatelessWidget {
                     vertical: 10.pw,
                   ),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(

@@ -28,6 +28,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 right: Constants.horizontalPadding,
               ),
               child: SubmitButton(
+                loading: provider.loader,
                 title: context.l10n?.continueCap ?? "",
                 onTap: () => provider.onContinueTap(context),
               ),
@@ -37,9 +38,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              bottom:
-                  Constants.safeAreaPadding.bottom +
-                  16.ph,
+              bottom: Constants.safeAreaPadding.bottom + 16.ph,
               top: 20.ph,
             ),
             child: Column(

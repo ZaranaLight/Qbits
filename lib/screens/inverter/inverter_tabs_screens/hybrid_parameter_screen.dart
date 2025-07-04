@@ -8,32 +8,22 @@ class HybridParameterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InverterProvider>(
       builder: (context, provider, child) {
-        return Scaffold(
-          body: CustomSingleChildScroll(
-            padding: EdgeInsets.only(
-              bottom: Constants.safeAreaPadding.bottom + 20.ph,
-            ),
-            child: _buildInverterList(provider),
+        return CustomListView(
+          itemCount: provider.hybridParameterTitles.length,
+          padding: EdgeInsets.only(
+            bottom: Constants.safeAreaPadding.bottom + 20.ph,
           ),
+          separatorBuilder:
+              (context, index) => Container(
+            width: double.infinity,
+            height: 0,
+            color: ColorRes.black.withValues(alpha: 0.1),
+          ),
+          itemBuilder: (context, index) => _buildExpansionTile(provider, index),
         );
       },
     );
   }
-}
-
-Widget _buildInverterList(InverterProvider provider) {
-  return CustomListView(
-    itemCount: provider.hybridParameterTitles.length,
-    shrinkWrap: true,
-    physics: BouncingScrollPhysics(),
-    separatorBuilder:
-        (context, index) => Container(
-          width: double.infinity,
-          height: 0,
-          color: ColorRes.black.withValues(alpha: 0.1),
-        ),
-    itemBuilder: (context, index) => _buildExpansionTile(provider, index),
-  );
 }
 
 Widget _buildExpansionTile(InverterProvider provider, int index) {

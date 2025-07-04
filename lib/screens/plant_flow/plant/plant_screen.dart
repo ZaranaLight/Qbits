@@ -29,16 +29,12 @@ class PlantScreen extends StatelessWidget {
                 16.ph.spaceVertical,
 
                 /// Filter, Rank, and Preference Buttons
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: Constants.horizontalPadding,
-                  ),
+                IntrinsicHeight(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ///Rank,
                       _ellipseButton(
-                        padding: 30,
                         context: context,
                         text: provider.selectedRank ?? context.l10n?.rank ?? "",
                         imagePath: AssetRes.dropDownArrowIcon,
@@ -49,7 +45,6 @@ class PlantScreen extends StatelessWidget {
                       _ellipseButton(
                         context: context,
                         text: context.l10n?.preference ?? "",
-                        padding: 18,
                         imagePath: AssetRes.dropDownArrowIcon,
                         onTap: () => PreferenceDialogBox.show(context: context),
                       ),
@@ -57,7 +52,6 @@ class PlantScreen extends StatelessWidget {
                       /// Filter
                       _ellipseButton(
                         context: context,
-                        padding: 30,
                         text: context.l10n?.filter ?? "",
                         imagePath: AssetRes.filterIcon,
                         onTap: () => FilterDialogBox.show(context: context),
@@ -101,39 +95,40 @@ class PlantScreen extends StatelessWidget {
     required String text,
     required String imagePath,
     required VoidCallback onTap,
-    double? padding = 0.0,
   }) {
     return Flexible(
-      child: IntrinsicWidth(
-        stepWidth: 16.pw,
-        child: Container(
-          decoration: BoxDecoration(
-            color: ColorRes.white,
+      child: Container(
+        decoration: BoxDecoration(
+          color: ColorRes.white,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        constraints: BoxConstraints(
+          minWidth: 110.pw,
+        ),
+        height: double.infinity,
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
             borderRadius: BorderRadius.circular(20),
-          ),
-          child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              borderRadius: BorderRadius.circular(20),
-              onTap: onTap,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: 7.ph,
-                  horizontal: padding ?? 15.pw,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    /// Text and Icon
-                    Flexible(child: Text(text, style: styleW500S14)),
+            onTap: onTap,
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: 7.ph,
+                horizontal: 7.pw,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  /// Text and Icon
+                  Flexible(child: Text(text, style: styleW500S14)),
 
-                    /// Space
-                    4.pw.spaceHorizontal,
+                  /// Space
+                  4.pw.spaceHorizontal,
 
-                    /// Icon
-                    SvgAsset(imagePath: imagePath),
-                  ],
-                ),
+                  /// Icon
+                  SvgAsset(imagePath: imagePath),
+                ],
               ),
             ),
           ),

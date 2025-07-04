@@ -15,31 +15,48 @@ class ExpandableInfoSection extends StatelessWidget {
 
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 6.h, vertical: 12),
+            padding: EdgeInsets.symmetric(
+              vertical: 12,
+              horizontal: Constants.horizontalPadding,
+            ),
             child: Column(
               spacing: 4,
               children: [
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Text",
-                      style: styleW600S14.copyWith(
-                        color: ColorRes.black.withValues(alpha: 0.5),
+                    Expanded(
+                      child: Text(
+                        "Text",
+                        textAlign: TextAlign.center,
+                        style: styleW600S14.copyWith(
+                          color: ColorRes.black.withValues(alpha: 0.5),
+                        ),
                       ),
                     ),
-                    Text(
-                      "Voltage(V)",
-                      textAlign: TextAlign.center,
-                      style: styleW600S14.copyWith(
-                        color: ColorRes.black.withValues(alpha: 0.5),
+                    6.pw.spaceHorizontal,
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          "Voltage(V)",
+                          textAlign: TextAlign.center,
+                          style: styleW600S14.copyWith(
+                            color: ColorRes.black.withValues(alpha: 0.5),
+                          ),
+                        ),
                       ),
                     ),
-                    Text(
-                      "Current(A)",
-                      style: styleW600S14.copyWith(
-                        color: ColorRes.black.withValues(alpha: 0.5),
+                    6.pw.spaceHorizontal,
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          "Current(A)",
+                          textAlign: TextAlign.center,
+                          style: styleW600S14.copyWith(
+                            color: ColorRes.black.withValues(alpha: 0.5),
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -52,7 +69,6 @@ class ExpandableInfoSection extends StatelessWidget {
                 ...?items?.map(
                   (item) => Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: 6.pw,
                       vertical: 2.pw,
                     ),
                     child: Row(
@@ -60,26 +76,34 @@ class ExpandableInfoSection extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
-                          child: Text(
-                            item.text,
-                            style: styleW500S14.copyWith(color: ColorRes.black),
+                          child: Center(
+                            child: Text(
+                              item.text,
+                              style: styleW500S14.copyWith(
+                                color: ColorRes.black,
+                              ),
+                            ),
                           ),
                         ),
                         6.pw.spaceHorizontal,
                         Expanded(
-                          child: Text(
-                            item.voltage,
-                            textAlign: TextAlign.justify,
-                            style: styleW500S14.copyWith(color: ColorRes.black),
+                          child: Center(
+                            child: Text(
+                              item.voltage,
+                              textAlign: TextAlign.justify,
+                              style: styleW500S14.copyWith(color: ColorRes.black),
+                            ),
                           ),
                         ),
                         6.pw.spaceHorizontal,
 
                         Expanded(
-                          child: Text(
-                            item.current,
-                            textAlign: TextAlign.right,
-                            style: styleW500S14.copyWith(color: ColorRes.black),
+                          child: Center(
+                            child: Text(
+                              item.current,
+                              textAlign: TextAlign.right,
+                              style: styleW500S14.copyWith(color: ColorRes.black),
+                            ),
                           ),
                         ),
                       ],

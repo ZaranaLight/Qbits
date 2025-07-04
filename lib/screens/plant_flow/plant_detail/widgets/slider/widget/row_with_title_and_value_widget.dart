@@ -28,6 +28,8 @@ class RowWithTitleAndValueWidget extends StatelessWidget {
               /// Title
               Text(
                 title ?? "",
+                // "hjhfjfdhfjdhvjhjkhjhjhjkhjkhjkhjkhjlkhjkh",
+
                 style: styleW500S14.copyWith(
                   color: ColorRes.black.withValues(alpha: 0.6),
                 ),
@@ -68,6 +70,7 @@ class RowWithTitleAndValueWidget extends StatelessWidget {
             children: [
               /// Title
               Text(
+                // "hjhfjfdhfjdhvjhjkhjhjhjkhjkhjkhjkhjlkhjkh",
                 title2 ?? "",
                 textAlign: TextAlign.right,
                 style: styleW500S14.copyWith(
@@ -83,10 +86,10 @@ class RowWithTitleAndValueWidget extends StatelessWidget {
                   /// Value
                   Expanded(
                     child: Text(
+                      // "hjhfjfdhfjdhvjhjkhjhjhjkhjkhjkhjkhjlkhjkh",
                       value2 ?? "",
                       style: styleW600S16,
                       textAlign: TextAlign.end,
-                      overflow: TextOverflow.ellipsis, // Optional: truncate
                     ),
                   ),
 

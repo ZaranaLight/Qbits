@@ -31,21 +31,22 @@ class DropdownWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(
         left: leftPadding ?? Constants.horizontalPadding,
-        top: 5.ph,
-        bottom: 5.ph,
       ),
       decoration: BoxDecoration(
         color: backgroundColor ?? ColorRes.black.withValues(alpha: 0.05),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           /// Title
-          Expanded(
-            child: Text(
-              title ?? "",
-              style: styleW600S14.copyWith(color: titleColor),
+          Flexible(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 5),
+              child: Text(
+                title ?? "",
+                style: styleW600S14.copyWith(color: titleColor),
+              ),
             ),
           ),
 

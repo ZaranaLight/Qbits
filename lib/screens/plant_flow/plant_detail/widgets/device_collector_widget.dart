@@ -56,7 +56,6 @@ class CollectorWidget extends StatelessWidget {
 
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ///Text
                                 Expanded(
@@ -71,45 +70,43 @@ class CollectorWidget extends StatelessWidget {
                                 15.pw.spaceHorizontal,
 
                                 ///Offline
-                                Expanded(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      ///Red Circle
-                                      Container(
-                                        width: 18.pw,
-                                        height: 18.ph,
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    ///Red Circle
+                                    Container(
+                                      width: 18.pw,
+                                      height: 18.ph,
+                                      decoration: BoxDecoration(
+                                        color: ColorRes.lightRed,
+                                        borderRadius: BorderRadius.circular(
+                                          18.pw,
+                                        ),
+                                      ),
+                                      padding: EdgeInsets.all(5.pw),
+                                      child: Container(
                                         decoration: BoxDecoration(
-                                          color: ColorRes.lightRed,
+                                          color: ColorRes.red,
                                           borderRadius: BorderRadius.circular(
-                                            18.pw,
-                                          ),
-                                        ),
-                                        padding: EdgeInsets.all(5.pw),
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: ColorRes.red,
-                                            borderRadius: BorderRadius.circular(
-                                              8.pw,
-                                            ),
+                                            8.pw,
                                           ),
                                         ),
                                       ),
+                                    ),
 
-                                      /// Space
-                                      6.ph.spaceHorizontal,
+                                    /// Space
+                                    6.ph.spaceHorizontal,
 
-                                      /// Text
-                                      Text(
-                                        context.l10n?.offline ?? "",
-                                        style: styleW500S14.copyWith(
-                                          color: ColorRes.black.withValues(
-                                            alpha: 0.5,
-                                          ),
+                                    /// Text
+                                    Text(
+                                      context.l10n?.offline ?? "",
+                                      style: styleW500S14.copyWith(
+                                        color: ColorRes.black.withValues(
+                                          alpha: 0.5,
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),

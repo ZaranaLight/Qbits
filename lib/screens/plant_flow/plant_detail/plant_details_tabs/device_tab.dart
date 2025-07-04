@@ -7,72 +7,47 @@ class DeviceTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<PlantDetailProvider>(
       builder: (context, provider, _) {
-        return Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(color: ColorRes.white),
-              margin: EdgeInsets.only(top: 16.ph),
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      /// Space between TabBar and content
-                      _buildTabSelector(context, provider),
+        return Container(
+          decoration: BoxDecoration(color: ColorRes.white),
+          margin: EdgeInsets.only(top: 16.ph),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  /// Space between TabBar and content
+                  _buildTabSelector(context, provider),
 
-                      /// Tab content
-                      Expanded(
-                        child: AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 300),
-                          switchInCurve: Curves.easeIn,
-                          transitionBuilder: (child, animation) {
-                            final offsetAnimation = Tween<Offset>(
-                              begin: const Offset(1, 0),
-                              end: Offset.zero,
-                            ).animate(animation);
-                            return SlideTransition(
-                              position: offsetAnimation,
-                              child: child,
-                            );
-                          },
-                          switchOutCurve: Curves.easeInOut,
-                          child:
-                              provider.deviceTabIndex == 0
-                                  ? InverterWidget(
-                                    key: ValueKey(context.l10n?.inverter ?? ""),
-                                  )
-                                  : CollectorWidget(
-                                    key: ValueKey(
-                                      context.l10n?.collector ?? "",
-                                    ),
-                                  ),
-                        ),
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ),
-            if (provider.deviceTabIndex == 1)
-              Positioned(
-                bottom: Constants.safeAreaPadding.bottom + 10.ph,
-                right: Constants.horizontalPadding,
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: FloatingActionButton(
-                    backgroundColor: ColorRes.primaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.pw),
+                  /// Tab content
+                  Expanded(
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 300),
+                      switchInCurve: Curves.easeIn,
+                      transitionBuilder: (child, animation) {
+                        final offsetAnimation = Tween<Offset>(
+                          begin: const Offset(1, 0),
+                          end: Offset.zero,
+                        ).animate(animation);
+                        return SlideTransition(
+                          position: offsetAnimation,
+                          child: child,
+                        );
+                      },
+                      switchOutCurve: Curves.easeInOut,
+                      child:
+                          provider.deviceTabIndex == 0
+                              ? InverterWidget(
+                                key: ValueKey(context.l10n?.inverter ?? ""),
+                              )
+                              : CollectorWidget(
+                                key: ValueKey(context.l10n?.collector ?? ""),
+                              ),
                     ),
-                    onPressed:
-                        () => context.navigator.pushNamed(
-                          AddCollectorScreen.routeName,
-                        ),
-                    child: SvgAsset(imagePath: AssetRes.plusIcon),
                   ),
-                ),
-              ),
-          ],
+                ],
+              );
+            },
+          ),
         );
       },
     );

@@ -1,3 +1,4 @@
+import 'package:qbits/apis/auth_apis.dart';
 import 'package:qbits/qbits.dart';
 
 class ForgotPasswordProvider extends ChangeNotifier {
@@ -7,7 +8,18 @@ class ForgotPasswordProvider extends ChangeNotifier {
 
   Future<void> onContinueTap(BuildContext context) async {
     if (validation(context)) {
-      context.navigator.pushNamed(OtpCodeVerificationScreen.routeName);
+      loader = true;
+      notifyListeners();
+      final result = await AuthApis.getMailCodeForForgetPasswordAPI(
+        email: emailController.text,
+      );
+      if (result) {
+        if (context.mounted) {
+          context.navigator.pushNamed(OtpCodeVerificationScreen.routeName);
+        }
+      }
+      loader = false;
+      notifyListeners();
     }
   }
 

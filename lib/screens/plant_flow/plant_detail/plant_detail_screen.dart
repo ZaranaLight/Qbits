@@ -19,6 +19,20 @@ class PlantDetailScreen extends StatelessWidget {
       child: Consumer<PlantDetailProvider>(
         builder: (context, state, child) {
           return Scaffold(
+            floatingActionButton: Visibility(
+              visible: state.deviceTabIndex == 1 && state.selectedIndex == 1,
+              child: FloatingActionButton(
+                backgroundColor: ColorRes.primaryColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.pw),
+                ),
+                onPressed:
+                    () => context.navigator.pushNamed(
+                  AddCollectorScreen.routeName,
+                ),
+                child: SvgAsset(imagePath: AssetRes.plusIcon),
+              ),
+            ),
             body: Column(
               children: [
                 CustomAppBar(
@@ -121,7 +135,6 @@ class PlantDetailScreen extends StatelessWidget {
                             Tab(text: context.l10n?.about),
                           ],
                           labelPadding: EdgeInsets.symmetric(horizontal: 0.pw),
-
                           tabAlignment: TabAlignment.fill,
                           // Set true if long labels
                         ),

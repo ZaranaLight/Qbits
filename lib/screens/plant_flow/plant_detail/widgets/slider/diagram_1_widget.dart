@@ -67,11 +67,16 @@ class Diagram1Widget extends StatelessWidget {
           10.ph.spaceVertical,
 
           /// Load
-          buildIconWithText(
-            title: 'Load',
-            value: '0kw',
-            imagePath: AssetRes.loadIcon,
-            isIconPrefix: false,
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: 210.pw,
+            ),
+            child: buildIconWithText(
+              title: 'Load',
+              value: '0kw',
+              imagePath: AssetRes.loadIcon,
+              isIconPrefix: false,
+            ),
           ),
         ],
       ),
@@ -110,6 +115,7 @@ class Diagram1Widget extends StatelessWidget {
                     Text(
                       title,
                       style: styleW400S12.copyWith(color: ColorRes.black),
+                      textAlign: isRtl ? TextAlign.end : TextAlign.start,
                     ),
 
                     ///Space
@@ -119,6 +125,7 @@ class Diagram1Widget extends StatelessWidget {
                     Text(
                       value,
                       style: styleW600S14.copyWith(color: ColorRes.black),
+                      textAlign: isRtl ? TextAlign.end : TextAlign.start,
                     ),
                   ],
                 ),
