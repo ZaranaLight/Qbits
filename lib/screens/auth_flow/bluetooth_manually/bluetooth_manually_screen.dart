@@ -31,14 +31,16 @@ class _BluetoothManuallyScreenState extends State<BluetoothManuallyScreen> {
   dispose() {
     super.dispose();
     FlutterBluePlus.stopScan();
-    context.read<BluetoothManuallyProvider>().stopScan();
   }
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Consumer<BluetoothManuallyProvider>(
       builder: (context, provider, child) {
         return Scaffold(
+          key: _scaffoldKey,
           appBar: CustomAppBar(title: context.l10n?.bluetoothManually ?? ""),
           bottomNavigationBar: Padding(
             padding: EdgeInsets.only(

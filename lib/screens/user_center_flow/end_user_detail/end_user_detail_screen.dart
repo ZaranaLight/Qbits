@@ -6,8 +6,8 @@ class EndUserDetailScreen extends StatelessWidget {
   static const routeName = "end_user_detail_screen";
 
   static Widget builder(BuildContext context) {
-    return ChangeNotifierProvider<EndUserProvider>(
-      create: (c) => EndUserProvider(),
+    return ChangeNotifierProvider<EndUserDetailProvider>(
+      create: (c) => EndUserDetailProvider(),
       child: EndUserDetailScreen(),
     );
   }
@@ -22,9 +22,7 @@ class EndUserDetailScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              bottom:
-                  Constants.safeAreaPadding.bottom +
-                  Constants.horizontalPadding,
+              bottom: Constants.safeAreaPadding.bottom + 16.ph,
               top: 20.ph,
             ),
             child: Column(

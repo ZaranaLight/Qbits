@@ -56,9 +56,7 @@ class SelectLanguageScreen extends StatelessWidget {
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
               top: 4.ph,
-              bottom:
-                  Constants.safeAreaPadding.bottom +
-                  16.ph,
+              bottom: Constants.safeAreaPadding.bottom + 16.ph,
             ),
             itemBuilder: (context, index) {
               final name = provider.languageCheckBoxNameList[index];

@@ -18,9 +18,8 @@ class RowWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(child: Text(title ?? "",   style: styleW500S14.copyWith(
-
-        ),)),
+        Expanded(child: Text(title ?? "", style: styleW500S14)),
+        15.pw.spaceHorizontal,
         Expanded(
           child:
               trailingWidget ??

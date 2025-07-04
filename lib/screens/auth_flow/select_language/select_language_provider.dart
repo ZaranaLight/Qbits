@@ -22,13 +22,6 @@ class SelectLanguageProvider extends ChangeNotifier {
 
   Map<String, bool> get checkboxes => _checkboxes;
 
-  void toggle(String name) {
-    if (_checkboxes.containsKey(name)) {
-      _checkboxes[name] = !_checkboxes[name]!;
-      notifyListeners();
-    }
-  }
-
   void selectOnly(String selectedName) {
     _checkboxes.updateAll((key, value) => key == selectedName);
     notifyListeners();

@@ -101,31 +101,34 @@ class BluetoothScreen extends StatelessWidget {
               ),
             ],
           ),
-          body: Center(
-            child: Stack(
-              children: [
-                MobileScanner(
-                  controller: state.mobileScannerController,
-                  onDetect: (barcodeCapture) {
-                    final code = barcodeCapture.barcodes.first.rawValue;
-                    if (code != null && code.isNotEmpty) {
-                      // context.read<BluetoothProvider>().connectToDevice(code);
-                      Navigator.pop(context, code); // sen
-                    }
-                  },
-                  overlayBuilder: (
-                    BuildContext context,
-                    BoxConstraints constraints,
-                  ) {
-                    return Center(
-                      child: AssetsImg(
-                        imagePath: AssetRes.qrScanAnimation,
-                        height: 280.pw,
-                      ),
-                    );
-                  },
-                ),
-              ],
+          body: StackedLoader(
+            loading: state.loader,
+            child: Center(
+              child: Stack(
+                children: [
+                  MobileScanner(
+                    controller: state.mobileScannerController,
+                    onDetect: (barcodeCapture) {
+                      final code = barcodeCapture.barcodes.first.rawValue;
+                      if (code != null && code.isNotEmpty) {
+                        // context.read<BluetoothProvider>().connectToDevice(code);
+                        Navigator.pop(context, code); // sen
+                      }
+                    },
+                    overlayBuilder: (
+                      BuildContext context,
+                      BoxConstraints constraints,
+                    ) {
+                      return Center(
+                        child: AssetsImg(
+                          imagePath: AssetRes.qrScanAnimation,
+                          height: 280.pw,
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         );

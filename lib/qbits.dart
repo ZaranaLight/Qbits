@@ -99,8 +99,8 @@ export 'package:qbits/screens/user_center_flow/profile_information/profile_info_
 export 'package:qbits/screens/user_center_flow/profile_information/profile_info_provider.dart';
 export 'package:qbits/screens/user_center_flow/account_security/account_security_screen.dart';
 export 'package:qbits/screens/user_center_flow/user_center/user_center_screen.dart';
-export 'package:qbits/screens/user_center_flow/end_user_detail/end_user_provider.dart';
-export 'package:qbits/screens/user_center_flow/end_user_detail/end_user_screen.dart';
+export 'package:qbits/screens/user_center_flow/end_user_detail/end_user_detail_provider.dart';
+export 'package:qbits/screens/user_center_flow/end_user_detail/end_user_detail_screen.dart';
 export 'package:qbits/screens/auth_flow/company_registration/company_registration_screen.dart';
 export 'package:qbits/screens/alarm_flow/inverter/inverter_screen.dart';
 export 'package:qbits/screens/user_center_flow/profile_information/profile_info_screen.dart';

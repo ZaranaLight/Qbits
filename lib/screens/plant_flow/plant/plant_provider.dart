@@ -46,9 +46,6 @@ class PlantProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // bool isRankSelected(String rank, bool ascending) {
-  //   return _selectedRank == rank && isAscending == ascending;
-  // }
 
   bool get hasSelectedRank => _selectedRank != null;
 

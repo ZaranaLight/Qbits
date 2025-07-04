@@ -56,7 +56,7 @@ class AlarmInverterScreen extends StatelessWidget {
 
   Widget _buildInfoSection(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(color: ColorRes.white),
+      color: ColorRes.white,
       padding: EdgeInsets.symmetric(
         horizontal: Constants.horizontalPadding,
         vertical: 20.ph,
@@ -80,11 +80,16 @@ class AlarmInverterScreen extends StatelessWidget {
     AlarmInverterProvider provider,
   ) {
     return Container(
-      decoration: const BoxDecoration(color: ColorRes.white),
+      color: ColorRes.white,
       child: Column(
         children: [
+          /// Fault Header
           _buildFaultHeader(context),
+
+          /// Divider
           Divider(height: 1, color: ColorRes.black.withValues(alpha: 0.1)),
+
+          /// Fault List
           _buildFaultList(provider),
         ],
       ),
@@ -97,8 +102,13 @@ class AlarmInverterScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          /// Fault Icon
           Container(height: 17, width: 5, color: ColorRes.primaryColor),
+
+          /// Space
           10.pw.spaceHorizontal,
+
+          /// Fault Text
           Text(
             context.l10n?.fault ?? "",
             style: styleW600S14.copyWith(color: ColorRes.black2),
@@ -293,7 +303,7 @@ class AlarmInverterScreen extends StatelessWidget {
                   child: Container(
                     key: ValueKey(isSelected),
                     margin: const EdgeInsets.symmetric(horizontal: 8),
-                    padding:   EdgeInsets.symmetric(
+                    padding: EdgeInsets.symmetric(
                       horizontal: 0,
                       vertical: 6.ph,
                     ),
@@ -595,6 +605,7 @@ class AlarmInverterScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          /// Legend Dot
           Container(
             width: 10.pw,
             height: 10.pw,
@@ -607,6 +618,7 @@ class AlarmInverterScreen extends StatelessWidget {
           /// Space
           6.pw.spaceHorizontal,
 
+          /// Legend Text
           Text(provider.selectedPreference, style: styleW600S14),
         ],
       ),

@@ -23,10 +23,7 @@ class AccountSecurityScreen extends StatelessWidget {
             padding: EdgeInsets.only(
               left: Constants.horizontalPadding,
               right: Constants.horizontalPadding,
-              bottom:
-                  Constants.safeAreaPadding.bottom +
-                  Constants.horizontalPadding,
-
+              bottom: Constants.safeAreaPadding.bottom + 16.ph,
             ),
             child: Column(
               children: [

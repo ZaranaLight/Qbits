@@ -43,9 +43,14 @@ class SelectRegionDescriptionScreen extends StatelessWidget {
 
                 /// Space
                 15.ph.spaceVertical,
+
+                /// Divider
                 Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+
+                /// Space
                 15.ph.spaceVertical,
 
+                /// Title
                 Text(
                   "What is Lorem Ipsum?",
                   style: styleW600S14.copyWith(color: ColorRes.black2),
@@ -54,6 +59,7 @@ class SelectRegionDescriptionScreen extends StatelessWidget {
                 /// Space
                 8.ph.spaceVertical,
 
+                /// Description
                 Text(
                   "Lorem Ipsum is simply dummy text of the printing and"
                   "setting industry. Lorem Ipsum has been the industry's"
@@ -65,6 +71,7 @@ class SelectRegionDescriptionScreen extends StatelessWidget {
                 /// Space
                 14.ph.spaceVertical,
 
+                /// Title
                 Text(
                   "Lorem Ipsum is simply dummy text of the printing and"
                   "setting industry. Lorem Ipsum has been the industry's"

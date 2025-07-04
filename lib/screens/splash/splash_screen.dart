@@ -18,8 +18,8 @@ class SplashScreen extends StatelessWidget {
       await Future.delayed(1000.milliseconds);
 
       if (context.mounted) {
-        // context.navigator.pushReplacementNamed(SignInScreen.routeName);
-        context.navigator.pushReplacementNamed(DashboardScreen.routeName);
+        context.navigator.pushReplacementNamed(SignInScreen.routeName);
+        // context.navigator.pushReplacementNamed(DashboardScreen.routeName);
       }
     } catch (e) {
       debugPrint(e.toString());

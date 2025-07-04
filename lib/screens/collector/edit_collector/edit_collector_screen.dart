@@ -1,5 +1,6 @@
 import 'package:qbits/qbits.dart';
 import 'package:qbits/screens/collector/add_collector/add_collector_provider.dart';
+import 'package:qbits/screens/collector/edit_collector/edit_collector_provider.dart';
 
 class EditCollectorScreen extends StatelessWidget {
   const EditCollectorScreen({super.key});
@@ -8,14 +9,14 @@ class EditCollectorScreen extends StatelessWidget {
 
   static Widget builder(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => AddCollectorProvider(),
+      create: (_) => EditCollectorProvider(),
       child: const EditCollectorScreen(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AddCollectorProvider>(
+    return Consumer<EditCollectorProvider>(
       builder: (context, provider, child) {
         return Scaffold(
           backgroundColor: Theme.of(context).colorScheme.surface,

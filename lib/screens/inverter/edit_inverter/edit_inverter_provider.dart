@@ -2,7 +2,6 @@ import 'package:qbits/common/widget/app_qr_scanner_screen.dart';
 import 'package:qbits/qbits.dart';
 
 class EditInverterModel {
-  // Existing fields...
   String inverterNo;
   String rs485Id;
   String serialNumber;
@@ -10,7 +9,6 @@ class EditInverterModel {
   String panelCount;
 
   EditInverterModel({
-    // Existing default values...
     this.inverterNo = '',
     this.rs485Id = '',
     this.serialNumber = '123456789',

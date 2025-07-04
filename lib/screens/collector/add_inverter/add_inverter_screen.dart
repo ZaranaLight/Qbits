@@ -1,3 +1,4 @@
+import 'package:qbits/common/widget/common_widgets.dart';
 import 'package:qbits/qbits.dart';
 import 'package:qbits/screens/collector/add_inverter/add_inverter_provider.dart';
 
@@ -16,18 +17,22 @@ class AddInverterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(
-          bottom: Constants.safeAreaPadding.bottom + 30.ph,
-          left: Constants.horizontalPadding,
-          right: Constants.horizontalPadding,
-        ),
-        child: SubmitButton(
-          title: context.l10n?.confirm ?? "",
-          onTap: () {
-            context.navigator.pop();
-          },
-        ),
+      bottomNavigationBar: Consumer<AddInverterProvider>(
+        builder: (context, provider, _) {
+          return Padding(
+            padding: EdgeInsets.only(
+              bottom: Constants.safeAreaPadding.bottom + 30.ph,
+              left: Constants.horizontalPadding,
+              right: Constants.horizontalPadding,
+            ),
+            child: SubmitButton(
+              title: context.l10n?.confirm ?? "",
+              onTap: () {
+                provider.onConfirmTap(context);
+              },
+            ),
+          );
+        },
       ),
       appBar: CustomAppBar(title: context.l10n?.addInverter ?? ""),
       body: Consumer<AddInverterProvider>(
@@ -39,7 +44,22 @@ class AddInverterScreen extends StatelessWidget {
             child: Column(
               children: [
                 /// Space
-                10.ph.spaceVertical,
+                20.ph.spaceVertical,
+
+                /// Bind Collector
+                _buildRow("Bind Collector", provider.bindCollector),
+
+                /// Space
+                20.ph.spaceVertical,
+
+                /// Divider
+                Divider(
+                  height: 0,
+                  color: ColorRes.black.withValues(alpha: 0.1),
+                ),
+
+                /// Space
+                5.ph.spaceVertical,
 
                 /// Inverter No. and RS485 ID
                 _buildTextFormFieldTile(
@@ -52,6 +72,14 @@ class AddInverterScreen extends StatelessWidget {
                 /// Divider
                 Divider(color: ColorRes.black.withValues(alpha: 0.1)),
 
+                /// Error Text for Inverter No
+                if (provider.inverterNoError.isNotEmpty)
+                  ErrorText(
+                    error: provider.inverterNoError,
+                    bottomPadding: 7.ph,
+                    leftPadding: 0,
+                  ),
+
                 /// RS485 ID
                 _buildTextFormFieldTile(
                   'RS485 ID',
@@ -62,6 +90,14 @@ class AddInverterScreen extends StatelessWidget {
 
                 /// Divider
                 Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+
+                /// Error Text for Inverter No
+                if (provider.rs485IdError.isNotEmpty)
+                  ErrorText(
+                    error: provider.rs485IdError,
+                    bottomPadding: 7.ph,
+                    leftPadding: 0,
+                  ),
 
                 /// Model Selection with Scanner Icon
                 _buildDropdownField(
@@ -103,6 +139,14 @@ class AddInverterScreen extends StatelessWidget {
 
                 /// Divider
                 Divider(color: ColorRes.black.withValues(alpha: 0.1)),
+
+                /// Error Text for Serial Error
+                if (provider.serialNoError.isNotEmpty)
+                  ErrorText(
+                    error: provider.serialNoError,
+                    bottomPadding: 7.ph,
+                    leftPadding: 0,
+                  ),
 
                 /// Panel Watt and Count
                 Stack(
@@ -152,11 +196,46 @@ class AddInverterScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+
+                /// Error Text for Panel Watt Error
+                if (provider.panelWattError.isNotEmpty)
+                  ErrorText(
+                    error: provider.panelWattError,
+                    bottomPadding: 7.ph,
+                    leftPadding: 0,
+                  ),
+
+                /// Error Text for pPanel Count Error
+                if (provider.panelCountError.isNotEmpty)
+                  ErrorText(
+                    error: provider.panelCountError,
+                    bottomPadding: 7.ph,
+                    leftPadding: 0,
+                  ),
               ],
             ),
           );
         },
       ),
+    );
+  }
+
+  Widget _buildRow(String label, String value) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          child: Text(
+            label,
+            style: styleW500S14.copyWith(
+              color: ColorRes.black.withValues(alpha: 0.5),
+            ),
+          ),
+        ),
+
+        Expanded(flex: 2, child: Text(value, style: styleW500S14)),
+      ],
     );
   }
 

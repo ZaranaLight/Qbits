@@ -2,9 +2,10 @@ import 'package:qbits/qbits.dart';
 
 class SignInProvider extends ChangeNotifier {
   SignInProvider({this.initialRegion, this.initialLanguage}) {
-    selectedRegion = initialRegion?.trim().isNotEmpty == true
-        ? initialRegion!
-        : "International";
+    selectedRegion =
+        initialRegion?.trim().isNotEmpty == true
+            ? initialRegion!
+            : "International";
     selectedLanguage = initialLanguage ?? "";
   }
 

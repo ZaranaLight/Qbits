@@ -40,7 +40,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
               bottom:
                   Constants.safeAreaPadding.bottom +
                   Constants.horizontalPadding,
-              top: 20.pw,
+              top: 20.ph,
             ),
             child: Column(
               children: [
@@ -64,7 +64,7 @@ class CompanyRegistrationScreen extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(bottom: 10.ph),
                         child: Text(
-                          "If your company has already registered a company account in Management System, you do not need to register again.\nPlease contact the administrator of your company (organization) to add you as a subordinate organization or organization member in the system.",
+                          context.l10n?.ifYourCompanyHasAlready ?? "",
                           style: styleW400S12.copyWith(
                             color: ColorRes.black2.withValues(alpha: 0.6),
                           ),
@@ -174,7 +174,6 @@ class CompanyRegistrationScreen extends StatelessWidget {
                             /// Company Code
                             AppTextField(
                               isMandatory: true,
-
                               controller: provider.companyCodeController,
                               header: context.l10n?.companyCode ?? "",
                               hintText: context.l10n?.companyCode ?? "",

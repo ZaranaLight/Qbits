@@ -657,7 +657,7 @@ abstract class AppLocalizations {
   /// **'QA'**
   String get qa;
 
-  /// No description provided for @end_user_detail.
+  /// No description provided for @guest.
   ///
   /// In en, this message translates to:
   /// **'Guest'**
@@ -1688,6 +1688,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add Plant'**
   String get addPlant;
+
+  /// No description provided for @equipmentNoIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Equipment no is required'**
+  String get equipmentNoIsRequired;
+
+  /// No description provided for @serialNoIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Serial no is required'**
+  String get serialNoIsRequired;
+
+  /// No description provided for @inverterNoIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Inverter no is required'**
+  String get inverterNoIsRequired;
+
+  /// No description provided for @rs485IdIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'RS485 ID no is required'**
+  String get rs485IdIsRequired;
+
+  /// No description provided for @panelWattIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'panel Watt no is required'**
+  String get panelWattIsRequired;
+
+  /// No description provided for @panelCountIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'panel Count no is required'**
+  String get panelCountIsRequired;
+
+  /// No description provided for @ifYourCompanyHasAlready.
+  ///
+  /// In en, this message translates to:
+  /// **'If your company has already registered a company account in Management System, you do not need to register again.\\nPlease contact the administrator of your company (organization) to add you as a subordinate organization or organization member in the system.'**
+  String get ifYourCompanyHasAlready;
 
   /// No description provided for @pleaseEnableLocationFromDeviceSetting.
   ///

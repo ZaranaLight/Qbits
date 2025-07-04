@@ -49,7 +49,7 @@ class PlantScreen extends StatelessWidget {
                       _ellipseButton(
                         context: context,
                         text: context.l10n?.preference ?? "",
-                        padding: 20,
+                        padding: 18,
                         imagePath: AssetRes.dropDownArrowIcon,
                         onTap: () => PreferenceDialogBox.show(context: context),
                       ),

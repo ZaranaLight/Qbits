@@ -11,8 +11,5 @@ class CurrencyProvider extends ChangeNotifier {
     // Initialization logic can be added here if needed
   }
 
-  void toggleLoader() {
-    loader = !loader;
-    notifyListeners();
-  }
+
 }

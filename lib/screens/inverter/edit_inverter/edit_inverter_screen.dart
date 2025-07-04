@@ -180,18 +180,15 @@ class EditInverterScreen extends StatelessWidget {
               ),
               decoration: const InputDecoration(
                 isDense: true,
-                contentPadding: EdgeInsets.symmetric(vertical: 12), // 👈 increase vertical padding
+                contentPadding: EdgeInsets.symmetric(
+                  vertical: 12,
+                ), // 👈 increase vertical padding
               ),
               textAlign: TextAlign.center,
             ),
           ),
           10.pw.spaceHorizontal,
-          Text(
-            title,
-            style: styleW500S14.copyWith(
-
-            ),
-          ),
+          Text(title, style: styleW500S14),
         ],
       ),
     );
@@ -206,7 +203,7 @@ class EditInverterScreen extends StatelessWidget {
     void Function()? onScanTap,
   }) {
     return Container(
-      padding: EdgeInsets.symmetric( vertical: 10.ph),
+      padding: EdgeInsets.symmetric(vertical: 10.ph),
 
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -229,7 +226,7 @@ class EditInverterScreen extends StatelessWidget {
                     underline: SizedBox.shrink(),
                     onChanged: onChanged,
                     style: styleW500S14,
-            
+
                     padding: EdgeInsets.zero,
                     isDense: true,
                     icon: const SizedBox.shrink(),

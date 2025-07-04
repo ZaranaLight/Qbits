@@ -22,8 +22,6 @@ class CollectorProvider extends ChangeNotifier {
 
   final List<String> collectorParameterTitle = ["Basic"];
 
-  // final List<Widget> collectorParameterContent = [BasicWidget()];
-
   final CollectorModel _collector = CollectorModel(
     model: 'WIFI-USB-ESP32',
     status: 'Offline',

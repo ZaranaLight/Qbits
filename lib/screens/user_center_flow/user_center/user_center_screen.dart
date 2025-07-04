@@ -88,7 +88,6 @@ class UserCenterScreen extends StatelessWidget {
                                     : ColorRes.lightGrey;
                               }),
                           onChanged: (bool value) {
-                            // This is called when the user toggles the switch.
                             provider.updateAutoSignInSetting(value);
                           },
                         ),

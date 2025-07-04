@@ -2,7 +2,6 @@ import 'package:qbits/common/widget/app_qr_scanner_screen.dart';
 import 'package:qbits/qbits.dart';
 
 class AddInverterModel {
-  // Existing fields...
   String inverterNo;
   String rs485Id;
   String serialNumber;
@@ -10,16 +9,16 @@ class AddInverterModel {
   String panelCount;
 
   AddInverterModel({
-    // Existing default values...
-    this.inverterNo = '1',
-    this.rs485Id = '1',
-    this.serialNumber = '123456789',
+    this.inverterNo = '',
+    this.rs485Id = '',
+    this.serialNumber = '',
     this.panelWatt = '0',
     this.panelCount = '0',
   });
 }
 
 class AddInverterProvider extends ChangeNotifier {
+  String bindCollector = "241012992";
   final AddInverterModel _addInverterModel = AddInverterModel();
 
   AddInverterModel get addInverterModel => _addInverterModel;
@@ -74,6 +73,58 @@ class AddInverterProvider extends ChangeNotifier {
         selectedModel = scannedResult;
       }
       notifyListeners(); // notify UI about the change
+    }
+  }
+
+  String inverterNoError = "";
+  String rs485IdError = "";
+  String serialNoError = "";
+  String panelWattError = "";
+  String panelCountError = "";
+
+  bool validation(BuildContext context) {
+    if (_addInverterModel.inverterNo.isEmpty) {
+      inverterNoError = context.l10n?.inverterNoIsRequired ?? "";
+    } else {
+      inverterNoError = "";
+    }
+
+    if (_addInverterModel.rs485Id.isEmpty) {
+      rs485IdError = context.l10n?.rs485IdIsRequired ?? "";
+    } else {
+      rs485IdError = "";
+    }
+
+    if (_addInverterModel.serialNumber.isEmpty) {
+      serialNoError = context.l10n?.serialNoIsRequired ?? "";
+    } else {
+      serialNoError = "";
+    }
+
+    if (_addInverterModel.panelWatt.isEmpty) {
+      panelWattError = context.l10n?.panelWattIsRequired ?? "";
+    } else {
+      panelWattError = "";
+    }
+
+    if (_addInverterModel.panelCount.isEmpty) {
+      panelCountError = context.l10n?.panelCountIsRequired ?? "";
+    } else {
+      panelCountError = "";
+    }
+
+    notifyListeners();
+    return inverterNoError.isEmpty &&
+        rs485IdError.isEmpty &&
+        panelWattError.isEmpty &&
+        panelCountError.isEmpty &&
+        serialNoError.isEmpty;
+  }
+
+  Future<void> onConfirmTap(BuildContext context) async {
+    if (validation(context)) {
+      context.navigator.pop();
+      context.navigator.pop();
     }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:qbits/common/widget/common_widgets.dart';
 import 'package:qbits/qbits.dart';
 
 class AddEnergyManagerScreen extends StatelessWidget {
@@ -16,21 +17,25 @@ class AddEnergyManagerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: context.l10n?.addEnergyManager ?? ""),
-      bottomNavigationBar: SafeArea(
-        top: false,
-        child: Padding(
-          padding: EdgeInsets.only(
-            bottom: 30.ph,
-            left: Constants.horizontalPadding,
-            right: Constants.horizontalPadding,
-          ),
-          child: SubmitButton(
-            title: context.l10n?.confirm ?? "",
-            onTap: () {
-              context.navigator.pop();
-            },
-          ),
-        ),
+      bottomNavigationBar: Consumer<AddEnergyManagerProvider>(
+        builder: (context, provider, _) {
+          return SafeArea(
+            top: false,
+            child: Padding(
+              padding: EdgeInsets.only(
+                bottom: 30.ph,
+                left: Constants.horizontalPadding,
+                right: Constants.horizontalPadding,
+              ),
+              child: SubmitButton(
+                title: context.l10n?.confirm ?? "",
+                onTap: () {
+                  provider.onConfirmTap(context);
+                },
+              ),
+            ),
+          );
+        },
       ),
 
       body: Consumer<AddEnergyManagerProvider>(
@@ -44,23 +49,37 @@ class AddEnergyManagerScreen extends StatelessWidget {
               spacing: 12.ph,
 
               children: [
+                /// Bind Collector
                 _buildRow("Bind Collector", provider.bindCollector),
+
+                /// Divider
                 Divider(
                   height: 0,
-                  color: ColorRes.grey2.withValues(alpha: 0.1),
+                  color: ColorRes.black.withValues(alpha: 0.1),
                 ),
 
+                /// Equipment No
                 _buildInputRow(
                   "Equipment No",
                   initialValue: provider.equipmentNo,
                   onChanged: provider.updateEquipmentNo,
                 ),
 
+                /// Divider
                 Divider(
                   height: 0,
-                  color: ColorRes.grey2.withValues(alpha: 0.1),
+                  color: ColorRes.black.withValues(alpha: 0.1),
                 ),
 
+                /// Error Text for Equipment No
+                if (provider.equipmentNoError.isNotEmpty)
+                  ErrorText(
+                    error: provider.equipmentNoError,
+                    bottomPadding: 7.ph,
+                    leftPadding: 0,
+                  ),
+
+                /// Equipment Type
                 _buildDropdownField(
                   title: "Equipment",
                   value: provider.equipment,
@@ -70,9 +89,10 @@ class AddEnergyManagerScreen extends StatelessWidget {
                   },
                 ),
 
+                /// Divider
                 Divider(
                   height: 0,
-                  color: ColorRes.grey2.withValues(alpha: 0.1),
+                  color: ColorRes.black.withValues(alpha: 0.1),
                 ),
 
                 /// GMT Selection
@@ -84,21 +104,33 @@ class AddEnergyManagerScreen extends StatelessWidget {
                     if (value != null) provider.setGMT(value);
                   },
                 ),
-                // _buildRow("GMT Selection", provider.gmt),
+
+                /// _buildRow("GMT Selection", provider.gmt),
                 Divider(
                   height: 0,
-                  color: ColorRes.grey2.withValues(alpha: 0.1),
+                  color: ColorRes.black.withValues(alpha: 0.1),
                 ),
 
+                /// Serial Number
                 _buildInputRow(
                   "Serial Number",
                   initialValue: provider.serialNumber,
                   onChanged: provider.updateSerial,
                 ),
+
+                /// Divider
                 Divider(
                   height: 0,
-                  color: ColorRes.grey2.withValues(alpha: 0.1),
+                  color: ColorRes.black.withValues(alpha: 0.1),
                 ),
+
+                /// Error Text for Serial Number
+                if (provider.serialNoError.isNotEmpty)
+                  ErrorText(
+                    error: provider.serialNoError,
+                    bottomPadding: 7.ph,
+                    leftPadding: 0,
+                  ),
               ],
             ),
           );
@@ -118,6 +150,7 @@ class AddEnergyManagerScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        /// Title
         Expanded(
           child: Text(
             title,
@@ -130,6 +163,7 @@ class AddEnergyManagerScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              /// Dropdown Button
               Expanded(
                 child: DropdownButton<String>(
                   value: value,
@@ -188,7 +222,7 @@ class AddEnergyManagerScreen extends StatelessWidget {
   Widget _buildInputRow(
     String label, {
     required String initialValue,
-    required Function(String) onChanged,
+    Function(String)? onChanged,
   }) {
     return Container(
       margin: EdgeInsets.only(bottom: 3.ph),
@@ -208,7 +242,11 @@ class AddEnergyManagerScreen extends StatelessWidget {
             child: TextFormField(
               style: styleW500S14,
               initialValue: initialValue,
+              onTapOutside:
+                  (e) =>
+                      hideKeyboard(context: navigatorKey.currentState?.context),
               onChanged: onChanged,
+
               decoration: const InputDecoration(
                 isDense: true,
                 contentPadding: EdgeInsets.zero,

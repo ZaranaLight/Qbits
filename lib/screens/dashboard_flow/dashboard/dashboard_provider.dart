@@ -9,5 +9,4 @@ class DashboardProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void onFloatingBtnTap() {}
 }

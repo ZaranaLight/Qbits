@@ -10,6 +10,15 @@ class BluetoothManuallyProvider extends ChangeNotifier {
   bool get isScanning => _isScanning;
 
   Future<void> startScan() async {
+    final isOn =
+        await FlutterBluePlus.adapterState.first == BluetoothAdapterState.on;
+    if (!isOn) {
+      // Show a message or dialog
+      showErrorMsg("Bluetooth is OFF. Prompt user to enable it.");
+      debugPrint("Bluetooth is OFF. Prompt user to enable it.");
+      return;
+    }
+
     _isScanning = true;
     _devices.clear();
     notifyListeners();
@@ -34,6 +43,11 @@ class BluetoothManuallyProvider extends ChangeNotifier {
 
   Future<void> stopScan() async {
     await FlutterBluePlus.stopScan();
+  }
+
+  dispose() {
+    FlutterBluePlus.stopScan();
+    super.dispose();
   }
 
   void onDeviceTap(BuildContext context, String deviceName) {

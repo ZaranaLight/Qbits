@@ -7,7 +7,6 @@ class CompanyRegistrationProvider extends ChangeNotifier {
     generateCode();
   }
 
-  bool loader = false;
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
 
@@ -36,12 +35,10 @@ class CompanyRegistrationProvider extends ChangeNotifier {
   String generateCode() {
     List<String> arr = [];
 
-    // Add numbers 0–9 as strings
     for (int i = 0; i < 10; i++) {
       arr.add(i.toString());
     }
 
-    // Add characters A–Z, skipping I and O (like your JS array)
     List<String> number = [
       "A",
       "B",

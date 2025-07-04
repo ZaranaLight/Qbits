@@ -807,6 +807,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addPlant => 'Add Plant';
 
   @override
+  String get equipmentNoIsRequired => 'Equipment no is required';
+
+  @override
+  String get serialNoIsRequired => 'Serial no is required';
+
+  @override
+  String get inverterNoIsRequired => 'Inverter no is required';
+
+  @override
+  String get rs485IdIsRequired => 'RS485 ID no is required';
+
+  @override
+  String get panelWattIsRequired => 'panel Watt no is required';
+
+  @override
+  String get panelCountIsRequired => 'panel Count no is required';
+
+  @override
+  String get ifYourCompanyHasAlready => 'If your company has already registered a company account in Management System, you do not need to register again.\\nPlease contact the administrator of your company (organization) to add you as a subordinate organization or organization member in the system.';
+
+  @override
   String get pleaseEnableLocationFromDeviceSetting => 'Please enable Location (GPS) from device settings';
 
   @override

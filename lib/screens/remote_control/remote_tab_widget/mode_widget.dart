@@ -145,6 +145,7 @@ class ModeWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(child: Text(title, style: styleW600S14)),
+          10.pw.spaceHorizontal,
           DropdownButton<String>(
             value: value,
             alignment: Alignment(1, 1),
@@ -193,6 +194,7 @@ class ModeWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(child: Text(title, style: styleW600S14)),
+          10.pw.spaceHorizontal,
           SizedBox(
             width: 120.pw,
             child: Container(
