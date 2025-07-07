@@ -25,8 +25,9 @@ class ApiService {
       }
       header = header ?? {};
 
-      debugPrint("Url = $url");
+      // debugPrint("Url = $url");
       debugPrint("Header = $header");
+      debugPrint("queryParams = $queryParams");
       if (addMD5) {
         final now = DateTime.now();
         header["Content-MD5"] = generateCustomString(now);
@@ -40,6 +41,47 @@ class ApiService {
 
       if (handleError(response)) {
         return appResponseFromJson(response.body);
+      }
+    } catch (e, stack) {
+      recordError(e, stack);
+    }
+    return null;
+  }
+
+  static Future<http.Response?> postFormDataApi({
+    required String url,
+    Map<String, String>? header,
+    required Map<String, String> fields,
+    bool addMD5 = false,
+  }) async {
+    try {
+      header = header ?? {};
+
+      if (addMD5) {
+        final now = DateTime.now();
+        header["Content-MD5"] = generateCustomString(now);
+        header["timestamp"] = now.millisecondsSinceEpoch.toString();
+      }
+
+      final uri = Uri.parse(url);
+      final request = http.MultipartRequest('POST', uri);
+      request.headers.addAll(header);
+      request.fields.addAll(fields);
+
+      debugPrint("Sending form-data POST to: $url");
+      debugPrint("Headers: ${request.headers}");
+      debugPrint("Fields: ${request.fields}");
+
+      final streamedResponse = await request.send();
+      final response = await http.Response.fromStream(streamedResponse);
+
+      debugPrint("Response Code: ${response.statusCode}");
+      debugPrint("Response Body: ${response.body}");
+
+      bool isExpired = await isTokenExpire(response);
+      handleError(response);
+      if (!isExpired) {
+        return response;
       }
     } catch (e, stack) {
       recordError(e, stack);
@@ -69,6 +111,9 @@ class ApiService {
         body: body,
         encoding: Encoding.getByName('utf-8'),
       );
+
+      print("Url = $url");
+      print(body);
       bool isExpired = await isTokenExpire(response);
       handleError(response);
       if (!isExpired) {
@@ -158,9 +203,9 @@ class ApiService {
   }
 
   static bool handleError(http.Response response) {
-
     try {
       final model = appResponseFromJson(response.body);
+      print("model Code: ${model.code}");
       if (model.code == 0) {
         return true;
       } else if (model.code == -1) {

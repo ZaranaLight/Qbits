@@ -10,5 +10,10 @@ class EndPoints {
 
   /// ------------------------------------ Auth -------------------------------
   static const loginAPI = "${baseUrl}login";
-  static const forgotAPI = "${domain}auth/sendMailCode";
+  static const sendMailCodeAPIForForgotPassword = "${domain}auth/sendMailCode";
+  static const queryUserByEmailAPI = "${domain}auth/queryUserByEmail";
+  static const registerAPI = "${domain}user/register";
+  static const sendMailCodeWithCheckAPI = "${domain}auth/sendMailCodeWithCheck";
+  static const appSearchOrganizationAPI =
+      "${domain}appcanxSearchOrganization.action";
 }

@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:qbits/apis/auth_apis.dart';
 import 'package:qbits/qbits.dart';
 
 class CompanyRegistrationProvider extends ChangeNotifier {
@@ -29,6 +30,7 @@ class CompanyRegistrationProvider extends ChangeNotifier {
   String verificationCodeError = "";
   String? _companyCode;
   bool showCodeField = false;
+  bool loader = false;
 
   String? get companyCode => _companyCode;
 
@@ -83,18 +85,40 @@ class CompanyRegistrationProvider extends ChangeNotifier {
     return result.join('');
   }
 
-  void sendCode() {
+  void sendCode(BuildContext context) async {
+    validation(context);
+    if (sendMailValidation(context)) {
+      loader = true;
+      notifyListeners();
+      final result = await AuthApis.sendMailCodeWithCheckAPI(
+        email: mailController.text,
+      );
+      print("Result: $result");
+      if (result) {
+        // if (context.mounted) {
+        //   context.navigator.pushNamed(OtpCodeVerificationScreen.routeName);
+        // }
+      }
+      loader = false;
+      notifyListeners();
+    }
+  }
+
+  bool sendMailValidation(BuildContext context) {
     final email = mailController.text.trim();
     if (email.isEmpty ||
         !RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$").hasMatch(email)) {
+      print('Invalid email format');
       mailError = "Please enter a valid email";
       showCodeField = false;
     } else {
+      print('Valid email format');
       mailError = "";
       showCodeField = true;
       // TODO: Add API call here if needed
     }
     notifyListeners();
+    return mailError.isEmpty;
   }
 
   void onPwdVisibilityChanged() {
@@ -107,13 +131,38 @@ class CompanyRegistrationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  // Future<void> onRegisterTap(BuildContext context) async {
+  //   sendCode(context);
+  //   if (validation(context)) {
+  //     context.navigator.pushNamedAndRemoveUntil(
+  //       DashboardScreen.routeName,
+  //       (route) => false,
+  //     );
+  //   }
+  // }
+
   Future<void> onRegisterTap(BuildContext context) async {
-    sendCode();
+    if (mailController.text.trim().isEmpty) {
+      sendCode(context);
+    }
+
     if (validation(context)) {
-      context.navigator.pushNamedAndRemoveUntil(
-        DashboardScreen.routeName,
-        (route) => false,
+      loader = true;
+      notifyListeners();
+      final result = await AuthApis.companyRegisterAPI(
+        email: mailController.text,
+        password: passwordController.text,
+        accountName: accountController.text,
+        mailOtp: verificationCodeController.text,
       );
+      print("Result: $result");
+      if (result) {
+        // if (context.mounted) {
+        //   context.navigator.pushNamed(OtpCodeVerificationScreen.routeName);
+        // }
+      }
+      loader = false;
+      notifyListeners();
     }
   }
 

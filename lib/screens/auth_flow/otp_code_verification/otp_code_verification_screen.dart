@@ -7,8 +7,15 @@ class OtpCodeVerificationScreen extends StatelessWidget {
   static const routeName = "otp_code_verification";
 
   static Widget builder(BuildContext context) {
+    Map<String, dynamic> argMap = {};
+    if (context.args is Map<String, dynamic>) {
+      argMap = context.args as Map<String, dynamic>;
+    }
     return ChangeNotifierProvider<OtpCodeVerificationProvider>(
-      create: (c) => OtpCodeVerificationProvider(),
+      create:
+          (c) => OtpCodeVerificationProvider(
+            email: argMap["email"]?.toString() ?? "",
+          ),
       child: OtpCodeVerificationScreen(),
     );
   }
@@ -28,8 +35,10 @@ class OtpCodeVerificationScreen extends StatelessWidget {
                 left: Constants.horizontalPadding,
                 right: Constants.horizontalPadding,
               ),
-              child: SubmitButton(enable: provider.isOTPValidate,
+              child: SubmitButton(
+                // enable: provider.isOTPValidate,
                 title: context.l10n?.continueCap ?? "",
+                loading: provider.loader,
                 onTap: () {
                   context.read<OtpCodeVerificationProvider>().onVerifyTap(
                     context,
@@ -66,17 +75,17 @@ class OtpCodeVerificationScreen extends StatelessWidget {
                 10.ph.spaceVertical,
 
                 Pinput(
-                  length: 6,
+                  length: 5,
                   onCompleted:
                       (str) => context
                           .read<OtpCodeVerificationProvider>()
-                          .onVerifyTap(context),
+                          .onOtpChanged(str),
                   onSubmitted:
                       (str) => context
                           .read<OtpCodeVerificationProvider>()
-                          .onVerifyTap(context),
-                  onChanged:
-                      context.read<OtpCodeVerificationProvider>().onOtpChanged,
+                          .onOtpChanged(str),
+                  // onChanged:
+                  //     context.read<OtpCodeVerificationProvider>().onOtpChanged,
                   autofocus: true,
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
                   defaultPinTheme: pinTheme(),

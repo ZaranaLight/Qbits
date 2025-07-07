@@ -10,12 +10,15 @@ class ForgotPasswordProvider extends ChangeNotifier {
     if (validation(context)) {
       loader = true;
       notifyListeners();
-      final result = await AuthApis.getMailCodeForForgetPasswordAPI(
+      final result = await AuthApis.getForgetPasswordForSendMailCodeAPI(
         email: emailController.text,
       );
       if (result) {
         if (context.mounted) {
-          context.navigator.pushNamed(OtpCodeVerificationScreen.routeName);
+          context.navigator.pushNamed(
+            OtpCodeVerificationScreen.routeName,
+            arguments: {'email': emailController.text},
+          );
         }
       }
       loader = false;
