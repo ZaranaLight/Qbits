@@ -1,5 +1,4 @@
 import 'package:http/http.dart' as http;
-import 'package:qbits/common/app_response.dart';
 import 'package:qbits/qbits.dart';
 
 class ApiService {
@@ -79,7 +78,7 @@ class ApiService {
       debugPrint("Response Body: ${response.body}");
 
       bool isExpired = await isTokenExpire(response);
-      handleError(response);
+      handle2Error(response);
       if (!isExpired) {
         return response;
       }
@@ -206,6 +205,21 @@ class ApiService {
     try {
       final model = appResponseFromJson(response.body);
       print("model Code: ${model.code}");
+      if (model.code == 0) {
+        return true;
+      } else if (model.code == -1) {
+        showErrorMsg(model.msg ?? "Error");
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+    return false;
+  }
+
+  static bool handle2Error(http.Response response) {
+    try {
+      final model = appResponse2FromJson(response.body);
+      print("model2 Code: ${model.code}");
       if (model.code == 0) {
         return true;
       } else if (model.code == -1) {

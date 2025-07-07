@@ -84,8 +84,8 @@ class OtpCodeVerificationScreen extends StatelessWidget {
                       (str) => context
                           .read<OtpCodeVerificationProvider>()
                           .onOtpChanged(str),
-                  // onChanged:
-                  //     context.read<OtpCodeVerificationProvider>().onOtpChanged,
+                  onChanged:
+                      context.read<OtpCodeVerificationProvider>().onOtpChanged,
                   autofocus: true,
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
                   defaultPinTheme: pinTheme(),

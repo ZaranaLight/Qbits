@@ -89,7 +89,7 @@ class AuthApis {
       final responseBody = jsonDecode(response.body);
       if (response.statusCode == 200 || response.statusCode == 201) {
         if (responseBody['data'] != null && responseBody != null) {
-          showSuccessToast('Login successful');
+          showSuccessToast('Otp verified successfully');
 
           return true;
         } else {
