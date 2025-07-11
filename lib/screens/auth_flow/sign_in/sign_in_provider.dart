@@ -80,6 +80,8 @@ class SignInProvider extends ChangeNotifier {
     );
   }
 
+  LoginRes? userData;
+
   Future<void> callLoginApi(BuildContext context) async {
     if (validation(context)) {
       loader = true;
@@ -88,7 +90,10 @@ class SignInProvider extends ChangeNotifier {
         email: accountController.text,
         password: passwordController.text,
       );
-      if (result) {
+      userData = result;
+      if (userData != null) {
+        await PrefService.set(PrefKeys.emailId, userData?.userName);
+        await PrefService.set(PrefKeys.password, userData?.password);
         if (context.mounted) {
           context.navigator.pushNamedAndRemoveUntil(
             DashboardScreen.routeName,

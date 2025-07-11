@@ -45,6 +45,7 @@ class BluetoothManuallyProvider extends ChangeNotifier {
     await FlutterBluePlus.stopScan();
   }
 
+  @override
   dispose() {
     FlutterBluePlus.stopScan();
     super.dispose();

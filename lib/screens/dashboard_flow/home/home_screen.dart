@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<HomeProvider>(
-      builder: (context, state, child) {
+      builder: (context, provider, child) {
         return Stack(
           children: [
             Container(
@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
 
                 Expanded(
                   child: StackedLoader(
-                    loading: state.loader,
+                    loading: provider.loader,
                     child: CustomSingleChildScroll(
                       padding: EdgeInsets.symmetric(
                         horizontal: Constants.horizontalPadding,

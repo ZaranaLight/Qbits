@@ -16,12 +16,12 @@ class OtpCodeVerificationProvider extends ChangeNotifier {
       notifyListeners();
       final result = await AuthApis.verifyOTPCodeAPI(
         email: email,
-        code: otp??""  ,
+        code: otp ?? "",
       );
       if (result) {
         if (context.mounted) {
-         context.navigator.pop();
-         context.navigator.pop();
+          context.navigator.pop();
+          context.navigator.pop();
         }
       }
       loader = false;
@@ -30,9 +30,8 @@ class OtpCodeVerificationProvider extends ChangeNotifier {
   }
 
   void onOtpChanged(String value) {
-    print("value: ${value.length}");
     otp = value;
-    isOTPValidate = value.length ==6 ;
+    isOTPValidate = value.length == 6;
 
     // if (isOTPValidate) {
     //   otpError = "";

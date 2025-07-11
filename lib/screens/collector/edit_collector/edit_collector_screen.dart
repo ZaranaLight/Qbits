@@ -1,6 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/collector/add_collector/add_collector_provider.dart';
-import 'package:qbits/screens/collector/edit_collector/edit_collector_provider.dart';
 
 class EditCollectorScreen extends StatelessWidget {
   const EditCollectorScreen({super.key});

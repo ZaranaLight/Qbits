@@ -5,159 +5,191 @@ class DeviceLibraryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: ColorRes.white,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Material(
-        color: ColorRes.transparent,
-        child: InkWell(
-          onTap: () {},
-          borderRadius: BorderRadius.circular(5.pw),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20.pw,
-                  vertical: 16.ph,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      context.l10n?.deviceLibrary ?? "",
-                      style: styleW500S16.copyWith(
-                        color: ColorRes.black.withValues(alpha: 0.6),
-                      ),
-                    ),
-
-                    /// Forward Icon
-                    SvgAsset(
-                      imagePath: AssetRes.forwardIcon,
-                      color: ColorRes.black.withValues(alpha: 0.3),
-                    ),
-                  ],
-                ),
-              ),
-
-              Container(
-                height: 1,
-                color: ColorRes.black.withValues(alpha: 0.10),
-              ),
-
-              /// Space
-              14.ph.spaceVertical,
-
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.pw),
-                child: Row(
-                  children: [
-                    Text(
-                      "${context.l10n?.allQuantity ?? ""}: ",
-                      style: styleW500S16.copyWith(
-                        color: ColorRes.black.withValues(alpha: 0.5),
-                      ),
-                    ),
-                    Text(
-                      "0",
-                      style: styleW600S16.copyWith(color: ColorRes.darkGrey),
-                    ),
-                  ],
-                ),
-              ),
-
-              /// Space
-              13.ph.spaceVertical,
-
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20.pw,
-                  vertical: 20.ph,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _dotWidget(
-                      color: ColorRes.parrot,
-                      title: context.l10n?.online ?? "",
-                      value: "0",
-                      isRightSide: false,
-                    ),
-                    _dotWidget(
-                      color: ColorRes.orange,
-                      title: context.l10n?.offline ?? "",
-                      value: "0",
-                      isRightSide: false,
-                    ),
-                    _dotWidget(
-                      color: ColorRes.pinkish,
-                      title: context.l10n?.alarm ?? "",
-                      value: "0",
-                      isRightSide: true,
-                    ),
-                  ],
-                ),
-              ),
-
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.pw),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _dotWidget(
-                      color: ColorRes.azureBlue,
-                      title: context.l10n?.correlate ?? "",
-                      value: "0",
-                      isRightSide: false,
-                    ),
-                    _dotWidget(
-                      color: ColorRes.mintBlue,
-                      title: context.l10n?.uncorrelate ?? "",
-                      value: "0",
-                      isRightSide: true,
-                    ),
-                  ],
-                ),
-              ),
-
-              Container(
-                margin: EdgeInsets.only(
-                  right: 6.pw,
-                  left: 6.pw,
-                  bottom: 20.ph,
-                  top: 11.ph,
-                ),
-                padding: EdgeInsets.symmetric(vertical: 20.ph),
-                decoration: BoxDecoration(
-                  color: ColorRes.primaryColor.withValues(alpha: 0.06),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Row(
-                  spacing: 6.pw,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _activityWidget(
-                      title: context.l10n?.dailyActivity ?? "",
-                      value: "0",
-                    ),
-                    _activityWidget(
-                      title: context.l10n?.monthlyActivity ?? "",
-                      value: "0",
-                    ),
-                    _activityWidget(
-                      title: context.l10n?.yearlyActivity ?? "",
-                      value: "0",
-                    ),
-                  ],
-                ),
-              ),
-            ],
+    return Consumer<HomeProvider>(
+      builder: (context, provider, child) {
+        return Container(
+          decoration: BoxDecoration(
+            color: ColorRes.white,
+            borderRadius: BorderRadius.circular(8),
           ),
-        ),
-      ),
+          child: Material(
+            color: ColorRes.transparent,
+            child: InkWell(
+              onTap: () {},
+              borderRadius: BorderRadius.circular(5.pw),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20.pw,
+                      vertical: 16.ph,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          context.l10n?.deviceLibrary ?? "",
+                          style: styleW500S16.copyWith(
+                            color: ColorRes.black.withValues(alpha: 0.6),
+                          ),
+                        ),
+
+                        /// Forward Icon
+                        SvgAsset(
+                          imagePath: AssetRes.forwardIcon,
+                          color: ColorRes.black.withValues(alpha: 0.3),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  Container(
+                    height: 1,
+                    color: ColorRes.black.withValues(alpha: 0.10),
+                  ),
+
+                  /// Space
+                  14.ph.spaceVertical,
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.pw),
+                    child: Row(
+                      children: [
+                        Text(
+                          "${context.l10n?.allQuantity ?? ""}: ",
+                          style: styleW500S16.copyWith(
+                            color: ColorRes.black.withValues(alpha: 0.5),
+                          ),
+                        ),
+                        Text(
+                          provider.deviceLibraryResponseModel?.count
+                                  .toString() ??
+                              "0",
+                          style: styleW600S16.copyWith(
+                            color: ColorRes.darkGrey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  /// Space
+                  13.ph.spaceVertical,
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20.pw,
+                      vertical: 20.ph,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _dotWidget(
+                          color: ColorRes.parrot,
+                          title: context.l10n?.online ?? "",
+                          value:
+                              provider.deviceLibraryResponseModel?.online
+                                  .toString() ??
+                              "0",
+                          isRightSide: false,
+                        ),
+                        _dotWidget(
+                          color: ColorRes.orange,
+                          title: context.l10n?.offline ?? "",
+                          value:
+                              provider.deviceLibraryResponseModel?.offline
+                                  .toString() ??
+                              "0",
+                          isRightSide: false,
+                        ),
+                        _dotWidget(
+                          color: ColorRes.pinkish,
+                          title: context.l10n?.alarm ?? "",
+                          value:
+                              provider.deviceLibraryResponseModel?.alarm
+                                  .toString() ??
+                              "0",
+                          isRightSide: true,
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.pw),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _dotWidget(
+                          color: ColorRes.azureBlue,
+                          title: context.l10n?.correlate ?? "",
+                          value:
+                              provider.deviceLibraryResponseModel?.plant
+                                  .toString() ??
+                              "0",
+                          isRightSide: false,
+                        ),
+                        _dotWidget(
+                          color: ColorRes.mintBlue,
+                          title: context.l10n?.uncorrelate ?? "",
+                          value:
+                              provider.deviceLibraryResponseModel?.unPlant
+                                  .toString() ??
+                              "0",
+                          isRightSide: true,
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  Container(
+                    margin: EdgeInsets.only(
+                      right: 6.pw,
+                      left: 6.pw,
+                      bottom: 20.ph,
+                      top: 11.ph,
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 20.ph),
+                    decoration: BoxDecoration(
+                      color: ColorRes.primaryColor.withValues(alpha: 0.06),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Row(
+                      spacing: 6.pw,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _activityWidget(
+                          title: context.l10n?.dailyActivity ?? "",
+                          value:
+                              provider.deviceLibraryResponseModel?.dayLive
+                                  .toString() ??
+                              "0",
+                        ),
+                        _activityWidget(
+                          title: context.l10n?.monthlyActivity ?? "",
+                          value:
+                              provider.deviceLibraryResponseModel?.monthLive
+                                  .toString() ??
+                              "0",
+                        ),
+                        _activityWidget(
+                          title: context.l10n?.yearlyActivity ?? "",
+                          value:
+                              provider.deviceLibraryResponseModel?.yearLive
+                                  .toString() ??
+                              "0",
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -203,7 +235,8 @@ class DeviceLibraryWidget extends StatelessWidget {
               Text(
                 title,
                 style: styleW500S14.copyWith(
-                  color: ColorRes.black.withValues(alpha: 0.5),height: 1
+                  color: ColorRes.black.withValues(alpha: 0.5),
+                  height: 1,
                 ),
               ),
             ],

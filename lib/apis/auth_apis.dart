@@ -1,10 +1,9 @@
 import 'package:qbits/qbits.dart';
 
 class AuthApis {
-  ///Login API to authenticate user credentials.
-  static Future<bool> getLoginCredential({
-    required String email,
-    required String password,
+  static Future<LoginRes?> getLoginCredential({
+    String email = "",
+    String password = "",
   }) async {
     try {
       final Map<String, dynamic> body = {"atun": email, "atpd": password};
@@ -15,11 +14,16 @@ class AuthApis {
       );
       if (response == null) {
         showCatchToast('Login failed: No response from server', null);
-        return false;
+        return null;
       }
       final responseBody = jsonDecode(response.body);
+
       if (response.statusCode == 200 || response.statusCode == 201) {
         if (responseBody['data'] != null && responseBody != null) {
+          await PrefService.set(
+            PrefKeys.emailId,
+            jsonEncode(responseBody['data']['token']['token']),
+          );
           await PrefService.set(
             PrefKeys.sessionToken,
             jsonEncode(responseBody['data']['token']['token']),
@@ -28,18 +32,18 @@ class AuthApis {
             PrefKeys.appSecret,
             jsonEncode(responseBody['data']['token']['appSecret']),
           );
-          LoginRes.fromJson(responseBody['data']);
+          await PrefService.set(
+            PrefKeys.userData,
+            jsonEncode(responseBody['data']),
+          );
           showSuccessToast('Login successful');
-          return true;
-        } else {
-          showCatchToast(jsonDecode(response.body)['msg'], null);
-          return false;
+          return LoginRes.fromJson(responseBody['data']);
         }
       }
     } catch (exception, stack) {
       showCatchToast(exception, stack);
     }
-    return false;
+    return null;
   }
 
   ///Forgot Password API to send OTP to user's email.

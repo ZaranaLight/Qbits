@@ -180,10 +180,10 @@ class DashBoardTab extends StatelessWidget {
             provider.tabs.asMap().entries.map((entry) {
               final index = entry.key;
               final tab = entry.value;
-              final isSelected = provider.selectedIndex == index;
+              final isSelected = provider.selectedChartTypeIndex == index;
 
               return InkWell(
-                onTap: () => provider.selectTab(index),
+                onTap: () => provider.selectChartTab(index),
                 child: AnimatedSwitcher(
                   duration: 250.milliseconds,
                   transitionBuilder: (child, animation) {

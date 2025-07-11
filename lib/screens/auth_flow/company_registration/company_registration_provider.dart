@@ -93,7 +93,7 @@ class CompanyRegistrationProvider extends ChangeNotifier {
       final result = await AuthApis.sendMailCodeWithCheckAPI(
         email: mailController.text,
       );
-      print("Result: $result");
+
       if (result) {
         // if (context.mounted) {
         //   context.navigator.pushNamed(OtpCodeVerificationScreen.routeName);
@@ -107,12 +107,10 @@ class CompanyRegistrationProvider extends ChangeNotifier {
   bool sendMailValidation(BuildContext context) {
     final email = mailController.text.trim();
     if (email.isEmpty ||
-        !RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$").hasMatch(email)) {
-      print('Invalid email format');
+        !RegExp(r"^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$").hasMatch(email)) {
       mailError = "Please enter a valid email";
       showCodeField = false;
     } else {
-      print('Valid email format');
       mailError = "";
       showCodeField = true;
       // TODO: Add API call here if needed
@@ -155,7 +153,6 @@ class CompanyRegistrationProvider extends ChangeNotifier {
         accountName: accountController.text,
         mailOtp: verificationCodeController.text,
       );
-      print("Result: $result");
       if (result) {
         // if (context.mounted) {
         //   context.navigator.pushNamed(OtpCodeVerificationScreen.routeName);

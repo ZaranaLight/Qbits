@@ -5,79 +5,83 @@ class TotalPlantsContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: ColorRes.white,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Material(
-        color: ColorRes.transparent,
-        child: InkWell(
-          onTap: () {
-            context.read<DashboardProvider>().onPageChanged(1);
-          },
-          borderRadius: BorderRadius.circular(5.pw),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20.pw,
-                  vertical: 16.ph,
-                ),
-                child: Row(
-                  children: [
-                    Text(
-                      context.l10n?.totalPlants ?? "",
-                      style: styleW500S16.copyWith(
-                        color: ColorRes.black.withValues(alpha: 0.6),
-                      ),
-                    ),
-
-                    /// Space
-                    6.pw.spaceHorizontal,
-
-                    Text("7", style: styleW600S16),
-
-                    Spacer(),
-
-                    /// Forward Icon
-                    SvgAsset(
-                      imagePath: AssetRes.forwardIcon,
-                      color: ColorRes.black.withValues(alpha: 0.3),
-                    ),
-                  ],
-                ),
-              ),
-
-              Container(
-                height: 1,
-                color: ColorRes.black.withValues(alpha: 0.10),
-              ),
-
-              _totalPlant(
-                title: context.l10n?.normal ?? "",
-                svg: AssetRes.doneIcon,
-                value: "0",
-              ),
-
-              _totalPlant(
-                title: context.l10n?.offline ?? "",
-                svg: AssetRes.offlineIcon,
-                value: "6",
-              ),
-
-              _totalPlant(
-                title: context.l10n?.alarm ?? "",
-                svg: AssetRes.exclamationIcon,
-                value: "1",
-              ),
-
-              /// Space
-              8.ph.spaceVertical,
-            ],
+    return Consumer<HomeProvider>(
+      builder: (context,provider, child) {
+        return Container(
+          decoration: BoxDecoration(
+            color: ColorRes.white,
+            borderRadius: BorderRadius.circular(8),
           ),
-        ),
-      ),
+          child: Material(
+            color: ColorRes.transparent,
+            child: InkWell(
+              onTap: () {
+                context.read<DashboardProvider>().onPageChanged(1);
+              },
+              borderRadius: BorderRadius.circular(5.pw),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20.pw,
+                      vertical: 16.ph,
+                    ),
+                    child: Row(
+                      children: [
+                        Text(
+                          context.l10n?.totalPlants ?? "",
+                          style: styleW500S16.copyWith(
+                            color: ColorRes.black.withValues(alpha: 0.6),
+                          ),
+                        ),
+
+                        /// Space
+                        6.pw.spaceHorizontal,
+
+                        Text("${provider.powerStationResponseModel?.plantCount}", style: styleW600S16),
+
+                        Spacer(),
+
+                        /// Forward Icon
+                        SvgAsset(
+                          imagePath: AssetRes.forwardIcon,
+                          color: ColorRes.black.withValues(alpha: 0.3),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  Container(
+                    height: 1,
+                    color: ColorRes.black.withValues(alpha: 0.10),
+                  ),
+
+                  _totalPlant(
+                    title: context.l10n?.normal ?? "",
+                    svg: AssetRes.doneIcon,
+                    value: "${provider.powerStationResponseModel?.normalCount}",
+                  ),
+
+                  _totalPlant(
+                    title: context.l10n?.offline ?? "",
+                    svg: AssetRes.offlineIcon,
+                    value: "${provider.powerStationResponseModel?.offlineCount}",
+                  ),
+
+                  _totalPlant(
+                    title: context.l10n?.alarm ?? "",
+                    svg: AssetRes.exclamationIcon,
+                    value: "${provider.powerStationResponseModel?.warnCount}",
+                  ),
+
+                  /// Space
+                  8.ph.spaceVertical,
+                ],
+              ),
+            ),
+          ),
+        );
+      }
     );
   }
 

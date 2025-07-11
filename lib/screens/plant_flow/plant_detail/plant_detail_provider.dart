@@ -3,8 +3,6 @@ import 'package:qbits/qbits.dart';
 class PlantDetailProvider extends ChangeNotifier {
   bool loader = false;
 
-  int previousIndex = 0;
-
   final PageController pageController = PageController();
 
   PlantDetailProvider() {
@@ -18,13 +16,13 @@ class PlantDetailProvider extends ChangeNotifier {
     }
   }
 
-  bool _isFollow = false;
+  bool _isPlantFollow = false;
 
-  bool get isFollow => _isFollow;
+  bool get isPlantFollow => _isPlantFollow;
 
-  setFollow(bool value) {
-    _isFollow = value;
-    showCustomToast(_isFollow ? "Following the plant" : "Unfollowed the plant");
+  setPlantFollow(bool value) {
+    _isPlantFollow = value;
+    showCustomToast(_isPlantFollow ? "Following the plant" : "Unfollowed the plant");
     notifyListeners();
   }
 
@@ -74,10 +72,10 @@ class PlantDetailProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void selectTab(int index) {
-    _selectedIndex = index;
+  void selectChartTab(int index) {
+    _selectedChartTypeIndex = index;
 
-    switch (_tabs[_selectedIndex]) {
+    switch (_tabs[_selectedChartTypeIndex]) {
       case 'Day':
         _viewType = ChartViewType.day;
         break;
@@ -117,15 +115,15 @@ class PlantDetailProvider extends ChangeNotifier {
 
   final List<String> _tabs = ['Day', 'Month', 'Year', 'Total'];
 
-  int _selectedIndex = 0;
+    int _selectedChartTypeIndex = 0;
 
-  int get selectedIndex => _selectedIndex;
+  int get  selectedChartTypeIndex => _selectedChartTypeIndex;
 
   List<FlSpot> _chartData = [];
 
   List<FlSpot> get chartData => _chartData;
 
-  String get currentTab => _tabs[_selectedIndex];
+  String get currentTab => _tabs[_selectedChartTypeIndex];
 
   List<String> get tabs => _tabs;
 

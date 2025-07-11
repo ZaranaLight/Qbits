@@ -83,7 +83,6 @@ class ProfileScreen extends StatelessWidget {
           child: Container(
             width: 92.w,
             padding: EdgeInsets.symmetric(vertical: 18.ph, horizontal: 20.pw),
-
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -103,7 +102,7 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     /// Name
                     Text(
-                      "Guest",
+                      userData?.userName ?? "",
                       style: styleW600S16.copyWith(color: ColorRes.black),
                     ),
 

@@ -1,6 +1,6 @@
 import 'package:qbits/qbits.dart';
 
-class DropdownWidget extends StatelessWidget {
+class AppDropDownMenuWidget extends StatelessWidget {
   final BuildContext? context;
   final String? title;
   final String? value;
@@ -12,7 +12,7 @@ class DropdownWidget extends StatelessWidget {
   final Color? titleColor;
   final Function(String?) onChanged;
 
-  const DropdownWidget({
+  const AppDropDownMenuWidget({
     super.key,
     this.context,
     this.title,

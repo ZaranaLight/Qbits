@@ -1,35 +1,40 @@
 import 'package:qbits/qbits.dart';
 
-class TextFieldDialog extends StatelessWidget {
-  const TextFieldDialog({
+class AppTextFieldDialogWidget extends StatelessWidget {
+  const AppTextFieldDialogWidget({
     super.key,
     required this.title,
     required this.value,
     required this.onTap,
+    this.backgroundColor,
   });
 
   final String title;
   final String value;
-  final VoidCallback onTap;
+  final Color? backgroundColor;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Container(
-        decoration: BoxDecoration(
-          color: ColorRes.black.withValues(alpha: 0.05),
-        ),
-        padding: EdgeInsets.symmetric(
-          horizontal: Constants.horizontalPadding,
-          vertical: 10.ph,
-        ),
+        decoration: BoxDecoration(color: ColorRes.white),
+        padding: EdgeInsets.symmetric(vertical: 14.ph),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             /// Title
-            Expanded(child: Text(title, style: styleW600S14)),
+            Expanded(
+              child: Text(
+                title,
+                style: styleW500S14.copyWith(
+                  height: 2,
+                  color: ColorRes.black.withValues(alpha: 0.5),
+                ),
+              ),
+            ),
 
             /// Space
             10.pw.spaceHorizontal,
@@ -39,9 +44,7 @@ class TextFieldDialog extends StatelessWidget {
               child: Text(
                 value,
                 textAlign: TextAlign.end,
-                style: styleW600S14.copyWith(
-                  color: ColorRes.black.withValues(alpha: 0.6),
-                ),
+                style: styleW600S14.copyWith(color: ColorRes.black, height: 2),
               ),
             ),
           ],

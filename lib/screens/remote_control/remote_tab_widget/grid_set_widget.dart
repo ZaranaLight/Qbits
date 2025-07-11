@@ -35,56 +35,56 @@ class GridSetWidget extends StatelessWidget {
             spacing: 12.ph,
 
             children: [
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Grid Standard',
                 value: provider.gridSet.gridStandard,
                 onTap: () {
                   provider.onGridStandard(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Grid Frequency Setting',
                 value: provider.gridSet.gridFrequencySetting,
                 onTap: () {
                   provider.onFrequencySetting(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Grid Voltage Upper limit',
                 value: provider.gridSet.gridVoltageUpperLimit,
                 onTap: () {
                   provider.onGridVoltageUpperLimit(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Grid Voltage Lower limit',
                 value: provider.gridSet.gridVoltageLowerLimit,
                 onTap: () {
                   provider.onGridVoltageLowerLimit(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Grid Frequency Upper limit',
                 value: provider.gridSet.gridFrequencyUpperLimit,
                 onTap: () {
                   provider.onGridFrequencyUpperLimit(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Grid Frequency Lower limit',
                 value: provider.gridSet.gridFrequencyLowerLimit,
                 onTap: () {
                   provider.onGridFrequencyLowerLimit(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Reconnect Delay',
                 value: provider.gridSet.reconnectDelay,
                 onTap: () {
                   provider.onReconnectDelay(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Grid Voltage',
                 value: provider.gridSet.gridVoltage,
                 onTap: () {

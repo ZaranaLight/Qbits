@@ -1,5 +1,3 @@
-import 'package:qbits/qbits.dart';
-
 class EndPoints {
   /// Live URL
   static const domain = "http://www.aotaisolarcloud.com/solarweb/";
@@ -14,6 +12,15 @@ class EndPoints {
   static const queryUserByEmailAPI = "${domain}auth/queryUserByEmail";
   static const registerAPI = "${domain}user/register";
   static const sendMailCodeWithCheckAPI = "${domain}auth/sendMailCodeWithCheck";
+
   static const appSearchOrganizationAPI =
       "${domain}appcanxSearchOrganization.action";
+
+  static const getPowerAttachInformationAPI =
+      "${domain}user/getPlantInfoWithDate";
+
+  static const getDeviceLibraryAPI = "${domain}library/getSummary";
+
+  static const getPlantListAPI =
+      "${baseUrl}plant/getByPageSize?page=0&date=2025-07&pageSize=20";
 }

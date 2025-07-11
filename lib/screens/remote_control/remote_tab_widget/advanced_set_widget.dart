@@ -71,7 +71,7 @@ class AdvancedSetWidget extends StatelessWidget {
           spacing: 12.ph,
           children: [
             /// TextFieldDialog for RTC Time
-            TextFieldDialog(
+            AppTextFieldDialog2Widget(
               title: 'Set RTC Time',
               value: provider.advancedSet.setRtcTime,
               onTap: () {
@@ -79,8 +79,8 @@ class AdvancedSetWidget extends StatelessWidget {
               },
             ),
 
-            /// TextFieldDialog for Meter COM Address
-            TextFieldDialog(
+            /// AppTextFieldDialog2Widget for Meter COM Address
+            AppTextFieldDialog2Widget(
               title: 'Set Meter COM Address',
               value: provider.advancedSet.setMeterComAddress,
               onTap: () {
@@ -88,8 +88,8 @@ class AdvancedSetWidget extends StatelessWidget {
               },
             ),
 
-            /// TextFieldDialog for CT Ratio Setting
-            TextFieldDialog(
+            /// AppTextFieldDialog2Widget for CT Ratio Setting
+            AppTextFieldDialog2Widget(
               title: 'CT Ratio Setting',
               value: provider.advancedSet.ctRatioSetting,
               onTap: () {
@@ -97,8 +97,8 @@ class AdvancedSetWidget extends StatelessWidget {
               },
             ),
 
-            /// TextFieldDialog for Parallel Address Setting
-            TextFieldDialog(
+            /// AppTextFieldDialog2Widget for Parallel Address Setting
+            AppTextFieldDialog2Widget(
               title: 'Parallel Address Setting',
               value: provider.advancedSet.parallelAddressSetting,
               onTap: () {
@@ -106,8 +106,8 @@ class AdvancedSetWidget extends StatelessWidget {
               },
             ),
 
-            /// TextFieldDialog for Total Parallel Setting
-            TextFieldDialog(
+            /// AppTextFieldDialog2Widget for Total Parallel Setting
+            AppTextFieldDialog2Widget(
               title: 'Total number in parallel Setting',
               value: provider.advancedSet.totalParallelSetting,
               onTap: () {
@@ -116,7 +116,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for PV Start Offline
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'PV_start-offline',
               context: context,
               value: provider.advancedSet.pvStartOffline,
@@ -124,8 +124,8 @@ class AdvancedSetWidget extends StatelessWidget {
               onChanged: (value) => provider.onPvStartOffline(value!),
             ),
 
-            /// TextFieldDialog for Active Power Regulation
-            TextFieldDialog(
+            /// AppTextFieldDialog2Widget for Active Power Regulation
+            AppTextFieldDialog2Widget(
               title: 'Active Power Regulation',
               value: provider.advancedSet.activePowerRegulation,
               onTap: () {
@@ -133,8 +133,8 @@ class AdvancedSetWidget extends StatelessWidget {
               },
             ),
 
-            /// TextFieldDialog for Reactive Power Regulation
-            TextFieldDialog(
+            /// AppTextFieldDialog2Widget for Reactive Power Regulation
+            AppTextFieldDialog2Widget(
               title: 'Reactive Power Regulation',
               value: provider.advancedSet.reactivePowerRegulation,
               onTap: () {
@@ -142,8 +142,8 @@ class AdvancedSetWidget extends StatelessWidget {
               },
             ),
 
-            /// TextFieldDialog for Power Factor Regulation
-            TextFieldDialog(
+            /// AppTextFieldDialog2Widget for Power Factor Regulation
+            AppTextFieldDialog2Widget(
               title: 'Power Factor Regulation',
               value: provider.advancedSet.powerFactorRegulation,
               onTap: () {
@@ -152,7 +152,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for Shadow Scan Enable
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'Shadow Scan enable',
               context: context,
               value: provider.advancedSet.shadowScanEnable,
@@ -161,7 +161,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for LVRT Enable
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'LVRT Enable',
               context: context,
               value: provider.advancedSet.lvrtEnable,
@@ -170,7 +170,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for Island Protection Enable
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'Island Protection enable',
               context: context,
               value: provider.advancedSet.islandProtectionEnable,
@@ -179,7 +179,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for Overload Reset
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'Overload Reset',
               context: context,
               value: provider.advancedSet.overloadReset,
@@ -188,7 +188,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for Gen Signal
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'Gen Signal',
               context: context,
               value: provider.advancedSet.genSignal,
@@ -197,7 +197,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for Grid Signal
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'Grid Signal',
               context: context,
               value: provider.advancedSet.gridSignal,
@@ -206,7 +206,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for Small Load Set
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'Small Load Set',
               context: context,
               value: provider.advancedSet.smallLoadSet,
@@ -215,7 +215,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for GEN connect to Grid input
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'GEN connect to Grid input',
               context: context,
               value: provider.advancedSet.genConnectToGridInput,
@@ -223,8 +223,8 @@ class AdvancedSetWidget extends StatelessWidget {
               onChanged: (value) => provider.onGenConnectGridInput(value!),
             ),
 
-            /// TextFieldDialog for Gen Max Run Time
-            TextFieldDialog(
+            /// AppTextFieldDialog2Widget for Gen Max Run Time
+            AppTextFieldDialog2Widget(
               title: 'Gen Max Run Time',
               value: provider.advancedSet.genMaxRunTime,
               onTap: () {
@@ -232,8 +232,8 @@ class AdvancedSetWidget extends StatelessWidget {
               },
             ),
 
-            /// TextFieldDialog for Gen Down Time
-            TextFieldDialog(
+            /// AppTextFieldDialog2Widget for Gen Down Time
+            AppTextFieldDialog2Widget(
               title: 'Gen Down Time',
               value: provider.advancedSet.genDownTime,
               onTap: () {
@@ -242,7 +242,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for BMS Stop
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'BMS Stop',
               context: context,
               value: provider.advancedSet.bmsStop,
@@ -251,7 +251,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for ARC Setup
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'ARC Setup',
               context: context,
               value: provider.advancedSet.arcSetup,
@@ -259,8 +259,8 @@ class AdvancedSetWidget extends StatelessWidget {
               onChanged: (value) => provider.onARCSetup(value!),
             ),
 
-            /// TextFieldDialog for Modbus Address
-            TextFieldDialog(
+            /// AppTextFieldDialog2Widget for Modbus Address
+            AppTextFieldDialog2Widget(
               title: 'Modbus Address',
               value: provider.advancedSet.modbusAddress,
               onTap: () {
@@ -269,7 +269,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for GFD Turn Off
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'GFD turn off',
               context: context,
               value: provider.advancedSet.gfdTurnOff,
@@ -278,7 +278,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for Leakage Turn Off
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'Leakage turn off',
               context: context,
               value: provider.advancedSet.leakageTurnOff,
@@ -287,7 +287,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for Beep
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'Beep',
               context: context,
               value: provider.advancedSet.beep,
@@ -296,7 +296,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for CT Disable
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'CT Disable',
               context: context,
               value: provider.advancedSet.ctDisable,
@@ -305,7 +305,7 @@ class AdvancedSetWidget extends StatelessWidget {
             ),
 
             /// Dropdown for DRM
-            DropdownWidget(
+            AppDropDownMenuWidget(
               title: 'DRM',
               context: context,
               value: provider.advancedSet.drm,

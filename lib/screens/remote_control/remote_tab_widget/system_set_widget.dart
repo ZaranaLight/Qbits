@@ -1,5 +1,4 @@
 import 'package:qbits/qbits.dart';
-import 'package:qbits/screens/remote_control/widget/multiple_check_dialog_widget.dart';
 
 class SystemSettings {
   String switchOnOffEnable;
@@ -43,16 +42,20 @@ class SystemSetWidget extends StatelessWidget {
 
             children: [
               ///Run Mode
-              DropdownWidget(
+              AppDropDownMenuWidget(
                 title: 'Switch ON and OFF enable',
                 context: context,
                 value: provider.settings.switchOnOffEnable,
-                options: ['ON', 'OFF','hjkhjkhjkhjkhjkhjhjhjhjhjhjhjhjhjhjhjkhkhjhjkhjkhjkhjkhjkhkjhkjhkhjkhjkh'],
+                options: [
+                  'ON',
+                  'OFF',
+                  'hjkhjkhjkhjkhjkhjhjhjhjhjhjhjhjhjhjhjkhkhjhjkhjkhjkhjkhjkhkjhkjhkhjkhjkh',
+                ],
                 onChanged: (value) => provider.updateOnOffEnable(value!),
               ),
 
               ///Run Mode
-              DropdownWidget(
+              AppDropDownMenuWidget(
                 title: 'Run Mode',
                 context: context,
                 value: provider.settings.runMode,
@@ -61,7 +64,7 @@ class SystemSetWidget extends StatelessWidget {
               ),
 
               ///Work Mode
-              DropdownWidget(
+              AppDropDownMenuWidget(
                 title: 'Work Mode',
                 context: context,
                 value: provider.settings.workMode,
@@ -70,7 +73,7 @@ class SystemSetWidget extends StatelessWidget {
               ),
 
               ///Reflux Uplink Power
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Reflux Uplink Power',
                 value: provider.settings.refluxUplinkPower,
                 onTap: () {
@@ -79,7 +82,7 @@ class SystemSetWidget extends StatelessWidget {
               ),
 
               ///Solar Sell
-              DropdownWidget(
+              AppDropDownMenuWidget(
                 title: 'Solar Sell',
                 context: context,
                 value: provider.settings.solarSell,
@@ -95,7 +98,7 @@ class SystemSetWidget extends StatelessWidget {
               ),
 
               ///Max Sell Power
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Max Sell Power',
                 value: provider.settings.maxSellPower,
                 onTap: () {
@@ -104,7 +107,7 @@ class SystemSetWidget extends StatelessWidget {
               ),
 
               ///Energy Mode
-              DropdownWidget(
+              AppDropDownMenuWidget(
                 title: 'Energy Mode',
                 context: context,
                 value: provider.settings.energyMode,
@@ -113,7 +116,7 @@ class SystemSetWidget extends StatelessWidget {
               ),
 
               ///Off-line Mode
-              DropdownWidget(
+              AppDropDownMenuWidget(
                 title: 'Off-line Mode',
                 context: context,
                 value: provider.settings.offlineMode,
@@ -122,7 +125,7 @@ class SystemSetWidget extends StatelessWidget {
               ),
 
               ///Grid Peak-shave
-              DropdownWidget(
+              AppDropDownMenuWidget(
                 title: 'Grid Peak-shave',
                 context: context,
                 value: provider.settings.gridPeakShave,
@@ -131,7 +134,7 @@ class SystemSetWidget extends StatelessWidget {
               ),
 
               ///Grid Peak-shave Power
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Grid Peak-shave Power',
                 value: provider.settings.gridPeakShavePower,
                 onTap: () {

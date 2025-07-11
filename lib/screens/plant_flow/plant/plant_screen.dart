@@ -102,9 +102,7 @@ class PlantScreen extends StatelessWidget {
           color: ColorRes.white,
           borderRadius: BorderRadius.circular(20),
         ),
-        constraints: BoxConstraints(
-          minWidth: 110.pw,
-        ),
+        constraints: BoxConstraints(minWidth: 110.pw),
         height: double.infinity,
         child: Material(
           color: Colors.transparent,
@@ -112,10 +110,7 @@ class PlantScreen extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             onTap: onTap,
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: 7.ph,
-                horizontal: 7.pw,
-              ),
+              padding: EdgeInsets.symmetric(vertical: 7.ph, horizontal: 7.pw),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,

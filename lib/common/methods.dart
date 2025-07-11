@@ -29,6 +29,19 @@ void hideKeyboard({BuildContext? context}) {
   }
 }
 
+LoginRes? get userData {
+  try {
+    final str = PrefService.getString(PrefKeys.userData);
+
+    if (str.isNotEmpty) {
+      return LoginRes.fromJson(jsonDecode(str));
+    }
+  } catch (e) {
+    debugPrint(e.toString());
+  }
+  return null;
+}
+
 Future<bool> checkCameraPermission(BuildContext context) async {
   final permission = await Permission.camera.request();
 
@@ -74,12 +87,41 @@ String generateCustomString(DateTime dateTime) {
 
   // Create the original string
   String str = '$timestamp&-api-&$timestampReversed';
+  String str2 = calculateMd5(str) + timestamp;
 
+  print('strr1 = $str');
   // Compute the encoded MD5 + timestamp
   String result = calculateMd5(str) + timestamp;
 
   return result;
 }
+
+/// Generates an encoded token hash using token, secret, and timestamp
+String generateTokenHash({String? dateTime}) {
+  final timestamp = (dateTime ?? DateTime.now()).toString();
+  final rawStr =
+      '${userData?.token?.token ?? ""}&${userData?.token?.appSecret ?? ""}&$timestamp';
+
+  print('Raw token string: $rawStr');
+
+  return calculateMd5(rawStr);
+}
+
+// String generateCustomString(DateTime dateTime) {
+//   // Get current timestamp in milliseconds
+//   String timestamp = dateTime.millisecondsSinceEpoch.toString();
+//
+//   // Reverse timestamp
+//   String timestampReversed = timestamp.split('').reversed.join();
+//
+//   // Create the original string
+//   String str = '$timestamp&-api-&$timestampReversed';
+//
+//   // Compute the encoded MD5 + timestamp
+//   String result = calculateMd5(str) + timestamp;
+//
+//   return result;
+// }
 
 Future<void> requestPermissions() async {
   await [

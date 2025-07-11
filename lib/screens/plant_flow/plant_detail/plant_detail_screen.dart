@@ -20,7 +20,7 @@ class PlantDetailScreen extends StatelessWidget {
         builder: (context, state, child) {
           return Scaffold(
             floatingActionButton: Visibility(
-              visible: state.deviceTabIndex == 1 && state.selectedIndex == 1,
+              visible: state.deviceTabIndex == 1 && state.plantPageControllerIndex == 1,
               child: FloatingActionButton(
                 backgroundColor: ColorRes.primaryColor,
                 shape: RoundedRectangleBorder(
@@ -28,8 +28,8 @@ class PlantDetailScreen extends StatelessWidget {
                 ),
                 onPressed:
                     () => context.navigator.pushNamed(
-                  AddCollectorScreen.routeName,
-                ),
+                      AddCollectorScreen.routeName,
+                    ),
                 child: SvgAsset(imagePath: AssetRes.plusIcon),
               ),
             ),
@@ -40,7 +40,7 @@ class PlantDetailScreen extends StatelessWidget {
                   actions: [
                     InkWell(
                       onTap: () {
-                        state.setFollow(!state.isFollow);
+                        state.setPlantFollow(!state.isPlantFollow);
                       },
                       borderRadius: BorderRadius.circular(5.pw),
                       child: Padding(
@@ -48,7 +48,7 @@ class PlantDetailScreen extends StatelessWidget {
                         child: SvgAsset(
                           imagePath: AssetRes.starIcon,
                           color:
-                              state.isFollow
+                              state.isPlantFollow
                                   ? ColorRes.orange2
                                   : ColorRes.grey3,
                         ),

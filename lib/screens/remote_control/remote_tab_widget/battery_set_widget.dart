@@ -46,105 +46,105 @@ class BatterySetWidget extends StatelessWidget {
           child: Column(
             spacing: 11.ph,
             children: [
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'BMS_protocol Setting',
                 value: provider.batterySetting.bmsProtocolSetting,
                 onTap: () {
                   provider.onBmsProtocolSetting(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Battery Mode',
                 value: provider.batterySetting.batteryMode,
                 onTap: () {
                   provider.onBmsProtocolSetting(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Battery Mode',
                 value: provider.batterySetting.batteryMode,
                 onTap: () {
                   provider.onBatteryMode(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Battery Capacity',
                 value: provider.batterySetting.batteryCapacity,
                 onTap: () {
                   provider.onBatteryCapacityMode(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Battery Activate',
                 value: provider.batterySetting.batteryActivate,
                 onTap: () {
                   provider.onBatteryActivateMode(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Equalizing Charge Voltage',
                 value: provider.batterySetting.equalizingChargeVoltage,
                 onTap: () {
                   provider.onEqualizingChargeVoltageMode(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Equalizing Charge Current',
                 value: provider.batterySetting.equalizingChargeCurrent,
                 onTap: () {
                   provider.onEqualizingChargeCurrentMode(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Floating Charge Voltage',
                 value: provider.batterySetting.floatingChargeVoltage,
                 onTap: () {
                   provider.onFloatingChargeVoltageMode(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Floating Charge Current',
                 value: provider.batterySetting.floatingChargeCurrent,
                 onTap: () {
                   provider.onFloatingChargeCurrentMode(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Floating Charge Time',
                 value: provider.batterySetting.floatingChargeTime,
                 onTap: () {
                   provider.onFloatingChargeTimeMode(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Discharge Cut-off Voltage',
                 value: provider.batterySetting.dischargeCutOffVoltage,
                 onTap: () {
                   provider.onDischargeCutoffVoltageMode(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Discharge Max. Current',
                 value: provider.batterySetting.dischargeMaxCurrent,
                 onTap: () {
                   provider.onDischargeMaxCurrentMode(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Soc Protection Off-gride',
                 value: provider.batterySetting.socProtectionOffGrid,
                 onTap: () {
                   provider.onSocProtectionOffGridMode(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Soc Protection Smart Load',
                 value: provider.batterySetting.socProtectionSmartLoad,
                 onTap: () {
                   provider.onSocProtectionSmartLoadMode(context);
                 },
               ),
-              TextFieldDialog(
+              AppTextFieldDialog2Widget(
                 title: 'Voltage Protection Smart Load',
                 value: provider.batterySetting.voltageProtectionSmartLoad,
                 onTap: () {

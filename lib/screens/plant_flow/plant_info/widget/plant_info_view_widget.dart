@@ -71,7 +71,7 @@ class EditableInfoField extends StatelessWidget {
       if (isDropdown && options != null && onChanged != null) {
         content =
         ///Run Mode
-        DropdownWidget(
+        AppDropDownMenuWidget(
           title: title,
           context: context,
           value: value,
@@ -82,7 +82,11 @@ class EditableInfoField extends StatelessWidget {
           leftPadding: 0,
         );
       } else {
-        content = TextFieldDialog2(title: title, value: value, onTap: onTap);
+        content = AppTextFieldDialogWidget(
+          title: title,
+          value: value,
+          onTap: onTap,
+        );
       }
     } else {
       content = PlantInfoViewWidget(title: title, value: value);

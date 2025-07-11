@@ -1,11 +1,8 @@
 import 'package:qbits/qbits.dart';
 
+LoginRes loginResFromJson(String str) => LoginRes.fromJson(json.decode(str));
 
-LoginRes loginResFromJson(String str) =>
-    LoginRes.fromJson(json.decode(str));
-
-String loginResToJson(LoginRes data) =>
-    json.encode(data.toJson());
+String loginResToJson(LoginRes data) => json.encode(data.toJson());
 
 class LoginRes {
   int? id;
@@ -25,23 +22,24 @@ class LoginRes {
   String? recordTime;
   Token? token;
 
-  LoginRes(
-      {this.id,
-        this.userName,
-        this.password,
-        this.rights,
-        this.remark1,
-        this.remark2,
-        this.phone,
-        this.qq,
-        this.email,
-        this.collectorNo,
-        this.remark3,
-        this.remark4,
-        this.remark5,
-        this.remark6,
-        this.recordTime,
-        this.token});
+  LoginRes({
+    this.id,
+    this.userName,
+    this.password,
+    this.rights,
+    this.remark1,
+    this.remark2,
+    this.phone,
+    this.qq,
+    this.email,
+    this.collectorNo,
+    this.remark3,
+    this.remark4,
+    this.remark5,
+    this.remark6,
+    this.recordTime,
+    this.token,
+  });
 
   LoginRes.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -59,28 +57,28 @@ class LoginRes {
     remark5 = json['remark5'];
     remark6 = json['remark6'];
     recordTime = json['recordTime'];
-    token = json['token'] != null ? new Token.fromJson(json['token']) : null;
+    token = json['token'] != null ? Token.fromJson(json['token']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['userName'] = this.userName;
-    data['password'] = this.password;
-    data['rights'] = this.rights;
-    data['remark1'] = this.remark1;
-    data['remark2'] = this.remark2;
-    data['phone'] = this.phone;
-    data['qq'] = this.qq;
-    data['email'] = this.email;
-    data['collectorNo'] = this.collectorNo;
-    data['remark3'] = this.remark3;
-    data['remark4'] = this.remark4;
-    data['remark5'] = this.remark5;
-    data['remark6'] = this.remark6;
-    data['recordTime'] = this.recordTime;
-    if (this.token != null) {
-      data['token'] = this.token!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['userName'] = userName;
+    data['password'] = password;
+    data['rights'] = rights;
+    data['remark1'] = remark1;
+    data['remark2'] = remark2;
+    data['phone'] = phone;
+    data['qq'] = qq;
+    data['email'] = email;
+    data['collectorNo'] = collectorNo;
+    data['remark3'] = remark3;
+    data['remark4'] = remark4;
+    data['remark5'] = remark5;
+    data['remark6'] = remark6;
+    data['recordTime'] = recordTime;
+    if (token != null) {
+      data['token'] = token!.toJson();
     }
     return data;
   }
@@ -94,8 +92,14 @@ class Token {
   int? rate;
   String? ip;
 
-  Token(
-      {this.uid, this.appSecret, this.token, this.iplist, this.rate, this.ip});
+  Token({
+    this.uid,
+    this.appSecret,
+    this.token,
+    this.iplist,
+    this.rate,
+    this.ip,
+  });
 
   Token.fromJson(Map<String, dynamic> json) {
     uid = json['uid'];
@@ -107,14 +111,13 @@ class Token {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['uid'] = this.uid;
-    data['appSecret'] = this.appSecret;
-    data['token'] = this.token;
-    data['iplist'] = this.iplist;
-    data['rate'] = this.rate;
-    data['ip'] = this.ip;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['uid'] = uid;
+    data['appSecret'] = appSecret;
+    data['token'] = token;
+    data['iplist'] = iplist;
+    data['rate'] = rate;
+    data['ip'] = ip;
     return data;
   }
 }
-

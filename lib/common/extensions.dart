@@ -11,6 +11,7 @@ extension ValidationExt on String {
   bool isPhoneValid() {
     return RegExp(r"(^(?:[+0]9)?[0-9]{10,12}$)").hasMatch(this);
   }
+
   bool isValidPassword() {
     final hasMinLength = length >= 8;
     final hasUppercase = contains(RegExp(r'[A-Z]'));
@@ -18,7 +19,11 @@ extension ValidationExt on String {
     final hasNumber = contains(RegExp(r'[0-9]'));
     final hasSymbol = contains(RegExp(r'[!@#\$%^&*(),.?":{}|<>_\[\]\\/~`+=-]'));
 
-    return hasMinLength && hasUppercase && hasLowercase && hasNumber && hasSymbol;
+    return hasMinLength &&
+        hasUppercase &&
+        hasLowercase &&
+        hasNumber &&
+        hasSymbol;
   }
 }
 
@@ -77,7 +82,6 @@ extension StringFormatingExt on String {
     }
   }
 
-
   String? get getLeaveTypeLabel {
     try {
       if (toLowerCase() == "confirm") {
@@ -105,7 +109,8 @@ String enumToCapitalizedString(dynamic enumValue) {
 
 String getFormattedDateTime() {
   final now = DateTime.now();
-  final formatted = "${now.year.toString().padLeft(4, '0')}-"
+  final formatted =
+      "${now.year.toString().padLeft(4, '0')}-"
       "${now.month.toString().padLeft(2, '0')}-"
       "${now.day.toString().padLeft(2, '0')} "
       "${now.hour.toString().padLeft(2, '0')}:"
@@ -179,6 +184,14 @@ extension DateFormatingExt on DateTime {
     }
   }
 
+  String? get toYyyyMm {
+    try {
+      return DateFormat("yyyy-MM").format(this);
+    } catch (e) {
+      return null;
+    }
+  }
+
   String? get toYyyyMmDdHhMmSsUtc {
     try {
       return DateFormat("yyyy-MM-dd HH:mm:ss").format(toUtc());
@@ -198,6 +211,11 @@ extension DateFormatingExt on DateTime {
   double get toDecimalHours {
     return hour + (minute / 60) + (second / 3600);
   }
+}
+
+extension PowerFormatterExt on double? {
+  /// Converts nullable kW to MWh (based on hours = 1)
+  String get toMwh => ((this ?? 0.0) / 1000).toStringAsFixed(2);
 }
 
 extension NavigatorExtention on BuildContext {

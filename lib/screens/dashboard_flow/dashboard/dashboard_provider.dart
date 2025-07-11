@@ -8,5 +8,4 @@ class DashboardProvider extends ChangeNotifier {
     pageIndex = index;
     notifyListeners();
   }
-
 }

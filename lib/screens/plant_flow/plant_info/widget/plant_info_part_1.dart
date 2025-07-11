@@ -41,7 +41,7 @@ class PlantInfoPart1 extends StatelessWidget {
 
               ///Station Type
               provider.isEditing
-                  ? DropdownWidget(
+                  ? AppDropDownMenuWidget(
                     title: 'Station Type',
                     topPadding: 15.ph,
                     bottomPadding: 15.ph,

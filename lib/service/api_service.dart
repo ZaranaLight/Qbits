@@ -2,12 +2,12 @@ import 'package:http/http.dart' as http;
 import 'package:qbits/qbits.dart';
 
 class ApiService {
-  static String? sessionTokenForFirstCall;
-
   static Future<AppResponse?> getApi({
     required String url,
+
     Map<String, String>? header,
     bool addMD5 = false,
+    bool isToken = false,
     Map<String, dynamic>? queryParams,
   }) async {
     try {
@@ -24,13 +24,18 @@ class ApiService {
       }
       header = header ?? {};
 
-      // debugPrint("Url = $url");
       debugPrint("Header = $header");
       debugPrint("queryParams = $queryParams");
       if (addMD5) {
         final now = DateTime.now();
-        header["Content-MD5"] = generateCustomString(now);
+        header["Content-MD5"] = generateTokenHash(
+          dateTime: DateTime.now().millisecondsSinceEpoch.toString(),
+        );
         header["timestamp"] = now.millisecondsSinceEpoch.toString();
+      }
+      if (isToken) {
+        print('TOKEN - ${userData?.token?.token}');
+        header["token"] = userData?.token?.token ?? "";
       }
 
       debugPrint("GET API URL: $url");
@@ -40,6 +45,57 @@ class ApiService {
 
       if (handleError(response)) {
         return appResponseFromJson(response.body);
+      }
+    } catch (e, stack) {
+      recordError(e, stack);
+    }
+    return null;
+  }
+
+  static Future<AppResponse2?> getApi2({
+    required String url,
+
+    Map<String, String>? header,
+    bool addMD5 = false,
+    bool isToken = false,
+    bool isPagination = false,
+    Map<String, dynamic>? queryParams,
+  }) async {
+    try {
+      queryParams ??= {};
+      String updatedUrl = url;
+      queryParams.removeWhere(
+        (key, value) => value == null || value.toString().isEmpty,
+      );
+      queryParams = queryParams.map(
+        (key, value) => MapEntry(key, value.toString()),
+      );
+      if (queryParams.isNotEmpty) {
+        updatedUrl = "$url?${Uri(queryParameters: queryParams).query}";
+      }
+      header = header ?? {};
+
+      debugPrint("Header = $header");
+      debugPrint("queryParams = $queryParams");
+      if (addMD5) {
+        final now = DateTime.now();
+        header["Content-MD5"] = generateTokenHash(
+          dateTime: DateTime.now().millisecondsSinceEpoch.toString(),
+        );
+        header["timestamp"] = now.millisecondsSinceEpoch.toString();
+      }
+      if (isToken) {
+        print('TOKEN - ${userData?.token?.token}');
+        header["token"] = userData?.token?.token ?? "";
+      }
+
+      debugPrint("GET API URL: $url");
+      debugPrint("Headers: $header");
+
+      final response = await http.get(Uri.parse(updatedUrl), headers: header);
+
+      if (handle2Error(response)) {
+        // return appResponse2FromJson(response.body);
       }
     } catch (e, stack) {
       recordError(e, stack);
@@ -104,6 +160,9 @@ class ApiService {
         header["timestamp"] = now.millisecondsSinceEpoch.toString();
       }
 
+      print("Content-MD5   ${generateCustomString(DateTime.now())}");
+      print("timestamp   ${DateTime.now().millisecondsSinceEpoch.toString()}");
+
       final response = await http.post(
         Uri.parse(url),
         headers: header,
@@ -111,8 +170,7 @@ class ApiService {
         encoding: Encoding.getByName('utf-8'),
       );
 
-      print("Url = $url");
-      print(body);
+      print("Url = ${Uri.parse(url)}");
       bool isExpired = await isTokenExpire(response);
       handleError(response);
       if (!isExpired) {
@@ -204,7 +262,6 @@ class ApiService {
   static bool handleError(http.Response response) {
     try {
       final model = appResponseFromJson(response.body);
-      print("model Code: ${model.code}");
       if (model.code == 0) {
         return true;
       } else if (model.code == -1) {
@@ -218,13 +275,13 @@ class ApiService {
 
   static bool handle2Error(http.Response response) {
     try {
-      final model = appResponse2FromJson(response.body);
-      print("model2 Code: ${model.code}");
-      if (model.code == 0) {
-        return true;
-      } else if (model.code == -1) {
-        showErrorMsg(model.msg ?? "Error");
-      }
+      // final model = appResponse2FromJson(response.body);
+      //
+      // if (model.code == 0) {
+      //   return true;
+      // } else if (model.code == -1) {
+      //   showErrorMsg(model.msg ?? "Error");
+      // }
     } catch (e) {
       debugPrint(e.toString());
     }
