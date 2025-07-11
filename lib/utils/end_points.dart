@@ -22,5 +22,5 @@ class EndPoints {
   static const getDeviceLibraryAPI = "${domain}library/getSummary";
 
   static const getPlantListAPI =
-      "${baseUrl}plant/getByPageSize?page=0&date=2025-07&pageSize=20";
+      "${baseUrl}plant/getByPageSize";
 }
