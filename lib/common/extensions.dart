@@ -214,6 +214,8 @@ extension DateFormatingExt on DateTime {
 }
 
 extension PowerFormatterExt on double? {
+  String get toKwh => ((this ?? 0.0) / 1).toStringAsFixed(2);
+
   /// Converts nullable kW to MWh (based on hours = 1)
   String get toMwh => ((this ?? 0.0) / 1000).toStringAsFixed(2);
 }

@@ -1,8 +1,9 @@
-import 'package:qbits/apis/models/device_library_response_model.dart';
+import 'package:qbits/screens/dashboard_flow/home/model/device_library_response_model.dart';
 import 'package:qbits/qbits.dart';
 
 class HomeApis {
- static Future<PowerStationResponseModel?> getPowerAttachInformationAPI() async {
+  static Future<PowerStationResponseModel?>
+  getPowerAttachInformationAPI() async {
     try {
       final response = await ApiService.getApi(
         url: EndPoints.getPowerAttachInformationAPI,
@@ -18,10 +19,15 @@ class HomeApis {
         return null;
       }
 
-      if (response.code == 0 && response.data != null) {
-        return PowerStationResponseModel.fromJson(response.data);
+      final model = appResponseFromJson<PowerStationResponseModel>(
+        response.body,
+        converter: PowerStationResponseModel.fromJson,
+      );
+
+      if (model != null && model.code == 0) {
+        return model.data;
       } else {
-        showCatchToast(response.msg, null);
+        showCatchToast(model?.msg ?? "Something Went Wrong", null);
         return null;
       }
     } catch (exception, stack) {
@@ -30,11 +36,12 @@ class HomeApis {
     }
   }
 
- static Future<DeviceLibraryResponseModel?> getDeviceLibraryAPI() async {
+  static Future<DeviceLibraryResponseModel?> getDeviceLibraryAPI() async {
     try {
       final response = await ApiService.getApi(
         url: EndPoints.getDeviceLibraryAPI,
-        addMD5: true,isToken: true,
+        addMD5: true,
+        isToken: true,
         queryParams: {
           "date": DateTime.now().toYyyyMm,
           "atun": userData?.userName,
@@ -47,11 +54,15 @@ class HomeApis {
         return null;
       }
 
-      if (response.code == 0 && response.data != null) {
-        return DeviceLibraryResponseModel.fromJson(response.data);
+      final model = appResponseFromJson<DeviceLibraryResponseModel>(
+        response.body,
+        converter: DeviceLibraryResponseModel.fromJson,
+      );
 
+      if (model != null && model.code == 0) {
+        return model.data;
       } else {
-        showCatchToast(response.msg, null);
+        showCatchToast(model?.msg ?? "Something Went Wrong", null);
         return null;
       }
     } catch (exception, stack) {

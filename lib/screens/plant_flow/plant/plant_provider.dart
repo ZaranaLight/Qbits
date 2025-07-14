@@ -1,4 +1,3 @@
-import 'package:qbits/apis/models/plant_list_response_model.dart';
 import 'package:qbits/apis/plant_apis.dart';
 import 'package:qbits/qbits.dart';
 
@@ -7,10 +6,23 @@ class PlantProvider extends ChangeNotifier {
     init();
   }
 
-  void init() {
-    getPlantListAPI();
-    notifyListeners();
+  Future<void> init() async {
+    await getPlantListAPI(showLoader: true, resetData: true);
   }
+
+  AppResponse<PlanListResponseModel>? paginationModel;
+
+  List<PlanListResponseModel> get planListResponse =>
+      paginationModel?.list ?? [];
+
+  int currentPage = 0;
+
+  int pageSize = 5;
+
+  bool get hasMoreData =>
+      (paginationModel?.count ?? 0) > (paginationModel?.list?.length ?? 0);
+
+  bool isApiCalling = false;
 
   bool loader = false;
 
@@ -66,25 +78,48 @@ class PlantProvider extends ChangeNotifier {
     return _selectedRank == current;
   }
 
-  List<PlantListResponseModelClass>? plantListResponseModelClassList;
+  Future<void> getPlantListAPI({
+    bool showLoader = false,
+    bool resetData = false,
+  }) async {
+    if (isApiCalling) return;
+    isApiCalling = true;
 
-  Future<void> getPlantListAPI() async {
-    loader = true;
-    notifyListeners();
-
-    final result = await PlantApis.getPlantListAPI();
-
-    if (result != null) {
-      plantListResponseModelClassList = result;
+    if (showLoader) {
+      loader = true;
     }
 
-    print(
-      "Plant List Response Length: ${plantListResponseModelClassList?.length}",
+    if (resetData) {
+      currentPage = 0;
+      paginationModel = null;
+    }
+
+    final model = await PlantApis.getPlantListAPI(
+      page: currentPage.toString(),
+      pageSize: pageSize.toString(),
     );
-    print(
-      "Plant List Response: ${plantListResponseModelClassList?[0].plantInfo?.country}",
-    );
+
+    if (model != null) {
+      if (resetData || paginationModel == null) {
+        paginationModel = model.copyWith();
+      } else {
+        final existingIds =
+            paginationModel?.list?.map((e) => e.plantInfo?.id).toSet() ?? {};
+        final newItems =
+            (model.list ?? [])
+                .where((e) => !existingIds.contains(e.plantInfo?.id))
+                .toList();
+
+        paginationModel = paginationModel?.copyWith(
+          list: [...(paginationModel?.list ?? []), ...newItems],
+        );
+      }
+
+      currentPage++;
+    }
+    await Future.delayed(1.seconds);
     loader = false;
+    isApiCalling = false;
     notifyListeners();
   }
 }

@@ -280,29 +280,192 @@ class _TabContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<PlantProvider>(
       builder: (context, provider, child) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            /// Watchlist Section
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(color: ColorRes.white),
-                child: CustomListView(
-                  itemCount: 10,
-                  separatorBuilder:
-                      (ctx, ind) => Container(
-                        height: 1.ph,
-                        width: 100.pw,
-                        color: ColorRes.black.withValues(alpha: 0.1),
-                      ),
-                  itemBuilder: (context, index) => MyWatchlistCell(),
+        return ChangeNotifierProvider(
+          create: (context) => PlantProvider(),
+          child: StackedLoader(
+            loading: provider.loader,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                /// Watchlist Section
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(color: ColorRes.white),
+                    child: CustomListView(
+                      itemCount:
+                          provider.loader
+                              ? 0
+                              : provider.planListResponse.length + 1,
+                      onRefresh: () => provider.getPlantListAPI(),
+                      emptyWidget: UnKnownScreen(),
+                      showEmptyWidget:
+                          !provider.loader && provider.planListResponse.isEmpty,
+                      separatorBuilder:
+                          (ctx, ind) => Container(
+                            height: 1.ph,
+                            width: 100.pw,
+                            color: ColorRes.black.withValues(alpha: 0.1),
+                          ),
+                      itemBuilder: (context, index) {
+                        if (index >= provider.planListResponse.length) {
+                          if (!provider.hasMoreData) {
+                            return Padding(
+                              padding: EdgeInsets.all(16),
+                              child: Center(
+                                child: Text(
+                                  'No more items',
+                                  style: styleW500S12.copyWith(
+                                    color: ColorRes.grey,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
+                          if (!provider.isApiCalling) {
+                            provider.getPlantListAPI();
+                          }
+                          return SizedBox(
+                            height: 100.ph,
+                            child: const SmallLoader(),
+                          );
+                        }
+
+                        // AttendanceModel model = state.attendanceList[index];
+                        return PlantListWidget(
+                          planListResponse: provider.planListResponse[index],
+                        );
+                      },
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         );
       },
+    );
+  }
+}
+
+class PlantListWidget extends StatelessWidget {
+  final PlanListResponseModel? planListResponse;
+
+  const PlantListWidget({super.key, this.planListResponse});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: ColorRes.transparent,
+      child: InkWell(
+        onTap: () {
+          context.navigator.pushNamed(PlantDetailScreen.routeName);
+        },
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: Constants.horizontalPadding,
+          ),
+          margin: EdgeInsets.symmetric(vertical: 20.ph),
+          width: 100.w,
+          child: Row(
+            children: [
+              /// Image
+              AssetsImg(
+                imagePath: AssetRes.tempSolarImg,
+                height: 80.ph,
+                width: 100.pw,
+              ),
+
+              /// Space
+              10.pw.spaceHorizontal,
+
+              /// Expanded Column
+              Expanded(
+                child: Column(
+                  spacing: 14,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Text(
+                              planListResponse?.plantInfo?.plantName ?? "",
+                              style: styleW600S14,
+                            ),
+                          ),
+                        ),
+
+                        InkWell(
+                          onTap: () {},
+                          borderRadius: BorderRadius.circular(5.pw),
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: SvgAsset(
+                              imagePath: AssetRes.starIcon,
+                              width: 20.pw,
+                              color:
+                                  planListResponse?.watch ?? false
+                                      ? ColorRes.orange4
+                                      : ColorRes.grey3,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _buildData(
+                          title: context.l10n?.day ?? "",
+                          value:
+                              "${planListResponse?.plantInfo?.eday.toKwh}kwh",
+                        ),
+                        _buildData(
+                          title: context.l10n?.power ?? "",
+                          value: "${planListResponse?.plantInfo?.acpower}kw",
+                        ),
+                        _buildData(
+                          title: context.l10n?.total ?? "",
+                          value:
+                              "${planListResponse?.plantInfo?.etot.toMwh}MWh",
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildData({required String title, required String value}) {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          /// Title
+          Text(
+            title,
+            style: styleW500S12.copyWith(
+              color: ColorRes.black.withValues(alpha: 0.5),
+            ),
+          ),
+
+          /// Space
+          4.ph.spaceVertical,
+
+          /// Value
+          Text(value, style: styleW600S14),
+        ],
+      ),
     );
   }
 }

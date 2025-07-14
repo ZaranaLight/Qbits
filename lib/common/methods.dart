@@ -87,9 +87,8 @@ String generateCustomString(DateTime dateTime) {
 
   // Create the original string
   String str = '$timestamp&-api-&$timestampReversed';
-  String str2 = calculateMd5(str) + timestamp;
 
-  print('strr1 = $str');
+
   // Compute the encoded MD5 + timestamp
   String result = calculateMd5(str) + timestamp;
 
@@ -102,7 +101,6 @@ String generateTokenHash({String? dateTime}) {
   final rawStr =
       '${userData?.token?.token ?? ""}&${userData?.token?.appSecret ?? ""}&$timestamp';
 
-  print('Raw token string: $rawStr');
 
   return calculateMd5(rawStr);
 }

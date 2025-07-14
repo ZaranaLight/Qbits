@@ -129,15 +129,6 @@ class CompanyRegistrationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Future<void> onRegisterTap(BuildContext context) async {
-  //   sendCode(context);
-  //   if (validation(context)) {
-  //     context.navigator.pushNamedAndRemoveUntil(
-  //       DashboardScreen.routeName,
-  //       (route) => false,
-  //     );
-  //   }
-  // }
 
   Future<void> onRegisterTap(BuildContext context) async {
     if (mailController.text.trim().isEmpty) {

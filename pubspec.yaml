@@ -59,7 +59,7 @@ dependencies:
  # -------------------------- Google Map -------------------------- #
   geolocator: ^13.0.4
   map_location_picker: ^1.3.4
-
+  geocoding: ^3.0.0
   # -------------------------- Dart Methods -------------------------- #
   intl: ^0.20.0
 

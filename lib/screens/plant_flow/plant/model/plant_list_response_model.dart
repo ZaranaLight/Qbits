@@ -1,29 +1,30 @@
-import 'package:qbits/qbits.dart';
 
-class PlantListResponseModelClass {
+class PlanListResponseModel {
   PlantInfo? plantInfo;
   double? monthPower;
   double? yearPower;
-  int? powerRate;
+  double? powerRate;
   double? kpi;
   String? date;
   bool? watch;
   String? time;
 
-  PlantListResponseModelClass(
-      {this.plantInfo,
-        this.monthPower,
-        this.yearPower,
-        this.powerRate,
-        this.kpi,
-        this.date,
-        this.watch,
-        this.time});
+  PlanListResponseModel({
+    this.plantInfo,
+    this.monthPower,
+    this.yearPower,
+    this.powerRate,
+    this.kpi,
+    this.date,
+    this.watch,
+    this.time,
+  });
 
-  PlantListResponseModelClass.fromJson(Map<String, dynamic> json) {
-    plantInfo = json['plantInfo'] != null
-        ? new PlantInfo.fromJson(json['plantInfo'])
-        : null;
+  PlanListResponseModel.fromJson(Map<String, dynamic> json) {
+    plantInfo =
+        json['plantInfo'] != null
+            ? PlantInfo.fromJson(json['plantInfo'])
+            : null;
     monthPower = json['monthPower'];
     yearPower = json['yearPower'];
     powerRate = json['powerRate'];
@@ -34,8 +35,8 @@ class PlantListResponseModelClass {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    if (this.plantInfo != null) {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (plantInfo != null) {
       data['plantInfo'] = plantInfo!.toJson();
     }
     data['monthPower'] = monthPower;
@@ -56,11 +57,11 @@ class PlantInfo {
   String? isRoom;
   String? isEnviroment;
   String? isBlackflow;
-  int? elecSubsidyPrice;
-  int? internetPowerPrice;
-  int? ownPowerPrice;
-  int? internetPowerOccupy;
-  int? ownPowerOccupy;
+  double? elecSubsidyPrice;
+  double? internetPowerPrice;
+  double? ownPowerPrice;
+  double? internetPowerOccupy;
+  double? ownPowerOccupy;
   String? remark2;
   String? remark3;
   String? remark4;
@@ -68,50 +69,51 @@ class PlantInfo {
   String? remark6;
   String? remark1;
   String? plantUser;
-  int? acpower;
+  double? acpower;
   double? eday;
-  int? etot;
+  double? etot;
   int? plantstate;
   int? planttype;
   String? recordTime;
-  int? capacity;
-  int? capacitybattery;
+  double? capacity;
+  double? capacitybattery;
   String? country;
   String? province;
   String? city;
   String? district;
 
-  PlantInfo(
-      {id,
-        this.plantNo,
-        this.plantName,
-        this.isRoom,
-        this.isEnviroment,
-        this.isBlackflow,
-        this.elecSubsidyPrice,
-        this.internetPowerPrice,
-        this.ownPowerPrice,
-        this.internetPowerOccupy,
-        this.ownPowerOccupy,
-        this.remark2,
-        this.remark3,
-        this.remark4,
-        this.remark5,
-        this.remark6,
-        this.remark1,
-        this.plantUser,
-        this.acpower,
-        this.eday,
-        this.etot,
-        this.plantstate,
-        this.planttype,
-        this.recordTime,
-        this.capacity,
-        this.capacitybattery,
-        this.country,
-        this.province,
-        this.city,
-        this.district});
+  PlantInfo({
+    this.id,
+    this.plantNo,
+    this.plantName,
+    this.isRoom,
+    this.isEnviroment,
+    this.isBlackflow,
+    this.elecSubsidyPrice,
+    this.internetPowerPrice,
+    this.ownPowerPrice,
+    this.internetPowerOccupy,
+    this.ownPowerOccupy,
+    this.remark2,
+    this.remark3,
+    this.remark4,
+    this.remark5,
+    this.remark6,
+    this.remark1,
+    this.plantUser,
+    this.acpower,
+    this.eday,
+    this.etot,
+    this.plantstate,
+    this.planttype,
+    this.recordTime,
+    this.capacity,
+    this.capacitybattery,
+    this.country,
+    this.province,
+    this.city,
+    this.district,
+  });
 
   PlantInfo.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -147,7 +149,7 @@ class PlantInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['plantNo'] = plantNo;
     data['plantName'] = plantName;

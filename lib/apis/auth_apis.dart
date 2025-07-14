@@ -64,7 +64,8 @@ class AuthApis {
         showCatchToast('Login failed: No response from server', null);
         return false;
       }
-      if (response.code == 0) {
+      final model = appResponseFromJson(response.body);
+      if (model != null && model.code == 0) {
         showSuccessToast('Otp sent successfully');
         return true;
       }
@@ -80,9 +81,10 @@ class AuthApis {
     required String code,
   }) async {
     try {
-      final response = await ApiService.postFormDataApi(
+      final response = await ApiService.postApi(
         url: EndPoints.queryUserByEmailAPI,
-        fields: {'email': email, 'code': code},
+        body: {'email': email, 'code': code},
+        isFormData: true,
       );
 
       if (response == null) {
@@ -90,16 +92,9 @@ class AuthApis {
         return false;
       }
 
-      final responseBody = jsonDecode(response.body);
       if (response.statusCode == 200 || response.statusCode == 201) {
-        if (responseBody['data'] != null && responseBody != null) {
-          showSuccessToast('Otp verified successfully');
-
-          return true;
-        } else {
-          showCatchToast(jsonDecode(response.body)['msg'], null);
-          return false;
-        }
+        showSuccessToast('Otp verified successfully');
+        return true;
       }
     } catch (exception, stack) {
       showCatchToast(exception, stack);
@@ -130,7 +125,64 @@ class AuthApis {
         showCatchToast('Login failed: No response from server', null);
         return false;
       }
-      if (response.code == 0) {
+      final model = appResponseFromJson(response.body);
+      if (model != null && model.code == 0) {
+        showSuccessToast('Otp sent successfully');
+        return true;
+      } else {
+        return false;
+      }
+    } catch (exception, stack) {
+      showCatchToast(exception, stack);
+    }
+    return false;
+  }
+
+  ///Comany Register API to register a new company account.
+  static Future<bool> individualRegisterAPI({
+    required String accountName,
+    required String password,
+    required String phone,
+    required String collector,
+    required String plantName,
+    required String invertertype,
+    required String cityname,
+    required String longitude,
+    required String latitude,
+    required int plantType,
+  }) async {
+    try {
+      final response = await ApiService.postApi(
+        url: EndPoints.individualRegisterAPI,
+        body: {
+          "userName": accountName,
+          "password": password,
+          "phone": phone,
+          "QQ": "",
+          "email": "",
+          "collector": collector,
+          "plantName": plantName,
+          "invertertype": invertertype,
+          "cityname": cityname,
+          "longitude": longitude,
+          "latitude": latitude,
+          "parent": "",
+          // "gmt": "8",
+          // "plantType": plantType,
+          "iSerial": "",
+        },
+      );
+      print("body-- ${response?.body}");
+      if (response == null) {
+        showCatchToast('Login failed: No response from server', null);
+        return false;
+      }
+
+      final model = appResponseFromJson>(
+        response.body,
+        converter: PlanListResponseModel.fromJson,
+      );
+      if (jsonDecode(response.body)['message'] == "success") {
         showSuccessToast('Otp sent successfully');
         return true;
       } else {
@@ -159,7 +211,8 @@ class AuthApis {
         showCatchToast('Login failed: No response from server', null);
         return false;
       }
-      if (response.code == 0) {
+      final model = appResponseFromJson(response.body);
+      if (model != null && model.code == 0) {
         showSuccessToast('Otp sent successfully');
         return true;
       } else {
@@ -185,7 +238,8 @@ class AuthApis {
         showCatchToast('Login failed: No response from server', null);
         return false;
       }
-      if (response.code == 0) {
+      final model = appResponseFromJson(response.body);
+      if (model != null && model.code == 0) {
         showSuccessToast('Otp sent successfully');
         return true;
       } else {

@@ -30,6 +30,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
               child: SubmitButton(
                 title: context.l10n?.register ?? "",
                 onTap: () => provider.onRegisterTap(context),
+                loading: provider.loader,
               ),
             ),
           ),
@@ -171,6 +172,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
                     controller: provider.collectorAddressController,
                     header: context.l10n?.collectorAddress ?? "",
                     hintText: context.l10n?.collectorAddress ?? "",
+                    textInputType: TextInputType.number,
                     error: provider.collectorAddressError,
                     suffixIcon: InkWell(
                       onTap:
@@ -221,8 +223,7 @@ class IndividualRegistrationScreen extends StatelessWidget {
                     selectedValue: provider.selectedStationType,
                     header: context.l10n?.stationType ?? "",
                     error: provider.stationTypeError,
-
-                    optionsList: ["Station 1", "Station 2", "Station 3"],
+                    optionsList: provider.stationTypes,
                   ),
 
                   ///Space

@@ -1,5 +1,6 @@
 class EndPoints {
   /// Live URL
+  static const domain2 = "http://www.aotaisolarcloud.com/";
   static const domain = "http://www.aotaisolarcloud.com/solarweb/";
 
   /// Test URL
@@ -11,6 +12,8 @@ class EndPoints {
   static const sendMailCodeAPIForForgotPassword = "${domain}auth/sendMailCode";
   static const queryUserByEmailAPI = "${domain}auth/queryUserByEmail";
   static const registerAPI = "${domain}user/register";
+  static const individualRegisterAPI = "${domain2}ATSolarInfo/userRegister.action";
+
   static const sendMailCodeWithCheckAPI = "${domain}auth/sendMailCodeWithCheck";
 
   static const appSearchOrganizationAPI =
@@ -21,6 +24,6 @@ class EndPoints {
 
   static const getDeviceLibraryAPI = "${domain}library/getSummary";
 
-  static const getPlantListAPI =
-      "${baseUrl}plant/getByPageSize";
+  static const getPlantListAPI = "${baseUrl}plant/getByPageSize";
+  static const addPlantAPI = "${domain2}ATSolarInfo/appcanxAddPlantToUser.action";
 }

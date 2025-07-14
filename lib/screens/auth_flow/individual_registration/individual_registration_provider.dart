@@ -1,5 +1,8 @@
+import 'package:geolocator/geolocator.dart';
+import 'package:qbits/apis/auth_apis.dart';
 import 'package:qbits/common/widget/app_qr_scanner_screen.dart';
 import 'package:qbits/qbits.dart';
+import 'package:qbits/service/location_service.dart';
 
 class IndividualRegistrationProvider extends ChangeNotifier {
   bool loader = false;
@@ -43,11 +46,36 @@ class IndividualRegistrationProvider extends ChangeNotifier {
   }
 
   Future<void> onRegisterTap(BuildContext context) async {
-    if (validation(context)) {
-      context.navigator.pushNamedAndRemoveUntil(
-        DashboardScreen.routeName,
-        (route) => false,
-      );
+    final locationService = GetLocationService();
+    Position? position = await locationService.getCurrentLocation();
+    if (context.mounted) {
+      if (validation(context)) {
+        loader = true;
+        notifyListeners();
+        await Future.delayed(1.seconds);
+        final result = await AuthApis.individualRegisterAPI(
+          plantName: stationNameController.text,
+          phone: phoneNumberController.text,
+          accountName: accountController.text,
+          plantType: stationTypes.indexOf(selectedStationType),
+          password: passwordController.text,
+          longitude: position?.longitude.toString() ?? "",
+          latitude: position?.latitude.toString() ?? "",
+          cityname: cityController.text,
+          invertertype: "2",
+          collector: collectorAddressController.text,
+        );
+        if (result) {
+          if (context.mounted) {
+            context.navigator.pushNamedAndRemoveUntil(
+              DashboardScreen.routeName,
+              (route) => false,
+            );
+          }
+        }
+        loader = false;
+        notifyListeners();
+      }
     }
   }
 
@@ -55,6 +83,17 @@ class IndividualRegistrationProvider extends ChangeNotifier {
     selectedTimezone = timezone;
     notifyListeners();
   }
+
+  int get selectedStationTypeIndex {
+    if (selectedStationType == '') return -1; // or throw if mandatory
+    return stationTypes.indexOf(selectedStationType);
+  }
+
+  List<String> stationTypes = [
+    "Solar System",
+    "Battery Storage System",
+    "Solar System (with output-limition)",
+  ];
 
   void onChangeStationType(stationType) {
     selectedStationType = stationType;

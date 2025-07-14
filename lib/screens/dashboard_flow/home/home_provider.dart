@@ -1,9 +1,11 @@
 import 'package:qbits/apis/home_apis.dart';
-import 'package:qbits/apis/models/device_library_response_model.dart';
+import 'package:qbits/screens/dashboard_flow/home/model/device_library_response_model.dart';
 import 'package:qbits/qbits.dart';
 
 class HomeProvider extends ChangeNotifier {
   bool loader = false;
+  bool capacityLoader = false;
+  bool deviceLoader = false;
 
   PowerStationResponseModel? powerStationResponseModel;
   DeviceLibraryResponseModel? deviceLibraryResponseModel;
@@ -12,14 +14,15 @@ class HomeProvider extends ChangeNotifier {
     init();
   }
 
-  void init() {
-    powerStationInformationAPI();
-    getDeviceLibraryAPI();
+  Future<void> init() async {
+    await powerStationInformationAPI();
+    await getDeviceLibraryAPI();
+
     notifyListeners();
   }
 
   Future<void> powerStationInformationAPI() async {
-    loader = true;
+    capacityLoader = true;
     notifyListeners();
 
     final result = await HomeApis.getPowerAttachInformationAPI();
@@ -28,12 +31,12 @@ class HomeProvider extends ChangeNotifier {
       powerStationResponseModel = result;
     }
 
-    loader = false;
+    capacityLoader = false;
     notifyListeners();
   }
 
   Future<void> getDeviceLibraryAPI() async {
-    loader = true;
+    deviceLoader = true;
     notifyListeners();
 
     final result = await HomeApis.getDeviceLibraryAPI();
@@ -41,7 +44,7 @@ class HomeProvider extends ChangeNotifier {
       deviceLibraryResponseModel = result;
     }
 
-    loader = false;
+    deviceLoader = false;
     notifyListeners();
   }
 

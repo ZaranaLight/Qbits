@@ -28,103 +28,109 @@ class HomeScreen extends StatelessWidget {
                 _AppBar(),
 
                 Expanded(
-                  child: StackedLoader(
-                    loading: provider.loader,
-                    child: CustomSingleChildScroll(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: Constants.horizontalPadding,
-                      ),
-                      key: UniqueKey(),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          /// Space
-                          12.ph.spaceVertical,
+                  child: RefreshIndicator(
+                    onRefresh: () async {
+                      provider.getDeviceLibraryAPI();
+                      provider.powerStationInformationAPI();
+                    },
+                    child: StackedLoader(
+                      loading: provider.loader,
+                      child: CustomSingleChildScroll(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: Constants.horizontalPadding,
+                        ),
+                        key: UniqueKey(),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            /// Space
+                            12.ph.spaceVertical,
 
-                          /// My Watchlist Button
-                          Container(
-                            width: 92.w,
-                            decoration: BoxDecoration(
-                              color: ColorRes.white,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Material(
-                              color: Colors.transparent,
-                              child: InkWell(
+                            /// My Watchlist Button
+                            Container(
+                              width: 92.w,
+                              decoration: BoxDecoration(
+                                color: ColorRes.white,
                                 borderRadius: BorderRadius.circular(8),
-                                onTap: () {
-                                  context.navigator.pushNamed(
-                                    MyWatchlistScreen.routeName,
-                                  );
-                                },
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 24.ph,
-                                    horizontal: 20.pw,
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      /// Bookmark Image
-                                      SvgAsset(
-                                        imagePath: AssetRes.bookmarkIcon,
-                                        height: 24.ph,
-                                      ),
+                              ),
+                              child: Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(8),
+                                  onTap: () {
+                                    context.navigator.pushNamed(
+                                      MyWatchlistScreen.routeName,
+                                    );
+                                  },
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 24.ph,
+                                      horizontal: 20.pw,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        /// Bookmark Image
+                                        SvgAsset(
+                                          imagePath: AssetRes.bookmarkIcon,
+                                          height: 24.ph,
+                                        ),
 
-                                      /// Space
-                                      13.pw.spaceHorizontal,
+                                        /// Space
+                                        13.pw.spaceHorizontal,
 
-                                      /// Text
-                                      Text(
-                                        context.l10n?.myWatchlist ?? "",
-                                        style: styleW500S16.copyWith(
-                                          color: ColorRes.black.withValues(
-                                            alpha: 0.6,
+                                        /// Text
+                                        Text(
+                                          context.l10n?.myWatchlist ?? "",
+                                          style: styleW500S16.copyWith(
+                                            color: ColorRes.black.withValues(
+                                              alpha: 0.6,
+                                            ),
                                           ),
                                         ),
-                                      ),
 
-                                      Spacer(),
+                                        Spacer(),
 
-                                      /// Forward Icon
-                                      SvgAsset(
-                                        imagePath: AssetRes.forwardIcon,
-                                        color: ColorRes.black.withValues(
-                                          alpha: 0.3,
+                                        /// Forward Icon
+                                        SvgAsset(
+                                          imagePath: AssetRes.forwardIcon,
+                                          color: ColorRes.black.withValues(
+                                            alpha: 0.3,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
 
-                          // Space
-                          20.ph.spaceVertical,
+                            // Space
+                            20.ph.spaceVertical,
 
-                          /// Circular Chart Container
-                          CircularChartContainer(),
+                            /// Circular Chart Container
+                            CircularChartContainer(provider: provider),
 
-                          /// Space
-                          16.ph.spaceVertical,
+                            /// Space
+                            16.ph.spaceVertical,
 
-                          /// Total Plants Container
-                          TotalPlantsContainer(),
+                            /// Total Plants Container
+                            TotalPlantsContainer(),
 
-                          /// Space
-                          16.ph.spaceVertical,
+                            /// Space
+                            16.ph.spaceVertical,
 
-                          /// Device Library Container
-                          DeviceLibraryWidget(),
+                            /// Device Library Container
+                            DeviceLibraryWidget(),
 
-                          /// Space
-                          16.ph.spaceVertical,
+                            /// Space
+                            16.ph.spaceVertical,
 
-                          BarChartContainer(),
+                            BarChartContainer(),
 
-                          /// Space
-                          16.ph.spaceVertical,
-                        ],
+                            /// Space
+                            16.ph.spaceVertical,
+                          ],
+                        ),
                       ),
                     ),
                   ),
