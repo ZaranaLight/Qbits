@@ -178,10 +178,10 @@ class AuthApis {
         return false;
       }
 
-      final model = appResponseFromJson>(
-        response.body,
-        converter: PlanListResponseModel.fromJson,
-      );
+      // final model = appResponseFromJson>(
+      //   response.body,
+      //   converter: PlanListResponseModel.fromJson,
+      // );
       if (jsonDecode(response.body)['message'] == "success") {
         showSuccessToast('Otp sent successfully');
         return true;
