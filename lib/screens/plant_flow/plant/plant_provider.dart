@@ -33,7 +33,7 @@ class PlantProvider extends ChangeNotifier {
 
   int currentPage = 0;
 
-  int pageSize =20;
+  int pageSize = 20;
 
   bool get hasMoreData =>
       (paginationModel?.count ?? 0) > (paginationModel?.list?.length ?? 0);

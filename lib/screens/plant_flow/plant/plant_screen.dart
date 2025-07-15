@@ -297,7 +297,8 @@ class _TabContent extends StatelessWidget {
                           provider.loader
                               ? 0
                               : provider.planListResponse.length + 1,
-                      onRefresh: () => provider.getPlantListAPI(),
+                      onRefresh:
+                          () => provider.getPlantListAPI(resetData: true),
                       emptyWidget: UnKnownScreen(),
                       showEmptyWidget:
                           !provider.loader && provider.planListResponse.isEmpty,

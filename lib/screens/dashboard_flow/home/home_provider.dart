@@ -16,11 +16,10 @@ class HomeProvider extends ChangeNotifier {
   }
 
   Future<void> init({bool showLoader = true}) async {
-    if(showLoader){
+    if (showLoader) {
       loader = true;
       notifyListeners();
     }
-
     await Future.wait([
       powerStationInformationAPI(),
       getDeviceLibraryAPI(),
