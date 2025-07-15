@@ -1,4 +1,5 @@
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/auth_flow/individual_registration/model/time_zone_model.dart';
 
 class IndividualRegistrationScreen extends StatelessWidget {
   const IndividualRegistrationScreen({super.key});
@@ -64,11 +65,13 @@ class IndividualRegistrationScreen extends StatelessWidget {
                   20.ph.spaceVertical,
 
                   /// Model
-                  AppTextField(
+                  AppDropDown<String>(
                     isMandatory: true,
-                    controller: provider.modelController,
-                    header: context.l10n?.model ?? "",
+                    itemAsString: (e) => e,
                     hintText: context.l10n?.model ?? "",
+                    onChanged: (val) => provider.onChangeModel(val),
+                    selectedValue: provider.selectedModel,
+                    header: context.l10n?.model ?? "",
                     error: provider.modelError,
                     suffixIcon: InkWell(
                       onTap: () => provider.scanQRCode(context, 'model'),
@@ -77,7 +80,31 @@ class IndividualRegistrationScreen extends StatelessWidget {
                         // color: ColorRes.black.withValues(alpha: 0.5),
                       ),
                     ),
+                    optionsList: [
+                      "ASP-20KTLC",
+                      "ASP-21KTLC",
+                      "ASP-22KTLC",
+                      "ASP-23KTLC",
+                      "ASP-24KTLC",
+                      "ASP-25KTLC",
+                    ],
                   ),
+
+                  // /// Model
+                  // AppTextField(
+                  //   isMandatory: true,
+                  //   controller: provider.modelController,
+                  //   header: context.l10n?.model ?? "",
+                  //   hintText: context.l10n?.model ?? "",
+                  //   error: provider.modelError,
+                  //   suffixIcon: InkWell(
+                  //     onTap: () => provider.scanQRCode(context, 'model'),
+                  //     child: SvgAsset(
+                  //       imagePath: AssetRes.scannerIcon,
+                  //       // color: ColorRes.black.withValues(alpha: 0.5),
+                  //     ),
+                  //   ),
+                  // ),
 
                   ///Space
                   20.ph.spaceVertical,
@@ -188,10 +215,9 @@ class IndividualRegistrationScreen extends StatelessWidget {
                   ///Space
                   20.ph.spaceVertical,
 
-                  /// Timezone
-                  AppDropDown<String>(
+                  AppDropDown<TimeZoneModel>(
                     isMandatory: true,
-                    itemAsString: (e) => e,
+                    itemAsString: (e) => e.name,
                     hintText: context.l10n?.timezone ?? "",
                     onChanged: (val) => provider.onChangeTimezone(val),
                     selectedValue: provider.selectedTimezone,
@@ -201,15 +227,34 @@ class IndividualRegistrationScreen extends StatelessWidget {
                       imagePath: AssetRes.timeZoneIcon,
                       color: ColorRes.black.withValues(alpha: 0.5),
                     ),
-                    optionsList: [
-                      "GMT 0",
-                      "GMT 1",
-                      "GMT 2",
-                      "GMT 3",
-                      "GMT 4",
-                      "GMT 5",
-                    ],
+                    optionsList: provider.timezones,
                   ),
+
+                  // /// Timezone
+                  // AppDropDown<String>(
+                  //   isMandatory: true,
+                  //   itemAsString: (e) => e,
+                  //   hintText: context.l10n?.timezone ?? "",
+                  //   onChanged: (val) => provider.onChangeTimezone(val),
+                  //   selectedValue: provider.selectedTimezone,
+                  //   header: context.l10n?.timezone ?? "",
+                  //   error: provider.timezoneError,
+                  //   suffixIcon: SvgAsset(
+                  //     imagePath: AssetRes.timeZoneIcon,
+                  //     color: ColorRes.black.withValues(alpha: 0.5),
+                  //   ),
+                  //   optionsList: [
+                  //     "GMT 0",
+                  //     "GMT 1",
+                  //     "GMT 2",
+                  //     "GMT 3",
+                  //     "GMT 4",
+                  //     "GMT 5",
+                  //     "GMT 6",
+                  //     "GMT 7",
+                  //     "GMT 8",
+                  //   ],
+                  // ),
 
                   ///Space
                   20.ph.spaceVertical,

@@ -84,6 +84,7 @@ class AssetRes {
   static const redGridIcon = "${_icons}red_grid_icon.svg";
   static const redBatteryIcon2 = "${_icons}red_battery_icon.svg";
   static const greenBatteryIcon2  = "${_icons}green_battery_icon.svg";
+  static const locationIcon  = "${_icons}location_icon.svg";
 
   ///________________________________ Temp images ______________________________///
 

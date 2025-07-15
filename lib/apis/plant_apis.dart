@@ -39,12 +39,12 @@ class PlantApis {
     }
   }
 
-  static Future<dynamic> addPlantAPI({
+  static Future<int?> addPlantAPI({
     String? plantName,
     String? city,
     String? longitude,
     String? latitude,
-    String? stationType,
+    int? stationType,
     String? capacity,
     String? batteryCapacity,
   }) async {
@@ -70,18 +70,15 @@ class PlantApis {
         return null;
       }
 
-      print("Res: ${response.body}");
-      // if (response.code == 0 && response.d != null) {
-      //   return response.list
-      //       ?.map((e) => PlanListResponseModel.fromJson(e))
-      //       .toList();
-      // } else {
-      //   showCatchToast(response.msg, null);
-      //   return null;
-      // }
+      if (jsonDecode(response.body)['rc'] == 0) {
+        if (jsonDecode(response.body)['pid'] != null) {
+          return jsonDecode(response.body)['pid'];
+        }
+      }
     } catch (exception, stack) {
       showCatchToast(exception, stack);
       return null;
     }
+    return null;
   }
 }

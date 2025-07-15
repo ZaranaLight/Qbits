@@ -35,54 +35,48 @@ class CompanyRegistrationProvider extends ChangeNotifier {
   String? get companyCode => _companyCode;
 
   String generateCode() {
-    List<String> arr = [];
-
-    for (int i = 0; i < 10; i++) {
-      arr.add(i.toString());
-    }
-
     List<String> number = [
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H",
-      "J",
-      "K",
-      "L",
-      "M",
-      "N",
-      "P",
-      "Q",
-      "R",
-      "S",
-      "T",
-      "U",
-      "V",
-      "W",
-      "X",
-      "Y",
-      "Z",
+      'A',
+      'B',
+      'C',
+      'D',
+      'E',
+      'F',
+      'G',
+      'H',
+      'J',
+      'K',
+      'L',
+      'M',
+      'N',
+      'P',
+      'Q',
+      'R',
+      'S',
+      'T',
+      'U',
+      'V',
+      'W',
+      'X',
+      'Y',
+      'Z',
     ];
-    arr.addAll(number);
 
-    Random rand = Random();
-    List<String> result = ['A'];
+    List<String> arr = List.from(number);
 
+    List<String> result = [];
+    result.add('A');
+
+    Random random = Random();
     for (int i = 0; i < 6; i++) {
-      int seed = rand.nextInt(arr.length);
+      int seed = random.nextInt(arr.length);
       result.add(arr[seed]);
     }
 
-    final generated = result.join('');
-    companyCodeController.text = generated;
-
-    notifyListeners();
-
-    return result.join('');
+    result.add('T');
+    final code = result.join('');
+    companyCodeController.text = code;
+    return code;
   }
 
   void sendCode(BuildContext context) async {
@@ -129,7 +123,6 @@ class CompanyRegistrationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-
   Future<void> onRegisterTap(BuildContext context) async {
     if (mailController.text.trim().isEmpty) {
       sendCode(context);
@@ -141,13 +134,14 @@ class CompanyRegistrationProvider extends ChangeNotifier {
       final result = await AuthApis.companyRegisterAPI(
         email: mailController.text,
         password: passwordController.text,
+        companyGeneratedCode: companyCodeController.text,
         accountName: accountController.text,
         mailOtp: verificationCodeController.text,
       );
       if (result) {
-        // if (context.mounted) {
-        //   context.navigator.pushNamed(OtpCodeVerificationScreen.routeName);
-        // }
+        if (context.mounted) {
+          context.navigator.pushNamed(SignInScreen.routeName);
+        }
       }
       loader = false;
       notifyListeners();

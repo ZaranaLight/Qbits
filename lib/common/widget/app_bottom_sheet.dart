@@ -126,7 +126,10 @@ class AppBottomShit extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               child: Padding(
                 padding: EdgeInsets.all(Constants.horizontalPadding),
-                child: SvgAsset(imagePath: AssetRes.closeIcon, height: Constants.horizontalPadding),
+                child: SvgAsset(
+                  imagePath: AssetRes.closeIcon,
+                  height: Constants.horizontalPadding,
+                ),
               ),
             ),
           ),

@@ -12,8 +12,13 @@ extension ValidationExt on String {
     return RegExp(r"(^(?:[+0]9)?[0-9]{10,12}$)").hasMatch(this);
   }
 
+  bool isNumeric() {
+    final numericRegex = RegExp(r'^\d+$');
+    return numericRegex.hasMatch(this);
+  }
+
   bool isValidPassword() {
-    final hasMinLength = length >= 8;
+    final hasMinLength = length > 8;
     final hasUppercase = contains(RegExp(r'[A-Z]'));
     final hasLowercase = contains(RegExp(r'[a-z]'));
     final hasNumber = contains(RegExp(r'[0-9]'));

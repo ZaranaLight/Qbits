@@ -12,6 +12,11 @@
   "china": "China",
   "africa": "Africa",
   "production": "Production",
+  "collectorInvalid": "Collector Filed required number only!",
+  "plantCreatedSuccessfully": "Plant created successfully!",
+  "locationPermission": "Location Permission",
+  "locationPermissionContent": "We need your location for accurate punch-in and punch-out tracking.",
+
   "dayEnergy": "Day Energy",
   "plantInfo": "Plant Info",
   "address": "Address",

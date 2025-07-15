@@ -171,6 +171,30 @@ abstract class AppLocalizations {
   /// **'Production'**
   String get production;
 
+  /// No description provided for @collectorInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Collector Filed required number only!'**
+  String get collectorInvalid;
+
+  /// No description provided for @plantCreatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Plant created successfully!'**
+  String get plantCreatedSuccessfully;
+
+  /// No description provided for @locationPermission.
+  ///
+  /// In en, this message translates to:
+  /// **'Location Permission'**
+  String get locationPermission;
+
+  /// No description provided for @locationPermissionContent.
+  ///
+  /// In en, this message translates to:
+  /// **'We need your location for accurate punch-in and punch-out tracking.'**
+  String get locationPermissionContent;
+
   /// No description provided for @dayEnergy.
   ///
   /// In en, this message translates to:

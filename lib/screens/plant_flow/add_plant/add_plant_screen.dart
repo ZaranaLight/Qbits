@@ -1,4 +1,5 @@
 import 'package:map_location_picker/map_location_picker.dart';
+import 'package:qbits/common/global_data.dart';
 import 'package:qbits/common/widget/common_widgets.dart';
 import 'package:qbits/qbits.dart';
 
@@ -41,6 +42,7 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
               ),
               child: SubmitButton(
                 title: context.l10n?.confirm ?? "",
+                loading: provider.loader,
                 onTap: () {
                   provider.submitPlant(context);
                 },
@@ -130,7 +132,7 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
               ///Longitude
               _buildTextFormFieldTile(
                 'Longitude',
-                provider.plant.latitude,
+                GlobalData.longitude.toString(),
                 provider.updatePlantLatitude,
                 keyboardType: TextInputType.text,
                 hintTitle: "Enter Longitude",
@@ -145,7 +147,7 @@ class _AddPlantScreenState extends State<AddPlantScreen> {
               ///Latitude
               _buildTextFormFieldTile(
                 'Latitude',
-                provider.plant.longitude,
+                GlobalData.latitude.toString(),
                 provider.updatePlantLongitude,
                 keyboardType: TextInputType.text,
                 hintTitle: "Enter Latitude",

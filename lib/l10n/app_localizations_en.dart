@@ -48,6 +48,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get production => 'Production';
 
   @override
+  String get collectorInvalid => 'Collector Filed required number only!';
+
+  @override
+  String get plantCreatedSuccessfully => 'Plant created successfully!';
+
+  @override
+  String get locationPermission => 'Location Permission';
+
+  @override
+  String get locationPermissionContent => 'We need your location for accurate punch-in and punch-out tracking.';
+
+  @override
   String get dayEnergy => 'Day Energy';
 
   @override

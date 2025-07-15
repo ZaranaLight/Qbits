@@ -10,6 +10,22 @@ class PlantProvider extends ChangeNotifier {
     await getPlantListAPI(showLoader: true, resetData: true);
   }
 
+  // Add a disposed flag to track disposal state
+  bool _disposed = false;
+
+  @override
+  void dispose() {
+    _disposed = true;
+    super.dispose();
+  }
+
+  /// Helper method to safely call notifyListeners
+  void _safeNotifyListeners() {
+    if (!_disposed) {
+      notifyListeners();
+    }
+  }
+
   AppResponse<PlanListResponseModel>? paginationModel;
 
   List<PlanListResponseModel> get planListResponse =>
@@ -17,7 +33,7 @@ class PlantProvider extends ChangeNotifier {
 
   int currentPage = 0;
 
-  int pageSize = 5;
+  int pageSize =20;
 
   bool get hasMoreData =>
       (paginationModel?.count ?? 0) > (paginationModel?.list?.length ?? 0);
@@ -44,31 +60,31 @@ class PlantProvider extends ChangeNotifier {
   void select(String title) {
     _selectedTitle = title;
     navigatorKey.currentState?.context.navigator.pop();
-    notifyListeners();
+    _safeNotifyListeners();
   }
 
   bool isSelected(String title) => _selectedTitle == title;
 
   void selectPowerKW(String value) {
     selectedPowerKW = value;
-    notifyListeners();
+    _safeNotifyListeners();
   }
 
   void selectTotalKWh(String value) {
     selectedTotalKWh = value;
-    notifyListeners();
+    _safeNotifyListeners();
   }
 
   void toggleFollowedPlant() {
     followedPlantSelected = !followedPlantSelected;
-    notifyListeners();
+    _safeNotifyListeners();
   }
 
   void selectRank(String title, bool ascending) {
     _selectedRank = '$title ${ascending ? "↑" : "↓"}';
     isAscending = ascending;
     navigatorKey.currentState?.context.navigator.pop();
-    notifyListeners();
+    _safeNotifyListeners();
   }
 
   bool get hasSelectedRank => _selectedRank != null;
@@ -120,6 +136,6 @@ class PlantProvider extends ChangeNotifier {
     await Future.delayed(1.seconds);
     loader = false;
     isApiCalling = false;
-    notifyListeners();
+    _safeNotifyListeners();
   }
 }

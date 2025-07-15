@@ -29,10 +29,7 @@ class HomeScreen extends StatelessWidget {
 
                 Expanded(
                   child: RefreshIndicator(
-                    onRefresh: () async {
-                      provider.getDeviceLibraryAPI();
-                      provider.powerStationInformationAPI();
-                    },
+                    onRefresh: () => provider.init(showLoader: false),
                     child: StackedLoader(
                       loading: provider.loader,
                       child: CustomSingleChildScroll(

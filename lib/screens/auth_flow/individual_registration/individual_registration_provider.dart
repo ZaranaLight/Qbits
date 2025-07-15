@@ -2,13 +2,18 @@ import 'package:geolocator/geolocator.dart';
 import 'package:qbits/apis/auth_apis.dart';
 import 'package:qbits/common/widget/app_qr_scanner_screen.dart';
 import 'package:qbits/qbits.dart';
+import 'package:qbits/screens/auth_flow/individual_registration/model/time_zone_model.dart';
 import 'package:qbits/service/location_service.dart';
 
 class IndividualRegistrationProvider extends ChangeNotifier {
+
+
   bool loader = false;
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
-  String selectedTimezone = '';
+  TimeZoneModel? selectedTimezone;
+
+  String selectedModel = '';
   String selectedStationType = '';
 
   final TextEditingController stationNameController = TextEditingController();
@@ -34,6 +39,35 @@ class IndividualRegistrationProvider extends ChangeNotifier {
   String timezoneError = "";
   String stationTypeError = "";
   String phoneNumberError = "";
+
+  List<TimeZoneModel> timezones = [
+    TimeZoneModel(name: "GMT 0", id: 0),
+    TimeZoneModel(name: "GMT 1", id: 1),
+    TimeZoneModel(name: "GMT 2", id: 2),
+    TimeZoneModel(name: "GMT 3", id: 3),
+    TimeZoneModel(name: "GMT 4", id: 4),
+    TimeZoneModel(name: "GMT 5", id: 5),
+    TimeZoneModel(name: "GMT 5.5", id: 55),
+    TimeZoneModel(name: "GMT 6", id: 6),
+    TimeZoneModel(name: "GMT 7", id: 7),
+    TimeZoneModel(name: "GMT 8", id: 8),
+    TimeZoneModel(name: "GMT 9", id: 9),
+    TimeZoneModel(name: "GMT 10", id: 10),
+    TimeZoneModel(name: "GMT 11", id: 11),
+    TimeZoneModel(name: "GMT 12", id: 12),
+    TimeZoneModel(name: "GMT -1", id: -1),
+    TimeZoneModel(name: "GMT -2", id: -2),
+    TimeZoneModel(name: "GMT -3", id: -3),
+    TimeZoneModel(name: "GMT -4", id: -4),
+    TimeZoneModel(name: "GMT -5", id: -5),
+    TimeZoneModel(name: "GMT -6", id: -6),
+    TimeZoneModel(name: "GMT -7", id: -7),
+    TimeZoneModel(name: "GMT -8", id: -8),
+    TimeZoneModel(name: "GMT -9", id: -9),
+    TimeZoneModel(name: "GMT -10", id: -10),
+    TimeZoneModel(name: "GMT -11", id: -11),
+    TimeZoneModel(name: "GMT -12", id: -12),
+  ];
 
   void onPwdVisibilityChanged() {
     isPasswordVisible = !isPasswordVisible;
@@ -63,6 +97,7 @@ class IndividualRegistrationProvider extends ChangeNotifier {
           latitude: position?.latitude.toString() ?? "",
           cityname: cityController.text,
           invertertype: "2",
+          timeZoneId: selectedTimezone?.id,
           collector: collectorAddressController.text,
         );
         if (result) {
@@ -84,9 +119,9 @@ class IndividualRegistrationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  int get selectedStationTypeIndex {
-    if (selectedStationType == '') return -1; // or throw if mandatory
-    return stationTypes.indexOf(selectedStationType);
+  void onChangeModel(newModel) {
+    selectedModel = newModel;
+    notifyListeners();
   }
 
   List<String> stationTypes = [
@@ -95,8 +130,11 @@ class IndividualRegistrationProvider extends ChangeNotifier {
     "Solar System (with output-limition)",
   ];
 
+  int selectedStationTypeIndex = -1;
+
   void onChangeStationType(stationType) {
     selectedStationType = stationType;
+    selectedStationTypeIndex = stationTypes.indexOf(stationType);
     notifyListeners();
   }
 
@@ -124,7 +162,7 @@ class IndividualRegistrationProvider extends ChangeNotifier {
       stationNameError = "";
     }
 
-    if (modelController.text.trim().isEmpty) {
+    if (selectedModel == '' || selectedModel.isEmpty) {
       modelError = context.l10n?.modelIsRequired ?? "";
     } else {
       modelError = "";
@@ -160,11 +198,13 @@ class IndividualRegistrationProvider extends ChangeNotifier {
 
     if (collectorAddressController.text.trim().isEmpty) {
       collectorAddressError = context.l10n?.collectorAddressIsRequired ?? "";
+    } else if (!collectorAddressController.text.isNumeric()) {
+      collectorAddressError = context.l10n?.collectorInvalid ?? "";
     } else {
       collectorAddressError = "";
     }
 
-    if (selectedTimezone == '' || selectedTimezone.isEmpty) {
+    if (selectedTimezone == null) {
       timezoneError = context.l10n?.timezoneIsRequired ?? "";
     } else {
       timezoneError = "";

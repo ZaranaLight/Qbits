@@ -25,11 +25,11 @@ class CircularChartContainer extends StatelessWidget {
                 radius: 45,
                 lineWidth: 7,
                 backgroundWidth: 7,
-                animation: false,
                 reverse: false,
                 circularStrokeCap: CircularStrokeCap.round,
+                animation: true,
                 percent:
-                double.tryParse(
+                    double.tryParse(
                       provider.currentProductionPercentage.toString(),
                     ) ??
                     0.0,

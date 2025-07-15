@@ -102,12 +102,13 @@ class AuthApis {
     return false;
   }
 
-  ///Comany Register API to register a new company account.
+  ///Company Register API to register a new company account.
   static Future<bool> companyRegisterAPI({
     required String accountName,
     required String password,
     required String email,
     required String mailOtp,
+    required String companyGeneratedCode,
   }) async {
     try {
       final response = await ApiService.getApi(
@@ -115,19 +116,22 @@ class AuthApis {
         queryParams: {
           "atun": accountName,
           "atpd": password,
-          "code": "AZKE342T",
+          "code": companyGeneratedCode,
           "email": email,
-          "phone": "",
           "checkcode": mailOtp,
         },
       );
       if (response == null) {
-        showCatchToast('Login failed: No response from server', null);
+        showCatchToast('No response from server', null);
         return false;
       }
+      print("res: ${response.body}");
       final model = appResponseFromJson(response.body);
+      print("model.data");
+
+      print(model?.data);
       if (model != null && model.code == 0) {
-        showSuccessToast('Otp sent successfully');
+        showSuccessToast('Form Submitted Successfully');
         return true;
       } else {
         return false;
@@ -138,7 +142,7 @@ class AuthApis {
     return false;
   }
 
-  ///Comany Register API to register a new company account.
+  ///Company Register API to register a new company account.
   static Future<bool> individualRegisterAPI({
     required String accountName,
     required String password,
@@ -150,6 +154,7 @@ class AuthApis {
     required String longitude,
     required String latitude,
     required int plantType,
+    required int timeZoneId,
   }) async {
     try {
       final response = await ApiService.postApi(
@@ -167,25 +172,22 @@ class AuthApis {
           "longitude": longitude,
           "latitude": latitude,
           "parent": "",
-          // "gmt": "8",
-          // "plantType": plantType,
+          "gmt": timeZoneId.toString(),
+          "plantType": plantType.toString(),
           "iSerial": "",
         },
       );
-      print("body-- ${response?.body}");
+
       if (response == null) {
-        showCatchToast('Login failed: No response from server', null);
+        showCatchToast('No response from server', null);
         return false;
       }
-
-      // final model = appResponseFromJson>(
-      //   response.body,
-      //   converter: PlanListResponseModel.fromJson,
-      // );
-      if (jsonDecode(response.body)['message'] == "success") {
-        showSuccessToast('Otp sent successfully');
+      if (jsonDecode(response.body)['message'] == "success" &&
+          jsonDecode(response.body)['rc'] == 0) {
+        showSuccessToast('Form Submitted successfully');
         return true;
       } else {
+        showErrorMsg(jsonDecode(response.body)['message']);
         return false;
       }
     } catch (exception, stack) {

@@ -1,3 +1,5 @@
+import 'package:qbits/apis/plant_apis.dart';
+import 'package:qbits/common/global_data.dart';
 import 'package:qbits/qbits.dart';
 
 class PlantModel {
@@ -25,7 +27,14 @@ class AddPlantProvider extends ChangeNotifier {
 
   PlantModel get plant => _plant;
 
-  List<String> stationTypes = ['Solar System', 'Wind Turbine', 'Hydro Plant'];
+  List<String> stationTypes = [
+    "Solar System",
+    "Battery Storage System",
+    "Solar System (with output-limition)",
+  ];
+
+  int selectedStationTypeIndex = 0;
+  int createdPlantID = -1;
 
   String selectedStationType = 'Solar System';
 
@@ -61,6 +70,7 @@ class AddPlantProvider extends ChangeNotifier {
 
   void setStationType(String value) {
     selectedStationType = value;
+    selectedStationTypeIndex = stationTypes.indexOf(value);
     notifyListeners();
   }
 
@@ -97,32 +107,51 @@ class AddPlantProvider extends ChangeNotifier {
       batteryError = "";
     }
 
-    if (_plant.longitude.trim().isEmpty) {
-      longitudeError = "longitude is required";
-    } else {
-      longitudeError = "";
-    }
-
-    if (_plant.latitude.trim().isEmpty) {
-      latitudeError = "latitude is required";
-    } else {
-      latitudeError = "";
-    }
-
     notifyListeners();
     return stationNameError.isEmpty &&
         cityError.isEmpty &&
         capacityError.isEmpty &&
-        longitudeError.isEmpty &&
-        latitudeError.isEmpty &&
         batteryError.isEmpty;
   }
 
-  void submitPlant(BuildContext context) {
-    if (validation(context)) {
-      if (context.mounted) {
-        // Handle your submit logic here
-        context.navigator.pop(); // Close the screen after submission
+  // void submitPlant(BuildContext context) {
+  //   if (validation(context)) {
+  //     if (context.mounted) {
+  //       // Handle your submit logic here
+  //       context.navigator.pop(); // Close the screen after submission
+  //     }
+  //   }
+  // }
+
+  bool loader = false;
+
+  Future<void> submitPlant(BuildContext context) async {
+
+    if (context.mounted) {
+      if (validation(context)) {
+        loader = true;
+
+        notifyListeners();
+        await Future.delayed(1.seconds);
+
+        final result = await PlantApis.addPlantAPI(
+          latitude: GlobalData.longitude.toString(),
+          longitude: GlobalData.latitude.toString(),
+          plantName: plant.stationName,
+          batteryCapacity: plant.battery,
+          capacity: plant.capacity,
+          city: plant.city,
+          stationType: selectedStationTypeIndex,
+        );
+        if (result != null) {
+          if (context.mounted) {
+            showSuccessToast(context.l10n?.plantCreatedSuccessfully ?? "");
+            context.navigator.pop();
+            createdPlantID = result;
+          }
+        }
+        loader = false;
+        notifyListeners();
       }
     }
   }

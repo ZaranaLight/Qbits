@@ -35,6 +35,7 @@ class ApiService {
       if (isToken) {
         header["token"] = userData?.token?.token ?? "";
       }
+      debugPrint("updatedUrl = ${Uri.parse(updatedUrl)}");
 
       final response = await http.get(Uri.parse(updatedUrl), headers: header);
       bool isExpired = await isTokenExpire(response);
