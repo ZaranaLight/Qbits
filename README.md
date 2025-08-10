@@ -1,6 +1,6 @@
 # qbits
 
-A new Flutter project.
+Qbits Energy is a mobile application designed to provide energy management solutions, offering tools for monitoring and optimizing energy usage. Developed by TATVAMASI LABS, it aims to deliver a user-friendly experience for users looking to manage energy-related tasks efficiently.
 
 
 # Flutter SDK
